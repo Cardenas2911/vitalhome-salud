@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Vigilancia Inteligente</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Monitoreo Inteligente 24/7: Su Ser Querido Siempre Protegido y Conectado.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Nuestra <strong>Plataforma de Monitoreo Inteligente</strong> ofrece <strong>supervisión 24/7</strong> con <strong>alertas en tiempo real</strong> integrando <strong>sensores no invasivos</strong> y <strong>dispositivos conectados</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        {[
+          { icon: "📊", feat: "Datos en Tiempo Real", desc: "Acceso a signos vitales, actividad y medicación desde cualquier dispositivo." },
+          { icon: "🚨", feat: "Alertas Automáticas", desc: "Notificaciones inmediatas ante anomalías o desvíos del plan de cuidado." },
+          { icon: "🔗", feat: "Dispositivos Conectados", desc: "Integración de sensores no invasivos adaptados al entorno del hogar." },
+        ].map(f => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="text-4xl mb-4">{f.icon}</div>
+            <h2 class="font-bold text-primary font-heading mb-2">{f.feat}</h2>
+            <p class="text-gray-600 text-sm">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Solicitar Demo de la Plataforma
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

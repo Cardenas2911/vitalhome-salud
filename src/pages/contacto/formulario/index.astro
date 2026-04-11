@@ -1,0 +1,60 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Contáctenos</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Contacto Directo: Inicie su Camino Hacia la Tranquilidad con VitalHome Salud.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          ¿Listo para dar el primer paso? Solicite una <strong>consultoría estratégica gratuita</strong> o una <strong>evaluación de necesidades personalizada</strong>. Respondemos en menos de 24 horas.
+        </p>
+      </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold text-primary font-heading text-center mb-10">Envíe su Solicitud</h2>
+        <form class="space-y-6" action="#" method="POST">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1" for="nombre">Nombre Completo</label>
+            <input id="nombre" type="text" name="nombre" required
+              class="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="Ej. María González" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1" for="email">Correo Electrónico</label>
+            <input id="email" type="email" name="email" required
+              class="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="su@correo.com" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1" for="telefono">Teléfono</label>
+            <input id="telefono" type="tel" name="telefono"
+              class="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="+56 9 XXXX XXXX" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1" for="mensaje">¿Cuál es su necesidad principal?</label>
+            <textarea id="mensaje" name="mensaje" rows="4"
+              class="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="Cuéntenos sobre la situación de su ser querido..."></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-primary text-white font-bold py-3 px-8 rounded-full hover:opacity-90 transition">
+            Enviar Solicitud de Contacto
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

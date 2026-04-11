@@ -1,0 +1,49 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const testimonios = [
+  { familia: "Familia Rodríguez", caso: "Cuidado post-operatorio de cadera", cita: "Recuperamos la paz mental que creíamos perdida. El equipo de VitalHome llegó y transformó por completo la situación de mamá." },
+  { familia: "Familia Gutiérrez", caso: "Paciente con Alzheimer avanzado", cita: "La coordinación entre la enfermera, el fisioterapeuta y el psicólogo fue impecable. Nunca habíamos visto un nivel de cuidado tan integral." },
+  { familia: "Familia Morales", caso: "Rehabilitación post-ACV", cita: "En 3 meses nuestro padre recuperó movilidad que los médicos no esperaban. La metodología VitalCare® hace la diferencia." },
+];
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Prueba Social Auténtica</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Historias Reales de Transformación: La Prueba del Cuidado Domiciliario de Élite.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Escuche directamente de <strong>familiares responsables</strong> cómo hemos restaurado la <strong>paz mental</strong> y la <strong>autonomía</strong> de sus seres queridos.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+        {testimonios.map(t => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 flex flex-col gap-4">
+            <p class="text-gray-700 italic">"{t.cita}"</p>
+            <div class="mt-auto pt-4 border-t border-gray-200">
+              <p class="font-bold text-primary">{t.familia}</p>
+              <p class="text-xs text-gray-500">{t.caso}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Leer Historias Inspiradoras Completas
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-secondary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Evidencia Científica</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Evidencia Científica: Nuestros Estudios de Impacto en Salud Domiciliaria.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Analizamos rigurosamente la <strong>reducción de reingresos hospitalarios</strong>, la <strong>mejora en indicadores de salud</strong> y el aumento de la <strong>satisfacción del paciente y familiar</strong> con <strong>datos objetivos</strong> y <strong>metodologías validadas</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-4xl mx-auto space-y-6">
+        {[
+          { titulo: "Impacto en Reingresos Hospitalarios", resumen: "Pacientes bajo cuidado VitalHome redujeron un 40% sus reingresos en el primer año de servicio.", badge: "Estudio Clínico 2023" },
+          { titulo: "Autonomía Funcional en Adultos Mayores", resumen: "El 98% de los pacientes con planes de rehabilitación domiciliaria mejoraron su puntuación de autonomía en 90 días.", badge: "Investigación Interna" },
+          { titulo: "Satisfacción del Familiar Responsable", resumen: "95% de los familiares reportaron alivio del estrés crónico y mayor confianza al delegar el cuidado.", badge: "Encuesta Nacional" },
+        ].map(e => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent">{e.badge}</span>
+            <h2 class="text-xl font-bold text-primary font-heading mt-2 mb-3">{e.titulo}</h2>
+            <p class="text-gray-600">{e.resumen}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Descargar Estudios de Impacto Completos
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

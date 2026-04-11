@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Contáctenos</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Contacto Directo: Inicie su Camino Hacia la Tranquilidad con VitalHome Salud.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          ¿Listo para dar el primer paso? Solicite una <strong>consultoría estratégica gratuita</strong> o una <strong>evaluación de necesidades personalizada</strong>. Respondemos en menos de 24 horas.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        <a href="/contacto/formulario/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
+          <div class="text-4xl mb-4">📋</div>
+          <h2 class="font-bold text-primary font-heading mb-2">Formulario de Contacto</h2>
+          <p class="text-gray-600 text-sm">Consultoría estratégica gratuita y evaluación personalizada.</p>
+        </a>
+        <a href="/contacto/ubicacion/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
+          <div class="text-4xl mb-4">📍</div>
+          <h2 class="font-bold text-primary font-heading mb-2">Ubicación y Oficinas</h2>
+          <p class="text-gray-600 text-sm">Visítenos para atención presencial y asesoramiento experto.</p>
+        </a>
+        <a href="/contacto/trabaja-con-nosotros/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
+          <div class="text-4xl mb-4">💼</div>
+          <h2 class="font-bold text-primary font-heading mb-2">Trabaja con Nosotros</h2>
+          <p class="text-gray-600 text-sm">Únase a nuestro equipo multidisciplinario de alto rendimiento.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

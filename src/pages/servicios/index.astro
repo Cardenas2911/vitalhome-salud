@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Nuestros Servicios</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Soluciones Estratégicas: Enfermería, Rehabilitación y Bienestar en su Hogar.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
+          Nuestras <strong>unidades de negocio</strong> ofrecen <strong>precisión clínica</strong> y <strong>calidez humana</strong> para cada necesidad: desde <strong>enfermería domiciliaria especializada</strong> hasta <strong>masajes terapéuticos</strong>, <strong>actividad física adaptada</strong> y <strong>Planes de Cuidado Integral</strong>.
+        </p>
+        <a href="/contacto/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+          Explorar Servicios Detallados
+        </a>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+        {[
+          { titulo: "Enfermería Domiciliaria", desc: "Atención médica experta para pacientes crónicos y post-operatorios en la comodidad del hogar.", href: "/servicios/enfermeria-domiciliaria/" },
+          { titulo: "Masajes Terapéuticos", desc: "Alivio del dolor y bienestar físico-emocional con especialistas certificados a domicilio.", href: "/servicios/masajes-terapeuticos/" },
+          { titulo: "Actividad Física y Rehabilitación", desc: "Recuperación de movilidad y autonomía con programas personalizados de fisioterapia.", href: "/servicios/actividad-fisica-rehabilitacion/" },
+          { titulo: "Planes de Cuidado Integral", desc: "Atención holística y coordinada adaptada a las necesidades evolutivas del adulto mayor.", href: "/servicios/planes-cuidado-integral/" },
+        ].map(s => (
+          <a href={s.href} class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition block">
+            <h2 class="text-xl font-bold text-primary font-heading mb-3">{s.titulo}</h2>
+            <p class="text-gray-600 text-sm">{s.desc}</p>
+            <span class="inline-block mt-4 text-accent font-semibold text-sm">Ver más →</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

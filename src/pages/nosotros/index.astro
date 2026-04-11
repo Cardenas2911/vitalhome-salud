@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <!-- HERO NOSOTROS -->
+    <section class="hero-section bg-primary text-white py-24 px-6">
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest mb-3 text-sm">Nuestra Identidad</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Nuestra Esencia: Cuidado Domiciliario con Propósito y Valores Inquebrantables.
+        </h1>
+        <p class="text-lg text-white/80 max-w-3xl mx-auto mb-10">
+          En VitalHome Salud, nuestra <strong>misión</strong> es transformar el <strong>cuidado domiciliario</strong> en una experiencia de <strong>bienestar integral</strong> y <strong>dignidad</strong> para el adulto mayor, liberando al <strong>familiar responsable</strong> de la carga operativa y emocional.
+        </p>
+        <a href="/contacto/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+          Conocer Nuestro Compromiso Institucional
+        </a>
+      </div>
+    </section>
+
+    <!-- VALORES -->
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold font-heading text-primary text-center mb-12">
+          Los Valores que Guían Cada Interacción
+        </h2>
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+          {[
+            { titulo: "Excelencia Clínica", desc: "Estándares médicos de clase mundial en cada servicio." },
+            { titulo: "Empatía", desc: "Cuidado humano que supera lo clínico." },
+            { titulo: "Integridad", desc: "Transparencia y honestidad en cada proceso." },
+            { titulo: "Compromiso Social", desc: "Impacto positivo en familias y comunidades." }
+          ].map(v => (
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+              <h3 class="font-bold text-primary mb-2">{v.titulo}</h3>
+              <p class="text-gray-600 text-sm">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- SUB-PÁGINAS CTA -->
+    <section class="py-16 px-6 bg-secondary text-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+        {[
+          { label: "Nuestra Historia", href: "/nosotros/historia/" },
+          { label: "Equipo Profesional", href: "/nosotros/equipo/" },
+          { label: "Metodología VitalCare®", href: "/metodologia/vitalcare/" },
+          { label: "Gobierno Corporativo", href: "/nosotros/gobierno-corporativo/" },
+        ].map(link => (
+          <a href={link.href} class="border border-white/30 rounded-2xl p-6 hover:bg-white/10 transition flex items-center justify-between">
+            <span class="font-semibold">{link.label}</span>
+            <span class="text-accent text-xl">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

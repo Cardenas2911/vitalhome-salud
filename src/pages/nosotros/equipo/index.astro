@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const equipo = [
+  { rol: "Enfermera Especialista", area: "Cuidado Crónico y Postoperatorio", descripcion: "Experta en administración de medicamentos, curaciones complejas y monitoreo continuo de pacientes crónicos." },
+  { rol: "Fisioterapeuta", area: "Rehabilitación Funcional", descripcion: "Diseña y ejecuta planes de recuperación motriz y autonomía funcional adaptados al entorno del hogar." },
+  { rol: "Terapeuta Ocupacional", area: "Autonomía Cotidiana", descripcion: "Facilita la independencia del adulto mayor en actividades de la vida diaria con técnicas especializadas." },
+  { rol: "Médico Geriatra", area: "Supervisión Clínica", descripcion: "Supervisa planes de cuidado con enfoque holístico y orientado a las necesidades evolutivas del adulto mayor." },
+];
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Capital Humano de Élite</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Expertos en Cuidado: El Equipo Multidisciplinario que Garantiza su Tranquilidad.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Cada miembro es seleccionado bajo rigurosos estándares de <strong>competencia técnica</strong> y <strong>calidez humana</strong>. Confíe en quienes hacen de la <strong>salud y el bienestar</strong> su máxima prioridad.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+        {equipo.map(m => (
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-8">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent">{m.area}</span>
+            <h2 class="text-xl font-bold text-primary font-heading mt-2 mb-3">{m.rol}</h2>
+            <p class="text-gray-600">{m.descripcion}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Conocer a Nuestros Especialistas
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

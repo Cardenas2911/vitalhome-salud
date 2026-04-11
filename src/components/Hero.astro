@@ -1,0 +1,55 @@
+---
+// src/components/Hero.astro
+---
+<section class="relative bg-secondary overflow-hidden py-24 sm:py-32">
+    <!-- Dark Mode Background Effect (Lujo Clínico) -->
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2680&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-secondary to-transparent"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            
+            <!-- Z-Pattern Target: Left Content -->
+            <div class="max-w-2xl text-left">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white tracking-tight leading-tight mb-6">
+                    Ingeniería de Bienestar para una Vida Plena en Casa.
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-zinc-300 font-body mb-10 leading-relaxed">
+                    Liberamos al familiar responsable de la carga operativa y emocional. Conectamos la ciencia del cuidado con la comodidad del hogar, garantizando autonomía para adultos mayores con condiciones crónicas o post-operatorios.
+                </p>
+                
+                <!-- Terminal Area: CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="/contacto/formulario/" class="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-md text-base font-medium text-white bg-accent hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Agendar Consultoría Exclusiva
+                    </a>
+                    <a href="/servicios/enfermeria-domiciliaria/" class="inline-flex items-center justify-center px-8 py-4 border border-zinc-500 rounded-md text-base font-medium text-zinc-100 hover:bg-zinc-800 transition-all duration-300">
+                        Ver Planes de Cuidado
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="mt-10 flex items-center gap-4 text-sm text-zinc-400">
+                    <div class="flex -space-x-2">
+                        <!-- Placeholder avatars -->
+                        <div class="w-8 h-8 rounded-full bg-zinc-600 border-2 border-secondary flex items-center justify-center"><span class="text-xs text-white">1</span></div>
+                        <div class="w-8 h-8 rounded-full bg-blue-800 border-2 border-secondary flex items-center justify-center"><span class="text-xs text-white">2</span></div>
+                        <div class="w-8 h-8 rounded-full bg-zinc-500 border-2 border-secondary flex items-center justify-center"><span class="text-xs text-white">+</span></div>
+                    </div>
+                    <span>150+ Familias respaldadas</span>
+                </div>
+            </div>
+
+            <!-- Visual Target -->
+            <div class="relative hidden lg:block h-full min-h-[500px]">
+                <div class="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-zinc-700/50">
+                     <img src="https://images.unsplash.com/photo-1551601651-a20af9eb3a77?q=80&w=2670&auto=format&fit=crop" alt="Cuidados médicos domiciliarios de alta calidad" class="w-full h-full object-cover">
+                     <!-- Subtle overlay -->
+                     <div class="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

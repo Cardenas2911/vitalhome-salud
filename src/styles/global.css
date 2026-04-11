@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #104892;
+  --color-secondary: #061a36;
+  --color-accent: #155ec0;
+  --color-background-brand: #e6e6e6;
+  --color-surface-brand: #ffffff;
+  --color-text-brand: #061a36;
+  
+  --font-heading: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* Configuraciones Base de Rendimiento y Accesibilidad */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background-brand text-text-brand font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-primary;
+  }
+}

@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Bienvenida</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Bienvenido a VitalHome Salud: Su Proceso de Onboarding Diseñado para su Tranquilidad.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Le acompañamos paso a paso desde la <strong>evaluación inicial</strong> hasta la <strong>activación de su plan de cuidado</strong>, garantizando una transición fluida y sin fricciones.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-3xl mx-auto space-y-8">
+        {[
+          { paso: "1", titulo: "Consultoría Inicial Gratuita", desc: "Conversación con un especialista para evaluar las necesidades específicas de su ser querido." },
+          { paso: "2", titulo: "Evaluación Holística en el Hogar", desc: "Visita de nuestro equipo para conocer el entorno y elaborar el plan de cuidado personalizado." },
+          { paso: "3", titulo: "Activación del Plan de Cuidado", desc: "Asignación del equipo multidisciplinario y configuración de herramientas de monitoreo." },
+          { paso: "4", titulo: "Seguimiento y Ajuste Continuo", desc: "Evaluación periódica del plan y comunicación regular con la familia para garantizar los resultados." },
+        ].map((p) => (
+          <div class="flex gap-6 items-start bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <span class="text-4xl font-bold text-accent/30 font-heading w-12 shrink-0">{p.paso}</span>
+            <div>
+              <h2 class="text-xl font-bold text-primary font-heading mb-2">{p.titulo}</h2>
+              <p class="text-gray-600">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/formulario/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Iniciar mi Proceso de Onboarding
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

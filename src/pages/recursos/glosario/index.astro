@@ -1,0 +1,54 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const terminos = [
+  { termino: "Cuidado Domiciliario", def: "Atención médica, de enfermería o de apoyo personal prestada en el hogar del paciente, en sustitución o complemento de la atención hospitalaria." },
+  { termino: "Autonomía Funcional", def: "Capacidad del adulto mayor para realizar las actividades básicas de la vida diaria (higiene, alimentación, movilidad) de forma independiente." },
+  { termino: "Rehabilitación Funcional", def: "Proceso terapéutico orientado a restablecer o mejorar la capacidad física de un paciente tras una enfermedad, lesión o intervención quirúrgica." },
+  { termino: "Adulto Mayor", def: "Persona de 60 o más años de edad, según la clasificación de la Organización Mundial de la Salud (OMS)." },
+  { termino: "Familiar Responsable", def: "Persona del entorno familiar que asume el rol de coordinar, supervisar y participar en el cuidado de un adulto mayor dependiente." },
+  { termino: "Plan de Cuidado Integral", def: "Documento clínico personalizado que organiza todas las intervenciones de salud necesarias para un paciente, elaborado por un equipo multidisciplinario." },
+  { termino: "Terapia Ocupacional", def: "Disciplina de salud que facilita la participación del paciente en actividades cotidianas para mejorar su calidad de vida e independencia." },
+  { termino: "Monitoreo Remoto", def: "Supervisión continua de parámetros de salud del paciente desde una ubicación distinta, mediante tecnología de sensores y comunicación digital." },
+];
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Vocabulario Médico</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Glosario Médico: Claridad en los Términos Clave del Cuidado de la Salud Domiciliaria.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Comprenda la terminología clave para comunicarse con confianza con los profesionales de la salud y tomar mejores decisiones para el <strong>bienestar de su ser querido</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-4xl mx-auto space-y-4">
+        {terminos.map(t => (
+          <details class="bg-gray-50 rounded-2xl border border-gray-100 p-6 group cursor-pointer">
+            <summary class="font-bold text-primary font-heading flex justify-between items-center list-none">
+              {t.termino}
+              <span class="text-accent text-xl group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3">{t.def}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/recursos/faq/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Explorar Preguntas Frecuentes
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,46 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Identidad Corporativa</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Misión, Visión y Valores: Los Cimientos del Cuidado Domiciliario de Excelencia en VitalHome.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Nuestra <strong>misión</strong> transform el <strong>cuidado domiciliario</strong> en una experiencia de <strong>bienestar integral y dignidad</strong>. Nuestra <strong>visión</strong>, ser el referente global en <strong>ingeniería de bienestar</strong> para el adulto mayor.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+        <div class="bg-primary text-white rounded-2xl p-8 text-center">
+          <h2 class="text-xl font-bold font-heading mb-4">🎯 Misión</h2>
+          <p class="text-white/80 text-sm">Transformar el cuidado domiciliario en una experiencia de bienestar integral y dignidad para el adulto mayor, liberando al familiar responsable de la carga operativa y emocional.</p>
+        </div>
+        <div class="bg-accent text-white rounded-2xl p-8 text-center">
+          <h2 class="text-xl font-bold font-heading mb-4">🔭 Visión</h2>
+          <p class="text-white/80 text-sm">Ser el referente global en ingeniería de bienestar domiciliario, redefiniendo los estándares de calidad, tecnología y humanismo en la atención al adulto mayor.</p>
+        </div>
+        <div class="bg-secondary text-white rounded-2xl p-8 text-center">
+          <h2 class="text-xl font-bold font-heading mb-4">⭐ Valores</h2>
+          <p class="text-white/80 text-sm">Excelencia Clínica · Empatía · Integridad · Responsabilidad Social · Innovación Continua · Vocación de Servicio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/nosotros/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Conocer al Equipo Detrás de la Misión
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

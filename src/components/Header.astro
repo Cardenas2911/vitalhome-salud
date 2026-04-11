@@ -1,0 +1,42 @@
+---
+// src/components/Header.astro
+---
+<header class="w-full bg-surface-brand shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="text-2xl font-heading font-bold text-primary flex items-center gap-2">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/wzwygmng.json"
+                        trigger="hover"
+                        colors="primary:#104892"
+                        style="width:32px;height:32px">
+                    </lord-icon>
+                    VitalHome Salud
+                </a>
+            </div>
+            
+            <!-- Minimalist Navigation -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="/servicios/enfermeria-domiciliaria/" class="text-text-brand hover:text-primary font-medium transition-colors">Servicios</a>
+                <a href="/institucional/metodologia-vitalcare/" class="text-text-brand hover:text-primary font-medium transition-colors">Metodología</a>
+                <a href="/recursos/faq/" class="text-text-brand hover:text-primary font-medium transition-colors">Conocimiento</a>
+                
+                <!-- Primary CTA -->
+                <a href="/contacto/formulario/" class="ml-8 inline-flex items-center justify-center px-6 py-2.5 border border-transparent rounded-md text-sm font-medium text-white bg-accent hover:bg-primary transition-all duration-300 shadow-sm hover:shadow">
+                    Agendar Consultoría
+                </a>
+            </nav>
+            
+            <!-- Mobile menu button (visual only for this prototype) -->
+            <div class="md:hidden flex items-center">
+                <button class="text-text-brand hover:text-primary p-2">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Infraestructura Digital</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Tecnología de Vanguardia: La Ingeniería que Respalda su Cuidado Domiciliario.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
+          Nuestra <strong>infraestructura tecnológica</strong> garantiza <strong>excelencia operativa</strong>, <strong>seguridad de datos</strong> y <strong>atención proactiva</strong> redefiniendo el estándar del <strong>cuidado domiciliario inteligente</strong>.
+        </p>
+        <a href="/tecnologia/plataforma-monitoreo/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+          Descubrir Nuestra Tecnología
+        </a>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+        <a href="/tecnologia/plataforma-monitoreo/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
+          <h2 class="text-xl font-bold text-primary font-heading mb-3">📡 Plataforma de Monitoreo 24/7</h2>
+          <p class="text-gray-600">Supervisión en tiempo real con alertas automáticas y datos de salud accesibles desde cualquier dispositivo.</p>
+        </a>
+        <a href="/tecnologia/seguridad-datos/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
+          <h2 class="text-xl font-bold text-primary font-heading mb-3">🔒 Seguridad de Datos Médicos</h2>
+          <p class="text-gray-600">Encriptación de extremo a extremo y cumplimiento con normativas HIPAA y GDPR locales.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

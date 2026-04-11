@@ -1,0 +1,36 @@
+---
+// src/components/LeadMagnet.astro
+---
+<section class="bg-primary py-24 relative overflow-hidden">
+    <!-- Clean background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-secondary to-primary mix-blend-multiply opacity-50"></div>
+    
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-heading font-bold text-white sm:text-5xl mb-6 tracking-tight">
+            Desbloquee su Tranquilidad Hoy Mismo.
+        </h2>
+        <p class="text-xl text-blue-100 font-body mb-10 max-w-2xl mx-auto">
+            Solicite una Auditoría Express de Necesidades de Cuidado. Un diagnóstico profesional sin fricciones en menos de 24 horas.
+        </p>
+
+        <!-- Fogg Behavior Model Footer Form -->
+        <form class="flex flex-col sm:flex-row max-w-xl mx-auto gap-4" onsubmit="event.preventDefault();">
+            <label for="email" class="sr-only">Correo electrónico</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                class="flex-1 w-full px-5 py-4 text-base text-text-brand placeholder-zinc-500 bg-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-sm" 
+                placeholder="Introduzca su correo electrónico"
+            >
+            <button 
+                type="submit" 
+                class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white bg-accent rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white transition-all shadow-md hover:shadow-lg whitespace-nowrap"
+            >
+                Solicitar Auditoría Gratuita
+            </button>
+        </form>
+        <p class="mt-4 text-sm text-blue-200">100% Confidencial. Cumplimiento de leyes de privacidad de datos médicos.</p>
+    </div>
+</section>

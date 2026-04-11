@@ -1,0 +1,46 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Cuidado Total</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Planes de Cuidado Integral: Soluciones Personalizadas para la Tranquilidad Familiar.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
+          Integramos <strong>enfermería especializada</strong>, <strong>terapias físicas y ocupacionales</strong> y <strong>apoyo emocional</strong>, garantizando coordinación perfecta entre todos los servicios y una respuesta a las <strong>necesidades evolutivas</strong> del adulto mayor.
+        </p>
+        <a href="/contacto/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+          Diseñar su Plan de Cuidado
+        </a>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        {[
+          { tier: "Plan Básico", features: ["Monitoreo preventivo diario", "Enfermería de turno", "Reporte familiar semanal"] },
+          { tier: "Plan Intermedio", features: ["Todo lo del Plan Básico", "Fisioterapia 3x/semana", "Seguimiento nutricional"] },
+          { tier: "Plan Premium", features: ["Todo lo del Plan Intermedio", "Médico geriatra de guardia", "Soporte emocional 24/7"] },
+        ].map(p => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 flex flex-col gap-4">
+            <h2 class="text-xl font-bold text-primary font-heading">{p.tier}</h2>
+            <ul class="text-gray-600 text-sm space-y-2 text-left">
+              {p.features.map(f => <li class="flex gap-2"><span class="text-accent">✓</span>{f}</li>)}
+            </ul>
+            <a href="/contacto/" class="mt-auto inline-block bg-primary text-white text-sm font-semibold py-2 px-5 rounded-full hover:opacity-90 transition">
+              Consultar
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

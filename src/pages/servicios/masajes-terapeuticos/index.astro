@@ -1,0 +1,42 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Bienestar Físico y Emocional</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Masajes Terapéuticos a Domicilio: Alivio del Dolor y Bienestar para Adultos Mayores.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
+          Especialistas certificados aplican técnicas adaptadas para <strong>reducir la tensión</strong>, <strong>mejorar la circulación</strong> y <strong>promover la relajación profunda</strong>, combatiendo el <strong>dolor crónico</strong> y mejorando la <strong>calidad de vida</strong>.
+        </p>
+        <a href="/contacto/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+          Agendar Sesión de Masaje
+        </a>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        {[
+          { icon: "😌", ben: "Alivio del Dolor Crónico", desc: "Técnicas especializadas para dolores musculares, articulares y posturales." },
+          { icon: "💆", ben: "Relajación Profunda", desc: "Reducción del estrés y ansiedad que impactan el bienestar emocional del adulto mayor." },
+          { icon: "🩸", ben: "Mejora Circulatoria", desc: "Estimulación del flujo sanguíneo para una mejor oxigenación de tejidos." },
+        ].map(b => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="text-4xl mb-4">{b.icon}</div>
+            <h2 class="font-bold text-primary font-heading mb-2">{b.ben}</h2>
+            <p class="text-gray-600 text-sm">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

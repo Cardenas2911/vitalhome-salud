@@ -1,0 +1,84 @@
+---
+// src/components/SEO.astro
+import { seoConfig } from '../data/seo.ts';
+
+const pathname = new URL(Astro.request.url).pathname;
+// Removemos trailing slash extra (si no es root) por seguridad y cotejamos
+const normalizedPath = pathname === '/' ? '/' : (pathname.endsWith('/') ? pathname : pathname + '/');
+
+const metadata = seoConfig[normalizedPath as keyof typeof seoConfig] || {
+  title: "VitalHome Salud: Ingeniería de Bienestar en Casa",
+  description: "Atención Integral en Salud Domiciliaria, conectando la ciencia con la comodidad del hogar.",
+  keywords: "VitalHome Salud, Atención Médica Domiciliaria, Ingeniería de Bienestar",
+  schemaType: "WebPage"
+};
+
+const domain = "https://vitalhomesalud.com";
+const fullUrl = `${domain}${pathname}`;
+
+// Graph Schema Dinámico enfocado al Nodo Cero usando Golden Embeddings (como se solicitó).
+// Las demás páginas heredarán el WebPage/Procedure ligado al mismo MedicalOrganization root.
+const jsonLdGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": `${domain}/#organization`,
+      "name": "VitalHome Salud",
+      "url": `${domain}/`,
+      "logo": {
+        "@type": "ImageObject",
+        "@id": `${domain}/#logo`,
+        "url": `${domain}/images/logo-vitalhome.png`,
+        "caption": "Logotipo oficial de VitalHome Salud"
+      },
+      "description": "Institución líder en atención integral en salud y bienestar domiciliario para adultos mayores.",
+      "sameAs": [
+        "https://www.linkedin.com/company/vitalhomesalud",
+        "https://www.instagram.com/vitalhomesalud"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+[TU_NUMERO]",
+        "contactType": "customer service",
+        "availableLanguage": "es"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${domain}/#website`,
+      "url": `${domain}/`,
+      "name": "VitalHome Salud",
+      "publisher": {
+        "@id": `${domain}/#organization`
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${domain}/buscar?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": metadata.schemaType === "MedicalOrganization" ? "WebPage" : metadata.schemaType,
+      "@id": `${domain}${pathname}#webpage`,
+      "url": fullUrl,
+      "name": metadata.title,
+      "isPartOf": {
+        "@id": `${domain}/#website`
+      },
+      "about": {
+        "@id": `${domain}/#organization`
+      }
+    }
+  ]
+};
+---
+
+<!-- METADATA BÁSICA Y SEO-UX CENTRALIZADA -->
+<title>{metadata.title}</title>
+<meta name="description" content={metadata.description}>
+<meta name="keywords" content={metadata.keywords}>
+<link rel="canonical" href={fullUrl} />
+
+<!-- MARCADO JSON-LD AVANZADO PARA GRAPH RAG E IA -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLdGraph)} is:inline></script>

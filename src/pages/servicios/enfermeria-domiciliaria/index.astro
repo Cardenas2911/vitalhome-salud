@@ -1,0 +1,38 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout>
+	<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center text-center">
+		<!-- H1 y Pirámide Invertida -->
+		<h1 class="text-4xl md:text-5xl font-bold mb-6 max-w-4xl">
+			Enfermería Domiciliaria Especializada: Alivio Inmediato para el Familiar Responsable.
+		</h1>
+		
+		<div class="space-y-6 text-lg max-w-3xl mb-10 text-secondary">
+			<p>¿Necesita delegar la administración de medicamentos o curaciones complejas? Nuestras unidades de negocio ofrecen precisión clínica y calidez humana para pacientes crónicos y post-operatorios directamente en su domicilio.</p>
+			
+			<p>Nuestros Planes de Cuidado Integral están diseñados para ofrecer una atención holística y flexible. Integramos enfermería domiciliaria especializada, masajes terapéuticos y actividad física adaptada.</p>
+			
+			<p>Este modelo reduce el estrés, mejora el bienestar emocional y asegura la tranquilidad inquebrantable del familiar responsable mediante evaluación diagnóstica exhaustiva.</p>
+		</div>
+		
+		<a href="/contacto/formulario-perfilamiento/" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-md text-white bg-accent hover:bg-primary transition-colors duration-300">
+			Diseñar su Plan Personalizado
+		</a>
+	</section>
+</Layout>
+
+<!-- JSON-LD Tripletas Semánticas -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": ["Service", "OfferCatalog"],
+  "name": "Enfermería Domiciliaria Especializada",
+  "description": "Cuidado domiciliario especializado y alivio inmediato.",
+  "provider": {
+    "@type": "MedicalOrganization",
+    "name": "VitalHome Salud"
+  }
+}
+</script>

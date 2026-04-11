@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-secondary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Privacidad Garantizada</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Privacidad Garantizada: Nuestra Infraestructura de Seguridad de Datos Médicos.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Cumplimiento con normativas de <strong>privacidad de salud</strong> (<strong>HIPAA</strong>, <strong>GDPR</strong> local), con <strong>encriptación de extremo a extremo</strong> y <strong>protocolos de acceso restringido</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+        {[
+          { titulo: "Encriptación de Extremo a Extremo", desc: "Toda comunicación de datos de salud viaja encriptada entre dispositivos, servidores y el personal autorizado." },
+          { titulo: "Acceso Restringido por Roles", desc: "Solo el personal autorizado puede acceder a registros específicos, con auditoría de cada acceso." },
+          { titulo: "Cumplimiento Normativo (HIPAA / GDPR)", desc: "Implementamos los protocolos internacionales más estrictos de gestión de información médica sensible." },
+          { titulo: "Auditorías Constantes", desc: "Revisiones periódicas internas y externas para garantizar la integridad y confidencialidad de los datos." },
+        ].map(g => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-lg font-bold text-primary font-heading mb-2">🔐 {g.titulo}</h2>
+            <p class="text-gray-600 text-sm">{g.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Ver Políticas de Privacidad y Cumplimiento
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

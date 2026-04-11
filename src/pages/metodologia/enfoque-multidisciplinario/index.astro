@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-secondary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Coordinación de Élite</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Expertos en Cuidado: El Equipo Multidisciplinario que Garantiza su Tranquilidad.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Nuestro enfoque <strong>multidisciplinario</strong> garantiza una <strong>evaluación holística</strong> y un <strong>plan de cuidado personalizado</strong>, donde la <strong>coordinación</strong> y la <strong>comunicación</strong> son clave para los mejores resultados en salud domiciliaria.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        {[
+          { icon: "🏥", rol: "Médico Geriatra", resp: "Supervisión clínica integral" },
+          { icon: "💉", rol: "Enfermera Especialista", resp: "Administración y cuidado diario" },
+          { icon: "🏃", rol: "Fisioterapeuta", resp: "Rehabilitación y movilidad" },
+          { icon: "🧩", rol: "Terapeuta Ocupacional", resp: "Autonomía en vida diaria" },
+          { icon: "💬", rol: "Psicólogo Clínico", resp: "Soporte emocional y bienestar" },
+          { icon: "📊", rol: "Coordinador de Caso", resp: "Comunicación fluida con la familia" },
+        ].map(m => (
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+            <div class="text-3xl mb-3">{m.icon}</div>
+            <h2 class="font-bold text-primary font-heading mb-1">{m.rol}</h2>
+            <p class="text-gray-500 text-sm">{m.resp}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Conocer a Nuestros Especialistas
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

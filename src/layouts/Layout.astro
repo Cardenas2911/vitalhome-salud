@@ -1,3 +1,7 @@
+---
+import SEO from '../components/SEO.astro';
+import '../styles/global.css';
+---
 <!doctype html>
 <html lang="es" itemscope itemtype="http://schema.org/WebPage">
 	<head>
@@ -6,17 +10,20 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Proyecto AEO Ready</title>
 		
-		<!-- Tripletas Semánticas Básicas AEO -->
-		<meta itemprop="name" content="Proyecto AEO Ready" />
-		<meta itemprop="description" content="Una plataforma de alto rendimiento optimizada para Agent Engine Optimization bajo metodología MAES." />
+		<!-- Componente AEO Centralizado -->
+		<SEO />
+		
+		<!-- Fuentes (Outfit e Inter) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<meta name="robots" content="index, follow, max-image-preview:large" />
 		
 		<!-- Lordicon CDN -->
 		<script src="https://cdn.lordicon.com/lordicon.js" is:inline></script>
 	</head>
-	<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 antialiased font-sans" itemscope itemtype="http://schema.org/AboutPage">
+	<body class="antialiased" itemscope itemtype="http://schema.org/AboutPage">
 		<main itemprop="mainContentOfPage" class="min-h-screen flex flex-col">
 			<slot />
 		</main>

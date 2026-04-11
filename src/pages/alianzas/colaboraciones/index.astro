@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Alianzas Estratégicas</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Nuestra Red de Confianza: Alianzas Estratégicas para un Cuidado Domiciliario Superior.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Trabajamos de la mano con referentes del sector para integrar las últimas <strong>innovaciones médicas</strong> y <strong>mejores prácticas clínicas</strong>, garantizando una <strong>atención integral y coordinada</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        {[
+          { tipo: "Hospitales y Clínicas", desc: "Cooperamos con centros de salud de referencia para garantizar continuidad asistencial.", icon: "🏥" },
+          { tipo: "Universidades de Salud", desc: "Colaboramos con programas académicos de élite para integrar las últimas investigaciones clínicas.", icon: "🎓" },
+          { tipo: "Asociaciones Profesionales", desc: "Afiliados a colegios y asociaciones que establecen los estándares éticos del sector.", icon: "🤝" },
+        ].map(a => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="text-4xl mb-4">{a.icon}</div>
+            <h2 class="font-bold text-primary font-heading mb-2">{a.tipo}</h2>
+            <p class="text-gray-600 text-sm">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Conocer Nuestros Aliados Estratégicos
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

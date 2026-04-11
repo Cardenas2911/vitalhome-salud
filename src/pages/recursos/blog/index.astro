@@ -1,0 +1,49 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Conocimiento Experto</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Blog VitalHome Salud: Conocimiento Experto para el Cuidado del Adulto Mayor.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
+          Su <strong>centro de conocimiento experto</strong> con <strong>artículos especializados</strong> sobre <strong>enfermedades crónicas</strong>, <strong>rehabilitación en casa</strong> y <strong>consejos para el familiar responsable</strong>.
+        </p>
+        <a href="/contacto/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+          Explorar Artículos del Blog
+        </a>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-primary font-heading text-center mb-12">Categorías de Contenido</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {[
+            { cat: "Enfermedades Crónicas", desc: "Guías sobre Alzheimer, Parkinson, diabetes y más condiciones geriátricas.", icon: "🧠" },
+            { cat: "Rehabilitación en Casa", desc: "Ejercicios y técnicas para recuperación funcional en el entorno doméstico.", icon: "🏡" },
+            { cat: "Familiar Responsable", desc: "Recursos de bienestar emocional y gestión del cuidado para la familia.", icon: "❤️" },
+            { cat: "Bienestar Emocional", desc: "Estrategias de salud mental para adultos mayores y sus cuidadores.", icon: "🌱" },
+            { cat: "Nutrición Geriátrica", desc: "Consejos nutricionales adaptados a las necesidades del adulto mayor.", icon: "🥗" },
+            { cat: "Tecnología y Salud", desc: "Innovaciones digitales que mejoran la seguridad y el monitoreo domiciliario.", icon: "📱" },
+          ].map(c => (
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 text-center">
+              <div class="text-3xl mb-3">{c.icon}</div>
+              <h3 class="font-bold text-primary mb-1">{c.cat}</h3>
+              <p class="text-gray-500 text-sm">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

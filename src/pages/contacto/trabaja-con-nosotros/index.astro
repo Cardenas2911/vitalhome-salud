@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-secondary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Oportunidades de Empleo</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Únete a VitalHome Salud: Construye una Carrera con Propósito en el Cuidado Domiciliario.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          En VitalHome Salud, te ofrecemos la oportunidad de formar parte de un <strong>equipo multidisciplinario de alto rendimiento</strong> donde la <strong>excelencia clínica</strong> y el <strong>desarrollo profesional</strong> son pilares.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-primary font-heading text-center mb-12">Perfiles Buscados</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {[
+            { perfil: "Enfermera Especialista", req: "Título profesional + experiencia en cuidado domiciliario o geriatría." },
+            { perfil: "Fisioterapeuta", req: "Licenciatura en fisioterapia + conocimientos en rehabilitación domiciliaria." },
+            { perfil: "Cuidador Certificado", req: "Certificación en atención al adulto mayor + vocación de servicio comprobada." },
+          ].map(p => (
+            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 text-center">
+              <h3 class="font-bold text-primary font-heading text-lg mb-3">{p.perfil}</h3>
+              <p class="text-gray-600 text-sm">{p.req}</p>
+              <a href="/contacto/formulario/" class="inline-block mt-4 text-accent font-semibold text-sm hover:underline">Postular →</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/formulario/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Ver Oportunidades Laborales
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

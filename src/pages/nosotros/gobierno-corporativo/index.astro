@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-secondary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Transparencia Institucional</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Gobierno Corporativo: Transparencia y Ética para su Confianza Absoluta.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Nuestro <strong>Gobierno Corporativo</strong> asegura una gestión responsable y alineada con los más altos estándares de la industria de la <strong>salud domiciliaria</strong>. Un marco de <strong>liderazgo estratégico</strong> y <strong>supervisión rigurosa</strong> que refuerza su confianza.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        {[
+          { icono: "⚖️", titulo: "Integridad", desc: "Políticas claras de ética y rendición de cuentas en cada proceso." },
+          { icono: "🔍", titulo: "Supervisión Rigurosa", desc: "Auditorías internas y externas que garantizan la excelencia operativa." },
+          { icono: "♻️", titulo: "Sostenibilidad", desc: "Decisiones pensadas en el bienestar del paciente y la solvencia a largo plazo." },
+        ].map(p => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="text-4xl mb-4">{p.icono}</div>
+            <h2 class="text-xl font-bold text-primary font-heading mb-2">{p.titulo}</h2>
+            <p class="text-gray-600 text-sm">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Descargar Informe de Gobierno Corporativo
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

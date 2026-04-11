@@ -1,0 +1,50 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Trayectoria Institucional</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Nuestra Trayectoria: Liderando la Innovación en Cuidado Domiciliario.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Desde nuestros inicios, VitalHome Salud ha sido pionera en la <strong>atención domiciliaria especializada</strong>, integrando <strong>tecnología de vanguardia</strong> y un <strong>equipo multidisciplinario</strong> de élite para transformar hogares en entornos de <strong>bienestar sostenible</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- LÍNEA DE TIEMPO -->
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-primary font-heading text-center mb-12">Hitos Fundacionales</h2>
+        <div class="space-y-10 border-l-2 border-accent pl-8">
+          {[
+            { año: "Fundación", hito: "Nacimos con la visión de ofrecer una alternativa superior al cuidado tradicional, con el bienestar del adulto mayor como norte." },
+            { año: "Expansión", hito: "Integramos tecnología de monitoreo remoto y ampliamos nuestro equipo multidisciplinario de élite." },
+            { año: "Metodología VitalCare®", hito: "Creamos nuestra metodología propietaria que garantiza resultados clínicos medibles y consistentes." },
+            { año: "Hoy", hito: "Líderes en ingeniería de bienestar, con miles de hogares transformados y la confianza de familias en toda la región." },
+          ].map(item => (
+            <div class="relative">
+              <div class="absolute -left-11 top-1 w-4 h-4 bg-accent rounded-full"></div>
+              <p class="text-accent font-bold mb-1">{item.año}</p>
+              <p class="text-gray-700">{item.hito}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/nosotros/equipo/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Explorar Hitos de Nuestra Historia
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>
