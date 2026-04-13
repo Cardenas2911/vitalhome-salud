@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import PulseFitHeroDemo from '../components/ui/PulseFitHeroDemo';
 import BentoGrid from '../components/BentoGrid.astro';
+import Team from '../components/Team.astro';
 import Authority from '../components/Authority.astro';
 import Comparison from '../components/Comparison.astro';
 import LeadMagnet from '../components/LeadMagnet.astro';
@@ -13,12 +15,28 @@ import Footer from '../components/Footer.astro';
     <Header />
     
 	<main>
-        <Hero />
+        <PulseFitHeroDemo client:load />
         <BentoGrid />
+        <Team />
         <Authority />
         <Comparison />
         <LeadMagnet />
 	</main>
+
+    <!-- JSON-LD AEO: AggregateRating (Prueba Social del Hero) -->
+    <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "VitalHome Salud",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "150",
+        "bestRating": "5"
+      }
+    }
+    </script>
 
     <Footer />
 </Layout>

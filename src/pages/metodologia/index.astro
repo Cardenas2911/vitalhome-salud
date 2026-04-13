@@ -1,39 +1,294 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { Breadcrumbs } from "../../components/ui/breadcrumbs";
+import { 
+  Activity, 
+  Search, 
+  Map, 
+  Users, 
+  LineChart, 
+  ChevronRight,
+  ShieldCheck,
+  Stethoscope,
+  Microscope,
+  Zap,
+  ArrowRight,
+  ClipboardCheck,
+  Headphones
+} from "lucide-react";
+
+// Metadatos y Marcado JSON-LD Avanzado (@graph)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vitalhomesalud.com/metodologia/#webpage",
+      "url": "https://vitalhomesalud.com/metodologia/",
+      "name": "Metodología VitalCare® - VitalHome Salud",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://vitalhomesalud.com/metodologia/#howto",
+      "name": "Metodología VitalCare® para Cuidado Domiciliario Integral",
+      "description": "Nuestro enfoque sistemático de 4 fases para garantizar resultados médicos y bienestar sostenible en el hogar del paciente.",
+      "provider": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Fase 1: Evaluación Holística",
+          "text": "Valoración médica profunda en el domicilio para entender limitaciones físicas, entorno familiar y riesgos del hogar."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Fase 2: Planificación Personalizada",
+          "text": "Diseño de una ruta de cuidado a medida, integrando requerimientos médicos con rutinas que respeten la dignidad del paciente."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Fase 3: Intervención Multidisciplinaria",
+          "text": "Despliegue de un equipo orquestado (enfermeras, fisioterapeutas y médicos) ejecutando el plan bajo protocolos estrictos."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Fase 4: Monitoreo Continuo",
+          "text": "Supervisión 24/7 liderada por enfermeras jefes, ajustando el cuidado según la evolución clínica predictiva del paciente."
+        }
+      ]
+    }
+  ]
+};
+
+const title = "Metodología VitalCare®: Ingeniería del Cuidado | VitalHome Salud";
+const breadcrumbItems = [
+  { label: "Institucional", href: "/nosotros/" },
+  { label: "Metodología VitalCare®", isCurrent: true }
+];
 ---
 
-<Layout>
+<Layout title={title}>
   <Header />
-  <main>
-    <section class="bg-primary text-white py-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Marco Propietario</p>
-        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-          Metodología VitalCare®: La Ingeniería Detrás de un Cuidado Domiciliario Excepcional.
-        </h1>
-        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
-          Un marco sistemático que integra <strong>evaluación holística</strong>, <strong>planificación personalizada</strong>, <strong>intervención multidisciplinaria</strong> y <strong>monitoreo continuo</strong> para una <strong>atención predictiva y preventiva</strong>.
-        </p>
-        <a href="/metodologia/vitalcare/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-          Conocer VitalCare® a Fondo
-        </a>
-      </div>
-    </section>
 
-    <section class="py-20 px-6 bg-white">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-        <a href="/metodologia/vitalcare/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
-          <h2 class="text-xl font-bold text-primary font-heading mb-3">Detalle Metodología VitalCare®</h2>
-          <p class="text-gray-600">Profundice en los 4 pilares del proceso: Evaluación, Planificación, Intervención y Monitoreo.</p>
-        </a>
-        <a href="/metodologia/enfoque-multidisciplinario/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
-          <h2 class="text-xl font-bold text-primary font-heading mb-3">Enfoque Multidisciplinario</h2>
-          <p class="text-gray-600">Descubra cómo nuestro equipo de especialistas coordina la atención integral de cada paciente.</p>
-        </a>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan: Inicio > Institucional > Metodología VitalCare® -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Background Elements -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- SECCIÓN 1: Hero Sistémico (Split-Screen) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative mb-24">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
+          
+          <!-- Columna Izquierda: Texto -->
+          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Modelo Propietario de Salud
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading text-glow">
+                Metodología VitalCare®: <span class="text-blue-400">La Ingeniería del Cuidado.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
+                ¿Busca un sistema de cuidado que garantice resultados consistentes? Hemos desarrollado la Metodología VitalCare®, un marco propietario que elimina la improvisación en el cuidado domiciliario. A través de un enfoque predictivo y preventivo, optimizamos la salud de su ser querido y le devolvemos a usted la tranquilidad inquebrantable que merece.
+              </p>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Isla Clínica (Resumen Visual) -->
+          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center items-center">
+            <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl relative z-10 border border-slate-100 w-full max-w-md">
+              <div class="text-center mb-8">
+                <h3 class="text-xl font-black text-[#011633] font-heading mb-2">Ciclo de Excelencia VitalCare®</h3>
+                <div class="h-1 w-12 bg-[#155ec0] mx-auto rounded-full"></div>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-4 mb-10">
+                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex flex-col items-center gap-2 text-center group hover:border-[#155ec0] transition-all">
+                    <Search className="size-5 text-[#155ec0]" />
+                    <span class="text-[8px] font-black uppercase tracking-widest text-[#011633]">Evaluación</span>
+                 </div>
+                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex flex-col items-center gap-2 text-center group hover:border-[#155ec0] transition-all">
+                    <Map className="size-5 text-[#155ec0]" />
+                    <span class="text-[8px] font-black uppercase tracking-widest text-[#011633]">Planificación</span>
+                 </div>
+                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex flex-col items-center gap-2 text-center group hover:border-[#155ec0] transition-all">
+                    <Users className="size-5 text-[#155ec0]" />
+                    <span class="text-[8px] font-black uppercase tracking-widest text-[#011633]">Intervención</span>
+                 </div>
+                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex flex-col items-center gap-2 text-center group hover:border-[#155ec0] transition-all">
+                    <Activity className="size-5 text-[#155ec0]" />
+                    <span class="text-[8px] font-black uppercase tracking-widest text-[#011633]">Monitoreo</span>
+                 </div>
+              </div>
+
+              <a 
+                href="#flujo-vitalcare" 
+                class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white flex items-center justify-center gap-3 font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1 cursor-pointer"
+              >
+                Conocer VitalCare® a Fondo
+                <ChevronRight className="size-4" />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <!-- SECCIÓN 2: El Flujo VitalCare® (Bento Grid Secuencial) -->
+      <section id="flujo-vitalcare" class="max-w-[1600px] mx-auto pt-16 pb-32">
+        <div class="text-center mb-24 space-y-4">
+          <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Protocolo de Intervención</span>
+          <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Un Enfoque Sistemático para el <span class="text-[#155ec0]">Bienestar Sostenible.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Fase 1 -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative">
+            <div class="absolute -top-4 -left-4 size-10 bg-[#061a36] text-white flex items-center justify-center rounded-xl font-black text-xs z-10 border-4 border-[#f8fafc]">01</div>
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Search className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Evaluación Holística</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Valoración médica profunda en el domicilio para entender las limitaciones físicas, el entorno familiar y los riesgos del hogar, sentando las bases de la seguridad.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fase 2 -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative">
+            <div class="absolute -top-4 -left-4 size-10 bg-[#061a36] text-white flex items-center justify-center rounded-xl font-black text-xs z-10 border-4 border-[#f8fafc]">02</div>
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Map className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Planificación Personalizada</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Diseño de una ruta de cuidado a medida, integrando requerimientos médicos con rutinas que respeten la dignidad y la autonomía del paciente.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fase 3 -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative">
+            <div class="absolute -top-4 -left-4 size-10 bg-[#061a36] text-white flex items-center justify-center rounded-xl font-black text-xs z-10 border-4 border-[#f8fafc]">03</div>
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Users className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Intervención Multidisciplinaria</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Despliegue de un equipo orquestado (enfermeras, fisioterapeutas y médicos) ejecutando el plan bajo protocolos clínicos estrictos y comunicación constante.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fase 4 -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative">
+            <div class="absolute -top-4 -left-4 size-10 bg-[#155ec0] text-white flex items-center justify-center rounded-xl font-black text-xs z-10 border-4 border-[#f8fafc]">04</div>
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Activity className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Monitoreo Continuo</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Supervisión 24/7 liderada por enfermeras jefes, ajustando el cuidado según la evolución clínica predictiva del paciente y notas de enfermería estructuradas.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: Destructor de Objeciones (Prevención vs. Reacción) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[60px] relative overflow-hidden mb-24">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-200/20 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+          <div class="lg:col-span-12 xl:col-span-8 space-y-8">
+            <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight italic">Cuidado Predictivo: Actuar Antes de la Urgencia.</h2>
+            <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
+              El cuidado tradicional es reactivo: solo actúa cuando ocurre una crisis. La Metodología VitalCare® es predictiva. Nuestras auditorías constantes y el monitoreo estructurado nos permiten identificar riesgos y desviaciones de salud antes de que se conviertan en emergencias hospitalarias, protegiendo la vida del paciente y su inversión estratégica.
+            </p>
+            <div class="flex flex-wrap gap-6 pt-4">
+               <div class="flex items-center gap-3 bg-white px-6 py-4 rounded-2xl border border-slate-200 group hover:border-[#155ec0] transition-all">
+                  <ShieldCheck className="size-5 text-[#155ec0]" />
+                  <span class="text-[#011633] font-black text-[10px] uppercase tracking-widest">Seguridad Proactiva</span>
+               </div>
+               <div class="flex items-center gap-3 bg-white px-6 py-4 rounded-2xl border border-slate-200 group hover:border-[#155ec0] transition-all">
+                  <Microscope className="size-5 text-[#155ec0]" />
+                  <span class="text-[#011633] font-black text-[10px] uppercase tracking-widest">Protocolos de Élite</span>
+               </div>
+               <div class="flex items-center gap-3 bg-white px-6 py-4 rounded-2xl border border-slate-200 group hover:border-[#155ec0] transition-all">
+                  <Zap className="size-5 text-[#155ec0]" />
+                  <span class="text-[#011633] font-black text-[10px] uppercase tracking-widest">Respuesta Inmediata</span>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: Footer de Conversión (Patrón Z) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <!-- Mensaje de Cierre (Left) -->
+          <div class="space-y-12">
+            <div class="size-24 bg-[#061a36] rounded-[30px] flex items-center justify-center text-white shadow-2xl mb-8">
+               <ShieldCheck className="size-12" />
+            </div>
+            <h3 class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">Aplique el Estándar VitalCare® en su Hogar.</h3>
+            <p class="text-lg text-slate-500 font-medium italic underline decoration-blue-200 underline-offset-8">No improvisamos con la vida; diseñamos bienestar medible.</p>
+          </div>
+
+          <!-- Formulario Estratégico (Right) -->
+          <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl border border-slate-100 w-full max-w-xl lg:ml-auto">
+            <h4 class="text-2xl font-black text-[#011633] font-heading mb-8">Consultoría Metodológica</h4>
+            <form class="space-y-6">
+              <input type="text" placeholder="Su Nombre y Apellido" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+              <input type="tel" placeholder="WhatsApp / Teléfono de Contacto" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+              <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
+                Aplicar la Metodología en Mi Hogar
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
   <Footer />
+
+  <!-- CTA Sticky Flotante -->
+
 </Layout>
+
+<style>
+  html { scroll-behavior: smooth; }
+  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+</style>

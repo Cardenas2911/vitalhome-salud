@@ -1,34 +1,198 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { FaqSearch } from "../../../components/faq/FaqSearch";
+import { MessageCircle, ArrowRight, ShieldCheck, Headphones, Mail } from "lucide-react";
+
+// Marcado JSON-LD Avanzado (@graph) para AEO (Answer Engine Optimization)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vitalhomesalud.com/recursos/faq/#webpage",
+      "url": "https://vitalhomesalud.com/recursos/faq/",
+      "name": "Preguntas Frecuentes - VitalHome Salud",
+      "description": "Resolvemos todas sus dudas sobre enfermería domiciliaria, protocolos de emergencia y nuestro personal médico. Transparencia total.",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vitalhomesalud.com/recursos/faq/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cómo verifican los antecedentes del personal de enfermería?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cada profesional supera un riguroso proceso de selección que incluye verificación de titulaciones ante los entes reguladores de salud, pruebas psicológicas y revisión exhaustiva de antecedentes disciplinarios. A su casa solo ingresa personal de confianza y élite clínica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué ocurre si se presenta una emergencia médica de madrugada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nuestra Metodología VitalCare® incluye monitoreo 24/7. Ante cualquier eventualidad, la enfermera de turno se comunica inmediatamente con nuestra Enfermera Jefe de guardia, quien coordina la estabilización del paciente y, si es necesario, el traslado urgente siguiendo nuestros protocolos clínicos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Ofrecen tarifas fijas por horas o planes personalizados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No trabajamos con tarifas estandarizadas porque cada paciente es único. Realizamos una Valoración Inicial Gratuita en su domicilio para entender las necesidades clínicas exactas y, con base en ello, diseñamos un plan de cuidado (o membresía) a medida que garantice resultados."
+          }
+        }
+      ]
+    }
+  ]
+};
+
+const title = "Preguntas Frecuentes | VitalHome Salud";
+const breadcrumbItems = [
+  { label: "Recursos", href: "/recursos/" },
+  { label: "Preguntas Frecuentes", isCurrent: true }
+];
 ---
 
-<Layout>
-	<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center text-center">
-		<!-- H1 y Pirámide Invertida -->
-		<h1 class="text-4xl md:text-5xl font-bold mb-6 max-w-4xl">
-			Inteligencia Estratégica: Respuestas Claras a sus Dudas sobre Cuidado Domiciliario.
-		</h1>
-		
-		<div class="space-y-6 text-lg max-w-3xl mb-10 text-secondary">
-			<p>En VitalHome Salud, creemos en el poder del conocimiento para calmar la ansiedad. Resolvemos la complejidad clínica para que tome decisiones informadas sobre su ser querido.</p>
-			
-			<p>Explore nuestras Preguntas Frecuentes (FAQ) extraídas de casos reales. Desde la prevención de caídas hasta protocolos de recuperación post-operatoria.</p>
-			
-			<p>Estamos aquí para empoderarle. Acceda a la verdad clínica estructurada y reduzca la incertidumbre de forma inmediata.</p>
-		</div>
-		
-		<a href="#search-bar" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-md text-white bg-accent hover:bg-primary transition-colors duration-300">
-			Buscar en Base de Conocimiento
-		</a>
-	</section>
+<Layout title={title}>
+  <Header />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#f8f9fa] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- SECCIÓN 1: Hero de Claridad (Split-Screen) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative mb-24">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-center">
+          
+          <!-- Columna Izquierda: Texto -->
+          <div class="p-10 md:p-16 lg:p-24 space-y-10">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Transparencia Absoluta
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading text-glow">
+                Sus Dudas Resueltas: <br />
+                <span class="text-blue-400 italic">Claridad Absoluta.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed max-w-2xl">
+                "Entendemos que delegar la salud de un ser querido genera incertidumbre. En VitalHome Salud, la transparencia es nuestra norma. Hemos recopilado las preguntas más exigentes de nuestros pacientes para brindarle respuestas claras, directas y sin letra pequeña sobre nuestra metodología, personal y protocolos de emergencia."
+              </p>
+            </div>
+            
+            <div class="flex flex-wrap gap-8 py-8 border-t border-white/10">
+              <div class="flex items-center gap-3 text-white/60">
+                <ShieldCheck className="w-5 h-5 text-blue-400" />
+                <span class="text-xs font-bold uppercase tracking-widest">Protocolos Validados</span>
+              </div>
+              <div class="flex items-center gap-3 text-white/60">
+                <Headphones className="w-5 h-5 text-blue-400" />
+                <span class="text-xs font-bold uppercase tracking-widest">Soporte 24/7</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Imagen/Gráfico Visual -->
+          <div class="relative hidden lg:block p-20">
+             <div class="aspect-square bg-gradient-to-br from-blue-600 to-blue-900 rounded-[80px] rotate-3 overflow-hidden shadow-2xl flex items-center justify-center">
+                 <MessageCircle className="w-64 h-64 text-white/20 -rotate-6" />
+                 <div class="absolute inset-0 flex items-center justify-center p-20">
+                     <div class="bg-white/10 backdrop-blur-md rounded-[40px] p-8 border border-white/20 text-center">
+                        <p class="text-white font-heading text-2xl font-black italic">"La mejor medicina para la incertidumbre es la transparencia clínica."</p>
+                     </div>
+                 </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 2: Hub de Respuestas (Buscador + Acordeones) -->
+      <section class="mb-32">
+        <FaqSearch client:load />
+      </section>
+
+      <!-- SECCIÓN 3: Footer de Conversión (La Red de Seguridad) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[60px] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+          <!-- Mensaje de Contención -->
+          <div class="space-y-12">
+            <div class="size-20 bg-[#155ec0]/10 rounded-[30px] flex items-center justify-center text-[#155ec0]">
+               <MessageCircle className="size-10" />
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">
+                  ¿No encontró lo que buscaba?
+                </h2>
+                <p class="text-2xl text-slate-500 font-medium">
+                  Hablemos directamente. Estamos aquí <span class="text-[#061a36] font-black underline decoration-blue-500 decoration-4">24/7</span> para brindarle la paz mental que su familia merece.
+                </p>
+            </div>
+            
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-4 text-[#061a36]">
+                    <div class="size-12 rounded-full bg-white flex items-center justify-center shadow-md">
+                        <Mail className="w-5 h-5 text-[#155ec0]" />
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Contacto Directo</p>
+                        <p class="font-bold">direccion.medica@vitalhomesalud.com</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <!-- Formulario de Red de Seguridad -->
+          <div class="bg-white rounded-[40px] p-8 md:p-14 shadow-2xl border border-slate-100 lg:ml-auto w-full max-w-xl">
+             <h4 class="text-2xl font-black text-[#011633] font-heading mb-4">Duda Clínica Específica</h4>
+             <p class="text-slate-500 text-sm mb-10 font-medium">Nuestra dirección médica le responderá de forma personalizada.</p>
+             
+             <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Su Nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#104892] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                    <input type="tel" placeholder="Teléfono" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#104892] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                </div>
+                <textarea rows="4" placeholder="Describa su duda o situación particular..." class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#104892] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none resize-none"></textarea>
+                
+                <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#011633] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
+                  Contactar a la Dirección Médica
+                </button>
+             </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
 </Layout>
 
-<!-- JSON-LD Tripletas Semánticas -->
-<script type="application/ld+json" is:inline>
-{
-  "@context": "https://schema.org",
-  "@type": ["FAQPage", "MedicalWebPage"],
-  "name": "FAQ Cuidado Domiciliario",
-  "mainEntity": []
-}
-</script>
+<style>
+  .text-glow {
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+</style>

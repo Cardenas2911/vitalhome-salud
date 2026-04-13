@@ -1,26 +1,14 @@
 ---
 // src/components/Footer.astro
+import FooterNewsletter from './ui/FooterNewsletter';
+import FooterColumn from './ui/FooterColumn';
 ---
-<footer class="bg-secondary text-zinc-400 py-12 border-t border-zinc-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="md:flex md:items-center md:justify-between">
-            <div class="flex justify-center md:justify-start mb-6 md:mb-0">
-                <span class="text-xl font-heading font-bold text-white tracking-wide">VitalHome Salud</span>
-            </div>
-            <div class="flex justify-center space-x-6">
-                <!-- Legal Links -->
-                <a href="#" class="text-sm hover:text-white transition-colors">Privacidad</a>
-                <a href="#" class="text-sm hover:text-white transition-colors">Términos de Servicio</a>
-                <a href="#" class="text-sm hover:text-white transition-colors">Aviso de Cumplimiento Médico</a>
-            </div>
-        </div>
-        <div class="mt-8 border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-sm text-center md:text-left">
-                &copy; {new Date().getFullYear()} VitalHome Salud. Todos los derechos reservados.
-            </p>
-            <p class="text-sm mt-4 md:mt-0 text-zinc-500">
-                Línea de emergencia: <a href="tel:+1234567890" class="text-accent underline">800-VITALCARE</a>
-            </p>
-        </div>
-    </div>
+
+<footer class="bg-[#f8f9fa] pt-24 border-t border-[#e2e8f0]">
+    <!-- El Newsletter está "fuera" del fondo oscuro para crear un efecto de capa superior -->
+    <FooterNewsletter client:idle />
+    
+    <!-- Las columnas del footer sí van en el fondo oscuro -->
+    <FooterColumn client:visible />
 </footer>
+

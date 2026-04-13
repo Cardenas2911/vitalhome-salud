@@ -1,54 +1,196 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { GlossaryExplorer } from "../../../components/faq/GlossaryExplorer";
+import { MessageCircle, ShieldCheck, Headphones, Mail, Search, BookOpen } from "lucide-react";
 
-const terminos = [
-  { termino: "Cuidado Domiciliario", def: "Atención médica, de enfermería o de apoyo personal prestada en el hogar del paciente, en sustitución o complemento de la atención hospitalaria." },
-  { termino: "Autonomía Funcional", def: "Capacidad del adulto mayor para realizar las actividades básicas de la vida diaria (higiene, alimentación, movilidad) de forma independiente." },
-  { termino: "Rehabilitación Funcional", def: "Proceso terapéutico orientado a restablecer o mejorar la capacidad física de un paciente tras una enfermedad, lesión o intervención quirúrgica." },
-  { termino: "Adulto Mayor", def: "Persona de 60 o más años de edad, según la clasificación de la Organización Mundial de la Salud (OMS)." },
-  { termino: "Familiar Responsable", def: "Persona del entorno familiar que asume el rol de coordinar, supervisar y participar en el cuidado de un adulto mayor dependiente." },
-  { termino: "Plan de Cuidado Integral", def: "Documento clínico personalizado que organiza todas las intervenciones de salud necesarias para un paciente, elaborado por un equipo multidisciplinario." },
-  { termino: "Terapia Ocupacional", def: "Disciplina de salud que facilita la participación del paciente en actividades cotidianas para mejorar su calidad de vida e independencia." },
-  { termino: "Monitoreo Remoto", def: "Supervisión continua de parámetros de salud del paciente desde una ubicación distinta, mediante tecnología de sensores y comunicación digital." },
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vitalhomesalud.com/recursos/glosario/#webpage",
+      "url": "https://vitalhomesalud.com/recursos/glosario/",
+      "name": "Glosario Médico y de Cuidados Domiciliarios",
+      "description": "Entienda los diagnósticos y términos médicos complejos de su familiar. Glosario claro y humano sobre geriatría, enfermería y rehabilitación domiciliaria.",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://vitalhomesalud.com/recursos/glosario/#glossary",
+      "name": "Glosario de Términos Clínicos de VitalHome Salud",
+      "description": "Definiciones en lenguaje claro sobre cuidado geriátrico, enfermería domiciliaria y rehabilitación.",
+      "publisher": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      },
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Sarcopenia",
+          "description": "Pérdida degenerativa de masa y potencia muscular que ocurre durante el envejecimiento o en pacientes postrados. En VitalHome Salud lo tratamos con rehabilitación funcional adaptada.",
+          "inDefinedTermSet": "https://vitalhomesalud.com/recursos/glosario/#glossary"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Cuidados Paliativos",
+          "description": "Atención médica y de enfermería enfocada en mejorar la calidad de vida de pacientes con enfermedades graves, aliviando el dolor y brindando soporte emocional tanto al paciente como a su familia en el hogar.",
+          "inDefinedTermSet": "https://vitalhomesalud.com/recursos/glosario/#glossary"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Úlcera por presión (Escara)",
+          "description": "Lesión en la piel y el tejido inferior que resulta de la presión prolongada sobre la piel, común en pacientes encamados. Se previene y trata mediante movilización constante y curaciones especializadas.",
+          "inDefinedTermSet": "https://vitalhomesalud.com/recursos/glosario/#glossary"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Neumonía Aspirativa",
+          "description": "Infección pulmonar grave por inhalación accidental de alimentos o líquidos. En VitalHome Salud la prevenimos mediante protocolos de alimentación segura y supervisión de enfermería constante.",
+          "inDefinedTermSet": "https://vitalhomesalud.com/recursos/glosario/#glossary"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Ostomía (Cuidado de estomas)",
+          "description": "Abertura quirúrgica en el abdomen para eliminación de desechos. VitalHome Salud asume el manejo experto y la higiene de las bolsas de recolección en casa para prevenir infecciones severas.",
+          "inDefinedTermSet": "https://vitalhomesalud.com/recursos/glosario/#glossary"
+        }
+      ]
+    }
+  ]
+};
+
+const title = "Glosario Médico de Cuidado Domiciliario | VitalHome Salud";
+const breadcrumbItems = [
+  { label: "Recursos", href: "/recursos/" },
+  { label: "Glosario Médico", isCurrent: true }
 ];
 ---
 
-<Layout>
+<Layout title={title}>
   <Header />
-  <main>
-    <section class="bg-primary text-white py-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Vocabulario Médico</p>
-        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-          Glosario Médico: Claridad en los Términos Clave del Cuidado de la Salud Domiciliaria.
-        </h1>
-        <p class="text-white/80 text-lg max-w-3xl mx-auto">
-          Comprenda la terminología clave para comunicarse con confianza con los profesionales de la salud y tomar mejores decisiones para el <strong>bienestar de su ser querido</strong>.
-        </p>
-      </div>
-    </section>
 
-    <section class="py-20 px-6 bg-white">
-      <div class="max-w-4xl mx-auto space-y-4">
-        {terminos.map(t => (
-          <details class="bg-gray-50 rounded-2xl border border-gray-100 p-6 group cursor-pointer">
-            <summary class="font-bold text-primary font-heading flex justify-between items-center list-none">
-              {t.termino}
-              <span class="text-accent text-xl group-open:rotate-45 transition-transform">+</span>
-            </summary>
-            <p class="text-gray-600 mt-3">{t.def}</p>
-          </details>
-        ))}
-      </div>
-    </section>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
-    <section class="py-12 px-6 bg-gray-50 text-center">
-      <a href="/recursos/faq/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-        Explorar Preguntas Frecuentes
-      </a>
-    </section>
+  <main class="w-full bg-[#f8f9fa] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- SECCIÓN 1: Hero de Claridad (Split-Screen) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative mb-24">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-center">
+          
+          <!-- Columna Izquierda: Texto -->
+          <div class="p-10 md:p-16 lg:p-24 space-y-10">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Traducción Clínica Empática
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading text-glow">
+                Glosario Médico: <br />
+                <span class="text-blue-400 italic">Entienda la Salud de su Familiar.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed max-w-2xl">
+                "Un diagnóstico médico puede ser abrumador cuando está lleno de tecnicismos. En VitalHome Salud, creemos que la claridad es el primer paso hacia la tranquilidad. Hemos traducido los términos clínicos más comunes del cuidado geriátrico a un lenguaje claro, directo y humano."
+              </p>
+            </div>
+            
+            <div class="flex flex-wrap gap-8 py-8 border-t border-white/10">
+              <div class="flex items-center gap-3 text-white/60">
+                <ShieldCheck className="w-5 h-5 text-blue-400" />
+                <span class="text-xs font-bold uppercase tracking-widest">Definiciones Validadas</span>
+              </div>
+              <div class="flex items-center gap-3 text-white/60">
+                <BookOpen className="w-5 h-5 text-blue-400" />
+                <span class="text-xs font-bold uppercase tracking-widest">Lenguaje Llano</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Isla Clínica (Search Placeholder para el componente React interno) -->
+          <div class="relative hidden lg:block p-20">
+             <div class="aspect-square bg-gradient-to-br from-blue-600 to-blue-900 rounded-[80px] rotate-3 overflow-hidden shadow-2xl flex items-center justify-center relative">
+                 <Search className="w-64 h-64 text-white/20 -rotate-6" />
+                 <div class="absolute inset-0 flex items-center justify-center p-20">
+                     <div class="bg-white/10 backdrop-blur-md rounded-[40px] p-8 border border-white/20 text-center">
+                        <p class="text-white font-heading text-2xl font-black italic">"La mejor medicina para el miedo es el conocimiento compartido."</p>
+                     </div>
+                 </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 2: Directorio de Entidades (Explorer Interactivo) -->
+      <section class="mb-32">
+        <GlossaryExplorer client:load />
+      </section>
+
+      <!-- SECCIÓN 3: Footer de Conversión (Contención Emocional) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[60px] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+          <!-- Mensaje de Contención -->
+          <div class="space-y-12">
+            <div class="size-20 bg-[#155ec0]/10 rounded-[30px] flex items-center justify-center text-[#155ec0]">
+               <BookOpen className="size-10" />
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">
+                  ¿Un término médico le genera preocupación?
+                </h2>
+                <p class="text-2xl text-slate-500 font-medium">
+                  No tiene que descifrarlo solo. Nuestro equipo clínico está disponible para explicarle cada detalle del cuidado de su ser querido.
+                </p>
+            </div>
+          </div>
+
+          <!-- Formulario de Red de Seguridad -->
+          <div class="bg-white rounded-[40px] p-8 md:p-14 shadow-2xl border border-slate-100 lg:ml-auto w-full max-w-xl">
+             <h4 class="text-2xl font-black text-[#011633] font-heading mb-4">Consulta sobre Diagnóstico</h4>
+             <p class="text-slate-500 text-sm mb-10 font-medium">Pregunte lo que necesite sobre un término o situación particular.</p>
+             
+             <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Su Nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#104892] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                    <input type="tel" placeholder="Teléfono" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#104892] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                </div>
+                <input type="text" placeholder="¿Qué diagnóstico o término busca explicarnos?" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#104892] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                
+                <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#011633] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
+                  Hablar con un Especialista Clínico
+                </button>
+             </form>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
   <Footer />
 </Layout>
+
+<style>
+  .text-glow {
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+</style>

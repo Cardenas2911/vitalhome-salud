@@ -1,0 +1,33 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Marco Propietario</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Metodología VitalHome®: La Ingeniería Detrás de un Cuidado Domiciliario Excepcional.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
+          Un marco sistemático que integra <strong>evaluación holística</strong>, <strong>planificación personalizada</strong>, <strong>intervención multidisciplinaria</strong> y <strong>monitoreo continuo</strong> para una <strong>atención predictiva y preventiva</strong>.
+        </p>
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+        <a href="/nosotros/metodologia/VitalHome/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
+          <h2 class="text-xl font-bold text-primary font-heading mb-3">Detalle Metodología VitalHome®</h2>
+          <p class="text-gray-600">Profundice en los 4 pilares del proceso: Evaluación, Planificación, Intervención y Monitoreo.</p>
+        </a>
+        <a href="/nosotros/metodologia/enfoque-multidisciplinario/" class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition">
+          <h2 class="text-xl font-bold text-primary font-heading mb-3">Enfoque Multidisciplinario</h2>
+          <p class="text-gray-600">Descubra cómo nuestro equipo de especialistas coordina la atención integral de cada paciente.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

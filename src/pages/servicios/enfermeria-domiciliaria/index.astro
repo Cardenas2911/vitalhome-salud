@@ -1,38 +1,326 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { 
+  ShieldCheck, 
+  Clock, 
+  CheckCircle2, 
+  Stethoscope, 
+  ArrowRight,
+  ClipboardCheck,
+  Activity,
+  UserCheck,
+  Heart,
+  Droplets,
+  ChevronRight,
+  Plus,
+  MessageSquare,
+  MapPin
+} from "lucide-react";
+
+// Marcado Schema JSON-LD Avanzado (@graph)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vitalhomesalud.com/servicios/enfermeria-domiciliaria/#webpage",
+      "url": "https://vitalhomesalud.com/servicios/enfermeria-domiciliaria/",
+      "name": "Enfermería Domiciliaria Profesional",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vitalhomesalud.com/servicios/enfermeria-domiciliaria/#service",
+      "name": "Servicio de Enfermería Domiciliaria y Hospitalaria",
+      "description": "Atención clínica especializada en el hogar para pacientes crónicos, geriátricos y post-operatorios. Control de medicamentos, prevención de úlceras y monitoreo de constantes vitales.",
+      "provider": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      },
+      "serviceType": "Nursing Care",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Seniors and Post-operative Patients"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "4.6097",
+          "longitude": "-74.0817"
+        },
+        "geoRadius": "50000"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "COP",
+        "price": "0",
+        "description": "Valoración clínica inicial gratuita para diseñar un plan de cuidados personalizado.",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+};
+
+const title = "Enfermería Domiciliaria Especializada 24/7 | VitalHome Salud";
+
+const breadcrumbItems = [
+  { label: "Servicios", href: "/servicios/" },
+  { label: "Enfermería Domiciliaria", isCurrent: true }
+];
 ---
 
-<Layout>
-	<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center text-center">
-		<!-- H1 y Pirámide Invertida -->
-		<h1 class="text-4xl md:text-5xl font-bold mb-6 max-w-4xl">
-			Enfermería Domiciliaria Especializada: Alivio Inmediato para el Familiar Responsable.
-		</h1>
-		
-		<div class="space-y-6 text-lg max-w-3xl mb-10 text-secondary">
-			<p>¿Necesita delegar la administración de medicamentos o curaciones complejas? Nuestras unidades de negocio ofrecen precisión clínica y calidez humana para pacientes crónicos y post-operatorios directamente en su domicilio.</p>
-			
-			<p>Nuestros Planes de Cuidado Integral están diseñados para ofrecer una atención holística y flexible. Integramos enfermería domiciliaria especializada, masajes terapéuticos y actividad física adaptada.</p>
-			
-			<p>Este modelo reduce el estrés, mejora el bienestar emocional y asegura la tranquilidad inquebrantable del familiar responsable mediante evaluación diagnóstica exhaustiva.</p>
-		</div>
-		
-		<a href="/contacto/formulario-perfilamiento/" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-md text-white bg-accent hover:bg-primary transition-colors duration-300">
-			Diseñar su Plan Personalizado
-		</a>
-	</section>
+<Layout title={title}>
+  <Header />
+  
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan (Breadcrumbs) Estándar -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Fondo de degradados sutiles (Como en Contacto) -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-40 left-0 w-[500px] h-[500px] bg-blue-50/50 blur-[100px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- Contenedor Hero con Recuadro Azul (Efecto de Aislamiento y Jerarquía) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative">
+        <!-- Mancha de luz interna para el recuadro -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
+          
+          <!-- Columna Izquierda: Alivio Clínico -->
+          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Atención Prioritaria
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading">
+                Cuidado Profesional que Transforma su Hogar en un Centro de <span class="text-blue-400">Recuperación.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
+                Entendemos que la recuperación óptima ocurre donde su familiar se siente más seguro. Brindamos atención de enfermería experta para pacientes geriátricos, crónicos y post-operatorios. Usted descanse, nosotros nos encargamos del cuidado clínico.
+              </p>
+            </div>
+
+            <!-- Trust Signals -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+              <div class="flex items-center gap-4 group">
+                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
+                  <Clock className="size-6 text-blue-400" />
+                </div>
+                <span class="text-white font-bold text-sm">Turnos Flexible</span>
+              </div>
+              <div class="flex items-center gap-4 group">
+                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
+                  <UserCheck className="size-6 text-blue-400" />
+                </div>
+                <span class="text-white font-bold text-sm">Personal Certificado</span>
+              </div>
+              <div class="flex items-center gap-4 group">
+                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
+                  <ShieldCheck className="size-6 text-blue-400" />
+                </div>
+                <span class="text-white font-bold text-sm">Supervisión Médica</span>
+              </div>
+              <div class="flex items-center gap-4 group">
+                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
+                  <Heart className="size-6 text-blue-400" />
+                </div>
+                <span class="text-white font-bold text-sm">Cuidado Empático</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Formulario (Fondo Blanco Integrado) -->
+          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center relative overflow-hidden">
+            <div class="bg-white rounded-[40px] p-8 md:p-10 shadow-2xl relative z-10 border border-slate-100">
+              <div class="mb-10 text-center">
+                <h3 class="text-2xl md:text-3xl font-black text-[#061a36] font-heading mb-3">Agendar Valoración</h3>
+                <p class="text-[#061a36]/60 font-semibold text-sm italic">Reciba atención detallada para su familiar hoy mismo.</p>
+              </div>
+
+              <form class="space-y-6">
+                <div class="space-y-2">
+                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
+                  <input 
+                    type="text" 
+                    placeholder="Su nombre" 
+                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
+                  />
+                </div>
+
+                <div class="space-y-2">
+                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">WhatsApp / Teléfono</label>
+                  <input 
+                    type="tel" 
+                    placeholder="+57 321 000 0000" 
+                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
+                  />
+                </div>
+
+                <div class="space-y-2">
+                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Resumen de Condición</label>
+                  <textarea 
+                    rows="3"
+                    placeholder="Cuéntenos brevemente la necesidad clínica..." 
+                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400 resize-none"
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1 active:scale-95"
+                >
+                  Confirmar Solicitud Gratuita
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 2: El Bento Grid Clínico (Servicios) -->
+    <section class="max-w-[1600px] mx-auto px-4 md:px-8 pt-32 pb-16">
+      <div class="text-center mb-24 space-y-4">
+        <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Protocolos Médicos</span>
+        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Asistencia Médica <span class="text-[#155ec0]">Precisa</span> para cada Necesidad.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <!-- Bento Items (Reutilizando el estilo claro pero refinado) -->
+        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
+          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
+            <ClipboardCheck className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+          </div>
+          <div>
+            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Administración de Medicamentos</h4>
+            <p class="text-slate-500 font-medium text-base leading-relaxed">
+              Control exacto de dosis, horarios y vías de administración según prescripción médica oficial.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
+          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
+            <Droplets className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+          </div>
+          <div>
+            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Manejo de Heridas</h4>
+            <p class="text-slate-500 font-medium text-base leading-relaxed">
+              Tratamiento experto de post-operatorios complejos y rigurosa prevención de úlceras.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
+          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
+            <Activity className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+          </div>
+          <div>
+            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Control de Signos Vitales</h4>
+            <p class="text-slate-500 font-medium text-base leading-relaxed">
+              Monitoreo clínico constante para prevenir complicaciones y reaccionar a tiempo.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
+          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
+            <UserCheck className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+          </div>
+          <div>
+            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Higiene y Movilización</h4>
+            <p class="text-slate-500 font-medium text-base leading-relaxed">
+              Asistencia segura para proteger la dignidad del paciente y evitar lesiones en el hogar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 3: Destructor de Objeciones (Protocolo de Seguridad sobre fondo claro) -->
+    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-32">
+       <div class="bg-white rounded-[60px] p-12 md:p-24 border border-[#e2e8f0] shadow-sm relative overflow-hidden">
+         <div class="absolute -right-20 -top-20 size-80 bg-blue-50 rounded-full blur-3xl pointer-events-none"></div>
+         
+         <div class="max-w-3xl space-y-8 relative z-10">
+           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading font-glow">¿A quién le abre las puertas de su casa?</h2>
+           <p class="text-lg md:text-xl text-[#011633]/70 font-medium leading-relaxed">
+             No enviamos extraños. Cada enfermera de VitalHome Salud pasa por estrictas pruebas psicológicas y verificación de antecedentes. Además, cuentan con el respaldo directo de una Enfermera Jefe vía WhatsApp para resolver cualquier duda al instante.
+           </p>
+           <div class="flex flex-wrap gap-6">
+             <div class="flex items-center gap-3 bg-blue-50 px-6 py-4 rounded-2xl border border-blue-100">
+               <ShieldCheck className="size-5 text-[#155ec0]" />
+               <span class="text-[#011633] font-black text-xs uppercase tracking-widest">Verificación Activa</span>
+             </div>
+             <div class="flex items-center gap-3 bg-blue-50 px-6 py-4 rounded-2xl border border-blue-100">
+               <MessageSquare className="size-5 text-[#155ec0]" />
+               <span class="text-[#011633] font-black text-xs uppercase tracking-widest">Soporte Jefe 24/7</span>
+             </div>
+           </div>
+         </div>
+       </div>
+    </section>
+
+    <!-- Footer de Conversión con Testimonio -->
+    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div class="space-y-8">
+           <div class="size-16 bg-[#155ec0] rounded-2xl flex items-center justify-center">
+             <Plus className="size-8 text-white rotate-45" />
+           </div>
+           <blockquote class="text-3xl font-black text-[#061a36] font-heading leading-tight italic">
+             "La tranquilidad de mis noches volvió cuando VitalHome se hizo cargo del cuidado de mi madre. Cuidado profesional con un corazón inmenso."
+           </blockquote>
+           <div class="flex items-center gap-4">
+             <div class="size-14 rounded-full bg-slate-200 border-2 border-white shadow-md"></div>
+             <div>
+               <p class="text-[#061a36] font-bold">M. Rodríguez</p>
+               <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest">Familiar VitalHome</p>
+             </div>
+           </div>
+        </div>
+
+        <div class="flex justify-center lg:justify-end">
+          <a 
+            href="https://wa.me/573138050356" 
+            target="_blank"
+            class="bg-[#061a36] hover:bg-[#155ec0] text-white w-full max-w-md py-10 rounded-[40px] flex flex-col items-center justify-center gap-4 transition-all duration-500 shadow-2xl group"
+          >
+             <MessageSquare className="size-10 group-hover:scale-110 transition-transform" />
+             <span class="font-black text-xl uppercase tracking-tighter">Hablar con Enfermería</span>
+             <span class="text-white/60 font-medium text-xs">Respuesta en menos de 5 min</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- CTA Sticky Flotante -->
+
 </Layout>
 
-<!-- JSON-LD Tripletas Semánticas -->
-<script type="application/ld+json" is:inline>
-{
-  "@context": "https://schema.org",
-  "@type": ["Service", "OfferCatalog"],
-  "name": "Enfermería Domiciliaria Especializada",
-  "description": "Cuidado domiciliario especializado y alivio inmediato.",
-  "provider": {
-    "@type": "MedicalOrganization",
-    "name": "VitalHome Salud"
+<style>
+  html {
+    scroll-behavior: smooth;
   }
-}
-</script>
+</style>

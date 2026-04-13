@@ -1,48 +1,288 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { 
+  ShieldCheck, 
+  Stethoscope, 
+  Users, 
+  Activity, 
+  Heart, 
+  ChevronRight,
+  Plus,
+  Microscope,
+  Baby,
+  Brain,
+  MessageSquare
+} from "lucide-react";
 
-const equipo = [
-  { rol: "Enfermera Especialista", area: "Cuidado Crónico y Postoperatorio", descripcion: "Experta en administración de medicamentos, curaciones complejas y monitoreo continuo de pacientes crónicos." },
-  { rol: "Fisioterapeuta", area: "Rehabilitación Funcional", descripcion: "Diseña y ejecuta planes de recuperación motriz y autonomía funcional adaptados al entorno del hogar." },
-  { rol: "Terapeuta Ocupacional", area: "Autonomía Cotidiana", descripcion: "Facilita la independencia del adulto mayor en actividades de la vida diaria con técnicas especializadas." },
-  { rol: "Médico Geriatra", area: "Supervisión Clínica", descripcion: "Supervisa planes de cuidado con enfoque holístico y orientado a las necesidades evolutivas del adulto mayor." },
+// Metadatos y Marcado JSON-LD Avanzado (@graph)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://vitalhomesalud.com/nosotros/equipo/#webpage",
+      "url": "https://vitalhomesalud.com/nosotros/equipo/",
+      "name": "Equipo Profesional Clínico de VitalHome Salud",
+      "description": "Equipo multidisciplinario conformado por enfermeras, terapeutas, médicos generales y psicólogos, validados por entes reguladores de salud.",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      },
+      "about": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Especialidades de Nuestro Equipo",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Médicos Generales y Geriatras"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Enfermeras Especializadas"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fisioterapeutas y Terapeutas Ocupacionales"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Psicólogos y Trabajo Social"
+        }
+      ]
+    }
+  ]
+};
+
+const title = "Nuestro Equipo Médico y Profesional | VitalHome Salud";
+const breadcrumbItems = [
+  { label: "Institucional", href: "/nosotros/" },
+  { label: "Nuestro Equipo", isCurrent: true }
 ];
 ---
 
-<Layout>
+<Layout title={title}>
   <Header />
-  <main>
-    <section class="bg-primary text-white py-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Capital Humano de Élite</p>
-        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-          Expertos en Cuidado: El Equipo Multidisciplinario que Garantiza su Tranquilidad.
-        </h1>
-        <p class="text-white/80 text-lg max-w-3xl mx-auto">
-          Cada miembro es seleccionado bajo rigurosos estándares de <strong>competencia técnica</strong> y <strong>calidez humana</strong>. Confíe en quienes hacen de la <strong>salud y el bienestar</strong> su máxima prioridad.
-        </p>
-      </div>
-    </section>
 
-    <section class="py-20 px-6 bg-white">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-        {equipo.map(m => (
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-8">
-            <span class="text-xs font-bold uppercase tracking-widest text-accent">{m.area}</span>
-            <h2 class="text-xl font-bold text-primary font-heading mt-2 mb-3">{m.rol}</h2>
-            <p class="text-gray-600">{m.descripcion}</p>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan: Inicio > Institucional > Nuestro Equipo -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Background Elements -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- SECCIÓN 1: Hero de Cero Riesgo (Split-Screen) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative mb-24">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
+          
+          <!-- Columna Izquierda: Texto -->
+          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Capital Humano de Élite
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading text-glow">
+                Expertos en Cuidado: <span class="text-blue-400">El Equipo que Protege a su Familia.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
+                Sabemos lo difícil que es abrir las puertas de su hogar. Por eso, en VitalHome Salud no enviamos extraños; enviamos a un equipo multidisciplinario elegido tras un riguroso proceso de selección. Verificamos cada titulación y exigencia de los entes reguladores de salud para garantizar que su ser querido esté rodeado de profesionales honestos, responsables y comprometidos con su recuperación.
+              </p>
+            </div>
           </div>
-        ))}
-      </div>
-    </section>
 
-    <section class="py-12 px-6 bg-gray-50 text-center">
-      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-        Conocer a Nuestros Especialistas
-      </a>
-    </section>
+          <!-- Columna Derecha: Isla Clínica (Imagen Grupal Representativa) -->
+          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center items-center">
+            <div class="bg-white rounded-[40px] p-2 shadow-2xl relative z-10 border border-slate-100 overflow-hidden group">
+               <div class="relative overflow-hidden rounded-[38px]">
+                  <img 
+                    src="/images/equipo-vitalhome-real.jpg" 
+                    alt="Equipo Clínico de VitalHome Salud en uniforme" 
+                    class="w-full h-auto object-cover grayscale-[0.2] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#061a36]/60 to-transparent"></div>
+                  <div class="absolute bottom-10 left-10">
+                     <p class="text-white font-black text-xs uppercase tracking-[0.3em]">Personal Titulado</p>
+                     <p class="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-1 italic">Verificación de Antecedentes</p>
+                  </div>
+               </div>
+            </div>
+            
+            <a 
+              href="/contacto/" 
+              class="mt-10 w-full max-w-md bg-[#155ec0] hover:bg-[#061a36] text-white flex items-center justify-center gap-3 font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1"
+            >
+              Solicitar Asignación de Equipo
+              <ChevronRight className="size-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 2: El Ecosistema Multidisciplinario (Bento Grid de Perfiles) -->
+      <section class="max-w-[1600px] mx-auto pt-16 pb-32">
+        <div class="text-center mb-24 space-y-4">
+          <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Pericia Médica</span>
+          <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Un Abordaje Integral <span class="text-[#155ec0]">para Cada Necesidad.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Médicos -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Stethoscope className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Médicos Generales y Geriatras</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Dirección clínica exacta para planes de manejo, prescripciones y control de condiciones crónicas con enfoque geriátrico.
+              </p>
+            </div>
+          </div>
+
+          <!-- Enfermeras -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Activity className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Enfermeras Especializadas</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Monitoreo 24/7, administración de medicamentos y cuidado post-operatorio con una calidez humana insuperable.
+              </p>
+            </div>
+          </div>
+
+          <!-- Terapeutas -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Activity className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Fisioterapeutas y Terapeutas</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Recuperación de movilidad, masajes de alivio y prevención de caídas directamente en la habitación del paciente.
+              </p>
+            </div>
+          </div>
+
+          <!-- Psicología -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Brain className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Psicología y Trabajo Social</h4>
+              <p class="text-slate-500 font-medium text-sm leading-relaxed">
+                Contención emocional y mediación para proteger tanto la salud mental del paciente como la del familiar responsable.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: Destructor de Objeciones (La Capacitación Constante) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[60px] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-200/20 blur-[100px] rounded-full"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+          <div class="lg:col-span-7 space-y-8">
+            <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight italic">La Excelencia no se improvisa; se entrena.</h2>
+            <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
+              La medicina avanza todos los días, y nuestro equipo avanza con ella. Exigimos y proveemos capacitación constante mediante diplomados, foros y seminarios clínicos. Cuando un profesional de VitalHome ingresa a su casa, usted cuenta con el respaldo de los protocolos médicos más modernos y seguros del país.
+            </p>
+            <div class="flex flex-wrap gap-4">
+               <div class="flex items-center gap-3 bg-white px-6 py-4 rounded-2xl border border-slate-200">
+                  <Microscope className="size-5 text-[#155ec0]" />
+                  <span class="text-[#011633] font-black text-[10px] uppercase tracking-widest">Actualización Clínica</span>
+               </div>
+               <div class="flex items-center gap-3 bg-white px-6 py-4 rounded-2xl border border-slate-200">
+                  <ShieldCheck className="size-5 text-[#155ec0]" />
+                  <span class="text-[#011633] font-black text-[10px] uppercase tracking-widest">Protocolos de Seguridad</span>
+               </div>
+            </div>
+          </div>
+          <div class="lg:col-span-5 flex justify-center lg:justify-end">
+             <div class="bg-[#061a36] p-12 rounded-[50px] shadow-2xl space-y-8 max-w-sm">
+                <div class="space-y-2">
+                  <p class="text-blue-400 font-black text-4xl">100%</p>
+                  <p class="text-white font-bold text-xs uppercase tracking-widest">Titulaciones Verificadas</p>
+                </div>
+                <div class="space-y-2">
+                  <p class="text-blue-400 font-black text-4xl">4.9/5</p>
+                  <p class="text-white font-bold text-xs uppercase tracking-widest">Calificación Humanizada</p>
+                </div>
+                <p class="text-white/40 text-[10px] font-medium leading-relaxed">Auditoría constante de cumplimiento técnico y trato empático por enfermeras jefe.</p>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: Footer de Conversión (Z-Pattern) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <!-- Mensaje de Cierre (Left) -->
+          <div class="space-y-8">
+            <h3 class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">Deje el cuidado médico en nuestras manos y vuelva a disfrutar de su tiempo en familia.</h3>
+            <p class="text-lg text-slate-500 font-medium">Nuestros especialistas no solo atienden pacientes; cuidan hogares.</p>
+          </div>
+
+          <!-- Formulario Minimalista (Right) -->
+          <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl border border-slate-100 w-full max-w-xl lg:ml-auto">
+            <h4 class="text-2xl font-black text-[#011633] font-heading mb-8">Agendar Visita de Valoración</h4>
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <input type="text" placeholder="Su Nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                 <input type="tel" placeholder=" WhatsApp / Teléfono" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              </div>
+              <select class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none appearance-none">
+                <option value="">Especialidad Requerida</option>
+                <option value="enfermeria">Enfermería</option>
+                <option value="medico">Médico Geriatra</option>
+                <option value="fisioterapia">Fisioterapia</option>
+                <option value="terapia-ocupacional">Terapia Ocupacional</option>
+                <option value="psicologia">Psicología</option>
+              </select>
+              <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
+                Agendar Visita de Valoración
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
   <Footer />
+
+  <!-- CTA Sticky Flotante -->
+
 </Layout>
+
+<style>
+  html { scroll-behavior: smooth; }
+  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+</style>

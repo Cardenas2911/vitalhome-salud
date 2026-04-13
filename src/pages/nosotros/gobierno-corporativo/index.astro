@@ -1,45 +1,269 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { 
+  ShieldCheck, 
+  Scale, 
+  FileText, 
+  Search, 
+  TrendingUp, 
+  ChevronRight,
+  Download,
+  Lock,
+  Globe,
+  Stethoscope
+} from "lucide-react";
+
+// Metadatos y Marcado JSON-LD Avanzado (@graph)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://vitalhomesalud.com/nosotros/gobierno-corporativo/#webpage",
+      "url": "https://vitalhomesalud.com/nosotros/gobierno-corporativo/",
+      "name": "Gobierno Corporativo de VitalHome Salud",
+      "description": "Pilares de Gobierno Corporativo de VitalHome Salud: transparencia, ética, rendición de cuentas y supervisión rigurosa para garantizar la seguridad del paciente y la solvencia institucional.",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      },
+      "about": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      }
+    }
+  ]
+};
+
+const title = "Gobierno Corporativo: Transparencia y Ética | VitalHome Salud";
+const breadcrumbItems = [
+  { label: "Institucional", href: "/nosotros/" },
+  { label: "Gobierno Corporativo", isCurrent: true }
+];
 ---
 
-<Layout>
+<Layout title={title}>
   <Header />
-  <main>
-    <section class="bg-secondary text-white py-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Transparencia Institucional</p>
-        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-          Gobierno Corporativo: Transparencia y Ética para su Confianza Absoluta.
-        </h1>
-        <p class="text-white/80 text-lg max-w-3xl mx-auto">
-          Nuestro <strong>Gobierno Corporativo</strong> asegura una gestión responsable y alineada con los más altos estándares de la industria de la <strong>salud domiciliaria</strong>. Un marco de <strong>liderazgo estratégico</strong> y <strong>supervisión rigurosa</strong> que refuerza su confianza.
-        </p>
-      </div>
-    </section>
 
-    <section class="py-20 px-6 bg-white">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-        {[
-          { icono: "⚖️", titulo: "Integridad", desc: "Políticas claras de ética y rendición de cuentas en cada proceso." },
-          { icono: "🔍", titulo: "Supervisión Rigurosa", desc: "Auditorías internas y externas que garantizan la excelencia operativa." },
-          { icono: "♻️", titulo: "Sostenibilidad", desc: "Decisiones pensadas en el bienestar del paciente y la solvencia a largo plazo." },
-        ].map(p => (
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-            <div class="text-4xl mb-4">{p.icono}</div>
-            <h2 class="text-xl font-bold text-primary font-heading mb-2">{p.titulo}</h2>
-            <p class="text-gray-600 text-sm">{p.desc}</p>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan: Inicio > Institucional > Gobierno Corporativo -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Background Elements -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- SECCIÓN 1: Hero de Solvencia (Split-Screen) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative mb-24">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
+          
+          <!-- Columna Izquierda: Texto -->
+          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Institucionalidad y Ética
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading text-glow">
+                Gobierno Corporativo: <span class="text-blue-400">Transparencia y Ética.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
+                En VitalHome Salud, la transparencia y la ética son pilares fundamentales de nuestra operación. Nuestro Gobierno Corporativo asegura una gestión responsable y alineada con las mejores prácticas del sector de la salud domiciliaria. Implementamos rigurosos procesos de integridad y rendición de cuentas para garantizar la sostenibilidad y el liderazgo estratégico.
+              </p>
+            </div>
           </div>
-        ))}
-      </div>
-    </section>
 
-    <section class="py-12 px-6 bg-gray-50 text-center">
-      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-        Descargar Informe de Gobierno Corporativo
-      </a>
-    </section>
+          <!-- Columna Derecha: Isla Clínica -->
+          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center items-center">
+            <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl relative z-10 border border-slate-100 w-full max-w-md">
+              <div class="text-center mb-10">
+                <h3 class="text-2xl font-black text-[#011633] font-heading mb-2">Garantías de Gestión</h3>
+                <p class="text-slate-500 text-sm font-medium italic">Solvencia institucional para su seguridad.</p>
+              </div>
+
+              <div class="space-y-6 mb-10">
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 group hover:border-[#155ec0] transition-colors">
+                  <div class="size-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#155ec0]">
+                     <Search className="size-5" />
+                  </div>
+                  <div>
+                    <h4 class="font-black text-[#011633] text-[10px] uppercase tracking-wider">Auditoría Clínica</h4>
+                    <p class="text-slate-400 text-[10px] font-medium leading-tight">Supervisión técnica constante.</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 group hover:border-[#155ec0] transition-colors">
+                  <div class="size-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#155ec0]">
+                     <ShieldCheck className="size-5" />
+                  </div>
+                  <div>
+                    <h4 class="font-black text-[#011633] text-[10px] uppercase tracking-wider">Cumplimiento Normativo</h4>
+                    <p class="text-slate-400 text-[10px] font-medium leading-tight">Alineación con entes estatales.</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 group hover:border-[#155ec0] transition-colors">
+                  <div class="size-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#155ec0]">
+                     <Lock className="size-5" />
+                  </div>
+                  <div>
+                    <h4 class="font-black text-[#011633] text-[10px] uppercase tracking-wider">Protección de Datos</h4>
+                    <p class="text-slate-400 text-[10px] font-medium leading-tight">Privacidad HIPAA / GDPR.</p>
+                  </div>
+                </div>
+              </div>
+
+              <a 
+                href="/documentos/gobierno-corporativo.pdf" 
+                target="_blank"
+                class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white flex items-center justify-center gap-3 font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1"
+              >
+                Descargar Informe de Gobierno
+                <Download className="size-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 2: El Bento Grid Corporativo (Pilares de Gestión) -->
+      <section class="max-w-[1600px] mx-auto pt-16 pb-32">
+        <div class="text-center mb-24 space-y-4">
+          <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Estructura de Liderazgo</span>
+          <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Estructura Sólida para un <span class="text-[#155ec0]">Cuidado Seguro.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Transparencia -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Globe className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Transparencia y Rendición de Cuentas</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Operamos bajo normativas estrictas de salud, documentando cada proceso clínico para la total visibilidad de la familia y el cumplimiento legal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Supervisión -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Stethoscope className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Supervisión Rigurosa</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Auditorías constantes lideradas por nuestro comité médico para asegurar que el bienestar del paciente nunca se vea comprometido por fallas operativas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Solvencia -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <TrendingUp className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Solvencia Institucional</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Respaldo corporativo que garantiza la continuidad del cuidado a largo plazo, protegiendo su inversión estratégica en salud geriátrica.
+              </p>
+            </div>
+          </div>
+
+          <!-- Integridad -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Scale className="size-8" />
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Integridad y Ética</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Una cultura organizacional basada en la honestidad inquebrantable desde la alta dirección hasta nuestro personal asistencial en su hogar.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: Destructor de Objeciones (Paz Mental) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[60px] relative overflow-hidden mb-24">
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-200/20 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+          <div class="lg:col-span-8 space-y-8">
+            <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight italic">El Respaldo Corporativo detrás del Cuidado Humano.</h2>
+            <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
+              Entendemos que la decisión de delegar la salud de un familiar implica un alto riesgo percibido. Por ello, nuestra supervisión rigurosa se traduce en confianza para el familiar responsable, sabiendo que el bienestar del paciente está respaldado por una solvencia institucional y un compromiso inquebrantable con la seguridad y la paz mental. Su tranquilidad es nuestra prioridad absoluta.
+            </p>
+          </div>
+          <div class="lg:col-span-4 flex justify-center lg:justify-end">
+             <div class="bg-[#061a36] p-12 rounded-[50px] shadow-2xl space-y-8 max-w-[280px] rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div class="space-y-2">
+                  <p class="text-blue-400 font-black text-4xl">100%</p>
+                  <p class="text-white font-bold text-[10px] uppercase tracking-widest">Ética Operativa</p>
+                </div>
+                <div class="h-px bg-white/10 w-full"></div>
+                <div class="space-y-2">
+                  <p class="text-blue-400 font-black text-4xl leading-none">Cero</p>
+                  <p class="text-white font-bold text-[10px] uppercase tracking-widest">Margen de Error Técnico</p>
+                </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: Footer de Conversión (Patrón Z) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <!-- Sellos de Cumplimiento (Left) -->
+          <div class="space-y-12">
+            <h3 class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">Nuestra Gestión es su Garantía de Seguridad.</h3>
+            <div class="flex flex-wrap gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+               <div class="h-16 w-32 bg-slate-200 rounded-2xl flex items-center justify-center text-[8px] font-black text-slate-500 uppercase tracking-widest text-center px-4">Compliance Clínico</div>
+               <div class="h-16 w-32 bg-slate-200 rounded-2xl flex items-center justify-center text-[8px] font-black text-slate-500 uppercase tracking-widest text-center px-4">Protección HIPAA</div>
+               <div class="h-16 w-32 bg-slate-200 rounded-2xl flex items-center justify-center text-[8px] font-black text-slate-500 uppercase tracking-widest text-center px-4">Calidad Auditada</div>
+            </div>
+          </div>
+
+          <!-- Formulario Corporativo (Right) -->
+          <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl border border-slate-100 w-full max-w-xl lg:ml-auto">
+            <h4 class="text-2xl font-black text-[#011633] font-heading mb-8 uppercase tracking-tighter">Consulta de Dirección Médica</h4>
+            <form class="space-y-6">
+              <input type="text" placeholder="Su Nombre y Cargo" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              <input type="email" placeholder="Correo Corporativo" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              <textarea placeholder="Solicitud de información sobre protocolos o solvencia" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none h-32"></textarea>
+              <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
+                Contactar a la Dirección Médica
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
   <Footer />
+
+  <!-- CTA Sticky Flotante -->
+
 </Layout>
+
+<style>
+  html { scroll-behavior: smooth; }
+  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+</style>

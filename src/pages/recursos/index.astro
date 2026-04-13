@@ -1,0 +1,267 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroSection from "../../components/ui/hero-section-9";
+import { 
+  BookOpen, 
+  HelpCircle, 
+  MessageSquare, 
+  ArrowRight, 
+  Search, 
+  FileText, 
+  UserPlus, 
+  Activity, 
+  ShieldCheck,
+  Star,
+  Bookmark,
+  Clock,
+  Award
+} from "lucide-react";
+import { Breadcrumbs } from "../../components/ui/breadcrumbs";
+
+const pageTitle = "Centro de Recursos Clínicos | VitalHome Salud";
+const pageDescription = "Su dashboard de confianza para el cuidado domiciliario: Glosario médico, respuestas expertas, guías preventivas y blog de salud.";
+
+const breadcrumbItems = [
+  { label: "Recursos", href: "/recursos/" },
+  { label: "Blog de Salud", isCurrent: true }
+];
+
+const resources = [
+  {
+    title: "Glosario Médico A-Z",
+    desc: "Traducción de términos clínicos complejos a soluciones prácticas para el hogar.",
+    href: "/recursos/glosario/",
+    icon: BookOpen,
+    color: "text-blue-600",
+    bg: "bg-blue-50",
+    count: "26+ Términos",
+    label: "Autoridad Curada"
+  },
+  {
+    title: "Preguntas Frecuentes",
+    desc: "Respuestas directas sobre protocolos de enfermería, costos y logística familiar.",
+    href: "/recursos/faq/",
+    icon: HelpCircle,
+    color: "text-emerald-600",
+    bg: "bg-emerald-50",
+    count: "15+ Respuestas",
+    label: "Red de Seguridad"
+  },
+  {
+    title: "Blog de Salud",
+    desc: "Artículos de expertos sobre geriatría, nutrición y consejos prácticos para cuidadores.",
+    href: "/recursos/blog/",
+    icon: FileText,
+    color: "text-orange-600",
+    bg: "bg-orange-50",
+    count: "Próximamente",
+    label: "Educación Continua"
+  }
+];
+
+const mainTools = [
+    { name: "Auditoría de Cuidado", icon: ShieldCheck, desc: "Evalúe el nivel de riesgo de su familiar." },
+    { name: "Guía de Bienvenida", icon: Activity, desc: "Descargue nuestro protocolo VitalCare®." },
+    { name: "Buscador de Síntomas", icon: Search, desc: "Primeros pasos ante alertas clínicas." }
+];
+
+const heroImages = [
+  "https://images.unsplash.com/photo-1576091160550-217359f4ecf8?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1200&auto=format&fit=crop"
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main class="bg-[#f8f9fa] min-h-screen">
+    
+    {/* BREADCRUMBS OVER HERO */}
+    <div class="absolute top-32 left-0 right-0 z-40">
+        <div class="container mx-auto px-6">
+            <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
+    </div>
+    
+    {/* HERO - DASHBOARD HEADER UNIFICADO CON SERVICIOS */}
+    <HeroSection 
+      client:load
+      title="Su Hub de Claridad Clínica y Apoyo Familiar."
+      subtitle="Diseñamos este panel para que usted nunca se sienta solo en la toma de decisiones. Información experta para el momento que más lo necesita."
+      actions={[
+        {
+          text: "Agendar Valoración Gratuita",
+          onClick: () => { window.location.href = "/contacto/" },
+          className: "bg-[#155ec0] text-white hover:bg-blue-600 shadow-[0_20px_40px_rgba(21,94,192,0.3)]"
+        },
+        {
+          text: "Explorar Recursos",
+          onClick: () => { document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' }) },
+          variant: "outline",
+          className: "border-[#104892]/20 text-[#104892] hover:bg-[#104892]/5"
+        }
+      ]}
+      stats={[
+        { value: "Élite", label: "Estándar", iconName: "shield" },
+        { value: "24/7", label: "Actualizado", iconName: "activity" },
+        { value: "+3k", label: "Consultas", iconName: "users" }
+      ]}
+      images={heroImages}
+    />
+
+    {/* BENTO GRID DE RECURSOS */}
+    <section id="dashboard" class="container mx-auto px-6 pb-24 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {resources.map((res) => (
+                <a 
+                    href={res.href}
+                    class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] shadow-sm hover:shadow-2xl hover:border-[#155ec0] transition-all duration-500 group flex flex-col"
+                >
+                    <div class="flex justify-between items-start mb-10">
+                        <div class={`size-16 rounded-2xl ${res.bg} ${res.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}>
+                            <res.icon className="size-8" />
+                        </div>
+                        <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{res.label}</span>
+                    </div>
+                    
+                    <div class="space-y-4 flex-grow">
+                        <h3 class="text-2xl font-black text-[#011633] font-heading group-hover:text-[#155ec0] transition-colors">{res.title}</h3>
+                        <p class="text-slate-500 font-medium text-sm leading-relaxed italic">{res.desc}</p>
+                    </div>
+
+                    <div class="mt-10 pt-8 border-t border-slate-50 flex items-center justify-between">
+                        <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.2em]">{res.count}</span>
+                        <div class="size-10 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-[#155ec0] group-hover:text-white group-hover:border-[#155ec0] transition-all">
+                            <ArrowRight className="size-5" />
+                        </div>
+                    </div>
+                </a>
+            ))}
+
+            {/* QUICK TOOLS CARD - REDiseñado para UX/UI Pro */}
+            <div class="lg:col-span-2 bg-[#061a36] rounded-[48px] p-8 md:p-14 text-white overflow-hidden relative group border border-white/5 shadow-2xl">
+                {/* Decoración de fondo */}
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[100px] rounded-full -z-0"></div>
+                <Activity className="absolute -bottom-10 -right-10 size-64 text-white/[0.02] rotate-12" />
+
+                <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center h-full">
+                    <div class="max-w-xs space-y-6 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
+                            <span class="size-1.5 bg-blue-400 rounded-full animate-pulse"></span>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-blue-400">Utilidades Clínicas</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-black font-heading leading-[1.1]">Respuesta <br class="hidden md:block"/> Inmediata</h2>
+                        <p class="text-blue-100/50 text-sm font-medium leading-relaxed italic">
+                            Herramientas de autogestión para resolver dudas críticas en segundos.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full h-fit self-center">
+                        {mainTools.map((tool) => (
+                            <div class="bg-white/[0.03] border border-white/5 p-6 rounded-[32px] hover:bg-white/[0.08] hover:border-white/10 transition-all duration-300 cursor-pointer group/tool flex flex-col items-center text-center">
+                                <div class="size-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-5 group-hover/tool:scale-110 group-hover/tool:bg-blue-500 transition-all duration-300">
+                                    <tool.icon className="size-6 text-blue-400 group-hover/tool:text-white transition-colors" />
+                                </div>
+                                <h4 class="font-black text-xs uppercase tracking-widest mb-2">{tool.name}</h4>
+                                <p class="text-[9px] text-white/40 leading-relaxed font-medium">{tool.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* CALL TO LEAD CARD */}
+            <div class="bg-[#155ec0] rounded-[40px] p-10 flex flex-col justify-center text-center space-y-8 shadow-xl shadow-blue-500/20">
+                <div class="size-16 rounded-full bg-white/10 flex items-center justify-center mx-auto">
+                    <UserPlus className="size-8 text-white" />
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-black text-white font-heading">¿Necesita una <br/> opinión experta?</h3>
+                    <p class="text-blue-100/80 text-sm font-medium">Nuestras enfermeras jefes están listas para orientarle sin costo inicial.</p>
+                </div>
+                <a href="/contacto/" class="bg-white text-[#155ec0] py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-blue-50 transition-all active:scale-95 shadow-lg">
+                    Agendar Orientación
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {/* E-E-A-T TRUST SIGNALS */}
+    <section class="py-24 border-t border-slate-100 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 space-y-8">
+                     <div class="space-y-4">
+                        <h2 class="text-4xl font-black text-[#011633] font-heading">Información con <br/> Rigor Clínico.</h2>
+                        <div class="h-1.5 w-24 bg-[#155ec0] rounded-full"></div>
+                     </div>
+                     <p class="text-slate-500 text-lg font-medium leading-relaxed italic">
+                        Todo el contenido de este hub ha sido auditado por nuestra junta médica. No publicamos opiniones; entregamos protocolos basados en evidencia para garantizar la seguridad de su familiar.
+                     </p>
+                     <div class="grid grid-cols-2 gap-8">
+                        <div class="flex items-center gap-4">
+                            <Star className="size-10 text-yellow-400 fill-yellow-400" />
+                            <div>
+                                <p class="text-2xl font-black text-[#0b3164]">4.9/5</p>
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Confianza Familiar</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <Activity className="size-10 text-blue-600" />
+                            <div>
+                                <p class="text-2xl font-black text-[#0b3164]">+3k</p>
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Consultas Mensuales</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <div class="lg:w-1/2 grid grid-cols-2 gap-4">
+                    <div class="aspect-square bg-slate-50 rounded-[40px] flex items-center justify-center p-8 text-center group hover:bg-blue-600 transition-all duration-500">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] group-hover:text-white/50 mb-2">Pilar SEO</p>
+                        <h4 class="text-xl font-black text-[#104892] group-hover:text-white transition-colors">Integridad de Datos</h4>
+                    </div>
+                    <div class="aspect-square bg-slate-50 rounded-[40px] mt-12 flex items-center justify-center p-8 text-center group hover:bg-[#061a36] transition-all duration-500">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] group-hover:text-white/50 mb-2">Pilar UX</p>
+                        <h4 class="text-xl font-black text-[#104892] group-hover:text-white transition-colors">Carga Cognitiva Cero</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* JSON-LD ya inyectado en Layout o se puede inyectar localmente */}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": "https://vitalhomesalud.com/recursos/#webpage",
+      "url": "https://vitalhomesalud.com/recursos/",
+      "name": "Hub de Salud y Bienestar Domiciliario | VitalHome Salud",
+      "description": "Centro de mando y recursos clínicos para el familiar responsable. Acceda a nuestro glosario médico, preguntas frecuentes y artículos de expertos en geriatría y cuidado domiciliario.",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      },
+      "hasPart": [
+        {
+          "@type": "WebPage",
+          "url": "https://vitalhomesalud.com/recursos/glosario/",
+          "name": "Glosario Médico A-Z"
+        },
+        {
+          "@type": "FAQPage",
+          "url": "https://vitalhomesalud.com/recursos/faq/",
+          "name": "Preguntas Frecuentes de Cuidado Domiciliario"
+        },
+        {
+          "@type": "Blog",
+          "url": "https://vitalhomesalud.com/recursos/blog/",
+          "name": "Blog de Salud Domiciliaria"
+        }
+      ]
+    }
+    </script>
+  </main>
+  <Footer />
+</Layout>

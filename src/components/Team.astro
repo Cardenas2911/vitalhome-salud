@@ -1,0 +1,145 @@
+---
+// src/components/Team.astro
+const specialists = [
+    {
+        name: "Sindy Barragán",
+        role: "Masajista Terapéutica Profesional",
+        benefit: "Especialista en alivio del dolor crónico, reducción de tensión muscular y reactivación de la circulación. Su enfoque devuelve el confort diario que el adulto mayor necesita para descansar sin interrupciones.",
+        image: "/sindy_barragan_masajista_1775933583945.png",
+        accent: "bg-accent"
+    },
+    {
+        name: "John Edison Buritica",
+        role: "Entrenador Personal y de Rehabilitación",
+        benefit: "Experto en recuperación de movilidad, fuerza funcional y prevención de caídas en el entorno doméstico. Su misión es devolverle la independencia a su familiar de forma segura y progresiva.",
+        image: "/john_buritica_rehabilitacion_1775933605088.png",
+        accent: "bg-[#2dd4bf]",
+        highlight: true
+    },
+    {
+        name: "Andrea del Pilar Barragán",
+        role: "Trabajadora Social Clínica",
+        benefit: "Especialista en acompañamiento emocional y estructuración de redes de cuidado. Brinda soporte directo para prevenir el 'agotamiento del cuidador', asegurando una transición familiar positiva.",
+        image: "/andrea_barragan_trabajadora_social_1775933620271.png",
+        accent: "bg-primary"
+    }
+];
+---
+
+<section class="py-24 relative overflow-hidden bg-white">
+    <!-- Fondo Gradiente Radial Sutil -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#f8fafc_0%,_#eef2f6_100%)] -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Cabecera de Sección -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div class="max-w-2xl">
+                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-widest uppercase bg-accent/10 text-accent mb-6 shadow-sm border border-accent/10">
+                    NUESTRO EQUIPO
+                </span>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-[#0b3164] leading-tight">
+                    Las manos expertas detrás de su tranquilidad.
+                </h2>
+            </div>
+            <div class="max-w-md">
+                <p class="text-base md:text-lg text-[#061a36]/70 leading-relaxed font-body">
+                    No enviamos extraños a su casa. Cada especialista de VitalHome Salud está certificado, evaluado y comprometido con la recuperación integral de su ser querido.
+                </p>
+            </div>
+        </div>
+
+        <!-- The Spotlight Trio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-20">
+            {specialists.map((pro, index) => (
+                <div 
+                    class={`relative group transition-all duration-700 hover:scale-[1.02] ${pro.highlight ? 'z-10' : 'z-0'}`}
+                >
+                    <!-- Contenedor Base -->
+                    <div class={`relative rounded-[40px] overflow-hidden bg-white border border-[#e6e6e6]/50 shadow-[0px_20px_40px_rgba(0,0,0,0.05)] ${pro.highlight ? 'md:shadow-[0px_30px_60px_rgba(0,0,0,0.1)] md:-translate-y-4' : ''}`}>
+                        
+                        <!-- Área de la Fotografía -->
+                        <div class="aspect-[4/5] overflow-hidden bg-gray-50">
+                            <img 
+                                src={pro.image} 
+                                alt={pro.name} 
+                                class="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700"
+                            />
+                        </div>
+
+                        <!-- Caja de Información Flotante (Inner Card) con Acordeón (Glassmorphism Traslúcido) -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-white/40 backdrop-blur-xl rounded-3xl p-5 shadow-[0px_15px_35px_rgba(0,0,0,0.08)] border border-white/40 flex flex-col transition-all duration-500">
+                            <div class="flex items-start justify-between">
+                                <div class="mb-1">
+                                    <h3 class="text-lg font-heading font-bold text-secondary mb-0.5">{pro.name}</h3>
+                                    <span class="text-[10px] font-bold text-accent tracking-widest uppercase">{pro.role}</span>
+                                </div>
+                                <button 
+                                    class="team-acc-trigger p-2 hover:bg-gray-50 rounded-full transition-colors group/btn"
+                                    data-target={`pro-${index}`}
+                                    aria-label="Ver perfil completo"
+                                >
+                                    <svg class="w-4 h-4 text-gray-400 group-hover/btn:text-accent transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Contenido del Acordeón -->
+                            <div 
+                                id={`pro-${index}`} 
+                                class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out opacity-0"
+                            >
+                                <p class="text-[13px] text-text-brand/80 leading-relaxed mt-4 pt-4 border-t border-gray-50 font-body">
+                                    {pro.benefit}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <!-- Botón de Acción CTA Final -->
+        <div class="flex justify-center">
+            <a 
+                href="/contacto/" 
+                class="btn-brand px-12 py-5 group"
+            >
+                <span class="relative z-10 flex items-center gap-3">
+                    Solicitar Evaluación con el Equipo
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const triggers = document.querySelectorAll('.team-acc-trigger');
+    
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const targetId = trigger.getAttribute('data-target');
+            if (!targetId) return;
+            
+            const target = document.getElementById(targetId);
+            const icon = trigger.querySelector('svg');
+            
+            if (!target || !icon) return;
+            
+            // Toggle
+            if (target.style.maxHeight && target.style.maxHeight !== '0px') {
+                target.style.maxHeight = '0px';
+                target.style.opacity = '0';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                target.style.maxHeight = target.scrollHeight + 'px';
+                target.style.opacity = '1';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+</script>

@@ -1,56 +1,272 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { Breadcrumbs } from "../../components/ui/breadcrumbs";
+import { 
+  BarChart3, 
+  TrendingUp, 
+  Clock, 
+  ShieldCheck, 
+  Smile, 
+  ArrowRight, 
+  FileText, 
+  Users, 
+  Target,
+  ChevronRight,
+  Stethoscope,
+  Heart,
+  MessageCircle,
+  ClipboardCheck
+} from "lucide-react";
+
+// Marcado JSON-LD Avanzado (@graph)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "150",
+        "description": "Basado en encuestas de satisfacción de familiares y pacientes sobre eficacia clínica y calidez humana."
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vitalhomesalud.com/resultados/#webpage",
+      "url": "https://vitalhomesalud.com/resultados/",
+      "name": "Resultados Medibles y Estudios de Impacto de VitalHome Salud",
+      "description": "Evidencia clínica, KPIs operativos y testimonios que demuestran la excelencia de nuestra metodología de cuidado domiciliario.",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      },
+      "about": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      }
+    }
+  ]
+};
+
+const title = "Resultados y Estudios de Impacto | VitalHome Salud";
+const breadcrumbItems = [
+  { label: "Institucional", href: "/nosotros/" },
+  { label: "Resultados de Impacto", isCurrent: true }
+];
 ---
 
-<Layout>
+<Layout title={title}>
   <Header />
-  <main>
-    <section class="bg-primary text-white py-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Impacto Medible</p>
-        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-          Resultados Medibles: La Evidencia de Nuestra Excelencia en Cuidado Domiciliario.
-        </h1>
-        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
-          Nuestra <strong>filosofía de mejora continua</strong> se basa en la <strong>medición rigurosa</strong> de <strong>indicadores clave de rendimiento (KPIs)</strong> que validan nuestra eficacia clínica e inversión estratégica.
-        </p>
-        <a href="/resultados/casos-exito/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-          Ver Casos de Éxito
-        </a>
-      </div>
-    </section>
 
-    <!-- MÉTRICAS -->
-    <section class="py-20 px-6 bg-white">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-        {[
-          { kpi: "95%", label: "Satisfacción del familiar responsable" },
-          { kpi: "40%", label: "Reducción de reingresos hospitalarios" },
-          { kpi: "98%", label: "Mejora en autonomía funcional del paciente" },
-        ].map(m => (
-          <div class="bg-gray-50 rounded-2xl p-10 border border-gray-100">
-            <div class="text-5xl font-bold text-accent font-heading mb-3">{m.kpi}</div>
-            <p class="text-gray-700">{m.label}</p>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan: Inicio > Institucional > Resultados de Impacto -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Background Elements -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- SECCIÓN 1: Hero de Evidencia Clínica (Split-Screen) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative mb-24">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
+          
+          <!-- Columna Izquierda: Texto -->
+          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Evidencia Médica y Operativa
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading text-glow">
+                Resultados Medibles: <span class="text-blue-400">La Evidencia de Nuestra Excelencia.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
+                "¿Desea ver el impacto real de su inversión en cuidado? Nuestra filosofía de mejora continua se basa en la medición rigurosa de indicadores clave de rendimiento (KPIs). Hemos logrado una reducción significativa de reingresos hospitalarios, una mejora notable en la autonomía funcional y una alta satisfacción del familiar responsable."
+              </p>
+            </div>
           </div>
-        ))}
-      </div>
-    </section>
 
-    <!-- LINKS A SUB-PÁGINAS -->
-    <section class="py-12 px-6 bg-secondary text-white">
-      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-        <a href="/resultados/casos-exito/" class="border border-white/30 rounded-2xl p-6 hover:bg-white/10 transition">
-          <h2 class="font-bold text-lg mb-1">Casos de Éxito y Testimonios</h2>
-          <p class="text-white/70 text-sm">Historias reales de familias que recuperaron su tranquilidad.</p>
-        </a>
-        <a href="/resultados/estudios-impacto/" class="border border-white/30 rounded-2xl p-6 hover:bg-white/10 transition">
-          <h2 class="font-bold text-lg mb-1">Estudios de Impacto</h2>
-          <p class="text-white/70 text-sm">Evidencia científica validada sobre nuestros resultados clínicos.</p>
-        </a>
+          <!-- Columna Derecha: Isla Clínica (Dato Estrella) -->
+          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center items-center">
+            <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl relative z-10 border border-slate-100 w-full max-w-md">
+              <div class="text-center mb-10">
+                <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-widest">Satisfacción Familiar</span>
+                <div class="flex items-center justify-center gap-2 mt-4">
+                  <h3 class="text-7xl font-black text-[#011633] font-heading">98%</h3>
+                </div>
+                <p class="text-slate-500 text-sm font-medium mt-4">Fieles a nuestra calidez y eficacia clínica.</p>
+              </div>
+
+              <div class="flex flex-col gap-4 mb-10">
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                  <div class="size-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#155ec0]">
+                     <BarChart3 className="size-5" />
+                  </div>
+                  <span class="text-[10px] font-black text-[#011633] uppercase tracking-wider">Cero Improvisación Médica</span>
+                </div>
+              </div>
+
+              <a 
+                href="/resultados/casos-exito/" 
+                class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white flex items-center justify-center gap-3 font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1"
+              >
+                Ver Casos de Éxito
+                <ArrowRight className="size-4" />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <!-- SECCIÓN 2: El Tablero de Impacto (Bento Grid de KPIs) -->
+      <section class="max-w-[1600px] mx-auto pt-16 pb-32">
+        <div class="text-center mb-24 space-y-4">
+          <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Eficacia Comprobada</span>
+          <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Eficacia Clínica que <span class="text-[#155ec0]">Transforma Vidas.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- KPI 1: Respuesta Rápida -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Clock className="size-8" />
+            </div>
+            <div>
+              <div class="h3 text-5xl font-black text-[#011633] font-heading mb-2">&lt; 24h</div>
+              <h4 class="text-sm font-black text-[#155ec0] mb-4 uppercase tracking-widest">Respuesta Rápida</h4>
+              <p class="text-slate-500 font-medium text-xs leading-relaxed">
+                Tiempo medio de respuesta a su solicitud inicial. Traducimos la urgencia familiar en acción clínica inmediata y resolutiva.
+              </p>
+            </div>
+          </div>
+
+          <!-- KPI 2: Prevención Efectiva -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <ShieldCheck className="size-8" />
+            </div>
+            <div>
+              <div class="h3 text-5xl font-black text-[#011633] font-heading mb-2">-40%</div>
+              <h4 class="text-sm font-black text-[#155ec0] mb-4 uppercase tracking-widest">Prevención Efectiva</h4>
+              <p class="text-slate-500 font-medium text-xs leading-relaxed">
+                Reducción drástica en la tasa de eventos adversos (caídas/úlceras) gracias a la supervisión 24/7 y protocolos predictivos.
+              </p>
+            </div>
+          </div>
+
+          <!-- KPI 3: Retención y Confianza -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Users className="size-8" />
+            </div>
+            <div>
+              <div class="h3 text-5xl font-black text-[#011633] font-heading mb-2">92%</div>
+              <h4 class="text-sm font-black text-[#155ec0] mb-4 uppercase tracking-widest">Continuidad</h4>
+              <p class="text-slate-500 font-medium text-xs leading-relaxed">
+                Clientes que mantienen sus programas de cuidado prolongado por más de 6 meses, validando nuestra solvencia operativa.
+              </p>
+            </div>
+          </div>
+
+          <!-- KPI 4: Tranquilidad Familiar -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
+              <Smile className="size-8" />
+            </div>
+            <div>
+              <div class="h3 text-5xl font-black text-[#011633] font-heading mb-2">A+</div>
+              <h4 class="text-sm font-black text-[#155ec0] mb-4 uppercase tracking-widest">Paz Mental</h4>
+              <p class="text-slate-500 font-medium text-xs leading-relaxed">
+                Calificación de excelencia en las encuestas de tranquilidad del familiar tras el primer mes de intervención especializada.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: Ecosistema de Prueba Social (Navegación Secundaria) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[60px] relative overflow-hidden mb-24">
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-200/20 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div class="text-center mb-24 space-y-4 relative z-10">
+          <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Prueba Social e Institucional</span>
+          <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading italic">Conozca el Impacto en la Vida Real.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+          <!-- Casos de Éxito -->
+          <a href="/resultados/casos-exito/" class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] transition-all duration-500 flex flex-col gap-6">
+            <div class="size-12 rounded-2xl bg-blue-50 flex items-center justify-center text-[#155ec0] group-hover:bg-[#155ec0] group-hover:text-white transition-all">
+              <Users className="size-6" />
+            </div>
+            <h4 class="text-2xl font-black text-[#011633] font-heading">Casos de Éxito y Testimonios</h4>
+            <p class="text-slate-500 font-medium">Historias reales de recuperación post-operatoria y manejo de pacientes crónicos en casa.</p>
+            <div class="flex items-center gap-3 text-[#155ec0] font-black text-[10px] uppercase tracking-widest mt-auto group-hover:translate-x-2 transition-transform">
+              Explorar Testimonios <ArrowRight className="size-4" />
+            </div>
+          </a>
+
+          <!-- Estudios de Impacto -->
+          <a href="/resultados/estudios-impacto/" class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] transition-all duration-500 flex flex-col gap-6">
+            <div class="size-12 rounded-2xl bg-blue-50 flex items-center justify-center text-[#155ec0] group-hover:bg-[#155ec0] group-hover:text-white transition-all">
+              <FileText className="size-6" />
+            </div>
+            <h4 class="text-2xl font-black text-[#011633] font-heading">Estudios de Impacto</h4>
+            <p class="text-slate-500 font-medium">Evidencia científica y reportes sobre la reducción de reingresos y mejora funcional.</p>
+            <div class="flex items-center gap-3 text-[#155ec0] font-black text-[10px] uppercase tracking-widest mt-auto group-hover:translate-x-2 transition-transform">
+              Ver Reportes <ArrowRight className="size-4" />
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: Footer de Conversión (Patrón Z) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <!-- Mensaje Contundente (Left) -->
+          <div class="space-y-12">
+            <div class="size-20 bg-[#155ec0]/10 rounded-[30px] flex items-center justify-center text-[#155ec0]">
+               <Target className="size-10" />
+            </div>
+            <h3 class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">Los datos demuestran nuestra eficacia; permítanos demostrarle nuestra calidez.</h3>
+            <p class="text-lg text-slate-500 font-medium italic underline decoration-blue-200 underline-offset-8">Convertimos métricas en sonrisas y estabilidad familiar.</p>
+          </div>
+
+          <!-- Formulario Minimalista (Right) -->
+          <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl border border-slate-100 w-full max-w-xl lg:ml-auto">
+            <h4 class="text-2xl font-black text-[#011633] font-heading mb-8">Validación Clínica Personalizada</h4>
+            <form class="space-y-6">
+              <input type="text" placeholder="Su Nombre y Apellido" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              <input type="tel" placeholder="Teléfono de Contacto" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
+                Hablemos de Resultados para su Familiar
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
   <Footer />
+
+  <!-- CTA Sticky Flotante -->
+
 </Layout>
+
+<style>
+  html { scroll-behavior: smooth; }
+  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+</style>

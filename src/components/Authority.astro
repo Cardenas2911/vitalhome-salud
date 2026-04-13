@@ -1,40 +1,180 @@
 ---
 // src/components/Authority.astro
 ---
-<section class="py-24 bg-white border-t border-zinc-100">
+<section class="py-24 bg-white relative overflow-hidden">
+    <!-- Fondos decorativos sutiles para profundidad -->
+    <div class="absolute top-0 right-0 w-1/4 h-1/4 bg-primary/5 blur-[120px] rounded-full -z-10"></div>
+    <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-accent/5 blur-[120px] rounded-full -z-10"></div>
+
+    <style>
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: floating 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floating 5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        .animate-float-slow {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: 2.5s;
+        }
+    </style>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- E-E-A-T Copy Block -->
-        <div class="max-w-4xl mx-auto text-center mb-16">
-            <h2 class="text-3xl font-heading font-bold text-secondary sm:text-4xl mb-6">
-                Metodología VitalCare®: La Ingeniería Detrás de un Cuidado Excepcional.
-            </h2>
-            <p class="text-xl text-text-brand/80 font-body leading-relaxed mb-8">
-                Nuestro estándar operativo está avalado por décadas de experiencia clínica y respaldado por una red de médicos especialistas, garantizando protocolos sanitarios impecables directamente en su domicilio.
-            </p>
-            <div class="bg-surface-brand border border-zinc-200 rounded-2xl p-8 shadow-sm flex flex-col md:flex-row items-center gap-6 text-left">
-                <div class="flex-shrink-0 w-20 h-20 rounded-full bg-zinc-100 overflow-hidden border-4 border-white shadow">
-                    <!-- Avatar of Medical Director (Placeholder) -->
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=250&auto=format&fit=crop" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300" alt="Dra. Directora Médica VitalHome" />
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            
+            <!-- 1. Columna Izquierda: Jerarquía de Información -->
+            <div class="order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-6 border border-primary/10">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    Confianza y Seguridad
                 </div>
-                <div>
-                     <p class="italic text-text-brand/90 font-medium text-lg">"Diseñamos arquitectura médica para el hogar. No delegamos el bienestar; lo calculamos centímetro a centímetro bajo rigurosos estándares hospitalarios pero con la calidez humana que solo la familia merece."</p>
-                     <p class="mt-3 text-sm font-bold text-primary">— Dra. Elena Cárdenas, Directora Médica de VitalHome Salud</p>
+
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-[#0b3164] mb-8 leading-[1.15]">
+                    Por qué su familia está segura con <span class="text-primary">VitalHome Salud</span>.
+                </h2>
+
+                <p class="text-xl text-[#0b3164]/80 font-body leading-relaxed mb-12 max-w-xl">
+                    Sabemos lo difícil que es abrirle la puerta de su casa a un extraño. Por eso, no somos una bolsa de empleo. <strong class="text-[#0b3164]">Somos una institución médica con responsabilidad legal.</strong>
+                </p>
+
+                <!-- Checklist de Confianza -->
+                <ul class="space-y-8 mb-12">
+                    <li class="flex items-start group">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center border border-primary/5 group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5">
+                            <h3 class="text-lg font-bold text-secondary mb-1">Personal Clínico Verificado</h3>
+                            <p class="text-[#0b3164]/70 text-sm leading-relaxed max-w-md">
+                                Antecedentes revisados minuciosamente, pruebas psicológicas rigurosas y todas las certificaciones médicas al día.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="flex items-start group">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-50 text-green-600 flex items-center justify-center border border-green-100 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5">
+                            <h3 class="text-lg font-bold text-secondary mb-1">Soporte Clínico Prioritario (WhatsApp)</h3>
+                            <p class="text-[#0b3164]/70 text-sm leading-relaxed max-w-md">
+                                Canal directo y exclusivo con nuestras enfermeras jefe. Reporte novedades y resuelva dudas al instante sin intermediarios.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="flex items-start group">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-7h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5">
+                            <h3 class="text-lg font-bold text-secondary mb-1">Respaldo Institucional</h3>
+                            <p class="text-[#0b3164]/70 text-sm leading-relaxed max-w-md">
+                                Cobertura legal total, seguros de responsabilidad civil y protocolos de emergencia probados para cualquier eventualidad.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="#contacto" class="btn-brand px-10 py-5 group">
+                    <span class="relative z-10 flex items-center gap-3">
+                        Quiero una asesoría gratuita hoy
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+
+            <!-- 2. Columna Derecha: El Efecto de Capas (Layering) -->
+            <div class="order-1 lg:order-2 relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] flex items-center justify-center pt-12 lg:pt-0">
+                
+                <!-- Imagen Base (Emocional) -->
+                <div class="relative w-[85%] aspect-[4/3] sm:w-[80%] md:w-[85%] rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl border-4 md:border-8 border-white group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200&auto=format" 
+                        alt="Paciente adulto mayor recibiendo cuidado afectuoso de VitalHome" 
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
+                    />
+                    <!-- Overlay de gradiente suave -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-transparent"></div>
+                </div>
+
+                <!-- Imagen Secundaria Flotante (Enfermera) -->
+                <div class="absolute right-[2%] top-0 sm:right-[5%] sm:top-[-20px] md:right-[-40px] md:top-[-60px] lg:right-[-60px] lg:top-[-80px] w-[45%] aspect-square sm:w-[40%] md:w-[45%] rounded-[20px] md:rounded-[30px] overflow-hidden shadow-2xl border-2 md:border-4 border-white z-20 hover:scale-105 transition-transform duration-500 animate-float-delayed">
+                    <img 
+                        src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=800&auto=format" 
+                        alt="Enfermera jefe profesional de VitalHome Salud" 
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+
+                <!-- Tarjeta de Horarios/Disponibilidad -->
+                <div class="absolute left-[0%] bottom-10 sm:-left-4 sm:bottom-16 md:-left-20 md:bottom-20 bg-white p-4 md:p-6 rounded-[20px] md:rounded-[24px] shadow-2xl border border-[#e6e6e6]/50 z-30 max-w-[140px] sm:max-w-[180px] md:max-w-[220px] transition-transform duration-500 animate-float">
+                    <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-4">
+                        <div class="w-7 h-7 md:w-10 md:h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent">
+                            <svg class="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="block text-[7px] md:text-[10px] text-[#0b3164]/60 uppercase font-black tracking-tighter">Atención Médica</span>
+                            <span class="block text-[10px] md:text-sm font-bold text-secondary leading-tight">Disponible 24/7</span>
+                        </div>
+                    </div>
+                    <div class="hidden sm:block space-y-2 border-t border-[#e6e6e6] pt-3">
+                        <div class="flex justify-between text-[9px] md:text-[11px] font-medium text-secondary">
+                            <span>Lunes - Domingo</span>
+                            <span class="text-accent font-bold">24h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badge Oscuro Support -->
+                <div class="absolute right-[0%] bottom-4 sm:right-[-5%] sm:bottom-10 md:right-0 md:bottom-12 lg:bottom-16 bg-secondary text-white p-2.5 md:p-4 rounded-xl md:rounded-2xl shadow-xl z-30 flex items-center gap-2 md:gap-3 border border-white/10 transition-transform cursor-default scale-90 md:scale-100 animate-float-slow">
+                    <div class="relative">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-white/10 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-secondary animate-pulse"></div>
+                    </div>
+                    <div>
+                        <span class="block text-[9px] md:text-[11px] font-bold">Reporte de Novedades</span>
+                        <span class="block text-[8px] md:text-[10px] text-white/60">Vía WhatsApp Directo</span>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Social Proof / Certifications Strip -->
-        <div class="border-t border-b border-zinc-100 py-10">
-            <p class="text-center text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-8">Avalados e Insignados por Estándares de Clase Mundial</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
-                <!-- Cert logos placeholders (Grayscale SVGs ideally) -->
-                <div class="h-12 w-auto grayscale flex items-center font-bold text-xl text-zinc-700">ACHS Certified</div>
-                <div class="h-12 w-auto grayscale flex items-center font-bold text-xl text-zinc-700">Salud Integral+</div>
-                <div class="h-12 w-auto grayscale flex items-center font-bold text-xl text-zinc-700">Norma ISO 9001</div>
-                <div class="h-12 w-auto grayscale flex items-center font-bold text-xl text-zinc-700">Red Médica Latam</div>
-            </div>
-        </div>
-
     </div>
 </section>
+
+<!-- JSON-LD AEO & E-E-A-T Injection (Actualizado) -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "MedicalOrganization",
+    "name": "VitalHome Salud",
+    "url": "https://www.vitalhomesalud.com",
+    "description": "Institución médica con responsabilidad legal proveedora de enfermería y cuidado médico a domicilio. Ofrecemos personal clínico verificado, soporte prioritario vía WhatsApp y respaldo institucional total.",
+    "knowsAbout": ["Atención médica a domicilio", "Seguridad del paciente", "Cuidado domiciliario profesional"]
+  }
+}
+</script>

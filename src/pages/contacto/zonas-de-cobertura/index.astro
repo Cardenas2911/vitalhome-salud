@@ -1,0 +1,183 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { 
+  Map, 
+  Navigation, 
+  ShieldCheck, 
+  Clock, 
+  ArrowRight,
+  Home,
+  Building2,
+  Stethoscope
+} from "lucide-react";
+
+const title = "Zonas de Cobertura VitalHome | El Hospital de Élite en su Hogar";
+---
+
+<Layout title={title}>
+  <Header />
+
+  <main class="bg-white pt-40 pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      
+      <!-- HERO COBERTURA (MAES: Vender la Hiper-Conveniencia) -->
+      <div class="text-center max-w-4xl mx-auto mb-20 space-y-6">
+        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] bg-blue-50 px-4 py-2 rounded-full border border-blue-100/50">
+          Atención Domiciliaria Exclusiva
+        </span>
+        <h1 class="text-4xl md:text-6xl font-black text-[#011633] leading-tight font-heading">
+          No se desplace. <span class="text-[#155ec0]">Nosotros llegamos a usted.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-[#011633]/60 font-medium leading-relaxed">
+          En VitalHome Salud hemos eliminado las barreras físicas. No buscamos que venga a una clínica; llevamos la excelencia del cuidado hospitalario directamente a su sala. Nuestra red de "Concierge Médico" cubre los principales sectores de Bogotá y la Región Sabana con respuesta inmediata.
+        </p>
+      </div>
+
+      <!-- BENTO GRID DE COBERTURA (Trust Signals & Dominio Territorial) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:h-[600px]">
+        
+        <!-- Tarjeta Grande: Mapa Visual y Bogotá -->
+        <div class="md:col-span-8 bg-[#061a36] rounded-[48px] overflow-hidden relative group p-10 flex flex-col justify-end border border-white/5">
+          <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+            <img 
+              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1600" 
+              alt="Cobertura Bogotá" 
+              class="w-full h-full object-cover grayscale contrast-125"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#061a36] via-[#061a36]/40 to-transparent"></div>
+          </div>
+          
+          <div class="relative z-10 space-y-4">
+            <div class="size-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mb-4">
+              <Navigation className="size-7 text-blue-400" />
+            </div>
+            <h2 class="text-4xl font-black text-white font-heading">Bogotá D.C.</h2>
+            <p class="text-white/70 font-medium max-w-lg">
+              Cobertura total prioritaria en sectores como Santa Ana, La Cabrera, Rosales, Chicó, Santa Bárbara y Colina Campestre. Nuestra unidad móvil está siempre a menos de 45 minutos de su puerta.
+            </p>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <span class="bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-[10px] font-black text-white/80 uppercase tracking-tighter">Zona Norte</span>
+              <span class="bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-[10px] font-black text-white/80 uppercase tracking-tighter">Zona Noroccidente</span>
+              <span class="bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-[10px] font-black text-white/80 uppercase tracking-tighter">Usaquén</span>
+              <span class="bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-[10px] font-black text-white/80 uppercase tracking-tighter">Chapinero</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjetas Derecha: Sabana Norte y Plus -->
+        <div class="md:col-span-4 flex flex-col gap-6">
+          <div class="flex-1 bg-[#f8fafc] rounded-[48px] p-10 border border-[#e2e8f0] group hover:bg-white hover:shadow-2xl transition-all duration-500">
+            <div class="size-14 rounded-2xl bg-[#155ec0] flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
+              <Building2 className="size-7 text-white" />
+            </div>
+            <h3 class="text-2xl font-black text-[#011633] mb-3 font-heading">Región Sabana</h3>
+            <p class="text-[#011633]/60 font-semibold text-sm leading-relaxed mb-6">
+              Servicio exclusivo en Chía, Cajicá y Zipaquirá. Llevamos la misma calidad clínica de la capital a su zona campestre.
+            </p>
+            <div class="flex items-center gap-2 text-[#155ec0] font-black text-[10px] uppercase tracking-widest">
+              Cobertura Activa <Clock className="size-3" />
+            </div>
+          </div>
+
+          <div class="flex-1 bg-blue-50 rounded-[48px] p-10 border border-blue-100 relative overflow-hidden group transition-all duration-500 hover:shadow-xl">
+            <div class="relative z-10">
+              <h3 class="text-xl font-black text-[#011633] mb-3 font-heading italic">"El hospital va a casa"</h3>
+              <p class="text-[#011633]/60 font-bold text-[11px] uppercase tracking-[0.1em] mb-4">
+                Ventaja Competitiva VitalHome®
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-center gap-2 text-sm font-bold text-[#011633]/80">
+                  <ShieldCheck className="size-4 text-[#155ec0]" /> Sin traslados estresantes
+                </li>
+                <li class="flex items-center gap-2 text-sm font-bold text-[#011633]/80">
+                  <Home className="size-4 text-[#155ec0]" /> Comodidad 100% familiar
+                </li>
+                <li class="flex items-center gap-2 text-sm font-bold text-[#011633]/80">
+                  <Stethoscope className="size-4 text-[#155ec0]" /> Equipos portátiles élite
+                </li>
+              </ul>
+            </div>
+            <div class="absolute -right-10 -bottom-10 size-40 bg-blue-400/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA FINAL (Conversión) -->
+      <div class="mt-20 bg-[#061a36] rounded-[48px] p-12 md:p-20 text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-400/5 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="relative z-10 space-y-8">
+          <h2 class="text-3xl md:text-5xl font-black text-white font-heading leading-tight max-w-3xl mx-auto">
+            ¿Estamos disponibles en su zona hoy mismo?
+          </h2>
+          <p class="text-white/60 font-medium text-lg max-w-2xl mx-auto">
+            Confirme cobertura y solicite una valoración inmediata por WhatsApp. Nuestro equipo logístico validará la ruta más rápida hacia su hogar.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a 
+              href="https://wa.me/573138050356" 
+              class="w-full sm:w-auto bg-[#155ec0] hover:bg-white text-white hover:text-[#061a36] px-10 py-6 rounded-2xl font-black text-[12px] uppercase tracking-[0.2em] transition-all shadow-2xl hover:-translate-y-1 block md:inline-block"
+            >
+              Confirmar mi Barrio (WhatsApp)
+            </a>
+            <a 
+              href="/contacto/" 
+              class="text-white/80 hover:text-white font-black text-[11px] uppercase tracking-widest flex items-center gap-2 group border-b border-white/20 pb-1"
+            >
+              Volver al formulario <ArrowRight className="size-4 group-hover:translate-x-2 transition-transform" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<!-- SCHEMA AREA SERVED (IA & SEO Authority) -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": "https://vitalhomesalud.com/#organization",
+  "name": "VitalHome Salud - Atención Domiciliaria",
+  "description": "Atención médica, enfermería y rehabilitación de élite directamente en su hogar en Bogotá y Sabana.",
+  "telephone": "+573138050356",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Bogotá"
+    },
+    {
+      "@type": "City",
+      "name": "Chía"
+    },
+    {
+      "@type": "City",
+      "name": "Cajicá"
+    },
+    {
+      "@type": "City",
+      "name": "Zipaquirá"
+    },
+    {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "4.6097",
+        "longitude": "-74.0817"
+      },
+      "geoRadius": "50000" 
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+573138050356",
+    "contactType": "customer service",
+    "contactOption": "TollFree"
+  }
+}
+</script>

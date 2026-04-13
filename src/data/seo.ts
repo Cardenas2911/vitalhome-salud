@@ -64,15 +64,15 @@ export const seoConfig: Record<string, SeoEntry> = {
 
   // Metodología
   "/metodologia/": {
-    title: "Metodología VitalCare® - VitalHome Salud: Ingeniería del Cuidado",
-    description: "Descubra nuestra metodología propietaria VitalCare®, un enfoque sistemático para el bienestar sostenible en el hogar.",
-    keywords: "Metodología Cuidado Domiciliario, VitalCare, evaluación holística, intervención multidisciplinaria",
+    title: "Metodología VitalHome® - VitalHome Salud: Ingeniería del Cuidado",
+    description: "Descubra nuestra metodología propietaria VitalHome®, un enfoque sistemático para el bienestar sostenible en el hogar.",
+    keywords: "Metodología Cuidado Domiciliario, VitalHome, evaluación holística, intervención multidisciplinaria",
     schemaType: "HowTo",
   },
-  "/metodologia/vitalcare/": {
-    title: "Detalle Metodología VitalCare® | Cuidado Domiciliario Excepcional",
-    description: "Profundice en los pasos de nuestra Metodología VitalCare® para un cuidado domiciliario excepcional y resultados medibles.",
-    keywords: "Metodología VitalCare, planificación personalizada, monitoreo continuo, atención predictiva",
+  "/metodologia/VitalHome/": {
+    title: "Detalle Metodología VitalHome® | Cuidado Domiciliario Excepcional",
+    description: "Profundice en los pasos de nuestra Metodología VitalHome® para un cuidado domiciliario excepcional y resultados medibles.",
+    keywords: "Metodología VitalHome, planificación personalizada, monitoreo continuo, atención predictiva",
     schemaType: "HowTo",
   },
   "/metodologia/enfoque-multidisciplinario/": {
@@ -122,31 +122,13 @@ export const seoConfig: Record<string, SeoEntry> = {
     schemaType: "WebPage",
   },
 
-  // Alianzas
-  "/alianzas/": {
-    title: "Alianzas Estratégicas y Certificaciones | VitalHome Salud",
-    description: "Descubra nuestras alianzas estratégicas con hospitales y universidades, y nuestras certificaciones de calidad.",
-    keywords: "Alianzas Salud Domiciliaria, colaboraciones médicas, hospitales de prestigio, solvencia institucional",
-    schemaType: "WebPage",
-  },
-  "/alianzas/colaboraciones/": {
-    title: "Alianzas Estratégicas y Colaboraciones | VitalHome Salud",
-    description: "Conozca nuestras colaboraciones con hospitales y universidades para integrar innovaciones médicas en el cuidado domiciliario.",
-    keywords: "Colaboraciones Médicas Salud, alianzas estratégicas, universidades ciencias de la salud, innovaciones médicas",
-    schemaType: "WebPage",
-  },
-  "/alianzas/certificaciones/": {
-    title: "Certificaciones y Acreditaciones de Calidad | VitalHome Salud",
-    description: "VitalHome Salud cuenta con certificaciones y acreditaciones que avalan nuestra excelencia operativa y seguridad en el servicio.",
-    keywords: "Certificaciones Salud Domiciliaria, acreditaciones, excelencia operativa, auditorías externas",
-    schemaType: "WebPage",
-  },
+
 
   // Contacto
   "/contacto/": {
-    title: "Contacto VitalHome Salud: Inicie su Camino Hacia la Tranquilidad",
-    description: "Contáctenos para solicitar una consultoría gratuita, conocer nuestras oficinas o explorar oportunidades laborales.",
-    keywords: "Contacto VitalHome Salud, consultoría gratuita, evaluación de necesidades, familiar responsable",
+    title: "Contacto VitalHome Salud | Concierge Médico y Valoración Élite",
+    description: "Inicie su camino hacia la tranquilidad. Solicite una valoración clínica gratuita en casa. Nuestra unidad médica móvil llega a su puerta en Bogotá y Sabana.",
+    keywords: "Contacto VitalHome Salud, valoración gratuita, enfermería a domicilio, médico en casa, concierge médico, familiar responsable",
     schemaType: "ContactPage",
   },
   "/contacto/formulario/": {
@@ -155,10 +137,10 @@ export const seoConfig: Record<string, SeoEntry> = {
     keywords: "Formulario Contacto Salud, consultoría estratégica gratuita, evaluación necesidades personalizada",
     schemaType: "ContactPage",
   },
-  "/contacto/ubicacion/": {
-    title: "Ubicación y Oficinas de VitalHome Salud | Atención Presencial",
-    description: "Visite nuestras oficinas centrales para consultas personalizadas y asesoramiento experto en cuidado domiciliario.",
-    keywords: "Ubicación VitalHome Salud, oficinas centrales, consultas personalizadas, cuidado domiciliario",
+  "/contacto/zonas-de-cobertura/": {
+    title: "Zonas de Cobertura VitalHome | El Hospital de Élite en su Hogar",
+    description: "Cobertura geográfica inmediata en Bogotá y Sabana Norte. No se desplace, nuestra red de cuidado llega a su barrio con rigor clínico y exclusividad.",
+    keywords: "Cobertura VitalHome Salud, enfermeras a domicilio Bogotá, médico en casa Chía, zonas de servicio salud, Sabana Norte",
     schemaType: "LocalBusiness",
   },
   "/contacto/trabaja-con-nosotros/": {
@@ -197,23 +179,17 @@ export const seoConfig: Record<string, SeoEntry> = {
 
   // ── BLOQUE 3: HUB DE RECURSOS ────────────────────────────────────
 
-  "/recursos/blog/": {
-    title: "Blog VitalHome Salud: Conocimiento Experto para el Cuidado del Adulto Mayor",
-    description: "Explore artículos especializados, guías prácticas y noticias del sector sobre el cuidado del adulto mayor en casa.",
-    keywords: "Blog Cuidado Adultos Mayores, artículos salud domiciliaria, enfermedades crónicas, familiar responsable",
-    schemaType: "Blog",
+  "/recursos/": {
+    title: "Hub de Recursos VitalHome Salud: Conocimiento Experto en Salud",
+    description: "Explore nuestro centro de recursos: blog especializado, preguntas frecuentes y glosario médico para el cuidado del adulto mayor.",
+    keywords: "Recursos Salud Domiciliaria, blog cuidado adultos mayores, FAQ enfermería, glosario médico",
+    schemaType: "CollectionPage",
   },
   "/recursos/faq/": {
     title: "Preguntas Frecuentes sobre Cuidado Domiciliario | VitalHome Salud",
     description: "Respuestas claras a sus dudas sobre enfermería, planes de cuidado, tecnología y aspectos administrativos de VitalHome Salud.",
     keywords: "Preguntas Frecuentes Cuidado Domiciliario, FAQ enfermería, dudas planes de cuidado, servicios de monitoreo",
     schemaType: "FAQPage",
-  },
-  "/recursos/guias/": {
-    title: "Guías y Descargables para Cuidado Domiciliario Efectivo | VitalHome",
-    description: "Acceda a guías prácticas, plantillas y consejos expertos para optimizar el bienestar del adulto mayor en casa.",
-    keywords: "Guías Cuidado Domiciliario, descargables salud, plantillas planificación cuidados, ejercicios rehabilitación",
-    schemaType: "CollectionPage",
   },
   "/recursos/glosario/": {
     title: "Glosario Médico: Términos Clave de Salud Domiciliaria | VitalHome",

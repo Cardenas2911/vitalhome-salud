@@ -1,0 +1,50 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+
+const pasos = [
+  { numero: "01", titulo: "Evaluación Holística", desc: "Diagnóstico integral del paciente: estado físico, emocional, social y entorno del hogar." },
+  { numero: "02", titulo: "Planificación Personalizada", desc: "Diseño de un plan de cuidado adaptado a las necesidades evolutivas y objetivos terapéuticos." },
+  { numero: "03", titulo: "Intervención Multidisciplinaria", desc: "Ejecución coordinada por enfermeras, fisioterapeutas y especialistas bajo un único protocolo." },
+  { numero: "04", titulo: "Monitoreo Continuo", desc: "Seguimiento en tiempo real de indicadores de salud y ajuste proactivo del plan de cuidado." },
+];
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="bg-primary text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Proceso Propietario</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
+          Metodología VitalHome®: 4 Pilares para un Cuidado Domiciliario de Resultados.
+        </h1>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">
+          Es la <strong>ingeniería detrás del cuidado</strong>, diseñada para adaptarse a las <strong>necesidades evolutivas</strong> del adulto mayor y ofrecer <strong>tranquilidad inquebrantable</strong> al <strong>familiar responsable</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+      <div class="max-w-4xl mx-auto space-y-8">
+        {pasos.map(p => (
+          <div class="flex gap-6 items-start bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <span class="text-5xl font-bold text-accent/30 font-heading w-16 shrink-0">{p.numero}</span>
+            <div>
+              <h2 class="text-xl font-bold text-primary font-heading mb-2">{p.titulo}</h2>
+              <p class="text-gray-600">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 px-6 bg-gray-50 text-center">
+      <a href="/contacto/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
+        Iniciar su Proceso de Cuidado
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

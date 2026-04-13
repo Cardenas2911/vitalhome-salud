@@ -1,0 +1,431 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { 
+  ShieldCheck, 
+  Baby, 
+  Activity, 
+  Moon, 
+  HeartPulse, 
+  Stethoscope, 
+  FileText, 
+  ChevronRight,
+  Plus,
+  ArrowRight,
+  PhoneCall,
+  Wind
+} from "lucide-react";
+
+const title = "Cuidados Pediátricos y Neonatales a Domicilio | VitalHome Salud";
+const description = "Enfermería especializada en recién nacidos y niños con necesidades médicas. Protocolo VitalCare® pediátrico, turnos nocturnos y soporte 24/7. Recupere su tranquilidad.";
+
+// Marcado JSON-LD Avanzado (@graph)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vitalhomesalud.com/servicios/cuidados-pediatricos/#webpage",
+      "url": "https://vitalhomesalud.com/servicios/cuidados-pediatricos/",
+      "name": "Cuidados Pediátricos Especializados"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vitalhomesalud.com/servicios/cuidados-pediatricos/#service",
+      "name": "Enfermería Pediátrica y Neonatal Domiciliaria",
+      "description": "Atención experta de enfermería a domicilio para recién nacidos, bebés prematuros y niños con condiciones crónicas. Incluye monitoreo de signos vitales, manejo de sondas, oxigenoterapia y turnos de vigilancia nocturna.",
+      "provider": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      },
+      "serviceType": "Pediatric Home Health Care",
+      "audience": {
+        "@type": "Patient",
+        "healthCondition": {
+          "@type": "MedicalCondition",
+          "name": "Condiciones pediátricas crónicas, prematuridad y cuidados post-operatorios infantiles"
+        }
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "4.6097",
+          "longitude": "-74.0817"
+        },
+        "geoRadius": "50000"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "COP",
+        "price": "0",
+        "description": "Valoración clínica pediátrica inicial gratuita en casa.",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vitalhomesalud.com/servicios/cuidados-pediatricos/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿El personal de enfermería tiene experiencia específica con recién nacidos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Asignamos exclusivamente enfermeras con formación comprobada en neonatología y pediatría clínica para garantizar la seguridad absoluta de su pequeño."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo actúan ante una emergencia médica respiratoria en casa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nuestras enfermeras pediátricas están entrenadas en RCP infantil avanzado y operan bajo estrictos protocolos de escalado clínico con nuestra Dirección Médica para estabilización y traslados inmediatos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo contratar el servicio de enfermería solo para las noches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Por supuesto. Nuestros turnos de vigilancia nocturna están diseñados específicamente para que los padres puedan dormir con tranquilidad, sabiendo que el estado de salud de su hijo está monitoreado minuto a minuto."
+          }
+        }
+      ]
+    }
+  ]
+};
+
+const breadcrumbItems = [
+  { label: "Servicios", href: "/servicios/" },
+  { label: "Cuidados Pediátricos", isCurrent: true }
+];
+---
+
+<Layout title={title}>
+  <Header />
+  
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative">
+    
+    {/* BREADCRUMBS OVER HERO */}
+    <div class="absolute top-36 left-0 right-0 z-40">
+        <div class="container mx-auto px-6">
+            <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
+    </div>
+
+    {/* SECCIÓN 1: HERO DE PROTOCOLO PEDIÁTRICO (SPLIT-SCREEN LIGHT) */}
+    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-10">
+        
+        {/* ✨ MANCHA MÍTICA AZUL CIAN ✨ */}
+        <div class="absolute top-1/2 left-[20%] w-[800px] h-[800px] bg-[#155ec0]/15 blur-[120px] rounded-full -translate-y-1/2 -z-10 pointer-events-none"></div>
+
+        {/* Decoración de fondo suave auxiliar */}
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#155ec0]/5 blur-[150px] rounded-full -z-20"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white blur-[100px] rounded-full -z-20"></div>
+
+        <div class="container mx-auto px-6 py-10 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Columna Izquierda: Mensaje de Autoridad y Paz (Fondo Claro) */}
+                <div class="lg:col-span-7 space-y-10">
+                    <div class="space-y-6">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] bg-blue-50 px-5 py-2 rounded-full border border-blue-100 inline-block">
+                            Protocolo VitalCare® Pediátrico
+                        </span>
+                        <h1 class="text-4xl md:text-7xl font-black text-[#061a36] leading-[1.1] font-heading">
+                            Tranquilidad para los Padres: <span class="text-[#155ec0]">Cuidados Pediátricos</span> Expertos en Casa.
+                        </h1>
+                        <p class="text-xl text-[#061a36]/70 font-medium leading-relaxed max-w-2xl">
+                            Cuidar de un hijo con necesidades médicas especiales o un recién nacido prematuro no debería significar perder su paz mental. Implementamos enfermería especializada en neonatología que asume el control clínico en su hogar. Usted recupere su rol de padre; nosotros garantizamos la seguridad absoluta de su pequeño.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-8 pt-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <ShieldCheck className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Élite</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Personal Neonatal</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Activity className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">24/7</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Monitoreo Clínico</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Columna Derecha: Isla Clínica (Checklist de Seguridad en AZUL) */}
+                <div class="lg:col-span-5">
+                    <div class="bg-[#155ec0] rounded-[40px] p-8 md:p-12 shadow-[0_40px_80px_rgba(21,94,192,0.3)] border border-white/10 relative group">
+                        <div class="absolute -top-6 -right-6 size-24 bg-[#061a36] rounded-3xl flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
+                            <Baby className="size-10 text-white" />
+                        </div>
+
+                        <h2 class="text-2xl font-black text-white font-heading mb-8">Checklist de Seguridad Pediátrica</h2>
+                        
+                        <ul class="space-y-6 mb-12">
+                            {[
+                                { t: "Monitoreo de Signos Vitales", d: "Seguimiento minuto a minuto de oxigenación y frecuencia." },
+                                { t: "Manejo de Condiciones Complejas", d: "Soporte técnico para pacientes crónicos y agudos." },
+                                { t: "Prevención de Emergencias", d: "Intervención inmediata ante riesgos respiratorios." }
+                            ].map((item) => (
+                                <li class="flex gap-4">
+                                    <div class="mt-1">
+                                        <div class="size-5 rounded-full bg-white/20 flex items-center justify-center">
+                                            <div class="size-2 rounded-full bg-white"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">{item.t}</p>
+                                        <p class="text-white/70 text-xs font-medium leading-relaxed">{item.d}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a 
+                            href="/contacto/" 
+                            class="block w-full bg-white text-[#155ec0] text-center py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-[#061a36] hover:text-white transition-all duration-500 hover:-translate-y-1"
+                        >
+                            Consultar Disponibilidad de Especialistas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* SECCIÓN 2: FLEXIBILIDAD Y ALCANCE (BENTO GRID) */}
+    <section class="py-32 bg-[#ffffff]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mb-20 space-y-4">
+                <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Alcance del Cuidado</span>
+                <h2 class="text-4xl md:text-5xl font-black text-[#061a36] font-heading leading-tight italic">
+                    Cobertura Clínica Diseñada para el Entorno Familiar.
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Turnos Nocturnos */}
+                <div class="bg-white rounded-[40px] p-10 shadow-sm border border-slate-200/60 flex flex-col justify-between group hover:shadow-2xl transition-all duration-500 border-b-4 border-b-[#155ec0]">
+                    <div class="space-y-8">
+                        <div class="size-16 rounded-3xl bg-blue-50 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Moon className="size-8 text-[#155ec0]" />
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-black text-[#061a36] font-heading">Turnos Nocturnos (Rescate del Sueño)</h3>
+                            <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                                Vigilancia clínica de 10 o 12 horas para que los padres puedan dormir con la certeza de que su hijo respira y está seguro.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-10 flex items-center gap-2 text-[#155ec0] font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                        Saber más <ArrowRight className="size-3" />
+                    </div>
+                </div>
+
+                {/* Cuidados Crónicos */}
+                <div class="md:col-span-1 bg-white rounded-[40px] p-10 shadow-sm border border-slate-200/60 flex flex-col justify-between group hover:shadow-2xl transition-all duration-500">
+                    <div class="space-y-8">
+                        <div class="size-16 rounded-3xl bg-red-50 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <HeartPulse className="size-8 text-red-500" />
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-black text-[#061a36] font-heading">Cuidados Crónicos 24/7</h3>
+                            <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                                Soporte vital y administración de tratamientos complejos para niños con síndromes genéticos o discapacidades.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-10 flex items-center gap-2 text-[#155ec0] font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                        Saber más <ArrowRight className="size-3" />
+                    </div>
+                </div>
+
+                {/* Transición UCIN */}
+                <div class="bg-white rounded-[40px] p-10 shadow-sm border border-slate-200/60 flex flex-col justify-between group hover:shadow-2xl transition-all duration-500 border-t-4 border-t-[#155ec0]/20">
+                    <div class="space-y-8">
+                        <div class="size-16 rounded-3xl bg-teal-50 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Stethoscope className="size-8 text-teal-600" />
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-black text-[#061a36] font-heading">Transición Hospital-Hogar</h3>
+                            <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                                Acompañamiento especializado para bebés prematuros recién salidos de la incubadora (UCIN). Evite reingresos.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-10 flex items-center gap-2 text-[#155ec0] font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                        Saber más <ArrowRight className="size-3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* SECCIÓN 3: EL PUENTE DE AUTORIDAD (INYECCIÓN DINÁMICA DE MICRO-GLOSARIO) */}
+    <section class="py-32 bg-[#ffffff] relative">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="space-y-10">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Excelencia Técnica</span>
+                        <h2 class="text-4xl md:text-6xl font-black text-[#061a36] font-heading leading-tight">Precisión Clínica ante Condiciones Complejas.</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium leading-relaxed">
+                        Nuestra autoridad médica se demuestra en el manejo de dispositivos y técnicas de alta sensibilidad. No somos cuidadores; somos el brazo extendido de la clínica en su habitación.
+                    </p>
+                    <div class="pt-6">
+                       <a href="/recursos/glosario/" class="inline-flex items-center gap-3 text-[#155ec0] font-black text-xs uppercase tracking-widest group">
+                          Ver Glosario de Pediatría <Plus className="size-4 group-hover:rotate-90 transition-transform" />
+                       </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="bg-[#f8f9fa] rounded-[32px] p-8 border border-slate-100 group hover:bg-[#061a36] transition-all duration-500">
+                        <div class="flex gap-6">
+                            <div class="size-12 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-110">
+                                <FileText className="size-6 text-[#155ec0]" />
+                            </div>
+                            <div class="space-y-3">
+                                <h4 class="text-lg font-black text-[#061a36] font-heading group-hover:text-white transition-colors">Gastrostomía (Sonda GTT)</h4>
+                                <p class="text-slate-500 text-sm font-medium leading-relaxed group-hover:text-white/60 transition-colors">
+                                    Nuestro personal asume el manejo completo y estéril de la alimentación por sonda, evitando infecciones y reflujos en su hijo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#f8f9fa] rounded-[32px] p-8 border border-slate-100 group hover:bg-[#061a36] transition-all duration-500">
+                        <div class="flex gap-6">
+                            <div class="size-12 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-110">
+                                <Wind className="size-6 text-blue-500" />
+                            </div>
+                            <div class="space-y-3">
+                                <h4 class="text-lg font-black text-[#061a36] font-heading group-hover:text-white transition-colors">Soporte Respiratorio / Oxigenoterapia</h4>
+                                <p class="text-slate-500 text-sm font-medium leading-relaxed group-hover:text-white/60 transition-colors">
+                                    Monitoreo estricto de la saturación de oxígeno y manejo de secreciones con técnicas no invasivas para la tranquilidad del menor.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* SECCIÓN 4: LA RED DE SEGURIDAD (FAQ INYECTADO) */}
+    <section class="py-32 bg-[#ffffff]">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-20">
+                <div class="lg:w-1/3 space-y-8">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Resolución de Dudas</span>
+                        <h2 class="text-4xl font-black text-[#061a36] font-heading leading-tight">Sus Dudas sobre el Cuidado de su Hijo, Resueltas.</h2>
+                    </div>
+                    <p class="text-slate-500 font-medium">Sabemos que confiar el cuidado de su hijo a terceros es una decisión difícil. Aquí respondemos con transparencia.</p>
+                </div>
+
+                <div class="lg:w-2/3 space-y-6">
+                    {[
+                        { 
+                          q: "¿El personal tiene experiencia específica con recién nacidos?", 
+                          a: "Sí, asignamos exclusivamente enfermeras con formación comprobada en neonatología y pediatría clínica. No asignamos personal generalista a casos pediátricos." 
+                        },
+                        { 
+                          q: "¿Cómo actúan ante una emergencia médica en casa?", 
+                          a: "Nuestras enfermeras están entrenadas en RCP pediátrico avanzado y tienen línea directa con nuestra coordinación clínica 24/7 para activar traslados si es necesario." 
+                        },
+                        { 
+                          q: "¿Puedo contratar el servicio solo para las noches?", 
+                          a: "Por supuesto. Nuestros turnos de 'Rescate del Sueño' están diseñados para devolverle el descanso a los padres mientras nosotros velamos por la salud del menor." 
+                        }
+                    ].map((faq, index) => (
+                        <div class="bg-white rounded-[32px] p-8 border border-slate-200 group transition-all">
+                            <div class="flex justify-between items-center gap-4 cursor-pointer">
+                                <h4 class="text-lg font-black text-[#061a36]">{faq.q}</h4>
+                                <Plus className="size-5 text-[#155ec0] group-hover:rotate-45 transition-transform" />
+                            </div>
+                            <p class="mt-4 text-slate-500 text-sm font-medium leading-relaxed max-w-2xl">
+                                {faq.a}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* SECCIÓN 5: FOOTER DE CONVERSIÓN (Z-PATTERN) */}
+    <section class="py-32 bg-[#ffffff]">
+        <div class="container mx-auto px-6">
+            <div class="bg-[#011633] rounded-[60px] p-12 md:p-24 text-white relative overflow-hidden shadow-3xl">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#155ec0]/40 via-transparent to-transparent"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+                    <div class="space-y-10">
+                        <div class="space-y-6 italic">
+                            <p class="text-3xl md:text-5xl font-black font-heading leading-tight italic">
+                                "Por primera vez en 6 meses pudimos dormir una noche completa sabiendo que nuestra hija estaba monitorizada."
+                            </p>
+                            <div class="flex items-center gap-4">
+                               <div class="size-16 rounded-full bg-blue-500 flex items-center justify-center">
+                                  <HeartPulse className="size-8 text-white" />
+                               </div>
+                               <div>
+                                  <p class="text-white font-black text-xl">Familia Valenzuela</p>
+                                  <p class="text-blue-400 font-bold text-xs uppercase tracking-widest">Rescate del Sueño VitalHome</p>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-[40px] p-10 space-y-8">
+                        <div class="space-y-2 text-center">
+                            <h3 class="text-2xl font-black text-[#011633] font-heading italic">Active su Red de Seguridad</h3>
+                            <p class="text-[#011633]/60 font-medium text-sm">Un especialista se comunicará en menos de 15 minutos.</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <a href="/contacto/" class="block w-full bg-[#155ec0] text-center text-white py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-[#061a36] transition-all duration-500">
+                                Coordinar Valoración Pediátrica
+                            </a>
+                            <a href="https://wa.me/573138050356" class="flex items-center justify-center gap-3 w-full border border-slate-200 text-[#011633] py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-slate-50 transition-all">
+                                <PhoneCall className="size-4" /> Hablar con Especialista
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

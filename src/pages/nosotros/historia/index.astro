@@ -1,50 +1,253 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { 
+  History, 
+  Users, 
+  Activity, 
+  ShieldCheck, 
+  ChevronRight,
+  Timeline,
+  Calendar,
+  Sparkles,
+  ArrowUpRight,
+  Stethoscope
+} from "lucide-react";
+
+// Metadatos y Marcado JSON-LD Avanzado (@graph)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://vitalhomesalud.com/#organization",
+      "name": "VitalHome Salud"
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://vitalhomesalud.com/nosotros/historia/#webpage",
+      "url": "https://vitalhomesalud.com/nosotros/historia/",
+      "name": "Historia y Evolución de VitalHome Salud",
+      "description": "Trayectoria de VitalHome Salud en la innovación del cuidado domiciliario, nacida de la necesidad de brindar servicios de salud integrales desde la comodidad del hogar.",
+      "isPartOf": {
+        "@id": "https://vitalhomesalud.com/#website"
+      },
+      "about": {
+        "@id": "https://vitalhomesalud.com/#organization"
+      }
+    }
+  ]
+};
+
+const title = "Nuestra Historia y Trayectoria | VitalHome Salud";
+const breadcrumbItems = [
+  { label: "Institucional", href: "/nosotros/" },
+  { label: "Nuestra Historia", isCurrent: true }
+];
 ---
 
-<Layout>
+<Layout title={title}>
   <Header />
-  <main>
-    <section class="bg-primary text-white py-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Trayectoria Institucional</p>
-        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-          Nuestra Trayectoria: Liderando la Innovación en Cuidado Domiciliario.
-        </h1>
-        <p class="text-white/80 text-lg max-w-3xl mx-auto">
-          Desde nuestros inicios, VitalHome Salud ha sido pionera en la <strong>atención domiciliaria especializada</strong>, integrando <strong>tecnología de vanguardia</strong> y un <strong>equipo multidisciplinario</strong> de élite para transformar hogares en entornos de <strong>bienestar sostenible</strong>.
-        </p>
-      </div>
-    </section>
 
-    <!-- LÍNEA DE TIEMPO -->
-    <section class="py-20 px-6 bg-white">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold text-primary font-heading text-center mb-12">Hitos Fundacionales</h2>
-        <div class="space-y-10 border-l-2 border-accent pl-8">
-          {[
-            { año: "Fundación", hito: "Nacimos con la visión de ofrecer una alternativa superior al cuidado tradicional, con el bienestar del adulto mayor como norte." },
-            { año: "Expansión", hito: "Integramos tecnología de monitoreo remoto y ampliamos nuestro equipo multidisciplinario de élite." },
-            { año: "Metodología VitalCare®", hito: "Creamos nuestra metodología propietaria que garantiza resultados clínicos medibles y consistentes." },
-            { año: "Hoy", hito: "Líderes en ingeniería de bienestar, con miles de hogares transformados y la confianza de familias en toda la región." },
-          ].map(item => (
-            <div class="relative">
-              <div class="absolute -left-11 top-1 w-4 h-4 bg-accent rounded-full"></div>
-              <p class="text-accent font-bold mb-1">{item.año}</p>
-              <p class="text-gray-700">{item.hito}</p>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+    
+    <!-- Miga de Pan: Inicio > Institucional > Nuestra Historia -->
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
+      <Breadcrumbs client:load items={breadcrumbItems} />
+    </div>
+
+    <!-- Background Elements -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+      
+      <!-- SECCIÓN 1: Hero de Origen (Split-Screen) -->
+      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative mb-24">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
+          
+          <!-- Columna Izquierda: Texto -->
+          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
+            <div class="space-y-6">
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
+                Nuestro Legado Clínico
+              </span>
+              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading text-glow">
+                Nuestra Trayectoria: <span class="text-blue-400">Liderando la Innovación.</span>
+              </h1>
+              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
+                VitalHome Salud nació de una convicción profunda: la recuperación más humana y efectiva ocurre en casa. Surgimos de la necesidad vital de brindar a cada paciente un servicio de élite desde la comodidad de su hogar y en compañía de su núcleo familiar. Nuestra historia es el reflejo de un compromiso inquebrantable con la tranquilidad que usted busca hoy.
+              </p>
             </div>
-          ))}
+          </div>
+
+          <!-- Columna Derecha: Isla Clínica -->
+          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center items-center">
+            <div class="bg-white rounded-[40px] p-2 shadow-2xl relative z-10 border border-slate-100 overflow-hidden group max-w-md w-full">
+               <div class="relative overflow-hidden rounded-[38px] aspect-[4/5]">
+                  <img 
+                    src="/images/historia-fundacion-vitalhome.jpg" 
+                    alt="Fundación de VitalHome Salud" 
+                    class="w-full h-full object-cover sepia-[0.3] grayscale-[0.2] transition-all duration-700 group-hover:scale-110 group-hover:sepia-0 group-hover:grayscale-0"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#061a36]/80 to-transparent"></div>
+                  <div class="absolute bottom-10 left-10">
+                     <p class="text-white font-black text-xs uppercase tracking-[0.3em] mb-1">Hito Fundacional</p>
+                     <p class="text-blue-400 text-[10px] font-black uppercase tracking-widest italic">Vocación de Cuidado Domiciliario</p>
+                  </div>
+               </div>
+            </div>
+            
+            <a 
+              href="#timeline" 
+              class="mt-10 w-full max-w-md bg-[#155ec0] hover:bg-[#061a36] text-white flex items-center justify-center gap-3 font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1"
+            >
+              Conocer Nuestro Legado
+              <ChevronRight className="size-4" />
+            </a>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="py-12 px-6 bg-gray-50 text-center">
-      <a href="/nosotros/equipo/" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-        Explorar Hitos de Nuestra Historia
-      </a>
-    </section>
+      <!-- SECCIÓN 2: La Evolución del Cuidado (Timeline en Bento Grid) -->
+      <section id="timeline" class="max-w-[1600px] mx-auto pt-16 pb-32">
+        <div class="text-center mb-24 space-y-4">
+          <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Cronología de Excelencia</span>
+          <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Años Transformando Hogares en <span class="text-[#155ec0]">Espacios Seguros.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- El Propósito Inicial -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+               <History className="size-32 text-[#104892]" />
+            </div>
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white relative z-10">
+              <Calendar className="size-8" />
+            </div>
+            <div class="relative z-10">
+              <span class="text-[#155ec0] font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">El Origen</span>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">El Propósito Inicial</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Comenzamos con una meta clara: evitar que las familias se separaran en momentos de vulnerabilidad médica. Llevamos el rigor hospitalario a la sala de su casa para mantener el núcleo familiar unido.
+              </p>
+            </div>
+          </div>
+
+          <!-- Expansión Multidisciplinaria -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+               <Users className="size-32 text-[#104892]" />
+            </div>
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white relative z-10">
+              <Stethoscope className="size-8" />
+            </div>
+            <div class="relative z-10">
+              <span class="text-[#155ec0] font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Crecimiento Integral</span>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Expansión Multidisciplinaria</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Comprendimos que la enfermería no era suficiente. Incorporamos médicos, fisioterapeutas y psicólogos para ofrecer una rehabilitación funcional y emocional completa sin salir del hogar.
+              </p>
+            </div>
+          </div>
+
+          <!-- La Era de la Especialización -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+               <ShieldCheck className="size-32 text-[#104892]" />
+            </div>
+            <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white relative z-10">
+              <ShieldCheck className="size-8" />
+            </div>
+            <div class="relative z-10">
+              <span class="text-[#155ec0] font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Consolidación Ética</span>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">La Era de la Especialización</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Elevamos nuestros estándares. Instituimos un proceso de selección implacable, verificando titulaciones y exigencias de los entes reguladores de salud para garantizar personal honesto y responsable.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ingeniería de Bienestar (Hoy) -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full relative overflow-hidden">
+             <div class="absolute inset-0 bg-blue-50/30 -z-10 animate-pulse"></div>
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+               <Activity className="size-32 text-[#104892]" />
+            </div>
+            <div class="size-16 rounded-2xl bg-[#155ec0] flex items-center justify-center shrink-0 text-white relative z-10">
+              <Sparkles className="size-8" />
+            </div>
+            <div class="relative z-10">
+              <span class="text-[#155ec0] font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">El Presente</span>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading">Ingeniería de Bienestar (Hoy)</h4>
+              <p class="text-slate-500 font-medium text-base leading-relaxed">
+                Integramos el monitoreo constante y la innovación tecnológica. Hoy, VitalHome Salud no solo cuida; previene, predice y asegura una vida plena en el hogar bajo protocolos de élite.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: Destructor de Objeciones (La Filosofía Actual) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[60px] relative overflow-hidden mb-24">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-200/20 blur-[100px] rounded-full"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+           <div class="lg:col-span-8 space-y-8">
+            <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight italic">Un Pasado Sólido para un Futuro Seguro.</h2>
+            <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
+              Nuestra filosofía siempre ha sido brindar servicios integrales apuntando a la recuperación óptima del paciente y al apoyo absoluto de su familia. Esta trayectoria nos permite asegurarle hoy que no estamos improvisando: tenemos la estructura, la experiencia y la calidez humana para respaldar la vida de quienes usted más ama.
+            </p>
+          </div>
+          <div class="lg:col-span-4 flex justify-center lg:justify-end">
+             <div class="bg-[#061a36] p-12 rounded-[50px] shadow-2xl text-center space-y-4 max-w-xs rotate-2">
+                <p class="text-white/50 font-black text-[10px] uppercase tracking-widest italic">Nuestra Garantía</p>
+                <p class="text-blue-400 font-black text-2xl font-heading">Experiencia Certificada</p>
+                <p class="text-white/30 text-[9px] font-medium leading-relaxed uppercase tracking-tighter">Cero Improvisación · Protocolos Auditados · Ética Médica</p>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: Footer de Conversión (Z-Pattern) -->
+      <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <!-- Mensaje de Cierre (Left) -->
+          <div class="space-y-12">
+            <h3 class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">Sea parte de nuestra historia de éxito. Permítanos cuidar de los suyos.</h3>
+            <p class="text-lg text-slate-500 font-medium italic underline decoration-blue-200 underline-offset-8">Cada familia que atendemos es un nuevo capítulo de nuestra vocación.</p>
+          </div>
+
+          <!-- Formulario Minimalista (Right) -->
+          <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl border border-slate-100 w-full max-w-xl lg:ml-auto">
+            <h4 class="text-2xl font-black text-[#011633] font-heading mb-8">Solicitar Valoración Respaldada</h4>
+            <form class="space-y-6">
+              <input type="text" placeholder="Su Nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              <input type="tel" placeholder=" WhatsApp / Teléfono" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              <textarea placeholder="Cuéntenos la necesidad de cuidado de su familiar" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none h-32"></textarea>
+              <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
+                Solicitar Valoración Respaldada
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
   <Footer />
+
+  <!-- CTA Sticky Flotante -->
+
 </Layout>
+
+<style>
+  html { scroll-behavior: smooth; }
+  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+</style>

@@ -1,70 +1,144 @@
 ---
 // src/components/Comparison.astro
 ---
-<section class="py-24 bg-background-brand">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-24 bg-white relative overflow-hidden">
+    <!-- Fondos decorativos para profundidad -->
+    <div class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 -z-10"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-heading font-bold text-secondary sm:text-4xl">
-                VitalHome Salud vs. El Enfoque Tradicional
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-primary text-xs font-bold uppercase tracking-widest mb-6 border border-primary/10">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                Análisis Comparativo
+            </div>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-[#0b3164] mb-6 leading-[1.15]">
+                VitalHome Salud vs. <span class="text-red-600/60">El Enfoque Tradicional</span>
             </h2>
-            <p class="mt-4 text-lg text-text-brand/70 max-w-2xl mx-auto font-body">Decida sobre datos precisos. Así es como nuestra ingeniería de cuidado supera los estándares convencionales y las agencias genéricas.</p>
+            <p class="text-xl text-[#0b3164]/70 max-w-3xl mx-auto font-body leading-relaxed">
+                Decida sobre datos precisos. Nuestra ingeniería de cuidado supera los estándares convencionales y las agencias genéricas en cada métrica crítica.
+            </p>
         </div>
 
-        <div class="max-w-4xl mx-auto bg-surface-brand shadow-xl rounded-2xl overflow-hidden border border-zinc-200">
-            <!-- Table Header -->
-            <div class="grid grid-cols-3 bg-zinc-50 border-b border-zinc-200 p-6 items-center">
-                <div class="col-span-1 text-sm font-bold text-secondary uppercase tracking-wider">Métrica de Cuidado</div>
-                <div class="col-span-1 text-center font-bold text-zinc-500 text-sm uppercase">Agencia Tradicional</div>
-                <div class="col-span-1 text-center font-bold text-primary text-sm uppercase rounded-md bg-blue-50 py-2 border border-blue-100">VitalHome Salud</div>
-            </div>
+        <!-- Tabla Comparativa Premium Responsiva -->
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-white rounded-[32px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-[#e6e6e6] overflow-hidden">
+                
+                <!-- Encabezados (Solo Desktop) -->
+                <div class="hidden md:grid grid-cols-12 bg-background-brand/30 border-b border-[#e6e6e6]">
+                    <div class="col-span-4 p-8 text-sm font-bold text-secondary uppercase tracking-[0.1em]">Métrica de Cuidado</div>
+                    <div class="col-span-4 p-8 text-center text-[11px] font-bold text-[#b91c1c]/40 uppercase tracking-[0.15em] border-x border-[#e6e6e6]">Agencia Tradicional</div>
+                    <div class="col-span-4 p-8 text-center text-sm font-black text-[#0b3164] uppercase tracking-[0.15em] bg-primary/5">VitalHome Salud</div>
+                </div>
 
-            <!-- Row 1 -->
-            <div class="grid grid-cols-3 border-b border-zinc-100 p-6 items-center hover:bg-zinc-50/50 transition-colors">
-                <div class="col-span-1 font-medium text-text-brand">Supervisión Médica</div>
-                <div class="col-span-1 flex justify-center text-zinc-400">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    <span class="sr-only">No</span>
-                </div>
-                <div class="col-span-1 flex items-center justify-center text-green-600 bg-green-50 py-1 px-3 rounded-full mx-auto font-medium text-sm">
-                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    Filtro Estricto 24/7
-                </div>
-            </div>
+                <!-- Filas -->
+                <div class="divide-y divide-[#e6e6e6]/60">
+                    
+                    <!-- Fila 1: Supervisión -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center group transition-colors hover:bg-slate-50/50">
+                        <!-- Métrica (Header en móvil) -->
+                        <div class="col-span-1 md:col-span-4 p-6 md:p-8 bg-slate-50 md:bg-transparent border-b md:border-b-0 border-[#e6e6e6]/60">
+                            <h4 class="font-bold text-[#0b3164] mb-1">Supervisión Médica</h4>
+                            <p class="text-[12px] text-[#0b3164]/50 leading-tight">Control técnico y clínico constante.</p>
+                        </div>
+                        
+                        <!-- Comparación en Móvil (2 Columnas) -->
+                        <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-8 divide-x md:divide-x-0 border-[#e6e6e6]/60">
+                            <!-- Tradicional -->
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center border-r md:border-r-0 md:border-x border-[#e6e6e6]/60">
+                                <span class="md:hidden text-[9px] font-bold text-red-600/40 uppercase mb-3 tracking-widest">Tradicional</span>
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-red-50 text-red-700 text-[10px] md:text-[11px] font-bold border border-red-100/50">
+                                    <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                    Inexistente
+                                </div>
+                            </div>
+                            <!-- VitalHome -->
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center bg-primary/[0.02]">
+                                <span class="md:hidden text-[9px] font-bold text-primary/40 uppercase mb-3 tracking-widest">VitalHome</span>
+                                <div class="inline-flex items-center gap-1.5 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-green-50 text-green-700 text-[10px] md:text-xs font-bold border border-green-100 shadow-sm text-center">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Especializada 24/7
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Row 2 -->
-            <div class="grid grid-cols-3 border-b border-zinc-100 p-6 items-center hover:bg-zinc-50/50 transition-colors">
-                <div class="col-span-1 font-medium text-text-brand">Protocolos de Emergencia</div>
-                <div class="col-span-1 flex justify-center text-zinc-500 text-sm">
-                    Reacción Tardía
-                </div>
-                <div class="col-span-1 flex items-center justify-center text-green-600 font-medium text-sm">
-                     <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    Clínicamente Escalable
-                </div>
-            </div>
+                    <!-- Fila 2: Protocolos -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center group transition-colors hover:bg-slate-50/50">
+                        <div class="col-span-1 md:col-span-4 p-6 md:p-8 bg-slate-50 md:bg-transparent border-b md:border-b-0 border-[#e6e6e6]/60">
+                            <h4 class="font-bold text-[#0b3164] mb-1">Protocolos de Emergencia</h4>
+                            <p class="text-[12px] text-[#0b3164]/50 leading-tight">Capacidad de reacción ante crisis.</p>
+                        </div>
+                        <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-8 divide-x md:divide-x-0 border-[#e6e6e6]/60">
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center border-r md:border-r-0 md:border-x border-[#e6e6e6]/60">
+                                <span class="md:hidden text-[9px] font-bold text-red-600/40 uppercase mb-3 tracking-widest">Tradicional</span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                    <span class="text-[10px] md:text-[11px] font-bold text-red-600/60 uppercase">Reacción Tardía</span>
+                                </div>
+                            </div>
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center bg-primary/[0.02]">
+                                <span class="md:hidden text-[9px] font-bold text-primary/40 uppercase mb-3 tracking-widest">VitalHome</span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-[11px] md:text-sm font-bold text-green-700 uppercase">Respuesta Clínica</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-             <!-- Row 3 -->
-            <div class="grid grid-cols-3 border-b border-zinc-100 p-6 items-center hover:bg-zinc-50/50 transition-colors">
-                <div class="col-span-1 font-medium text-text-brand">Selección de Personal</div>
-                <div class="col-span-1 flex justify-center text-zinc-500 text-sm">
-                    Bolsa de Empleo
+                    <!-- Fila 3: Selección -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center group transition-colors hover:bg-slate-50/50">
+                        <div class="col-span-1 md:col-span-4 p-6 md:p-8 bg-slate-50 md:bg-transparent border-b md:border-b-0 border-[#e6e6e6]/60">
+                            <h4 class="font-bold text-[#0b3164] mb-1">Filtro de Selección</h4>
+                            <p class="text-[12px] text-[#0b3164]/50 leading-tight">Rigurosidad en el ingreso de personal.</p>
+                        </div>
+                        <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-8 divide-x md:divide-x-0 border-[#e6e6e6]/60">
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center border-r md:border-r-0 md:border-x border-[#e6e6e6]/60">
+                                <span class="md:hidden text-[9px] font-bold text-red-600/40 uppercase mb-3 tracking-widest">Tradicional</span>
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-red-50 text-red-700 text-[10px] md:text-[11px] font-bold border border-red-100/50 text-center">
+                                    Bolsa de Empleo
+                                </div>
+                            </div>
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center bg-primary/[0.02]">
+                                <span class="md:hidden text-[9px] font-bold text-primary/40 uppercase mb-3 tracking-widest">VitalHome</span>
+                                <div class="inline-flex items-center gap-1.5 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-green-50 text-green-700 text-[10px] md:text-xs font-bold border border-green-100 shadow-sm text-center">
+                                    Filtro Top 5%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fila 4: Metodología -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center group transition-colors hover:bg-slate-50/50">
+                        <div class="col-span-1 md:col-span-4 p-6 md:p-8 bg-slate-50 md:bg-transparent border-b md:border-b-0 border-[#e6e6e6]/60">
+                            <h4 class="font-bold text-[#0b3164] mb-1">Metodología</h4>
+                            <p class="text-[12px] text-[#0b3164]/50 leading-tight">Enfoque proactivo vs. reactivo.</p>
+                        </div>
+                        <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-8 divide-x md:divide-x-0 border-[#e6e6e6]/60">
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center border-r md:border-r-0 md:border-x border-[#e6e6e6]/60">
+                                <span class="md:hidden text-[9px] font-bold text-red-600/40 uppercase mb-3 tracking-widest">Tradicional</span>
+                                <span class="text-[10px] md:text-[11px] font-bold text-red-600/60 uppercase text-center">Cuidado Genérico</span>
+                            </div>
+                            <div class="md:col-span-4 p-6 md:p-8 flex flex-col items-center justify-center bg-primary/[0.02]">
+                                <span class="md:hidden text-[9px] font-bold text-primary/40 uppercase mb-3 tracking-widest">VitalHome</span>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                    <span class="text-[10px] md:text-sm font-black text-green-700 uppercase tracking-widest text-center">VitalHome® Pro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="col-span-1 flex items-center justify-center text-green-600 font-medium text-sm">
-                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    Top 5% Vocacional
-                </div>
-            </div>
-            
-            <!-- Row 4 -->
-            <div class="grid grid-cols-3 p-6 items-center hover:bg-zinc-50/50 transition-colors">
-                <div class="col-span-1 font-medium text-text-brand">Metodología de Bienestar</div>
-                <div class="col-span-1 flex justify-center text-zinc-400">
-                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </div>
-                <div class="col-span-1 flex items-center justify-center text-green-600 font-bold text-sm bg-green-50 py-1 px-3 rounded-full mx-auto">
-                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    VitalCare® Pro
+
+                <!-- Footer de Tabla (CTA sutil) -->
+                <div class="bg-slate-50 p-6 text-center border-t border-[#e6e6e6]">
+                    <p class="text-[11px] text-[#0b3164]/40 font-bold uppercase tracking-widest">
+                        La diferencia radica en nuestra responsabilidad legal e institucional.
+                    </p>
                 </div>
             </div>
         </div>

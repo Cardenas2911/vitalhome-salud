@@ -1,43 +1,345 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import FooterColumn from "../../components/ui/FooterColumn";
+import HeroSection from "../../components/ui/hero-section-9";
+import { Breadcrumbs } from "../../components/ui/breadcrumbs";
+import { 
+  Stethoscope, 
+  Baby, 
+  Activity, 
+  PhoneCall, 
+  BrainIcon, 
+  Dumbbell, 
+  Thermometer, 
+  ChevronRight,
+  ShieldCheck,
+  ClipboardCheck,
+  UserCheck,
+  Clock,
+  ArrowRight,
+  Star,
+  Users
+} from "lucide-react";
+
+// Metadatos y SEO
+const title = "Ecosistema de Salud Integral y Enfermería Domiciliaria | VitalHome";
+const description = "Descubra nuestro catálogo de atención clínica en casa. Desde enfermería y telemedicina hasta psicología y rehabilitación Senior Fit. Agende su valoración gratuita.";
+
+// Datos del Hero con imágenes verificadas
+const heroImages = [
+  "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop"
+];
+
+const breadcrumbItems = [
+  { label: "Servicios", isCurrent: true }
+];
+
+const steps = [
+  {
+    title: "Valoración Exhaustiva",
+    description: "Analizamos el historial clínico y el entorno del paciente para identificar necesidades reales.",
+    icon: ClipboardCheck
+  },
+  {
+    title: "Diseño A Medida",
+    description: "Creamos un plan de cuidado personalizado, alineado con las metas de recuperación.",
+    icon: ShieldCheck
+  },
+  {
+    title: "Asignación de Especialistas",
+    description: "Seleccionamos al equipo clínico más idóneo según la especialidad requerida.",
+    icon: UserCheck
+  },
+  {
+    title: "Seguimiento Continuo",
+    description: "Monitoreamos la evolución periódicamente para ajustar el tratamiento en tiempo real.",
+    icon: Clock
+  }
+];
 ---
 
-<Layout>
+<Layout title={title}>
   <Header />
-  <main>
-    <section class="bg-primary text-white py-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Nuestros Servicios</p>
-        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-          Soluciones Estratégicas: Enfermería, Rehabilitación y Bienestar en su Hogar.
-        </h1>
-        <p class="text-white/80 text-lg max-w-3xl mx-auto mb-10">
-          Nuestras <strong>unidades de negocio</strong> ofrecen <strong>precisión clínica</strong> y <strong>calidez humana</strong> para cada necesidad: desde <strong>enfermería domiciliaria especializada</strong> hasta <strong>masajes terapéuticos</strong>, <strong>actividad física adaptada</strong> y <strong>Planes de Cuidado Integral</strong>.
-        </p>
-        <a href="/contacto/" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-          Explorar Servicios Detallados
+
+  <div class="w-full bg-[#f8fafc]">
+    
+    <!-- Hero con correcciones de visibilidad -->
+    <section class="relative w-full overflow-hidden">
+      <!-- Breadcrumbs Premium sobre el Hero -->
+      <div class="absolute top-36 left-0 right-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+          <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
+      </div>
+
+      <HeroSection 
+        client:load
+        title="Ecosistema de Salud Integral y Bienestar en Casa."
+        subtitle="Atención clínica especializada, telemedicina y rehabilitación funcional para cada etapa de la vida. Diseñado para devolverle la tranquilidad."
+        actions={[
+          {
+            text: "Agendar Valoración Gratuita",
+            onClick: () => { window.location.href = "/contacto/" },
+            className: "bg-[#155ec0] text-white hover:bg-blue-600 shadow-[0_20px_40px_rgba(21,94,192,0.3)]"
+          },
+          {
+            text: "Ver Catálogo",
+            onClick: () => { document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' }) },
+            variant: "outline",
+            className: "border-white/20 text-white hover:bg-white/5"
+          }
+        ]}
+        stats={[
+          { value: "24/7", label: "Soporte Clínico", iconName: "activity" },
+          { value: "+10", label: "Especialidades", iconName: "users" },
+          { value: "Élite", label: "Estándar", iconName: "shield" }
+        ]}
+        images={heroImages}
+      />
+    </section>
+
+    <!-- SECCIÓN: Catálogo de Servicios (Bento Grid CORREGIDO) -->
+    <section id="catalogo" class="py-24 relative overflow-hidden px-4 md:px-0">
+        <!-- Fondos decorativos -->
+        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-100/30 to-transparent blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Encabezado con mejor contraste y estilo -->
+            <div class="flex flex-col items-center text-center mb-20">
+                <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] mb-4 bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100/50">
+                    Nuestras Especialidades
+                </span>
+                <h2 class="text-4xl md:text-5xl font-black text-[#011633] leading-tight font-heading">
+                    Cuidado <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#104892] via-[#155ec0] to-[#104892]">Multidisciplinario</span> de Élite.
+                </h2>
+            </div>
+
+            <!-- Bento Structure Corregido -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                
+                <!-- 1. Enfermería (2/3) - ARREGLADO: Título no tapa caras e imagen OK -->
+                <div class="md:col-span-2 relative rounded-[48px] overflow-hidden bg-[#011633] shadow-2xl min-h-[550px] flex flex-col group border border-white/5">
+                    <!-- Badge Flotante Superior -->
+                    <div class="absolute top-0 left-0 z-30 bg-white/95 backdrop-blur-md pr-12 pb-10 pl-10 pt-10 rounded-br-[50px] shadow-2xl max-w-[70%] border-b border-r border-[#e6e6e6]/30">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="bg-blue-50 p-2 rounded-lg">
+                                <Stethoscope className="size-5 text-[#155ec0]" />
+                            </div>
+                            <span class="text-[9px] font-black text-[#155ec0] uppercase tracking-[0.2em]">Servicio Maestro</span>
+                        </div>
+                        <h3 class="text-2xl md:text-4xl font-heading font-black text-[#011633] leading-tight mb-4">
+                            Enfermería Domiciliaria Especializada
+                        </h3>
+                        <p class="text-sm md:text-base text-[#011633]/70 font-medium max-w-sm leading-relaxed">
+                            Cuidado clínico de alto rendimiento para pacientes crónicos y post-operatorios.
+                        </p>
+                    </div>
+                    <!-- Imagen corregida con overlay dinámico -->
+                    <div class="absolute inset-0 z-0 overflow-hidden">
+                        <img 
+                            src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop" 
+                            alt="Atención de enfermería" 
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[4000ms]" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#011633] via-[#011633]/30 to-transparent"></div>
+                    </div>
+                    <!-- Botón Flotante Inferior -->
+                    <div class="absolute bottom-10 right-10 z-30">
+                        <a href="/servicios/enfermeria/" class="bg-[#155ec0] hover:bg-white hover:text-[#155ec0] text-white px-10 py-5 rounded-2xl flex items-center gap-3 transition-all duration-500 shadow-[0_20px_40px_rgba(21,94,192,0.4)] font-black text-[10px] uppercase tracking-widest group/btn">
+                            Ver Detalles <ArrowRight className="size-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Terapias (1/3) - ARREGLADO: Contraste y botón visible -->
+                <div class="bg-white rounded-[48px] p-10 flex flex-col justify-between overflow-hidden group border border-[#e2e8f0] shadow-sm hover:shadow-2xl transition-all duration-500 relative">
+                    <div class="relative z-10">
+                        <div class="bg-blue-50 size-16 rounded-3xl flex items-center justify-center mb-8 border border-blue-100 group-hover:bg-[#155ec0] group-hover:rotate-6 transition-all duration-300">
+                            <Thermometer className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                        </div>
+                        <h4 class="text-2xl font-heading font-black text-[#011633] mb-4">Terapias de Recuperación</h4>
+                        <p class="text-[#011633]/60 font-medium text-sm leading-relaxed mb-10">Fisioterapia y masajes clínicos para restaurar la alegría de vivir.</p>
+                        <a href="/servicios/terapias-recuperacion/" class="inline-flex items-center text-[#155ec0] font-black text-[10px] uppercase tracking-[0.25em] group-hover:gap-3 transition-all duration-300">
+                            Explorar <ArrowRight className="size-3" />
+                        </a>
+                    </div>
+                    <!-- Imagen sutil en background -->
+                    <img 
+                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop" 
+                      alt="Terapias" 
+                      class="absolute -right-20 -bottom-20 w-56 h-56 rounded-full object-cover opacity-10 blur-[2px] group-hover:opacity-20 transition-opacity rotate-12" 
+                    />
+                </div>
+
+                <!-- 3. Senior Fit (1/3) - ARREGLADO: Texto legible en blanco -->
+                <div class="bg-[#011633] text-white rounded-[48px] p-10 flex flex-col group relative overflow-hidden border border-white/5 shadow-2xl hover:-translate-y-2 transition-transform duration-500">
+                    <div class="relative z-10 mb-8">
+                        <div class="flex justify-between items-start mb-10">
+                            <div class="bg-white/10 p-3 rounded-2xl backdrop-blur-md border border-white/10">
+                                <Star className="size-8 text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform" />
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-[0.3em] bg-blue-500 px-3 py-1 rounded-full">Vitalidad</span>
+                        </div>
+                        <h4 class="text-3xl font-heading font-black text-white mb-4">Senior Fit</h4>
+                        <p class="text-white/60 font-medium text-base leading-relaxed mb-8">Entrenamiento adaptado para mantener su independencia.</p>
+                    </div>
+                    <a href="/servicios/acondicionamiento-fisico-geriatrico/" class="mt-auto bg-white hover:bg-[#155ec0] text-[#011633] hover:text-white py-5 rounded-2xl transition-all font-black text-[10px] uppercase tracking-widest text-center shadow-lg transform active:scale-95">
+                        Ver Programa de Fortaleza
+                    </a>
+                    <div class="absolute -right-10 -bottom-10 size-48 bg-blue-600/10 rounded-full blur-3xl"></div>
+                </div>
+
+                <!-- 4. Médico en Casa (2/3) - ARREGLADO: Imagen full & overlay correcto -->
+                <div class="md:col-span-2 relative rounded-[48px] overflow-hidden bg-white shadow-xl min-h-[480px] flex flex-col group border border-[#e2e8f0]">
+                    <!-- Imagen de fondo real -->
+                    <div class="absolute inset-0 z-0">
+                        <img 
+                            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop" 
+                            alt="Consulta Médica" 
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[4000ms]" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent"></div>
+                    </div>
+                    <!-- Contenido alineado a la izquierda -->
+                    <div class="relative z-20 p-12 md:p-16 max-w-lg">
+                        <div class="flex items-center gap-3 mb-6">
+                            <Activity className="size-6 text-[#155ec0]" />
+                            <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.3em]">Atención Médica</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-heading font-black text-[#011633] mb-6 leading-tight">Médico en Casa & Telemedicina</h3>
+                        <p class="text-base text-[#011633]/70 font-medium leading-relaxed mb-10">
+                            Diagnóstico profesional y planes de manejo clínico sin necesidad de desplazamientos.
+                        </p>
+                        <a href="/servicios/medicina-domiciliaria/" class="inline-flex bg-[#011633] hover:bg-[#155ec0] text-white px-10 py-5 rounded-2xl transition-all font-black text-[10px] uppercase tracking-widest shadow-2xl group/btn2">
+                            Agendar Cita Médica <ChevronRight className="size-4 ml-2 group-hover/btn2:translate-x-1 transition-transform" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Pediatría (Legibilidad Corregida: Texto Blanco) -->
+                <div class="bg-[#155ec0] text-white rounded-[48px] p-12 flex flex-col justify-between group shadow-xl border border-white/10 relative overflow-hidden hover:scale-[1.02] transition-transform">
+                    <div class="relative z-10">
+                        <div class="bg-white/10 w-fit p-4 rounded-3xl mb-8 backdrop-blur-sm border border-white/20">
+                            <Baby className="size-10 text-white" />
+                        </div>
+                        <h4 class="text-3xl font-heading font-black text-white mb-4">Cuidados Pediátricos</h4>
+                        <p class="text-white/90 font-medium text-base mb-6 leading-relaxed">
+                            "El cuidado más sensible para el tesoro más grande."
+                        </p>
+                    </div>
+                    <a href="/servicios/cuidados-pediatricos/" class="relative z-10 w-full text-center py-5 rounded-2xl bg-white text-[#155ec0] hover:bg-[#011633] hover:text-white transition-all font-black text-[10px] uppercase tracking-widest shadow-lg">
+                        Consultar Disponibilidad
+                    </a>
+                    <div class="absolute -right-20 -bottom-20 size-60 bg-blue-400/20 rounded-full blur-[80px]"></div>
+                </div>
+
+                <!-- 6. Psicología (Simple & Elegant) -->
+                <div class="bg-white rounded-[48px] p-12 border border-[#e2e8f0] group hover:border-[#155ec0]/30 transition-all shadow-sm">
+                    <div class="bg-blue-50 size-20 rounded-[2rem] flex items-center justify-center mb-10 border border-blue-100">
+                        <BrainIcon className="size-10 text-[#155ec0]" />
+                    </div>
+                    <h4 class="text-2xl font-heading font-black text-[#011633] mb-4 uppercase tracking-tighter">Bienestar Mental</h4>
+                    <p class="text-[#011633]/60 font-semibold text-base mb-10">
+                        Salud emocional en casa para el paciente y su núcleo familiar.
+                    </p>
+                    <a href="/servicios/apoyo-psicologico/" class="text-[#155ec0] font-black text-[10px] uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        Hablar con Psicoterapeuta <ChevronRight className="size-4" />
+                    </a>
+                </div>
+
+                <!-- 7. Monitoreo -->
+                <div class="bg-slate-100 rounded-[48px] p-12 flex flex-col justify-between border border-slate-200 relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-10">
+                            <span class="size-3 rounded-full bg-red-500 animate-pulse"></span>
+                            <span class="text-[10px] font-black text-[#011633] uppercase tracking-[0.3em]">En Vivo</span>
+                        </div>
+                        <h4 class="text-3xl font-heading font-black text-[#011633] mb-4">Monitoreo 24/7</h4>
+                        <p class="text-slate-500 font-bold text-xs uppercase tracking-widest mb-6">Central VitalHome®</p>
+                    </div>
+                    <a href="/servicios/gestion-monitoreo-salud/" class="w-full text-center py-5 rounded-2xl bg-white text-[#011633] hover:bg-[#011633] hover:text-white border border-slate-300 transition-all font-black text-[10px] uppercase tracking-widest shadow-sm">
+                        Contactar Central
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Ruta de Atención Pulida -->
+    <section class="bg-white py-32 relative overflow-hidden border-t border-[#e2e8f0]">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row gap-24 items-center">
+        <div class="lg:w-1/2">
+          <div class="bg-blue-50 text-[#155ec0] px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest w-fit mb-6">Metodología VitalHome</div>
+          <h2 class="text-4xl md:text-6xl font-black text-[#011633] leading-tight mb-8 font-heading">
+            Ingeniería de <br/> <span class="text-[#155ec0]">Bienestar Domiciliario.</span>
+          </h2>
+          <p class="text-lg text-[#011633]/70 leading-relaxed mb-12 font-medium">
+            No solo enviamos personal a casa; implementamos un sistema de recuperación supervisado por enfermeras jefas para garantizar excelencia.
+          </p>
+          <a href="/contacto/" class="bg-[#155ec0] text-white px-12 py-6 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] shadow-2xl hover:bg-[#011633] hover:-translate-y-1 transition-all inline-block">
+            Solicitar Valoración Clinica
+          </a>
+        </div>
+
+        <div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {steps.map((step, idx) => (
+            <div class="group p-10 rounded-[40px] border border-[#e2e8f0] bg-[#f8fafc]/50 hover:bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <div class="size-16 rounded-2xl bg-white border border-[#e2e8f0] flex items-center justify-center mb-8 shadow-sm group-hover:bg-[#155ec0] group-hover:border-[#155ec0] transition-colors">
+                <step.icon className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+              </div>
+              <h4 class="text-xl font-black text-[#011633] mb-4 font-heading">{step.title}</h4>
+              <p class="text-sm text-[#011633]/60 font-semibold leading-relaxed">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer de Conversión Final -->
+    <section class="bg-[#011633] py-24 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 blur-3xl pointer-events-none">
+          <div class="absolute top-0 right-0 size-96 bg-blue-500 rounded-full"></div>
+          <div class="absolute bottom-0 left-0 size-96 bg-blue-900 rounded-full"></div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="text-center md:text-left">
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight font-heading mb-6">
+             Su camino a la paz <br/> mental empieza hoy.
+          </h2>
+          <div class="flex items-center gap-4 justify-center md:justify-start">
+              <div class="flex -space-x-4">
+                  {[1,2,3].map(i => (
+                    <div class="size-10 rounded-full border-2 border-[#011633] bg-slate-400 overflow-hidden">
+                        <img src={`https://i.pravatar.cc/100?u=${i}`} alt="Avatar" />
+                    </div>
+                  ))}
+              </div>
+              <p class="text-white/60 text-[10px] font-bold uppercase tracking-widest">+2.500 Familias atendidas</p>
+          </div>
+        </div>
+        <a 
+          href="https://wa.me/573138050356" 
+          target="_blank"
+          class="flex items-center gap-6 bg-[#155ec0] text-white font-black px-12 py-7 rounded-[2rem] hover:bg-white hover:text-[#011633] transition-all duration-500 shadow-2xl text-xs tracking-[0.2em] uppercase"
+        >
+          <PhoneCall className="size-6 animate-pulse" />
+          Hablar con Especialista
         </a>
       </div>
     </section>
 
-    <section class="py-20 px-6 bg-white">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-        {[
-          { titulo: "Enfermería Domiciliaria", desc: "Atención médica experta para pacientes crónicos y post-operatorios en la comodidad del hogar.", href: "/servicios/enfermeria-domiciliaria/" },
-          { titulo: "Masajes Terapéuticos", desc: "Alivio del dolor y bienestar físico-emocional con especialistas certificados a domicilio.", href: "/servicios/masajes-terapeuticos/" },
-          { titulo: "Actividad Física y Rehabilitación", desc: "Recuperación de movilidad y autonomía con programas personalizados de fisioterapia.", href: "/servicios/actividad-fisica-rehabilitacion/" },
-          { titulo: "Planes de Cuidado Integral", desc: "Atención holística y coordinada adaptada a las necesidades evolutivas del adulto mayor.", href: "/servicios/planes-cuidado-integral/" },
-        ].map(s => (
-          <a href={s.href} class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent transition block">
-            <h2 class="text-xl font-bold text-primary font-heading mb-3">{s.titulo}</h2>
-            <p class="text-gray-600 text-sm">{s.desc}</p>
-            <span class="inline-block mt-4 text-accent font-semibold text-sm">Ver más →</span>
-          </a>
-        ))}
-      </div>
-    </section>
-  </main>
-  <Footer />
+  </div>
+
+  <FooterColumn client:visible />
 </Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

@@ -1,42 +1,291 @@
 ---
 // src/components/Header.astro
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { 
+    name: 'Inicio', 
+    href: '/',
+    icon: '<svg class="w-6 h-6 mr-3 text-[#155ec0]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'
+  },
+  { 
+    name: 'Servicios', 
+    href: '/servicios/',
+    icon: '<svg class="w-6 h-6 mr-3 text-[#155ec0]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>',
+    subItems: [
+        { name: 'Enfermería Domiciliaria', href: '/servicios/enfermeria/' },
+        { name: 'Cuidados Pediátricos', href: '/servicios/cuidados-pediatricos/' },
+        { name: 'Médico Domiciliario y Telemedicina', href: '/servicios/medicina-domiciliaria/' },
+        { name: 'Acompañamiento y Monitoreo 24/7', href: '/servicios/gestion-monitoreo-salud/' },
+        { name: 'Apoyo Psicológico', href: '/servicios/apoyo-psicologico/' },
+        { name: 'Fisioterapia y Rehabilitación', href: '/servicios/fisioterapia-rehabilitacion/' },
+        { name: 'Acondicionamiento Físico Geriátrico', href: '/servicios/acondicionamiento-fisico-geriatrico/' },
+        { name: 'Terapias y Masajes de Recuperación', href: '/servicios/terapias-recuperacion/' }
+    ]
+  },
+  { 
+    name: 'Nosotros', 
+    href: '/nosotros/',
+    icon: '<svg class="w-6 h-6 mr-3 text-[#155ec0]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    subItems: [
+        { name: 'Quiénes Somos', href: '/nosotros/' },
+        { name: 'Misión, Visión y Valores', href: '/nosotros/mision-vision-valores/' },
+        { name: 'Equipo Profesional', href: '/nosotros/equipo/' },
+        { name: 'Nuestra Historia', href: '/nosotros/historia/' },
+        { name: 'Gobierno Corporativo', href: '/nosotros/gobierno-corporativo/' },
+        { name: 'Metodología VitalCare®', href: '/metodologia/' },
+        { name: 'Resultados y Casos de Éxito', href: '/resultados/' },
+    ]
+  },
+  { 
+    name: 'Recursos', 
+    href: '/recursos/',
+    icon: '<svg class="w-6 h-6 mr-3 text-[#155ec0]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+    subItems: [
+        { name: 'Blog de Salud Domiciliaria', href: '/recursos/' },
+        { name: 'Preguntas Frecuentes (FAQ)', href: '/recursos/faq/' },
+        { name: 'Glosario Médico', href: '/recursos/glosario/' }
+    ]
+  },
+  { 
+    name: 'Contacto', 
+    href: '/contacto/',
+    icon: '<svg class="w-6 h-6 mr-3 text-[#155ec0]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+  },
+];
+
+// Helper para saber si una ruta está activa
+const checkIsActive = (href: string) => {
+    if (href === '/') return currentPath === '/';
+    return currentPath.startsWith(href);
+};
 ---
-<header class="w-full bg-surface-brand shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
+
+<!-- Sticky Nav con Animación al Scroll -->
+<div class="w-full fixed top-0 left-0 right-0 z-50 pointer-events-none">
+    <header 
+        id="main-header" 
+        class="relative mx-auto mt-2 max-w-full lg:max-w-7xl px-4 lg:px-6 xl:px-10 bg-transparent border border-transparent shadow-none rounded-none lg:rounded-2xl pointer-events-auto transition-all duration-500 ease-in-out z-50"
+    >
+        <div class="flex justify-between items-center h-[72px] md:h-[88px]">
             <!-- Logo -->
-            <div class="flex-shrink-0 flex items-center">
-                <a href="/" class="text-2xl font-heading font-bold text-primary flex items-center gap-2">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/wzwygmng.json"
-                        trigger="hover"
-                        colors="primary:#104892"
-                        style="width:32px;height:32px">
-                    </lord-icon>
-                    VitalHome Salud
+            <div class="flex-shrink-0 flex items-center h-full py-2 mr-2 xl:mr-10">
+                <a href="/" class="flex items-center h-full focus:outline-none focus:ring-2 focus:ring-[#155ec0] focus:ring-offset-2 rounded-md" aria-label="Volver a la página principal de VitalHome">
+                    <img 
+                        src="/images/logo-vitalhomesalud.png" 
+                        alt="VitalHome Salud - Atención Médica Domiciliaria" 
+                        width="300" 
+                        height="100"
+                        fetchpriority="high"
+                        loading="eager"
+                        class="h-16 md:h-20 w-auto object-contain scale-110 origin-left"
+                    />
                 </a>
             </div>
             
-            <!-- Minimalist Navigation -->
-            <nav class="hidden md:flex space-x-8 items-center">
-                <a href="/servicios/enfermeria-domiciliaria/" class="text-text-brand hover:text-primary font-medium transition-colors">Servicios</a>
-                <a href="/institucional/metodologia-vitalcare/" class="text-text-brand hover:text-primary font-medium transition-colors">Metodología</a>
-                <a href="/recursos/faq/" class="text-text-brand hover:text-primary font-medium transition-colors">Conocimiento</a>
+            <!-- Minimalist Navigation con Efecto "Mancha Azul" (Active State) -->
+            <nav class="hidden lg:flex lg:space-x-1 xl:space-x-4 items-center font-heading text-sm xl:text-base" aria-label="Navegación Principal">
+                {navLinks.map((link) => {
+                    const isActive = checkIsActive(link.href);
+                    return (
+                        <div class="relative group">
+                            <!-- Efecto de Mancha Azul (Glow) detrás del texto -->
+                            <div class={`absolute inset-0 rounded-full blur-[14px] transition-all duration-500 z-0 pointer-events-none ${isActive ? 'bg-[#155ec0]/25 opacity-100' : 'bg-[#155ec0]/0 opacity-0 group-hover:bg-[#155ec0]/15 group-hover:opacity-100'}`}></div>
+                            
+                            <a 
+                                href={link.href} 
+                                class={`relative z-10 flex items-center font-medium tracking-wide transition-colors focus:outline-none focus:ring-2 focus:ring-[#155ec0] rounded-md px-1.5 xl:px-3 py-2 ${isActive ? 'text-[#104892]' : 'text-[#061a36] hover:text-[#104892]'}`}
+                            >
+                                <Fragment set:html={link.icon.replace('w-6 h-6 mr-3 text-[#155ec0]', `hidden xl:block w-4 h-4 mr-1.5 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-75 group-hover:opacity-100'}`)} />
+                                <span class="whitespace-nowrap">{link.name}</span>
+                                {link.subItems && (
+                                    <svg class={`w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180 ${isActive ? 'text-[#104892]' : 'text-[#061a36] group-hover:text-[#155ec0]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                )}
+                                <!-- Línea inferior sutil (Active & Hover) -->
+                                <span class={`absolute bottom-1 left-3 right-3 h-[1px] bg-[#155ec0] transition-all duration-300 ${isActive ? 'w-auto opacity-100' : 'w-0 opacity-0 group-hover:w-auto group-hover:opacity-60 left-1/2 -translate-x-1/2 group-hover:left-3 group-hover:translate-x-0 group-hover:right-3'}`}></span>
+                            </a>
+
+                            <!-- Nivel 2: Dropdown de enlaces -->
+                            {link.subItems && (
+                                <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                                    <div class="bg-white rounded-xl shadow-xl border border-[#e6e6e6]/80 py-3 w-64 md:w-72 overflow-hidden transform origin-top scale-95 group-hover:scale-100 transition-transform duration-300 mix-blend-normal">
+                                        {link.subItems.map((subItem) => (
+                                            <a 
+                                                href={subItem.href} 
+                                                class="block px-5 py-3 text-sm font-medium text-[#061a36] hover:bg-[#155ec0]/5 hover:text-[#155ec0] transition-colors border-l-2 border-transparent hover:border-[#155ec0]"
+                                            >
+                                                {subItem.name}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    );
+                })}
                 
-                <!-- Primary CTA -->
-                <a href="/contacto/formulario/" class="ml-8 inline-flex items-center justify-center px-6 py-2.5 border border-transparent rounded-md text-sm font-medium text-white bg-accent hover:bg-primary transition-all duration-300 shadow-sm hover:shadow">
-                    Agendar Consultoría
+                <!-- Primary CTA (Botón redondeado) -->
+                <a 
+                    href="/contacto/" 
+                    class={`ml-2 xl:ml-4 flex-shrink-0 whitespace-nowrap inline-flex items-center justify-center px-4 xl:px-6 py-2 xl:py-2.5 rounded-[12px] text-sm font-semibold tracking-wide transition-all duration-300 shadow hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#155ec0] focus:ring-offset-2 bg-[#104892] text-white hover:bg-[#061a36]`}
+                    aria-label="Solicitar Valoración Gratuita"
+                >
+                    Valoración Gratuita
                 </a>
             </nav>
-            
-            <!-- Mobile menu button (visual only for this prototype) -->
-            <div class="md:hidden flex items-center">
-                <button class="text-text-brand hover:text-primary p-2">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <!-- Mobile menu button -->
+            <div class="lg:hidden flex items-center z-50">
+                <button 
+                    id="mobile-menu-btn"
+                    class="text-[#061a36] hover:text-[#155ec0] p-2 focus:outline-none focus:ring-2 focus:ring-[#155ec0] rounded-md transition-colors"
+                    aria-label="Abrir menú principal"
+                >
+                    <svg id="icon-menu" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="icon-close" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+
+    <!-- Mobile Menu Backdrop -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 z-40 bg-[#061a36]/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <!-- Mobile Menu Drawer (Slide from left) -->
+    <aside id="mobile-menu-drawer" class="fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.1)] pointer-events-auto">
+        
+        <!-- Header/Logo area -->
+        <div class="px-6 pt-8 pb-6 border-b border-gray-50 flex items-center justify-between">
+            <a href="/">
+                <img src="/images/logo-vitalhomesalud.png" class="h-16 md:h-20 w-auto object-contain scale-110 origin-left" alt="Logo VitalHome Salud" />
+            </a>
+            <button id="close-mobile-menu" class="text-[#0b3164]/40 hover:text-[#155ec0] transition-colors p-2 -mr-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex-grow py-6 px-4 space-y-1" aria-label="Navegación Móvil">
+            {navLinks.map((link) => {
+                const isActive = checkIsActive(link.href);
+                return (
+                    <div class="mb-1">
+                        <a 
+                            href={link.href} 
+                            class={`flex items-center px-4 py-3.5 rounded-xl transition-all duration-200 ${isActive ? 'bg-[#155ec0]/10 text-[#155ec0] font-bold' : 'text-[#0b3164]/70 hover:bg-[#e6e6e6]/30 hover:text-[#104892] font-semibold'}`}
+                        >
+                            <span class={`mr-4 ${isActive ? 'text-[#155ec0]' : 'text-[#0b3164]/40 group-hover:text-[#155ec0]'}`} set:html={link.icon} />
+                            {link.name}
+                        </a>
+                        
+                        {link.subItems && (
+                            <div class="pl-14 pr-4 mt-1 space-y-1">
+                                {link.subItems.map((subItem) => (
+                                    <a 
+                                        href={subItem.href} 
+                                        class="block py-2 text-[15px] text-[#0b3164]/60 hover:text-[#155ec0] font-medium"
+                                    >
+                                        {subItem.name}
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
+        </nav>
+        
+        <!-- Bottom Action -->
+        <div class="p-6 border-t border-gray-50">
+            <a 
+                href="/contacto/" 
+                class="flex justify-center items-center w-full py-4 rounded-xl text-white font-bold bg-[#104892] hover:bg-[#155ec0] transition-colors shadow-md"
+            >
+                Solicitar Valoración Gratuita
+            </a>
+        </div>
+    </aside>
+</div>
+
+<script>
+    // ====== LOGICA DE ANIMACIÓN AL SCROLL ======
+    const mainHeader = document.getElementById('main-header');
+    
+    // Classes para el estado en el TOPE (Sin Scroll)
+    const topClasses = ['bg-transparent', 'border-transparent', 'shadow-none', 'lg:max-w-7xl'];
+    
+    // Classes para el estado SCROLLEADO (Píldora flotante compacta)
+    const scrolledClasses = ['bg-white/95', 'backdrop-blur-lg', 'border-gray-100/80', 'shadow-[0_8px_30px_rgb(0,0,0,0.08)]', 'xl:max-w-[1260px]', 'lg:max-w-[96%]'];
+
+    const handleScroll = () => {
+        if (!mainHeader) return;
+        if (window.scrollY > 50) {
+            mainHeader.classList.remove(...topClasses);
+            mainHeader.classList.add(...scrolledClasses);
+        } else {
+            mainHeader.classList.remove(...scrolledClasses);
+            mainHeader.classList.add(...topClasses);
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Trigger en carga inicial
+
+    // ====== LOGICA DEL MENÚ LATERAL MÓVIL (DRAWER) ======
+    const btnOpen = document.getElementById('mobile-menu-btn');
+    const btnClose = document.getElementById('close-mobile-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const drawer = document.getElementById('mobile-menu-drawer');
+
+    const toggleMenu = (show: boolean) => {
+        if (show) {
+            // Mostrar backdrop
+            if(backdrop) backdrop.classList.remove('hidden');
+            // Timeout para que la transición de opacity funcione
+            setTimeout(() => {
+                if(backdrop) {
+                    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                    backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                }
+            }, 10);
+            
+            // Deslizar drawer
+            if(drawer) {
+                drawer.classList.remove('-translate-x-full');
+                drawer.classList.add('translate-x-0');
+            }
+            
+            // Bloquear scroll
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Ocultar backdrop
+            if(backdrop) {
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    backdrop.classList.add('hidden');
+                }, 300); // Esperar a la transición
+            }
+            
+            // Retraer drawer
+            if(drawer) {
+                drawer.classList.remove('translate-x-0');
+                drawer.classList.add('-translate-x-full');
+            }
+            
+            // Desbloquear scroll
+            document.body.style.overflow = '';
+        }
+    };
+
+    if (btnOpen && btnClose && backdrop && drawer) {
+        btnOpen.addEventListener('click', () => toggleMenu(true));
+        btnClose.addEventListener('click', () => toggleMenu(false));
+        backdrop.addEventListener('click', () => toggleMenu(false));
+    }
+</script>
