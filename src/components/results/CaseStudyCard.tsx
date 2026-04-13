@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Play, Quote, Calendar, Activity, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Play, Quote, Calendar, Activity, ShieldCheck, ArrowRight, TrendingUp, Users } from 'lucide-react';
 
 interface CaseStudy {
   id: string;
