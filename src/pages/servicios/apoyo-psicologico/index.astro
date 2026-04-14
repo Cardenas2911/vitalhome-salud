@@ -5,24 +5,20 @@ import Footer from "../../../components/Footer.astro";
 import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
 import { 
   ShieldCheck, 
-  Clock, 
   CheckCircle2, 
   Heart, 
+  Brain, 
+  Users,
+  MessageSquare,
+  Smile,
+  Lock,
   ArrowRight,
   ClipboardCheck,
   UserCheck,
-  Brain,
-  MessageCircle,
-  Video,
-  Users,
-  Plus,
-  MessageSquare,
-  Smile,
-  ShieldAlert,
-  Lock
+  Activity,
+  ChevronDown
 } from "lucide-react";
 
-// Marcado JSON-LD Avanzado (@graph)
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -35,24 +31,17 @@ const schema = {
       "@type": "WebPage",
       "@id": "https://vitalhomesalud.com/servicios/apoyo-psicologico/#webpage",
       "url": "https://vitalhomesalud.com/servicios/apoyo-psicologico/",
-      "name": "Apoyo Psicológico y Bienestar Mental para Familias",
-      "isPartOf": {
-        "@id": "https://vitalhomesalud.com/#website"
-      }
+      "name": "Apoyo Psicológico y Bienestar Mental para Pacientes y Familias"
     },
     {
       "@type": "Service",
       "@id": "https://vitalhomesalud.com/servicios/apoyo-psicologico/#service",
-      "name": "Servicio de Apoyo Psicológico y Bienestar Mental",
-      "description": "Consultas psicológicas presenciales y virtuales enfocadas en el paciente con limitaciones médicas y en la red de soporte familiar para prevenir el agotamiento del cuidador.",
+      "name": "Apoyo Psicológico y Contención Emocional Domiciliaria",
+      "description": "Consultas psicológicas presenciales y virtuales diseñadas para el paciente geriátrico o con limitaciones físicas, y para prevenir el agotamiento (Burnout) del núcleo familiar.",
       "provider": {
         "@id": "https://vitalhomesalud.com/#organization"
       },
-      "serviceType": ["Psychological Support", "Mental Health Care"],
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "Pacientes crónicos y familiares responsables (Cuidadores)"
-      },
+      "serviceType": ["Psychological Support", "Mental Health Counseling", "Caregiver Support"],
       "areaServed": {
         "@type": "GeoCircle",
         "geoMidpoint": {
@@ -62,27 +51,43 @@ const schema = {
         },
         "geoRadius": "50000"
       },
-      "availableChannel": {
-        "@type": "ServiceChannel",
-        "serviceUrl": "https://vitalhomesalud.com/contacto/",
-        "name": "Telepsicología VitalHome"
-      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "COP",
         "price": "0",
-        "description": "Valoración inicial confidencial para establecer un plan de soporte emocional a medida.",
+        "description": "Valoración psicológica inicial para establecer un plan de bienestar emocional.",
         "availability": "https://schema.org/InStock"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vitalhomesalud.com/servicios/apoyo-psicologico/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Las terapias son solo para el paciente o también para la familia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nuestro enfoque es integral; brindamos apoyo terapéutico directo tanto al paciente como a los hijos y cuidadores que enfrentan altos niveles de estrés or burnout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es necesario que el psicólogo vaya a la casa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ofrecemos total flexibilidad. Podemos realizar las sesiones presencialmente en su domicilio para mayor comodidad o mediante teleconsulta privada."
+          }
+        }
+      ]
     }
   ]
 };
 
-const title = "Apoyo Psicológico y Bienestar Mental a Domicilio | VitalHome Salud";
-
+const title = "Apoyo Psicológico y Bienestar Mental en Casa | VitalHome Salud";
 const breadcrumbItems = [
   { label: "Servicios", href: "/servicios/" },
-  { label: "Apoyo Psicológico y Bienestar", isCurrent: true }
+  { label: "Apoyo Psicológico", isCurrent: true }
 ];
 ---
 
@@ -91,231 +96,389 @@ const breadcrumbItems = [
   
   <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
-  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative font-inter text-[#061a36]">
     
-    <!-- Miga de Pan (Breadcrumbs) Estándar -->
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
-      <Breadcrumbs client:load items={breadcrumbItems} />
+    <!-- Miga de Pan (Breadcrumbs) SOBRE EL HERO -->
+    <div class="absolute top-36 left-0 right-0 z-40">
+        <div class="container mx-auto px-6">
+            <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
     </div>
 
-    <!-- Background Elements -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-40 left-0 w-[500px] h-[500px] bg-blue-50/50 blur-[100px] rounded-full pointer-events-none"></div>
+    <!-- SECCIÓN 1: HERO DE CONTENCIÓN (ISLA DE AUTORIDAD) -->
+    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-10">
+        
+        {/* ✨ MANCHA MÍTICA AZUL CIAN ✨ */}
+        <div class="absolute top-1/2 left-[20%] w-[800px] h-[800px] bg-[#155ec0]/15 blur-[120px] rounded-full -translate-y-1/2 -z-10 pointer-events-none"></div>
+        
+        {/* Decoración de fondo suave auxiliar */}
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#155ec0]/5 blur-[150px] rounded-full -z-20"></div>
 
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
-      
-      <!-- Sección 1: Hero de Contención (Recuadro Azul) -->
-      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="container mx-auto px-6 py-10 relative z-10 max-w-[1600px]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Columna Izquierda: Mensaje de Autoridad */}
+                <div class="lg:col-span-7 space-y-10">
+                    <div class="space-y-6">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] bg-blue-50 px-5 py-2 rounded-full border border-blue-100 inline-block">
+                            Estandar de Lujo Clínico 2026
+                        </span>
+                        <h1 class="text-4xl md:text-7xl font-black text-[#061a36] leading-[1.1] font-heading">
+                            Salud Emocional <br/> <span class="text-[#155ec0]">en Casa.</span>
+                        </h1>
+                        <p class="text-xl text-[#061a36]/70 font-medium leading-relaxed max-w-2xl">
+                          El bienestar mental es un pilar fundamental de la salud integral. VitalHome Salud ofrece apoyo psicológico especializado a domicilio y telemedicina, diseñado tanto para el paciente como para prevenir el agotamiento de su núcleo familiar.
+                        </p>
+                    </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
-          
-          <!-- Columna Izquierda: Hero de Contención -->
-          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
-            <div class="space-y-6">
-              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
-                Salud Mental Integral
-              </span>
-              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading">
-                Salud Emocional en Casa: <span class="text-blue-400 text-glow">Apoyo para Toda la Familia.</span>
-              </h1>
-              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
-                Cuidar de un ser querido es un acto de amor profundo, pero no tiene por qué enfrentarlo en soledad. Ofrecemos acompañamiento psicológico especializado para pacientes que enfrentan nuevas realidades médicas y para familiares que necesitan liberar la carga del agotamiento.
-              </p>
+                    <div class="flex flex-wrap gap-8 pt-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Brain className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Acompañamiento</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Respaldo Profesional</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Users className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Núcleo Familiar</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Cuidado Integral</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Columna Derecha: Isla de Autoridad Clínica (CÁPSULA DE RIGOR) */}
+                <div class="lg:col-span-12 xl:col-span-5">
+                    <div class="bg-[#155ec0] rounded-[40px] p-8 md:p-12 shadow-[0_40px_80px_rgba(21,94,192,0.3)] border border-white/10 relative group mt-10 lg:mt-0">
+                        <div class="absolute -top-6 -right-6 size-24 bg-[#061a36] rounded-3xl flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
+                            <Heart className="size-10 text-white" />
+                        </div>
+
+                        <h2 class="text-2xl font-black text-white font-heading mb-8 uppercase tracking-tight">Cápsula de Rigor Clínico</h2>
+                        
+                        <ul class="space-y-6 mb-12">
+                            {[
+                                { t: "Cuidado del Paciente", d: "Soporte emocional frente a diagnósticos crónicos." },
+                                { t: "Apoyo al Cuidador", d: "Prevención del Burnout y fatiga emocional severa." },
+                                { t: "Mediación Familiar", d: "Herramientas para fortalecer la resiliencia en casa." }
+                            ].map((item) => (
+                                <li class="flex gap-4">
+                                    <div class="mt-1">
+                                        <div class="size-5 rounded-full bg-white/20 flex items-center justify-center">
+                                            <div class="size-2 rounded-full bg-white"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">{item.t}</p>
+                                        <p class="text-white/70 text-xs font-medium leading-relaxed">{item.d}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a 
+                            href="https://wa.me/573138050356" 
+                            target="_blank"
+                            class="block w-full bg-white text-[#155ec0] text-center py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-[#061a36] hover:text-white transition-all duration-500 hover:-translate-y-1"
+                        >
+                            Hablar con la Coordinación
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Garantías Emocionales -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors">
-                <Users className="size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Soporte Familiar</p>
+    <!-- SECCIÓN 2: ABORDAJE 360° (Bento Grid) -->
+    <section class="py-24 lg:py-40 bg-[#f8f9fa] relative overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+        <div class="text-center mb-24 space-y-4">
+           <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Propuesta de Valor</span>
+           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">
+            Un Espacio Seguro para Quien <br />
+            <span class="text-[#155ec0]">Cuida y Quien es Cuidado.</span>
+           </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-auto">
+          <!-- Card de Paciente (Gande) -->
+          <div class="md:col-span-2 bg-white rounded-[40px] p-10 md:p-16 border border-[#e2e8f0] hover:shadow-2xl transition-all group flex flex-col md:flex-row gap-12 items-center">
+             <div class="flex-1 space-y-6">
+                <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors">
+                  <Heart className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading">Para el Paciente</h3>
+                <p class="text-slate-500 font-medium leading-relaxed text-lg">
+                  Acompañamiento experto en la aceptación de diagnósticos complejos, pérdida de autonomía y gestión de la ansiedad. Fomentamos la resiliencia desde el primer encuentro.
+                </p>
+             </div>
+             <div class="w-full md:w-1/2 h-64 bg-slate-100 rounded-[30px] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 shadow-inner border border-slate-200">
+               <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center"></div>
+             </div>
+          </div>
+
+          <!-- Card de Familiar -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] hover:shadow-2xl transition-all group shrink-0">
+             <div class="space-y-8">
+                <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors">
+                  <UserCheck className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                </div>
+                <h3 class="text-2xl font-black text-[#011633] font-heading">Familiar Responsable</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">
+                  Estrategias de desahogo y manejo de la culpa para evitar el colapso emocional de quienes cuidan.
+                </p>
+                <div class="pt-4 border-t border-slate-100">
+                  <p class="text-[#155ec0] font-black text-[10px] uppercase tracking-widest italic leading-relaxed">"Usted también merece ser cuidado."</p>
+                </div>
+             </div>
+          </div>
+
+          <!-- Card de Modalidad Flex -->
+          <div class="bg-[#061a36] rounded-[40px] p-10 group hover:shadow-2xl transition-all relative overflow-hidden">
+             <div class="absolute -right-10 -bottom-10 size-40 bg-[#155ec0]/20 rounded-full blur-3xl"></div>
+             <div class="space-y-6 relative z-10">
+                <div class="size-14 rounded-2xl bg-[#155ec0] flex items-center justify-center">
+                  <Activity className="size-7 text-white" />
+                </div>
+                <h3 class="text-xl font-black text-white font-heading">Modalidad Flexible</h3>
+                <p class="text-slate-400 font-medium leading-relaxed">
+                  Sesiones presenciales en la intimidad y reserva de su hogar, o vía teleconsulta estructurada y segura.
+                </p>
+             </div>
+          </div>
+
+          <!-- Card Testimonio Corto -->
+          <div class="md:col-span-2 bg-[#155ec0] rounded-[40px] p-10 md:p-12 border border-white/10 group overflow-hidden relative">
+             <div class="absolute right-0 top-0 h-full w-1/3 bg-white/5 skew-x-12"></div>
+             <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="space-y-4 flex-1">
+                   <p class="text-2xl font-black text-white font-heading italic">"Entendieron el agotamiento que sentía sin juzgarme. Hoy puedo cuidar mejor porque yo estoy mejor."</p>
+                   <p class="text-white/60 font-black text-[10px] uppercase tracking-[0.3em]">Hija de Paciente - Bogotá</p>
+                </div>
+                <div class="size-20 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md">
+                   <Heart className="size-10 text-white animate-pulse-slow" />
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: EL PUENTE DE AUTORIDAD (Micro-Glosario) -->
+    <section class="py-24 lg:py-40 bg-white relative overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+           <div class="space-y-10">
+              <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Glosario de Autoridad</span>
+              <h2 class="text-4xl md:text-6xl font-black text-[#011633] font-heading leading-tight">
+                Entendemos lo que su <br />
+                <span class="text-[#155ec0]">Familia está Viviendo.</span>
+              </h2>
+              <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
+                La salud mental en el entorno domiciliario tiene términos específicos que pocas instituciones abordan con rigor clínico. Le ayudamos a identificar estas señales para actuar a tiempo.
+              </p>
+           </div>
+
+           <div class="grid grid-cols-1 gap-8">
+              <!-- Item Glosario 1 -->
+              <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-[#e2e8f0] relative group hover:border-[#155ec0] transition-all">
+                <div class="space-y-6">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-2xl font-black text-[#011633] font-heading">Burnout del Cuidador</h4>
+                    <span class="text-[#155ec0] font-black text-[10px] uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Estado Clínico</span>
+                  </div>
+                  <p class="text-slate-500 font-medium leading-relaxed">
+                    Estado de agotamiento físico y emocional severo. En VitalHome, no solo cuidamos al paciente; le brindamos a usted el soporte psicológico necesario para recuperar su propio bienestar.
+                  </p>
+                  <a href="/recursos/glosario/" class="inline-flex items-center gap-2 text-[#155ec0] font-black text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                    Ver en el Glosario <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </div>
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors">
-                <Video className="size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Telepsicología</p>
+
+              <!-- Item Glosario 2 -->
+              <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-[#e2e8f0] relative group hover:border-[#155ec0] transition-all">
+                <div class="space-y-6">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-2xl font-black text-[#011633] font-heading">Labilidad Emocional</h4>
+                    <span class="text-[#155ec0] font-black text-[10px] uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Identificación</span>
+                  </div>
+                  <p class="text-slate-500 font-medium leading-relaxed">
+                    Cambios rápidos en el estado de ánimo, comunes en demencias o post-operatorios. Brindamos contención experta, creando un entorno de calma constante para evitar crisis familiares.
+                  </p>
+                  <a href="/recursos/glosario/" class="inline-flex items-center gap-2 text-[#155ec0] font-black text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                    Ver en el Glosario <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </div>
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors">
-                <ShieldCheck className="size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Confidencial</p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: LA RED DE SEGURIDAD (FAQ) -->
+    <section class="py-24 lg:py-40 bg-[#eceef0] relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-24 space-y-4">
+           <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Resolución de Dudas</span>
+           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">
+            Soporte Psicológico: <br />
+            <span class="text-[#155ec0]">Respuestas Profesionales.</span>
+           </h2>
+        </div>
+
+        <div class="space-y-6">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Las terapias son solo para el paciente o también para la familia?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Nuestro enfoque es integral; brindamos apoyo terapéutico directo tanto al paciente como a los hijos y cuidadores que enfrentan altos niveles de estrés o burnout. Entendemos que la salud de uno afecta a todos.
               </div>
             </div>
           </div>
 
-          <!-- Columna Derecha: Isla Clínica (Formulario) -->
-          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl relative z-10 border border-slate-100">
-              <div class="mb-10 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-3">Agenda una Valoración</h3>
-                <p class="text-[#011633]/60 font-semibold text-sm italic">Un espacio seguro para usted y su familia.</p>
+          <!-- FAQ Item 2 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Es necesario que el psicólogo vaya a la casa?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Ofrecemos total flexibilidad. Podemos realizar las sesiones presencialmente en su domicilio para mayor comodidad y privacidad, o mediante teleconsulta privada si así lo prefiere el paciente o la familia.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Qué pasa si el paciente se niega a recibir terapia?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Nuestros profesionales están entrenados en mediación geriátrica. Iniciamos con un enfoque de "compañía clínica y escucha activa" para ganar la confianza del adulto mayor gradualmente, sin generar la presión de una terapia convencional.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: FOOTER DE CONVERSIÓN (Z-Pattern) -->
+    <section class="py-24 lg:py-40 bg-[#061a36] relative overflow-hidden">
+      <div class="absolute -left-20 top-0 size-96 bg-[#155ec0]/10 rounded-full blur-[120px]"></div>
+      
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+           
+           <!-- Lado Izquierdo: Testimonio y Autoridad -->
+           <div class="space-y-12">
+              <div class="space-y-8">
+                 <div class="size-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                    <Smile className="size-10 text-[#155ec0]" />
+                 </div>
+                 <blockquote class="text-3xl md:text-5xl font-black text-white font-heading leading-tight italic">
+                  "Poder hablar con alguien que entiende lo difícil que es cuidar a mi madre con Alzheimer me salvó de colapsar emocionalmente."
+                 </blockquote>
+                 <p class="text-slate-400 font-black text-xs uppercase tracking-[0.4em]">— Hija y Cuidadora Responsable</p>
+              </div>
+
+              <div class="flex items-center gap-8">
+                 <div class="flex -space-x-4">
+                    <div class="size-14 rounded-full border-4 border-[#061a36] bg-slate-200 overflow-hidden">
+                       <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=200" alt="Psicóloga" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="size-14 rounded-full border-4 border-[#061a36] bg-[#155ec0] flex items-center justify-center">
+                       <ShieldCheck className="size-7 text-white" />
+                    </div>
+                 </div>
+                 <div>
+                    <p class="text-white font-black text-sm uppercase tracking-wider">Red de Especialistas</p>
+                    <p class="text-slate-400 text-xs font-semibold">Terapeutas en Bogotá y Chía</p>
+                 </div>
+              </div>
+           </div>
+
+           <!-- Lado Derecho: Formulario Minimalista (Isla Blanca) -->
+           <div class="bg-white rounded-[40px] p-10 md:p-16 shadow-2xl relative border border-white/5">
+              <div class="mb-10">
+                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-4 italic">Coordinar Ayuda Profesional</h3>
+                <p class="text-slate-500 font-medium">Reciba una primera escucha sin compromiso.</p>
               </div>
 
               <form class="space-y-6">
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre Completo</label>
-                  <input 
-                    type="text" 
-                    placeholder="Ingrese su nombre" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
-                  />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre</label>
+                    <input type="text" placeholder="Ej: Maria Perez" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Teléfono</label>
+                    <input type="tel" placeholder="313 000 0000" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
                 </div>
-
                 <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp / Teléfono</label>
-                  <input 
-                    type="tel" 
-                    placeholder="+57 313 000 0000" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
-                  />
+                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">¿Para quién es la consulta?</label>
+                  <div class="relative">
+                    <select class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                      <option>Para mí (Cuidador)</option>
+                      <option>Para el Paciente</option>
+                      <option>Sesión Familiar</option>
+                    </select>
+                    <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 pointer-events-none" />
+                  </div>
                 </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Área de Apoyo</label>
-                  <select class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
-                    <option value="cuidador">Apoyo al Cuidador (Burnout)</option>
-                    <option value="paciente">Aceptación de Enfermedad (Paciente)</option>
-                    <option value="duelo">Gestión de Duelo / Transiciones</option>
-                  </select>
-                </div>
-
-                <button 
-                  type="submit" 
-                  class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3"
-                >
-                  Solicitar Apoyo Psicológico
+                <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.3em] py-6 rounded-2xl shadow-xl transition-all duration-500">
+                  Solicitar Contacto Profesional
                 </button>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección 2: El Bento Grid Clínico (Abordaje Emocional) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 pt-32 pb-16">
-      <div class="text-center mb-24 space-y-4">
-        <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Bienestar Mental</span>
-        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Un Espacio Seguro para el <span class="text-[#155ec0]">Núcleo Familiar.</span></h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Item 1 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <ShieldAlert className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Orientación para Cuidadores</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Prevención y tratamiento del "Síndrome del Cuidador Quemado". Validamos su esfuerzo y le brindamos herramientas de desahogo.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Brain className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Aceptación de la Enfermedad</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Apoyo directo al paciente para asimilar limitaciones físicas o diagnósticos crónicos, fomentando una perspectiva resiliente.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <MessageCircle className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Modalidad Flexible</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Sesiones presenciales en la privacidad de su hogar o mediante teleconsulta segura, adaptándonos a su disponibilidad.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Users className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Red de Soporte Familiar</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Mediación terapéutica para que toda la familia se adapte positivamente a esta nueva etapa de vida, fortaleciendo vínculos.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección 3: Destructor de Objeciones (Desestigmatización) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-32">
-       <div class="bg-white rounded-[60px] p-12 md:p-24 border border-[#e2e8f0] shadow-sm relative overflow-hidden">
-         <div class="absolute -right-20 -top-20 size-80 bg-blue-50 rounded-full blur-3xl pointer-events-none"></div>
-         
-         <div class="max-w-3xl space-y-8 relative z-10">
-           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight italic">Pedir ayuda no es debilidad; es tomar el control.</h2>
-           <p class="text-lg md:text-xl text-[#011633]/70 font-medium leading-relaxed">
-             Entendemos la resistencia inicial. En VitalHome Salud, nuestros especialistas abordan la salud mental con el mismo rigor que la salud física. Operamos bajo estricta confidencialidad médica, creando un entorno libre de juicios.
-           </p>
-           <div class="flex flex-wrap gap-6">
-             <div class="flex items-center gap-3 bg-blue-50 px-6 py-4 rounded-2xl border border-blue-100">
-               <Lock className="size-5 text-[#155ec0]" />
-               <span class="text-[#011633] font-black text-xs uppercase tracking-widest">Confidencialidad Total</span>
-             </div>
-             <div class="flex items-center gap-3 bg-blue-50 px-6 py-4 rounded-2xl border border-blue-100">
-               <Smile className="size-5 text-[#155ec0]" />
-               <span class="text-[#011633] font-black text-xs uppercase tracking-widest">Enfoque Empático</span>
-             </div>
            </div>
-         </div>
-       </div>
-    </section>
 
-    <!-- Sección 4: Footer de Conversión (Z-Pattern) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <!-- Testimonio (Z-Pattern Left) -->
-        <div class="space-y-12">
-          <blockquote class="text-3xl md:text-4xl font-black text-[#011633] font-heading leading-tight italic">
-            "Sentía que no podía más con el cuidado de mi madre. Gracias al apoyo de VitalHome, hoy tengo paz y volví a ser su hija, no solo su enfermera."
-          </blockquote>
-          <div class="flex items-center gap-4">
-             <div class="size-14 rounded-full bg-blue-50 border-2 border-white shadow-lg flex items-center justify-center">
-                <Heart className="size-8 text-[#155ec0]" />
-             </div>
-             <div>
-               <p class="text-[#011633] font-bold text-base">Anónima por Privacidad</p>
-               <p class="text-blue-500 font-bold text-[10px] uppercase tracking-widest">Familiar Responsable</p>
-             </div>
-          </div>
-        </div>
-
-        <!-- Call to Action (Z-Pattern Right) -->
-        <div class="flex justify-center lg:justify-end">
-           <a 
-            href="https://wa.me/573138050356" 
-            target="_blank"
-            class="bg-[#061a36] hover:bg-[#155ec0] text-white w-full max-w-md py-12 rounded-[40px] flex flex-col items-center justify-center gap-5 transition-all duration-500 shadow-2xl group relative"
-          >
-             <MessageSquare className="size-12 group-hover:scale-110 transition-transform" />
-             <div class="text-center space-y-2">
-               <span class="block font-black text-2xl uppercase tracking-tighter">Hablar con un Especialista</span>
-               <span class="block text-white/50 font-bold text-[10px] uppercase tracking-widest">Consulta Privada y Segura</span>
-             </div>
-          </a>
         </div>
       </div>
     </section>
+
   </main>
 
   <Footer />
 
-  <!-- Sticky CTA Awareness -->
+  <!-- Script para el FAQ Interactivo -->
+  <script is:inline>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const content = item.querySelector('.faq-content');
+        const icon = item.querySelector('svg');
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+        // Cerrar todos los demás
+        document.querySelectorAll('.faq-content').forEach(c => {
+          c.style.maxHeight = '0px';
+          c.parentElement.querySelector('svg').style.transform = 'rotate(0deg)';
+        });
+
+        // Abrir/Cerrar actual
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  </script>
 
 </Layout>
 
@@ -323,7 +486,22 @@ const breadcrumbItems = [
   html {
     scroll-behavior: smooth;
   }
-  .text-glow {
-    text-shadow: 0 0 40px rgba(96, 165, 250, 0.4);
+  .center-x-calc {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-bounce-subtle {
+    animation: bounce-subtle 4s infinite ease-in-out;
+  }
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .8; transform: scale(1.05); }
   }
 </style>

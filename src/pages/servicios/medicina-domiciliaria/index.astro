@@ -5,25 +5,29 @@ import Footer from "../../../components/Footer.astro";
 import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
 import { 
   ShieldCheck, 
-  Clock, 
-  CheckCircle2, 
-  Stethoscope, 
-  ArrowRight,
-  ClipboardCheck,
-  Activity,
-  UserCheck,
-  Heart,
-  Droplets,
+  MapPin,
   ChevronRight,
-  Plus,
-  MessageSquare,
-  Video,
+  MessageCircle,
+  Stethoscope,
+  Activity,
+  ClipboardCheck,
   FileText,
-  Ambulance,
-  Monitor
+  Inbox,
+  Video,
+  Quote,
+  ArrowRight,
+  HeartPulse
 } from "lucide-react";
+import { MedicalFAQ } from "../../../components/sections/MedicalFAQ";
 
-// Marcado JSON-LD Avanzado (@graph)
+const title = "Atención Médica Domiciliaria y Telemedicina | VitalHome Salud";
+const description = "Médico general a domicilio y telemedicina. Diagnóstico, examen físico, prescripción de tratamientos e incapacidades sin salir de casa. Solicite su cita médica hoy.";
+
+const breadcrumbItems = [
+  { label: "Servicios", href: "/servicios/" },
+  { label: "Médico Domiciliario y Telemedicina", isCurrent: true }
+];
+
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -36,20 +40,17 @@ const schema = {
       "@type": "WebPage",
       "@id": "https://vitalhomesalud.com/servicios/medicina-domiciliaria/#webpage",
       "url": "https://vitalhomesalud.com/servicios/medicina-domiciliaria/",
-      "name": "Médico Domiciliario y Telemedicina",
-      "isPartOf": {
-        "@id": "https://vitalhomesalud.com/#website"
-      }
+      "name": "Atención Médica Domiciliaria y Telemedicina"
     },
     {
-      "@type": "Service",
+      "@type": ["Service", "Physician"],
       "@id": "https://vitalhomesalud.com/servicios/medicina-domiciliaria/#service",
-      "name": "Atención Médica Domiciliaria y Telemedicina",
-      "description": "Consultas médicas profesionales presenciales en el hogar y a través de telemedicina. Incluye diagnóstico, examen físico, prescripción de medicamentos y emisión de incapacidades.",
+      "name": "Consultas Médicas Domiciliarias y Telemedicina",
+      "description": "Atención médica integral en el hogar por médicos generales. Incluye elaboración de historia clínica, examen físico, plan de manejo, emisión de incapacidades y prescripción médica.",
       "provider": {
         "@id": "https://vitalhomesalud.com/#organization"
       },
-      "serviceType": ["Primary Care", "Telehealth"],
+      "serviceType": ["Home Medical Care", "Telemedicine", "General Practice"],
       "areaServed": {
         "@type": "GeoCircle",
         "geoMidpoint": {
@@ -62,276 +63,285 @@ const schema = {
       "availableChannel": {
         "@type": "ServiceChannel",
         "serviceUrl": "https://vitalhomesalud.com/contacto/",
-        "name": "Plataforma de Telemedicina VitalHome"
-      },
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "COP",
-        "price": "0",
-        "description": "Agenda de cita médica y triage de priorización inicial para atención presencial o virtual.",
-        "availability": "https://schema.org/InStock"
+        "name": "Telemedicina Segura VitalHome"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vitalhomesalud.com/servicios/medicina-domiciliaria/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿El médico emite fórmulas e incapacidades válidas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, nuestros médicos generales entregan prescripciones formales, órdenes para exámenes médicos complementarios y certificados de incapacidad tras la evaluación clínica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Están disponibles los domingos o de noche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contamos con atención médica prioritaria en jornadas diurnas, nocturnas, domingos y festivos para garantizar su tranquilidad en todo momento."
+          }
+        }
+      ]
     }
   ]
 };
 
-const title = "Atención Médica Domiciliaria y Telemedicina | VitalHome Salud";
-
-const breadcrumbItems = [
-  { label: "Servicios", href: "/servicios/" },
-  { label: "Médico Domiciliario y Telemedicina", isCurrent: true }
+const checklist = [
+  "Historia clínica completa",
+  "Examen físico riguroso",
+  "Formulación de tratamientos",
+  "Órdenes para exámenes complementarios",
+  "Emisión de incapacidades médicas"
 ];
 ---
 
 <Layout title={title}>
   <Header />
   
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
-
-  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative font-inter">
     
-    <!-- Miga de Pan (Breadcrumbs) Estándar -->
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
-      <Breadcrumbs client:load items={breadcrumbItems} />
+    <!-- ── BREADCRUMBS OVER HERO ── -->
+    <div class="absolute top-36 left-0 right-0 z-40">
+        <div class="container mx-auto px-6">
+            <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
     </div>
 
-    <!-- Background Elements (Manchas sutiles) -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-40 left-0 w-[500px] h-[500px] bg-blue-50/50 blur-[100px] rounded-full pointer-events-none"></div>
+    <!-- ── SECCIÓN 1: HERO (ISLA DE AUTORIDAD) ── -->
+    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-10">
+        
+        {/* ✨ MANCHA MÍTICA AZUL CIAN ✨ */}
+        <div class="absolute top-1/2 left-[20%] w-[800px] h-[800px] bg-[#155ec0]/15 blur-[120px] rounded-full -translate-y-1/2 -z-10 pointer-events-none"></div>
+        
+        {/* Decoración de fondo suave auxiliar */}
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#155ec0]/5 blur-[150px] rounded-full -z-20"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#f8f9fa] blur-[100px] rounded-full -z-20"></div>
 
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
-      
-      <!-- Sección 1: Hero de Hiper-Conveniencia (Recuadro Azul) -->
-      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="container mx-auto px-6 py-10 relative z-10 max-w-[1600px]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Columna Izquierda: Mensaje de Autoridad */}
+                <div class="lg:col-span-7 space-y-10">
+                    <div class="space-y-6">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] bg-blue-50 px-5 py-2 rounded-full border border-blue-100 inline-block">
+                            Estandar de Lujo Clínico 2026
+                        </span>
+                        <h1 class="text-4xl md:text-7xl font-black text-[#061a36] leading-[1.1] font-heading">
+                            Diagnóstico Profesional <br/> <span class="text-[#155ec0]">en su Hogar.</span>
+                        </h1>
+                        <p class="text-xl text-[#061a36]/70 font-medium leading-relaxed max-w-2xl">
+                          Evite las horas de espera y los riesgos de traslado a una sala de urgencias. Acceda a atención médica de alta calidad con la comodidad y seguridad que solo su hogar puede brindar.
+                        </p>
+                    </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
-          
-          <!-- Columna Izquierda: Texto -->
-          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
-            <div class="space-y-6">
-              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
-                Alta Complejidad Domiciliaria
-              </span>
-              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading">
-                Diagnóstico Profesional sin Salir de Casa: <span class="text-blue-400 text-glow">Médico y Telemedicina.</span>
-              </h1>
-              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
-                Evite traslados innecesarios y prolongadas salas de espera. En VitalHome Salud, llevamos el consultorio médico hasta su puerta o pantalla. Acceda a médicos generales certificados para diagnósticos precisos, planes de manejo y prescripciones.
-              </p>
+                    <div class="flex flex-wrap gap-8 pt-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Stethoscope className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Médicos</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">100% Verificados</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Activity className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Disponibilidad</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Atención 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Columna Derecha: Isla de Autoridad Clínica */}
+                <div class="lg:col-span-12 xl:col-span-5">
+                    <div class="bg-[#155ec0] rounded-[40px] p-8 md:p-12 shadow-[0_40px_80px_rgba(21,94,192,0.3)] border border-white/10 relative group mt-10 lg:mt-0">
+                        <div class="absolute -top-6 -right-6 size-24 bg-[#061a36] rounded-3xl flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
+                            <ClipboardCheck className="size-10 text-white" />
+                        </div>
+
+                        <h2 class="text-2xl font-black text-white font-heading mb-8 uppercase tracking-tight">Rigor Clínico</h2>
+                        
+                        <ul class="space-y-6 mb-12">
+                            {[
+                                { t: "Historia Clínica", d: "Evaluación integral y reporte clínico detallado." },
+                                { t: "Plan de Manejo", d: "Formulación de tratamientos y órdenes médicas." },
+                                { t: "Teleconsulta", d: "Orientación médica inmediata vía plataformas seguras." }
+                            ].map((item) => (
+                                <li class="flex gap-4">
+                                    <div class="mt-1">
+                                        <div class="size-5 rounded-full bg-white/20 flex items-center justify-center">
+                                            <div class="size-2 rounded-full bg-white"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">{item.t}</p>
+                                        <p class="text-white/70 text-xs font-medium leading-relaxed">{item.d}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a 
+                            href="https://wa.me/573138050356" 
+                            target="_blank"
+                            class="block w-full bg-white text-[#155ec0] text-center py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-[#061a36] hover:text-white transition-all duration-500 hover:-translate-y-1"
+                        >
+                            Solicitar Visita Médica
+                        </a>
+                    </div>
+                </div>
             </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-               <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <Ambulance className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Atención Diurna/Nocturna</span>
-              </div>
-              <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <Activity className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Respuesta Rápida</span>
-              </div>
-              <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <FileText className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Historia Clínica Completa</span>
-              </div>
-              <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <Stethoscope className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Médicos Certificados</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Columna Derecha: Isla Clínica (Formulario) -->
-          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div class="bg-white rounded-[40px] p-8 md:p-10 shadow-2xl relative z-10 border border-slate-100">
-              <div class="mb-10 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-3">Agendar Cita Médica</h3>
-                <p class="text-[#011633]/60 font-semibold text-sm italic">Elija la modalidad que mejor se adapte a su urgencia.</p>
-              </div>
-
-              <form class="space-y-6">
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre Completo</label>
-                  <input 
-                    type="text" 
-                    placeholder="Ingrese su nombre" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
-                  />
-                </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp / Teléfono</label>
-                  <input 
-                    type="tel" 
-                    placeholder="+57 300 000 0000" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
-                  />
-                </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Modalidad Preferida</label>
-                  <select class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none">
-                    <option value="presencial">Médico en Casa (Presencial)</option>
-                    <option value="telemedicina">Telemedicina (Virtual)</option>
-                  </select>
-                </div>
-
-                <button 
-                  type="submit" 
-                  class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3"
-                >
-                  Solicitar Orientación Médica
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Sección 2: El Bento Grid Clínico (Alcance del Servicio) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 pt-32 pb-16">
-      <div class="text-center mb-24 space-y-4">
-        <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Soluciones Multicanal</span>
-        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Cobertura Médica <span class="text-[#155ec0]">Completa</span> en su Propio Entorno.</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Item 1 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Ambulance className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Visitas Médicas Presenciales</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Atención profesional en su hogar, incluyendo fines de semana y festivos. Rigor clínico sin desplazamientos.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Video className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Telemedicina Inmediata</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Consultas virtuales rápidas para seguimiento y orientación médica segura desde cualquier dispositivo.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <FileText className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Diagnóstico y Prescripción</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Examen físico detallado, plan de manejo y formulación de medicamentos registrados en historia clínica digital.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <ShieldCheck className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Emisión de Incapacidades</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Gestión documental médica oficial bajo normativa vigente, entregada directamente al paciente de forma electrónica.
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Sección 3: Destructor de Objeciones (Autoridad y Rigor) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-32">
-       <div class="bg-white rounded-[60px] p-12 md:p-24 border border-[#e2e8f0] shadow-sm relative overflow-hidden">
-         <div class="absolute -right-20 -top-20 size-80 bg-blue-50 rounded-full blur-3xl pointer-events-none"></div>
-         
-         <div class="max-w-3xl space-y-8 relative z-10">
-           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight italic">El Respaldo de una Institución Médica Verificada.</h2>
-           <p class="text-lg md:text-xl text-[#011633]/70 font-medium leading-relaxed">
-             Su salud no admite improvisaciones. Nuestro cuerpo médico cuenta con tarjeta profesional vigente, verificación estricta de antecedentes y opera bajo los protocolos clínicos más rigurosos. Toda consulta queda debidamente registrada en una Historia Clínica electrónica encriptada para su total seguridad.
-           </p>
-           <div class="flex flex-wrap gap-6">
-             <div class="flex items-center gap-3 bg-blue-50 px-6 py-4 rounded-2xl border border-blue-100">
-               <ShieldCheck className="size-5 text-[#155ec0]" />
-               <span class="text-[#011633] font-black text-xs uppercase tracking-widest">Protocolo Encriptado</span>
-             </div>
-             <div class="flex items-center gap-3 bg-blue-50 px-6 py-4 rounded-2xl border border-blue-100">
-               <Monitor className="size-5 text-[#155ec0]" />
-               <span class="text-[#011633] font-black text-xs uppercase tracking-widest">Rigor Clínico Digital</span>
-             </div>
+    <!-- ── SECCIÓN 2: MODALIDADES (BENTO) ── -->
+    <section class="bg-[#f8f9fa] py-32">
+      <div class="max-w-[1440px] mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+           <div class="md:col-span-2 bg-white rounded-[40px] p-10 lg:p-14 border border-[#e2e8f0] group hover:shadow-2xl transition-all duration-700 relative overflow-hidden">
+              <div class="relative z-10 flex flex-col h-full justify-between">
+                 <div class="space-y-6 max-w-xl">
+                    <div class="size-14 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors duration-500">
+                       <Stethoscope className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                    </div>
+                    <h4 class="text-2xl font-black text-[#061a36] font-heading leading-tight">Consultas Domiciliarias Diurnas y Nocturnas</h4>
+                    <p class="text-gray-500 font-medium text-lg leading-relaxed">
+                       Atención prioritaria en su hogar, disponible incluso domingos y festivos. Nuestros médicos llevan el equipo necesario para diagnósticos precisos en sitio.
+                    </p>
+                 </div>
+                 <div class="mt-12">
+                    <a href="#contacto" class="inline-block px-10 py-5 bg-[#061a36] text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#155ec0] transition-all">Solicitar Visita</a>
+                 </div>
+              </div>
            </div>
-         </div>
-       </div>
-    </section>
 
-    <!-- Sección 4: Footer de Conversión (Z-Pattern) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <!-- Testimonio (Z-Pattern Left) -->
-        <div class="space-y-12">
-          <blockquote class="text-3xl md:text-4xl font-black text-[#011633] font-heading leading-tight italic">
-            "Evitar la sala de urgencias con mi madre fue un alivio incalculable. El doctor llegó a tiempo, con equipos y una calidez que no tiene precio."
-          </blockquote>
-          <div class="flex items-center gap-4">
-             <div class="size-14 rounded-full bg-blue-50 border-2 border-white shadow-lg flex items-center justify-center">
-                <Heart className="size-8 text-[#155ec0]" />
-             </div>
-             <div>
-               <p class="text-[#011633] font-bold text-base">Sra. Helena Restrepo</p>
-               <p class="text-blue-500 font-bold text-[10px] uppercase tracking-widest">Familiar de Paciente Geriátrico</p>
-             </div>
-          </div>
-        </div>
-
-        <!-- Call to Action (Z-Pattern Right) -->
-        <div class="flex justify-center lg:justify-end">
-           <a 
-            href="https://wa.me/573138050356" 
-            target="_blank"
-            class="bg-[#061a36] hover:bg-[#155ec0] text-white w-full max-w-md py-12 rounded-[40px] flex flex-col items-center justify-center gap-5 transition-all duration-500 shadow-2xl group relative overflow-hidden"
-          >
-             <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-             <MessageSquare className="size-12 group-hover:rotate-12 transition-transform" />
-             <div class="text-center space-y-2">
-               <span class="block font-black text-2xl uppercase tracking-tighter">Hablar con un Médico</span>
-               <span class="block text-white/50 font-bold text-[10px] uppercase tracking-widest">Disponibilidad Inmediata</span>
-             </div>
-          </a>
+           <div class="bg-white rounded-[40px] p-10 lg:p-12 border border-[#e2e8f0] group hover:shadow-2xl transition-all duration-700 bg-gradient-to-br from-white to-blue-50/30">
+              <div class="space-y-8">
+                 <div class="size-14 rounded-2xl bg-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors duration-500">
+                    <Video className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                 </div>
+                 <h4 class="text-2xl font-black text-[#061a36] font-heading">Telemedicina</h4>
+                 <p class="text-gray-500 font-medium text-base leading-relaxed">
+                    Orientación clínica inmediata a través de plataformas seguras, ideal para diagnósticos rápidos o revisión de exámenes.
+                 </p>
+                 <button class="w-full py-4 border-2 border-[#155ec0] text-[#155ec0] rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#155ec0] hover:text-white transition-all">Iniciar Virtual</button>
+              </div>
+           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ── SECCIÓN 3: AUTHORITY ── -->
+    <section class="bg-white py-32">
+      <div class="max-w-[1440px] mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+           <div class="bg-[#f8f9fa] rounded-[40px] p-10 lg:p-14 border border-[#e2e8f0] relative group hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-xl">
+              <h4 class="text-2xl font-black text-[#061a36] mb-6 font-heading">Valoración Integral Geriátrica</h4>
+              <p class="text-gray-600 font-medium text-lg leading-relaxed">
+                 Evaluamos el estado funcional, mental y social del paciente para trazar una ruta de cuidado exacta y segura.
+              </p>
+           </div>
+           <div class="bg-[#f8f9fa] rounded-[40px] p-10 lg:p-14 border border-[#e2e8f0] relative group hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-xl">
+              <h4 class="text-2xl font-black text-[#061a36] mb-6 font-heading">Multimorbilidad</h4>
+              <p class="text-gray-600 font-medium text-lg leading-relaxed">
+                 Ajustamos los planes de manejo para pacientes con múltiples enfermedades, evitando interacciones peligrosas.
+              </p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECCIÓN 4: FAQ ── -->
+    <section class="py-32 bg-[#f8f9fa]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row gap-20">
+            <div class="lg:w-1/3 space-y-8">
+                <div class="space-y-4">
+                    <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Resolución de Dudas</span>
+                    <h2 class="text-4xl lg:text-5xl font-black text-[#061a36] font-heading leading-tight italic">Preguntas sobre Médico en Casa.</h2>
+                </div>
+                <p class="text-[#061a36]/60 font-medium text-lg leading-relaxed">Entendemos la importancia de la precisión clínica en el hogar.</p>
+            </div>
+
+            <div class="lg:w-2/3">
+                <MedicalFAQ client:load items={[
+                    { 
+                      q: "¿Cuánto tiempo tarda en llegar el médico?", 
+                      a: "Nuestras visitas programadas se realizan en la franja horaria acordada. En casos de atención prioritaria por telemedicina, el contacto es casi instantáneo." 
+                    },
+                    { 
+                      q: "¿El médico emite fórmulas e incapacidades?", 
+                      a: "Sí, nuestros médicos generales entregan prescripciones formales y certificados de incapacidad tras la evaluación clínica." 
+                    }
+                ]} />
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SECCIÓN 5: CONVERSIÓN FINAL (CARD OSCURO) ── -->
+    <section id="contacto" class="py-24 md:py-32 bg-white relative pb-48 lg:pb-32">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="bg-[#061a36] rounded-[48px] md:rounded-[64px] p-8 md:p-24 text-white relative overflow-hidden shadow-[0_40px_100px_rgba(6,26,54,0.3)]">
+              <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/20 blur-[100px] rounded-full -z-0"></div>
+              
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+                 <div class="space-y-10">
+                    <h3 class="text-4xl lg:text-6xl font-black font-heading leading-[1.1] italic text-white drop-shadow-md">
+                       "La tranquilidad de un hospital, sin los riesgos de un hospital."
+                    </h3>
+                    <div class="flex items-center gap-6">
+                       <div class="size-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+                          <HeartPulse className="size-8 text-blue-300" />
+                       </div>
+                       <div>
+                          <p class="text-xl font-black text-white">Asesoría VitalCare®</p>
+                          <p class="text-blue-300/80 text-[10px] font-bold uppercase tracking-[0.3em]">Cuidado Ético y Científico</p>
+                       </div>
+                    </div>
+                 </div>
+
+                 <div class="bg-white rounded-[40px] p-8 md:p-12 space-y-10">
+                    <div class="text-center space-y-2">
+                       <h4 class="text-2xl font-black text-[#061a36] font-heading">Activa tu Consulta Hoy</h4>
+                       <p class="text-[#061a36]/50 text-sm font-medium">Un especialista clínico coordinará su atención en minutos.</p>
+                    </div>
+                    <div class="space-y-4">
+                       <a href="https://wa.me/573138050356" class="block w-full py-6 bg-[#155ec0] hover:bg-[#061a36] text-white rounded-[20px] font-black text-xs uppercase tracking-[0.2em] shadow-xl text-center active:scale-95 transition-all">
+                          Solicitar Atención Prioritaria
+                       </a>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
     </section>
   </main>
 
   <Footer />
 
-  <!-- Sticky CTA Awareness -->
-
+  <Footer />
 </Layout>
 
-<style>
+<style is:global>
+  @font-face {
+    font-family: 'Outfit';
+    font-weight: 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-display: swap;
+  }
   html {
     scroll-behavior: smooth;
-  }
-  .text-glow {
-    text-shadow: 0 0 40px rgba(96, 165, 250, 0.4);
   }
 </style>

@@ -5,8 +5,6 @@ import Footer from "../../../components/Footer.astro";
 import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
 import { 
   ShieldCheck, 
-  Clock, 
-  CheckCircle2, 
   Activity, 
   ArrowRight,
   ClipboardCheck,
@@ -17,10 +15,11 @@ import {
   Zap,
   RotateCw,
   Dumbbell,
-  Apple
+  Apple,
+  ChevronDown,
+  Target
 } from "lucide-react";
 
-// Marcado JSON-LD Avanzado (@graph)
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -33,10 +32,7 @@ const schema = {
       "@type": "WebPage",
       "@id": "https://vitalhomesalud.com/servicios/acondicionamiento-fisico-geriatrico/#webpage",
       "url": "https://vitalhomesalud.com/servicios/acondicionamiento-fisico-geriatrico/",
-      "name": "Actividad Física y Entrenamiento para el Adulto Mayor",
-      "isPartOf": {
-        "@id": "https://vitalhomesalud.com/#website"
-      }
+      "name": "Acondicionamiento Físico Geriátrico y Autonomía | VitalHome Salud"
     },
     {
       "@type": "Service",
@@ -46,11 +42,7 @@ const schema = {
       "provider": {
         "@id": "https://vitalhomesalud.com/#organization"
       },
-      "serviceType": ["Physical Therapy", "Geriatric Fitness Training"],
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "Seniors, Adultos Mayores y Pacientes en Recuperación de Movilidad"
-      },
+      "serviceType": ["Geriatric Fitness", "Physical Rehabilitation", "Fall Prevention"],
       "areaServed": {
         "@type": "GeoCircle",
         "geoMidpoint": {
@@ -64,15 +56,36 @@ const schema = {
         "@type": "Offer",
         "priceCurrency": "COP",
         "price": "0",
-        "description": "Evaluación funcional inicial gratuita para diseñar un plan de acondicionamiento físico seguro.",
+        "description": "Valoración funcional inicial gratuita para diseñar un plan de acondicionamiento físico seguro.",
         "availability": "https://schema.org/InStock"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vitalhomesalud.com/servicios/acondicionamiento-fisico-geriatrico/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Es seguro para un adulto mayor con problemas de corazón?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutamente. Antes de iniciar, realizamos una evaluación funcional y cardiorrespiratoria. Los ejercicios son de bajo impacto y monitorizados constantemente para garantizar seguridad total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuántas veces a la semana se recomienda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de la condición inicial, pero generalmente recomendamos 2 a 3 sesiones semanales de 45-60 minutos para ver resultados significativos en movilidad y fuerza."
+          }
+        }
+      ]
     }
   ]
 };
 
-const title = "Acondicionamiento Físico Geriátrico para Adultos Mayores | VitalHome Salud";
-
+const title = "Acondicionamiento Físico Geriátrico en Casa | VitalHome Salud";
 const breadcrumbItems = [
   { label: "Servicios", href: "/servicios/" },
   { label: "Acondicionamiento Físico Geriátrico", isCurrent: true }
@@ -84,216 +97,406 @@ const breadcrumbItems = [
   
   <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
-  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative font-inter text-[#061a36]">
     
-    <!-- Miga de Pan (Breadcrumbs) Estándar -->
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
-      <Breadcrumbs client:load items={breadcrumbItems} />
+    <!-- Miga de Pan (Breadcrumbs) SOBRE EL HERO -->
+    <div class="absolute top-36 left-0 right-0 z-40">
+        <div class="container mx-auto px-6">
+            <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
     </div>
 
-    <!-- Background Elements -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-40 left-0 w-[500px] h-[500px] bg-blue-50/50 blur-[100px] rounded-full pointer-events-none"></div>
+    <!-- SECCIÓN 1: HERO DE AUTONOMÍA (ISLA DE AUTORIDAD) -->
+    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-10">
+        
+        {/* ✨ MANCHA MÍTICA AZUL CIAN ✨ */}
+        <div class="absolute top-1/2 left-[20%] w-[800px] h-[800px] bg-[#155ec0]/15 blur-[120px] rounded-full -translate-y-1/2 -z-10 pointer-events-none"></div>
+        
+        {/* Decoración de fondo suave auxiliar */}
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#155ec0]/5 blur-[150px] rounded-full -z-20"></div>
 
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
-      
-      <!-- Sección 1: Hero de Autonomía (Recuadro Azul) -->
-      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="container mx-auto px-6 py-10 relative z-10 max-w-[1600px]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Columna Izquierda: Mensaje de Autoridad */}
+                <div class="lg:col-span-7 space-y-10">
+                    <div class="space-y-6">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] bg-blue-50 px-5 py-2 rounded-full border border-blue-100 inline-block">
+                            Estandar de Lujo Clínico 2026
+                        </span>
+                        <h1 class="text-4xl md:text-7xl font-black text-[#061a36] leading-[1.1] font-heading">
+                            Vitalidad en Movimiento: <br/> <span class="text-[#155ec0]">Vida Independiente.</span>
+                        </h1>
+                        <p class="text-xl text-[#061a36]/70 font-medium leading-relaxed max-w-2xl">
+                          El movimiento es la medicina más poderosa para la autonomía. Nuestro programa de acondicionamiento físico geriátrico lleva especialistas en movilidad a su hogar para recuperar la fuerza, el equilibrio y la confianza de su ser querido.
+                        </p>
+                    </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
-          
-          <!-- Columna Izquierda: Texto -->
-          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
-            <div class="space-y-6">
-              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
-                Envejecimiento Activo Élite
-              </span>
-              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading">
-                Vitalidad en Movimiento: <span class="text-blue-400 text-glow">Vida Independiente.</span>
-              </h1>
-              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
-                El envejecimiento activo es la clave para la autonomía. Nuestro programa de acondicionamiento físico geriátrico lleva a su hogar a especialistas en movilidad. Recuperamos la fuerza y equilibrio de su familiar con rutinas clínicamente seguras.
-              </p>
+                    <div class="flex flex-wrap gap-8 pt-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Dumbbell className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Fuerza</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Resistencia Clínica</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Activity className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Equilibrio</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Cero Caídas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Columna Derecha: Isla de Autoridad Clínica (CÁPSULA DE RIGOR) --> */}
+                <div class="lg:col-span-12 xl:col-span-5">
+                    <div class="bg-[#155ec0] rounded-[40px] p-8 md:p-12 shadow-[0_40px_80px_rgba(21,94,192,0.3)] border border-white/10 relative group mt-10 lg:mt-0">
+                        <div class="absolute -top-6 -right-6 size-24 bg-[#061a36] rounded-3xl flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
+                            <Target className="size-10 text-white" />
+                        </div>
+
+                        <h2 class="text-2xl font-black text-white font-heading mb-8 uppercase tracking-tight">Protocolo Físico</h2>
+                        
+                        <ul class="space-y-6 mb-12">
+                            {[
+                                { t: "Evaluación Funcional", d: "Medición de rangos articulares y fuerza basal." },
+                                { t: "Entorno Seguro", d: "Ejercicios adaptados a diagnósticos médicos." },
+                                { t: "Supervisión Experta", d: "Entrenadores especializados en geriatría clínica." }
+                            ].map((item) => (
+                                <li class="flex gap-4">
+                                    <div class="mt-1">
+                                        <div class="size-5 rounded-full bg-white/20 flex items-center justify-center">
+                                            <div class="size-2 rounded-full bg-white"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">{item.t}</p>
+                                        <p class="text-white/70 text-xs font-medium leading-relaxed">{item.d}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a 
+                            href="https://wa.me/573138050356" 
+                            target="_blank"
+                            class="block w-full bg-white text-[#155ec0] text-center py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-[#061a36] hover:text-white transition-all duration-500 hover:-translate-y-1"
+                        >
+                            Solicitar Evaluación Inicial
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors text-center">
-                <ShieldCheck className="mx-auto size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Prevención Caídas</p>
+    <!-- SECCIÓN 2: ABORDAJE INTEGRAL 360° (Bento Grid) -->
+    <section class="py-24 lg:py-40 bg-[#f8f9fa] relative overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+        <div class="text-center mb-24 space-y-4">
+           <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Propuesta de Valor</span>
+           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">
+            Más que Ejercicio, es <br />
+            <span class="text-[#155ec0]">Rehabilitación para la Vida.</span>
+           </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-auto">
+          <!-- Card de Movilidad (Grande) -->
+          <div class="md:col-span-2 bg-white rounded-[40px] p-10 md:p-16 border border-[#e2e8f0] hover:shadow-2xl transition-all group flex flex-col md:flex-row gap-12 items-center">
+             <div class="flex-1 space-y-6">
+                <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors">
+                  <RotateCw className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading">Stretching y Movilidad</h3>
+                <p class="text-slate-500 font-medium leading-relaxed text-lg">
+                  Estiramientos dirigidos para combatir la rigidez articular, mejorar la marcha y ampliar el rango de movimiento de forma segura y progresiva.
+                </p>
+             </div>
+             <div class="w-full md:w-1/2 h-64 bg-slate-100 rounded-[30px] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 shadow-inner border border-slate-200">
+               <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center"></div>
+             </div>
+          </div>
+
+          <!-- Card de Fuerza -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] hover:shadow-2xl transition-all group shrink-0">
+             <div class="space-y-8">
+                <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors">
+                  <Dumbbell className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                </div>
+                <h3 class="text-2xl font-black text-[#011633] font-heading">Fuerza Muscular</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">
+                  Entrenamiento funcional para prevenir la sarcopenia y fortalecer el sistema óseo en casa.
+                </p>
+                <div class="pt-4 border-t border-slate-100 font-black text-[#155ec0] text-[10px] uppercase tracking-widest italic leading-relaxed">
+                  "Músculos fuertes, caídas evitadas."
+                </div>
+             </div>
+          </div>
+
+          <!-- Card de Nutrición -->
+          <div class="bg-[#061a36] rounded-[40px] p-10 group hover:shadow-2xl transition-all relative overflow-hidden">
+             <div class="absolute -right-10 -bottom-10 size-40 bg-[#155ec0]/20 rounded-full blur-3xl"></div>
+             <div class="space-y-6 relative z-10">
+                <div class="size-14 rounded-2xl bg-[#155ec0] flex items-center justify-center">
+                  <Apple className="size-7 text-white" />
+                </div>
+                <h3 class="text-xl font-black text-white font-heading">Guía Nutricional</h3>
+                <p class="text-slate-400 font-medium leading-relaxed">
+                  Orientación profesional sobre hábitos que potencian los resultados de la terapia y elevan la energía diaria.
+                </p>
+             </div>
+          </div>
+
+          <!-- Card Testimonio Corto -->
+          <div class="md:col-span-2 bg-[#155ec0] rounded-[40px] p-10 md:p-12 border border-white/10 group overflow-hidden relative">
+             <div class="absolute right-0 top-0 h-full w-1/3 bg-white/5 skew-x-12"></div>
+             <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="space-y-4 flex-1">
+                   <p class="text-2xl font-black text-white font-heading italic">"Mi padre volvió a caminar por el jardín sin miedo. Su independencia le devolvió la sonrisa."</p>
+                   <p class="text-white/60 font-black text-[10px] uppercase tracking-[0.3em]">Hijo de Paciente - Bogotá</p>
+                </div>
+                <div class="size-20 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md">
+                   <Activity className="size-10 text-white" />
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: EL PUENTE DE AUTORIDAD (Micro-Glosario) -->
+    <section class="py-24 lg:py-40 bg-white relative overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+           <div class="space-y-10">
+              <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Ciencia del Movimiento</span>
+              <h2 class="text-4xl md:text-6xl font-black text-[#011633] font-heading leading-tight">
+                Entendemos la Fisiología <br />
+                <span class="text-[#155ec0]">del Envejecimiento.</span>
+              </h2>
+              <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
+                Nuestro enfoque va más allá del simple ejercicio. Abordamos condiciones clínicas específicas que limitan la autonomía del adulto mayor con rigor científico.
+              </p>
+           </div>
+
+           <div class="grid grid-cols-1 gap-8">
+              <!-- Item Glosario 1 -->
+              <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-[#e2e8f0] relative group hover:border-[#155ec0] transition-all">
+                <div class="space-y-6">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-2xl font-black text-[#011633] font-heading">Sarcopenia</h4>
+                    <span class="text-[#155ec0] font-black text-[10px] uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Estado Clínico</span>
+                  </div>
+                  <p class="text-slate-500 font-medium leading-relaxed">
+                    Pérdida degenerativa de masa muscular. Nuestra intervención detiene y revierte este proceso mediante entrenamiento de resistencia segura, vital para evitar fracturas.
+                  </p>
+                  <a href="/recursos/glosario/" class="inline-flex items-center gap-2 text-[#155ec0] font-black text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                    Ver en el Glosario <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </div>
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors text-center">
-                <ClipboardCheck className="mx-auto size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Evaluación Física</p>
+
+              <!-- Item Glosario 2 -->
+              <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-[#e2e8f0] relative group hover:border-[#155ec0] transition-all">
+                <div class="space-y-6">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-2xl font-black text-[#011633] font-heading">Propriocepción</h4>
+                    <span class="text-[#155ec0] font-black text-[10px] uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Capacidad Motora</span>
+                  </div>
+                  <p class="text-slate-500 font-medium leading-relaxed">
+                    El sentido que informa al cerebro sobre la posición del cuerpo. Entrenarla es la defensa número uno contra las caídas accidentales en el hogar.
+                  </p>
+                  <a href="/recursos/glosario/" class="inline-flex items-center gap-2 text-[#155ec0] font-black text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                    Ver en el Glosario <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </div>
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors text-center">
-                <Activity className="mx-auto size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Monitoreo Vital</p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: LA RED DE SEGURIDAD (FAQ) -->
+    <section class="py-24 lg:py-40 bg-[#eceef0] relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-24 space-y-4">
+           <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Resolución de Dudas</span>
+           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">
+            Actividad Segura: <br />
+            <span class="text-[#155ec0]">Respuestas Profesionales.</span>
+           </h2>
+        </div>
+
+        <div class="space-y-6">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Es seguro para un adulto mayor con problemas de corazón?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Absolutamente. Antes de iniciar, realizamos una evaluación funcional y cardiorrespiratoria exhaustiva. Los ejercicios son de bajo impacto y están monitorizados constantemente para garantizar seguridad total.
               </div>
             </div>
           </div>
 
-          <!-- Columna Derecha: Isla Clínica (Formulario) -->
-          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl relative z-10 border border-slate-100">
-              <div class="mb-10 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-3">Programa Geriátrico</h3>
-                <p class="text-[#011633]/60 font-semibold text-sm italic">Plan de Acondicionamiento Físico Especializado.</p>
+          <!-- FAQ Item 2 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Cuántas veces a la semana se recomienda?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Depende de la condición inicial y los objetivos, pero generalmente recomendamos de 2 a 3 sesiones semanales de 45-60 minutos para observar resultados significativos en movilidad, equilibrio y fuerza.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Llevan el equipo necesario a la casa?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Sí. Nuestros especialistas llevan bandas elásticas, pesas ligeras de grado médico y otros implementos necesarios para una sesión completa. Usted no necesita comprar nada por adelantado.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: FOOTER DE CONVERSIÓN (Z-Pattern) -->
+    <section class="py-24 lg:py-40 bg-[#061a36] relative overflow-hidden">
+      <div class="absolute -left-20 top-0 size-96 bg-[#155ec0]/10 rounded-full blur-[120px]"></div>
+      
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+           
+           <!-- Lado Izquierdo: Testimonio y Autoridad -->
+           <div class="space-y-12">
+              <div class="space-y-8">
+                 <div class="size-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                    <Heart className="size-10 text-[#155ec0]" />
+                 </div>
+                 <blockquote class="text-3xl md:text-5xl font-black text-white font-heading leading-tight italic">
+                  "Ver a mi padre recuperar la fuerza para caminar solo por el jardín es el mayor alivio que hemos tenido en años."
+                 </blockquote>
+                 <p class="text-slate-400 font-black text-xs uppercase tracking-[0.4em]">— Hija de Paciente - Bogotá</p>
+              </div>
+
+              <div class="flex items-center gap-8">
+                 <div class="flex -space-x-4">
+                    <div class="size-14 rounded-full border-4 border-[#061a36] bg-slate-200 overflow-hidden">
+                       <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=200" alt="Entrenador" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="size-14 rounded-full border-4 border-[#061a36] bg-[#155ec0] flex items-center justify-center">
+                       <ShieldCheck className="size-7 text-white" />
+                    </div>
+                 </div>
+                 <div>
+                    <p class="text-white font-black text-sm uppercase tracking-wider">Expertos en Geriatría</p>
+                    <p class="text-slate-400 text-xs font-semibold">Terapeutas en Bogotá y Chía</p>
+                 </div>
+              </div>
+           </div>
+
+           <!-- Lado Derecho: Formulario Minimalista (Isla Blanca) -->
+           <div class="bg-white rounded-[40px] p-10 md:p-16 shadow-2xl relative border border-white/5">
+              <div class="mb-10">
+                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-4 italic">Coordinar Evaluación Funcional</h3>
+                <p class="text-slate-500 font-medium">Inicie el camino hacia una vida independiente.</p>
               </div>
 
               <form class="space-y-6">
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
-                  <input type="text" placeholder="Su nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
+                    <input type="text" placeholder="Ej: Juan Perez" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Teléfono / WhatsApp</label>
+                    <input type="tel" placeholder="313 000 0000" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
                 </div>
-
                 <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp / Teléfono</label>
-                  <input type="tel" placeholder="+57 300 000 0000" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Condición de Movilidad</label>
+                  <div class="relative">
+                    <select class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                      <option>Dificultad al caminar</option>
+                      <option>Post-operatorio (Cadera/Rodilla)</option>
+                      <option>Prevención de caídas</option>
+                      <option>Pérdida de masa muscular</option>
+                    </select>
+                    <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 pointer-events-none" />
+                  </div>
                 </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Condición Física Actual</label>
-                  <textarea rows="2" placeholder="Ej: Dificultad al caminar, post-operatorio..." class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none resize-none"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
-                  Coordinar Evaluación Funcional
+                <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.3em] py-6 rounded-2xl shadow-xl transition-all duration-500">
+                  Solicitar Evaluación Gratuita
                 </button>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección 2: El Bento Grid Clínico (Programa Integral) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 pt-32 pb-16">
-      <div class="text-center mb-24 space-y-4">
-        <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Fisiología del Movimiento</span>
-        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Plan de Recuperación <span class="text-[#155ec0]">Funcional a la Medida.</span></h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <RotateCw className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Stretching y Movilidad</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Estiramientos dirigidos para combatir la rigidez articular, mejorar la marcha y recuperar el rango de movimiento.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Dumbbell className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Resistencia a la Fuerza</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Ejercicios clínicamente supervisados para evitar la sarcopenia (pérdida de masa muscular) y fortalecer la estructura ósea.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Zap className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Equilibrio y Prevención</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Entrenamientos neuro-motores diseñados para reducir drásticamente el riesgo de caídas y mejorar la propiocepción.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Apple className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Acompañamiento Nutricional</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Orientación experta sobre hábitos alimenticios que potencian los resultados musculares y la vitalidad energética.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección 3: Destructor de Objeciones (Seguridad Médica) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[80px]">
-      <div class="max-w-4xl mx-auto text-center space-y-12">
-        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight">Movimiento Seguro y Clínicamente Supervisado.</h2>
-        <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
-          ¿Le preocupa que sea demasiado exigente? Antes de iniciar, realizamos una evaluación funcional exhaustiva. Cada movimiento está adaptado a diagnósticos preexistentes, garantizando actividad física sin riesgos cardiovasculares ni articulares.
-        </p>
-        <div class="flex flex-wrap justify-center gap-6">
-           <div class="flex items-center gap-3 bg-white px-8 py-5 rounded-3xl border border-slate-200">
-             <Activity className="size-5 text-blue-500" />
-             <span class="text-[#011633] font-black text-xs uppercase tracking-widest leading-none">Cero Riesgos</span>
            </div>
-           <div class="flex items-center gap-3 bg-white px-8 py-5 rounded-3xl border border-slate-200">
-             <UserCheck className="size-5 text-blue-500" />
-             <span class="text-[#011633] font-black text-xs uppercase tracking-widest leading-none">Guía Profesional</span>
-           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Sección 4: Footer de Conversión (Z-Pattern) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <!-- Testimonio (Z-Pattern Left) -->
-        <div class="space-y-12">
-          <blockquote class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">
-            "Mi padre volvió a caminar por la casa sin miedo a caerse. Recuperó su alegría y esa calma no tiene precio para nosotros."
-          </blockquote>
-          <div class="flex items-center gap-4">
-             <div class="size-14 rounded-full bg-[#155ec0] border-2 border-white shadow-lg flex items-center justify-center">
-                <Heart className="size-8 text-white" />
-             </div>
-             <div>
-               <p class="text-[#011633] font-bold text-base">Familia Guzmán</p>
-               <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest text-glow-blue">Resultados de Rehabilitación</p>
-             </div>
-          </div>
-        </div>
-
-        <!-- Call to Action (Z-Pattern Right) -->
-        <div class="flex justify-center lg:justify-end">
-           <a 
-            href="https://wa.me/573138050356" 
-            target="_blank"
-            class="bg-[#061a36] hover:bg-[#155ec0] text-white w-full max-w-md py-12 rounded-[40px] flex flex-col items-center justify-center gap-5 transition-all duration-500 shadow-2xl group relative"
-          >
-             <MessageSquare className="size-12 group-hover:scale-110 transition-transform" />
-             <div class="text-center space-y-2">
-               <span class="block font-black text-2xl uppercase tracking-tighter">Hablar con un Entrenador</span>
-               <span class="block text-white/50 font-bold text-[10px] uppercase tracking-widest">Evaluación Física Gratuita</span>
-             </div>
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <Footer />
 
-  <!-- CTA Sticky Flotante -->
+  <!-- Script para el FAQ Interactivo -->
+  <script is:inline>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const content = item.querySelector('.faq-content');
+        const icon = item.querySelector('svg');
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+        // Cerrar todos los demás
+        document.querySelectorAll('.faq-content').forEach(c => {
+          c.style.maxHeight = '0px';
+          c.parentElement.querySelector('svg').style.transform = 'rotate(0deg)';
+        });
+
+        // Abrir/Cerrar actual
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  </script>
 
 </Layout>
 
 <style>
-  html { scroll-behavior: smooth; }
-  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
-  .text-glow-blue { text-shadow: 0 0 10px rgba(21, 94, 192, 0.2); }
+  html {
+    scroll-behavior: smooth;
+  }
+  .center-x-calc {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-bounce-subtle {
+    animation: bounce-subtle 4s infinite ease-in-out;
+  }
 </style>

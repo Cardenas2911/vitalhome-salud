@@ -6,18 +6,21 @@ import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
 import { 
   ShieldCheck, 
   Activity, 
+  ArrowRight,
+  ClipboardCheck,
+  UserCheck,
   Heart,
   Plus,
-  MessageSquare,
-  Accessibility,
   Zap,
   RotateCw,
-  Waves,
-  Sparkles,
-  Bed
+  LogOut,
+  Home,
+  HeartPulse,
+  ChevronDown,
+  Stethoscope,
+  Briefcase
 } from "lucide-react";
 
-// Marcado JSON-LD Avanzado (@graph)
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -30,24 +33,17 @@ const schema = {
       "@type": "WebPage",
       "@id": "https://vitalhomesalud.com/servicios/terapias-recuperacion/#webpage",
       "url": "https://vitalhomesalud.com/servicios/terapias-recuperacion/",
-      "name": "Terapias de Recuperación y Alivio del Dolor en Casa",
-      "isPartOf": {
-        "@id": "https://vitalhomesalud.com/#website"
-      }
+      "name": "Terapias de Recuperación Post-Hospitalaria | VitalHome Salud"
     },
     {
       "@type": "Service",
       "@id": "https://vitalhomesalud.com/servicios/terapias-recuperacion/#service",
-      "name": "Servicio de Terapias y Masajes de Recuperación Domiciliaria",
-      "description": "Intervenciones clínicas a domicilio incluyendo masajes descontracturantes, drenaje linfático y terapia ocupacional para adultos mayores, enfocados en el alivio del dolor crónico, reducción de edemas e independencia funcional.",
+      "name": "Servicio de Recuperación Post-Hospitalaria Integral",
+      "description": "El puente clínico entre el hospital y su hogar. Aseguramos una transición segura con terapias respiratorias, físicas y cuidados especializados para evitar reingresos hospitalarios.",
       "provider": {
         "@id": "https://vitalhomesalud.com/#organization"
       },
-      "serviceType": ["Occupational Therapy", "Therapeutic Massage", "Lymphatic Drainage"],
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "Adultos mayores, pacientes con dolor crónico, edemas y movilidad reducida"
-      },
+      "serviceType": ["Post-Hospital Care", "Rehabilitation", "Home Healthcare Transition"],
       "areaServed": {
         "@type": "GeoCircle",
         "geoMidpoint": {
@@ -61,18 +57,39 @@ const schema = {
         "@type": "Offer",
         "priceCurrency": "COP",
         "price": "0",
-        "description": "Valoración terapéutica inicial a domicilio para determinar el plan de alivio y recuperación adecuado.",
+        "description": "Coordinación clínica gratuita para la transición del hospital al hogar.",
         "availability": "https://schema.org/InStock"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vitalhomesalud.com/servicios/terapias-recuperacion/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye la terapia post-hospitalaria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Incluye una valoración integral para continuar el tratamiento del hospital, manejo de heridas, terapias de rehabilitación (física/respiratoria) y educación al cuidador para evitar complicaciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuándo debe iniciar el servicio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Idealmente, el servicio inicia el mismo día del egreso hospitalario para garantizar que no haya rupturas en el cuidado clínico y se mantenga la estabilidad del paciente."
+          }
+        }
+      ]
     }
   ]
 };
 
-const title = "Terapias y Masajes de Recuperación Domiciliaria | VitalHome Salud";
-
+const title = "Terapias de Recuperación Post-Hospitalaria | VitalHome Salud";
 const breadcrumbItems = [
-  { label: "Nuestras Especialidades", href: "/servicios/" },
-  { label: "Terapias y Masajes de Recuperación", isCurrent: true }
+  { label: "Servicios", href: "/servicios/" },
+  { label: "Recuperación Post-Hospitalaria", isCurrent: true }
 ];
 ---
 
@@ -81,202 +98,394 @@ const breadcrumbItems = [
   
   <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
-  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative font-inter">
     
-    <!-- Miga de Pan (Breadcrumbs) Estándar -->
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
-      <Breadcrumbs client:load items={breadcrumbItems} />
+    <!-- Miga de Pan (Breadcrumbs) SOBRE EL HERO -->
+    <div class="absolute top-36 left-0 right-0 z-40">
+        <div class="container mx-auto px-6">
+            <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
     </div>
 
-    <!-- Background Elements -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-40 left-0 w-[500px] h-[500px] bg-blue-50/50 blur-[100px] rounded-full pointer-events-none"></div>
+    <!-- SECCIÓN 1: HERO DE TRANSICIÓN (ISLA DE AUTORIDAD) -->
+    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-10">
+        
+        {/* ✨ MANCHA MÍTICA AZUL CIAN ✨ */}
+        <div class="absolute top-1/2 left-[20%] w-[800px] h-[800px] bg-[#155ec0]/15 blur-[120px] rounded-full -translate-y-1/2 -z-10 pointer-events-none"></div>
+        
+        {/* Decoración de fondo suave auxiliar */}
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#155ec0]/5 blur-[150px] rounded-full -z-20"></div>
 
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
-      
-      <!-- Sección 1: Hero de Alivio Clínico (Recuadro Azul) -->
-      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="container mx-auto px-6 py-10 relative z-10 max-w-[1600px]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Columna Izquierda: Mensaje de Autoridad */}
+                <div class="lg:col-span-7 space-y-10">
+                    <div class="space-y-6">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] bg-blue-50 px-5 py-2 rounded-full border border-blue-100 inline-block">
+                            Estandar de Lujo Clínico 2026
+                        </span>
+                        <h1 class="text-4xl md:text-7xl font-black text-[#061a36] leading-[1.1] font-heading">
+                            Del Hospital al Hogar: <br/> <span class="text-[#155ec0]">Sin Rupturas Médicas.</span>
+                        </h1>
+                        <p class="text-xl text-[#061a36]/70 font-medium leading-relaxed max-w-2xl">
+                          El regreso a casa tras una hospitalización es el momento de mayor riesgo. Aseguramos la continuidad del rigor clínico para una recuperación exitosa y sin reingresos.
+                        </p>
+                    </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
-          
-          <!-- Columna Izquierda: Texto -->
-          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
-            <div class="space-y-6">
-              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
-                Alivio y Recuperación
-              </span>
-              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading">
-                Recuperación Funcional y Alivio: <span class="text-blue-400 text-glow">Libertad de Movimiento.</span>
-              </h1>
-              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
-                Nuestras terapias manuales no son estéticas; son intervenciones clínicas a domicilio. Aliviamos el dolor articular, mejoramos la circulación y devolvemos el confort diario que su familiar necesita para descansar correctamente.
-              </p>
+                    <div class="flex flex-wrap gap-8 pt-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <LogOut className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Egreso</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Cero Complicaciones</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Home className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Hogar</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Seguridad Clínica</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Columna Derecha: Isla de Autoridad Clínica */}
+                <div class="lg:col-span-12 xl:col-span-5">
+                    <div class="bg-[#155ec0] rounded-[40px] p-8 md:p-12 shadow-[0_40px_80px_rgba(21,94,192,0.3)] border border-white/10 relative group mt-10 lg:mt-0">
+                        <div class="absolute -top-6 -right-6 size-24 bg-[#061a36] rounded-3xl flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
+                            <ClipboardCheck className="size-10 text-white" />
+                        </div>
+
+                        <h2 class="text-2xl font-black text-white font-heading mb-8 uppercase tracking-tight">Plan de Transición</h2>
+                        
+                        <ul class="space-y-6 mb-12">
+                            {[
+                                { t: "Empalme de Historia", d: "Revisión exhaustiva de diagnósticos hospitalarios." },
+                                { t: "Manejo de Insumos", d: "Oxigenoterapia y curaciones avanzadas a domicilio." },
+                                { t: "Entrenamiento Familiar", d: "Educación técnica para el manejo del paciente en casa." }
+                            ].map((item) => (
+                                <li class="flex gap-4">
+                                    <div class="mt-1">
+                                        <div class="size-5 rounded-full bg-white/20 flex items-center justify-center">
+                                            <div class="size-2 rounded-full bg-white"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">{item.t}</p>
+                                        <p class="text-white/70 text-xs font-medium leading-relaxed">{item.d}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a 
+                            href="https://wa.me/573138050356" 
+                            target="_blank"
+                            class="block w-full bg-white text-[#155ec0] text-center py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-[#061a36] hover:text-white transition-all duration-500 hover:-translate-y-1"
+                        >
+                            Coordinar Egreso Seguro
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors text-center">
-                <Sparkles className="mx-auto size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Alivio Dolor</p>
+    <!-- SECCIÓN 2: ECOSISTEMA DE TRANSICIÓN (Bento Grid) -->
+    <section class="py-24 lg:py-40 bg-[#f8f9fa] relative overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+        <div class="text-center mb-24 space-y-4">
+           <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Servicios 360°</span>
+           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">
+            Continuidad Clínica Total <br />
+            <span class="text-[#155ec0]">en la Comodidad del Hogar.</span>
+           </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-auto">
+          <!-- Card Terapias Combinadas (Grande) -->
+          <div class="md:col-span-2 bg-white rounded-[40px] p-10 md:p-16 border border-[#e2e8f0] hover:shadow-2xl transition-all group flex flex-col md:flex-row gap-12 items-center">
+             <div class="flex-1 space-y-6">
+                <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors">
+                  <Stethoscope className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading">Terapias de Alta Intensidad</h3>
+                <p class="text-slate-500 font-medium leading-relaxed text-lg">
+                  Fisioterapia, terapia respiratoria y fonoaudiología integradas en un solo plan para acelerar la recuperación pulmonar y motriz post-hospitalización.
+                </p>
+             </div>
+             <div class="w-full md:w-1/2 h-64 bg-slate-100 rounded-[30px] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 shadow-inner border border-slate-200">
+               <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center"></div>
+             </div>
+          </div>
+
+          <!-- Card Manejo de Heridas -->
+          <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] hover:shadow-2xl transition-all group shrink-0">
+             <div class="space-y-8">
+                <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#155ec0] transition-colors">
+                  <Activity className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
+                </div>
+                <h3 class="text-2xl font-black text-[#011633] font-heading">Cuidado de Heridas</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">
+                  Curaciones especializadas para heridas quirúrgicas o lesiones por presión, asegurando una cicatrización aséptica.
+                </p>
+                <div class="pt-4 border-t border-slate-100 font-black text-[#155ec0] text-[10px] uppercase tracking-widest italic leading-relaxed">
+                  "Excelencia en cada cura."
+                </div>
+             </div>
+          </div>
+
+          <!-- Card Conciliación Medicamentosa -->
+          <div class="bg-[#061a36] rounded-[40px] p-10 group hover:shadow-2xl transition-all relative overflow-hidden">
+             <div class="absolute -right-10 -bottom-10 size-40 bg-[#155ec0]/20 rounded-full blur-3xl"></div>
+             <div class="space-y-6 relative z-10">
+                <div class="size-14 rounded-2xl bg-[#155ec0] flex items-center justify-center">
+                  <Briefcase className="size-7 text-white" />
+                </div>
+                <h3 class="text-xl font-black text-white font-heading">Soporte Farmacológico</h3>
+                <p class="text-slate-400 font-medium leading-relaxed">
+                  Validamos cada medicamento para evitar interacciones y asegurar que se sigan las dosis hospitalarias exactas.
+                </p>
+             </div>
+          </div>
+
+          <!-- Card Testimonio Corto -->
+          <div class="md:col-span-2 bg-[#155ec0] rounded-[40px] p-10 md:p-12 border border-white/10 group overflow-hidden relative">
+             <div class="absolute right-0 top-0 h-full w-1/3 bg-white/5 skew-x-12"></div>
+             <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="space-y-4 flex-1">
+                   <p class="text-2xl font-black text-white font-heading italic">"Teníamos miedo de salir de la UCI. El equipo de VitalHome llegó de inmediato y nos dio la seguridad que necesitábamos."</p>
+                   <p class="text-white/60 font-black text-[10px] uppercase tracking-[0.3em]">Hijo de Paciente - Bogotá</p>
+                </div>
+                <div class="size-20 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md">
+                   <ShieldCheck className="size-10 text-white" />
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: EL PUENTE DE AUTORIDAD (Micro-Glosario de Transición) -->
+    <section class="py-24 lg:py-40 bg-white relative overflow-hidden">
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+           <div class="space-y-10">
+              <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Base Operativa</span>
+              <h2 class="text-4xl md:text-6xl font-black text-[#011633] font-heading leading-tight">
+                Glosario de <br />
+                <span class="text-[#155ec0]">Transición Segura.</span>
+              </h2>
+              <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
+                La excelencia en la recuperación post-hospitalaria depende de la precisión técnica y la vigilancia constante del paciente.
+              </p>
+           </div>
+
+           <div class="grid grid-cols-1 gap-8">
+              <!-- Item Glosario 1 -->
+              <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-[#e2e8f0] relative group hover:border-[#155ec0] transition-all">
+                <div class="space-y-6">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-2xl font-black text-[#011633] font-heading">Continuidad Asistencial</h4>
+                    <span class="text-[#155ec0] font-black text-[10px] uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Pilar VitalHome</span>
+                  </div>
+                  <p class="text-slate-500 font-medium leading-relaxed">
+                    Es el proceso de empalme entre el hospital y el hogar, asegurando que toda la información clínica trascienda y el tratamiento no se detenga.
+                  </p>
+                  <a href="/recursos/glosario/" class="inline-flex items-center gap-2 text-[#155ec0] font-black text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                    Ver en el Glosario <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </div>
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors text-center">
-                <Waves className="mx-auto size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Reducción Edemas</p>
+
+              <!-- Item Glosario 2 -->
+              <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-[#e2e8f0] relative group hover:border-[#155ec0] transition-all">
+                <div class="space-y-6">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-2xl font-black text-[#011633] font-heading">Conciliación Medicamentosa</h4>
+                    <span class="text-[#155ec0] font-black text-[10px] uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Protocolo Técnico</span>
+                  </div>
+                  <p class="text-slate-500 font-medium leading-relaxed">
+                    Comparación exhaustiva entre los medicamentos que el paciente tomaba antes y los que se le recetaron en el hospital para evitar errores de medicación.
+                  </p>
+                  <a href="/recursos/glosario/" class="inline-flex items-center gap-2 text-[#155ec0] font-black text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                    Ver en el Glosario <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </div>
-              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 space-y-3 group hover:bg-blue-400/10 transition-colors text-center">
-                <Bed className="mx-auto size-6 text-blue-400" />
-                <p class="text-white font-bold text-xs uppercase tracking-widest">Mejora Sueño</p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: LA RED DE SEGURIDAD (FAQ Recuperación) -->
+    <section class="py-24 lg:py-40 bg-[#eceef0] relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-24 space-y-4">
+           <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em]">Resolución de Dudas</span>
+           <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">
+            Dudas sobre el Alta: <br />
+            <span class="text-[#155ec0]">Respuestas con Rigor.</span>
+           </h2>
+        </div>
+
+        <div class="space-y-6">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Qué incluye el servicio de recuperación en casa?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Incluye una valoración de ingreso por enfermería jefe o fisioterapia, revisión de órdenes hospitalarias, inicio de terapias (física/respiratoria), seguimiento de signos vitales e informes médicos periódicos.
               </div>
             </div>
           </div>
 
-          <!-- Columna Derecha: Isla Clínica (Formulario) -->
-          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl relative z-10 border border-slate-100">
-              <div class="mb-10 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-3">Valoración Terapéutica</h3>
-                <p class="text-[#011633]/60 font-semibold text-sm italic">Recupere el confort de su ser querido hoy.</p>
+          <!-- FAQ Item 2 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Cuándo deben iniciar las terapias?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Lo ideal es iniciar en las primeras 24 horas posteriores al alta hospitalaria. Esto garantiza que la rehabilitación no pierda inercia y se detecten complicaciones tempranas (como infecciones o delírium post-hospitalario).
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item bg-white rounded-[30px] p-8 border border-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <div class="flex items-center justify-between gap-6 pointer-events-none">
+              <h4 class="text-[#011633] font-black text-lg font-heading leading-tight italic">¿Cómo coordino el traslado del hospital a mi casa?</h4>
+              <ChevronDown className="size-5 text-[#155ec0] shrink-0" />
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out faq-content pointer-events-none">
+              <div class="pt-8 text-slate-500 font-medium leading-relaxed">
+                Nuestra coordinación clínica puede asesorarle en el proceso de egreso. Contáctenos tan pronto tenga la fecha probable de alta para que nuestro equipo esté listo en su domicilio al momento de su llegada.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: FOOTER DE CONVERSIÓN (Z-Pattern) -->
+    <section class="py-24 lg:py-40 bg-[#061a36] relative overflow-hidden">
+      <div class="absolute -left-20 top-0 size-96 bg-[#155ec0]/10 rounded-full blur-[120px]"></div>
+      
+      <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+           
+           <!-- Lado Izquierdo: Testimonio y Autoridad -->
+           <div class="space-y-12">
+              <div class="space-y-8">
+                 <div class="size-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                    <LogOut className="size-10 text-[#155ec0]" />
+                 </div>
+                 <blockquote class="text-3xl md:text-5xl font-black text-white font-heading leading-tight italic">
+                  "El egreso hospitalario fue estresante, pero VitalHome tomó el control y nos permitió concentrarnos solo en la salud de mi madre."
+                 </blockquote>
+                 <p class="text-slate-400 font-black text-xs uppercase tracking-[0.4em]">— Familiar de Paciente - Bogotá</p>
+              </div>
+
+              <div class="flex items-center gap-8">
+                 <div class="flex -space-x-4">
+                    <div class="size-14 rounded-full border-4 border-[#061a36] bg-slate-200 overflow-hidden">
+                       <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=200" alt="Médico" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="size-14 rounded-full border-4 border-[#061a36] bg-[#155ec0] flex items-center justify-center">
+                       <ShieldCheck className="size-7 text-white" />
+                    </div>
+                 </div>
+                 <div>
+                    <p class="text-white font-black text-sm uppercase tracking-wider">Coordinación de Egreso</p>
+                    <p class="text-slate-400 text-xs font-semibold">Respuesta inmediata en Bogotá</p>
+                 </div>
+              </div>
+           </div>
+
+           <!-- Lado Derecho: Formulario Minimalista (Isla Blanca) -->
+           <div class="bg-white rounded-[40px] p-10 md:p-16 shadow-2xl relative border border-white/5">
+              <div class="mb-10">
+                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-4 italic">Activar Recuperación Home</h3>
+                <p class="text-slate-500 font-medium">Inicie su transición segura hoy mismo.</p>
               </div>
 
               <form class="space-y-6">
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
-                  <input type="text" placeholder="Su nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
+                    <input type="text" placeholder="Ej: Diana Martinez" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp de Contacto</label>
+                    <input type="tel" placeholder="313 000 0000" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
                 </div>
-
                 <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp / Teléfono</label>
-                  <input type="tel" placeholder="+57 300 000 0000" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Estado del Paciente</label>
+                  <div class="relative">
+                    <select class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                      <option>En Hospital (Próximo al Alta)</option>
+                      <option>Ya en Casa (Inicia Recuperación)</option>
+                      <option>Necesita Terapia Urgente</option>
+                    </select>
+                    <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 pointer-events-none" />
+                  </div>
                 </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Tipo de Dolor / Condición</label>
-                  <textarea rows="2" placeholder="Ej: Dolor lumbar crónico, piernas hinchadas..." class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none resize-none"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
-                  Solicitar Valoración en Casa
+                <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.3em] py-6 rounded-2xl shadow-xl transition-all duration-500">
+                  Solicitar Puente Clínico
                 </button>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección 2: El Bento Grid Clínico (Intervenciones Específicas) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 pt-32 pb-16">
-      <div class="text-center mb-24 space-y-4">
-        <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Tratamientos de Alivio</span>
-        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Intervenciones Especializadas <span class="text-[#155ec0]">para el Adulto Mayor.</span></h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-        <!-- Card 1: Masaje Relajante -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
-            <Heart className="size-8" />
-          </div>
-          <div class="flex-grow">
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Masaje Relajante Geriátrico</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Reducción clínica de la tensión muscular y agitación. Aplicamos movimientos biomecánicamente seguros que respetan la fragilidad ósea, logrando una mejora drástica en la calidad del sueño.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 2: Drenaje Linfático -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
-            <Waves className="size-8" />
-          </div>
-          <div class="flex-grow">
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Drenaje Linfático y Circulatorio</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Tratamiento especializado para la retención de líquidos y edemas. Disminuimos la inflamación y eliminamos la sensación de "piernas pesadas", previniendo úlceras por inmovilidad.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 3: Terapia Ocupacional -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex flex-col gap-8 h-full">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors text-[#155ec0] group-hover:text-white">
-            <Accessibility className="size-8" />
-          </div>
-          <div class="flex-grow">
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Terapia Ocupacional Adaptativa</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Entrenamiento en habilidades diarias (vestirse, comer, aseo) y adaptaciones del entorno para maximizar la independencia del paciente dentro del hogar.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección 3: Destructor de Objeciones (Rigor y Seguridad) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[80px]">
-      <div class="max-w-4xl mx-auto text-center space-y-12">
-        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading leading-tight italic">Terapeutas Certificados, No Masajistas de Spa.</h2>
-        <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
-          El cuerpo de un adulto mayor requiere un trato extremadamente cuidadoso. Nuestros especialistas evalúan contraindicaciones como trombosis o heridas abiertas antes de cada sesión, adaptando cada movimiento a los diagnósticos preexistentes.
-        </p>
-        <div class="flex flex-wrap justify-center gap-6">
-           <div class="flex items-center gap-3 bg-white px-8 py-5 rounded-3xl border border-slate-200">
-             <ShieldCheck className="size-5 text-[#155ec0]" />
-             <span class="text-[#011633] font-black text-xs uppercase tracking-widest leading-none">Seguridad Clínica</span>
            </div>
-           <div class="flex items-center gap-3 bg-white px-8 py-5 rounded-3xl border border-slate-200">
-             <Activity className="size-5 text-[#155ec0]" />
-             <span class="text-[#011633] font-black text-xs uppercase tracking-widest leading-none">Enfoque Geriátrico</span>
-           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Sección 4: Footer de Conversión (Z-Pattern) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <!-- Testimonio (Z-Pattern Left) -->
-        <div class="space-y-12">
-          <blockquote class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">
-            "Ver a mi madre dormir la noche entera sin quejarse de dolor en las piernas no tiene precio. El alivio llegó por fin a nuestra casa."
-          </blockquote>
-          <div class="flex items-center gap-4">
-             <div class="size-14 rounded-full bg-[#155ec0] border-2 border-white shadow-lg flex items-center justify-center">
-                <Heart className="size-8 text-white" />
-             </div>
-             <div>
-               <p class="text-[#011633] font-bold text-base">Familia Martínez</p>
-               <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest">Alivio Comprobado</p>
-             </div>
-          </div>
-        </div>
-
-        <!-- Call to Action (Z-Pattern Right) -->
-        <div class="flex justify-center lg:justify-end">
-           <a 
-            href="https://wa.me/573138050356" 
-            target="_blank"
-            class="bg-[#061a36] hover:bg-[#155ec0] text-white w-full max-w-md py-12 rounded-[40px] flex flex-col items-center justify-center gap-5 transition-all duration-500 shadow-2xl group relative"
-          >
-             <MessageSquare className="size-12 group-hover:scale-110 transition-transform" />
-             <div class="text-center space-y-2">
-               <span class="block font-black text-2xl uppercase tracking-tighter">Agendar Visita de Alivio</span>
-               <span class="block text-white/50 font-bold text-[10px] uppercase tracking-widest">Valoración Inicial en Casa</span>
-             </div>
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <Footer />
 
-  <!-- CTA Sticky Flotante -->
+  <!-- Script para el FAQ Interactivo -->
+  <script is:inline>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const content = item.querySelector('.faq-content');
+        const icon = item.querySelector('svg');
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+        // Cerrar todos los demás
+        document.querySelectorAll('.faq-content').forEach(c => {
+          c.style.maxHeight = '0px';
+          c.parentElement.querySelector('svg').style.transform = 'rotate(0deg)';
+        });
+
+        // Abrir/Cerrar actual
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  </script>
 
 </Layout>
 
 <style>
-  html { scroll-behavior: smooth; }
-  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+  html {
+    scroll-behavior: smooth;
+  }
 </style>

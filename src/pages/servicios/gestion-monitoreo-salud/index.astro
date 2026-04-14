@@ -19,7 +19,10 @@ import {
   Calendar,
   FileText,
   Smartphone,
-  ChevronDown
+  ChevronDown,
+  Stethoscope,
+  Microscope,
+  MonitorCheck
 } from "lucide-react";
 
 // Marcado JSON-LD Avanzado (@graph)
@@ -35,24 +38,17 @@ const schema = {
       "@type": "WebPage",
       "@id": "https://vitalhomesalud.com/servicios/gestion-monitoreo-salud/#webpage",
       "url": "https://vitalhomesalud.com/servicios/gestion-monitoreo-salud/",
-      "name": "Acompañamiento y Gestión de Salud Domiciliaria",
-      "isPartOf": {
-        "@id": "https://vitalhomesalud.com/#website"
-      }
+      "name": "Acompañamiento y Monitoreo de Salud 24/7"
     },
     {
       "@type": "Service",
       "@id": "https://vitalhomesalud.com/servicios/gestion-monitoreo-salud/#service",
-      "name": "Servicio de Acompañamiento y Monitoreo de Salud 24/7",
-      "description": "Supervisión clínica 24 horas liderada por enfermeras jefes, acompañamiento a citas médicas externas y control riguroso de la evolución del paciente.",
+      "name": "Acompañamiento Médico y Monitoreo Clínico 24/7",
+      "description": "Supervisión continua por Enfermeras Jefes, auditoría de cuidado en el hogar, control de medicamentos y acompañamiento profesional a consultas médicas externas.",
       "provider": {
         "@id": "https://vitalhomesalud.com/#organization"
       },
-      "serviceType": "Health Monitoring and Care Management",
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "Pacientes crónicos, dependientes y familiares responsables"
-      },
+      "serviceType": ["Care Management", "Medical Escort", "24/7 Nursing Supervision"],
       "areaServed": {
         "@type": "GeoCircle",
         "geoMidpoint": {
@@ -66,7 +62,7 @@ const schema = {
         "@type": "Offer",
         "priceCurrency": "COP",
         "price": "0",
-        "description": "Valoración clínica inicial gratuita para diseñar un plan de monitoreo a medida.",
+        "description": "Consultoría gratuita con nuestra Dirección de Enfermería para estructurar el plan de monitoreo.",
         "availability": "https://schema.org/InStock"
       }
     },
@@ -76,18 +72,26 @@ const schema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Cómo actúan ante una emergencia médica en la madrugada?",
+          "name": "¿Cómo se que el personal realmente está cumpliendo el horario?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Contamos con protocolos de emergencia estrictos. Nuestra coordinación clínica, liderada por una enfermera jefe, está disponible 24/7 vía WhatsApp y llamada directa para asistir, guiar y coordinar traslados de inmediato si la situación lo requiere."
+            "text": "Nuestra Enfermera Jefe verifica satelitalmente y audita los reportes de inicio y finalización de cada turno."
           }
         },
         {
           "@type": "Question",
-          "name": "¿El personal acompaña al paciente dentro de la cita médica?",
+          "name": "¿El acompañamiento médico incluye el traslado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. Nuestro servicio incluye el traslado logístico y el acompañamiento profesional dentro del consultorio. Nos aseguramos de recibir las instrucciones médicas exactas y reportárselas a usted en tiempo real."
+            "text": "Sí, coordinamos la logística completa para asegurar que el paciente llegue a su cita y regrese a casa con todas las indicaciones médicas claras."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Me informarán si hay una emergencia en la madrugada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inmediatamente. Contamos con protocolos de escalado; la Enfermera Jefe se comunica con usted mientras estabiliza la situación."
           }
         }
       ]
@@ -95,7 +99,7 @@ const schema = {
   ]
 };
 
-const title = "Monitoreo Clínico 24/7 y Acompañamiento Médico | VitalHome Salud";
+const title = "Acompañamiento Médico y Monitoreo 24/7 | VitalHome Salud";
 
 const breadcrumbItems = [
   { label: "Servicios", href: "/servicios/" },
@@ -108,277 +112,334 @@ const breadcrumbItems = [
   
   <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
-  <main class="w-full bg-[#f8fafc] pt-40 pb-24 overflow-hidden relative">
+  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative font-inter">
     
-    <!-- Miga de Pan (Breadcrumbs) Estándar -->
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 pb-12 relative z-20">
-      <Breadcrumbs client:load items={breadcrumbItems} />
+    {/* BREADCRUMBS OVER HERO */}
+    <div class="absolute top-36 left-0 right-0 z-40">
+        <div class="container mx-auto px-6">
+            <Breadcrumbs client:load items={breadcrumbItems} />
+        </div>
     </div>
 
-    <!-- Background Elements -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-40 left-0 w-[500px] h-[500px] bg-blue-50/50 blur-[100px] rounded-full pointer-events-none"></div>
+    {/* SECCIÓN 1: HERO DE RIGOR CLÍNICO (ISLA DE AUTORIDAD) */}
+    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-10">
+        
+        {/* ✨ MANCHA MÍTICA AZUL CIAN ✨ */}
+        <div class="absolute top-1/2 left-[20%] w-[800px] h-[800px] bg-[#155ec0]/15 blur-[120px] rounded-full -translate-y-1/2 -z-10 pointer-events-none"></div>
+        
+        {/* Decoración de fondo suave auxiliar */}
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#155ec0]/5 blur-[150px] rounded-full -z-20"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#f8f9fa] blur-[100px] rounded-full -z-20"></div>
 
-    <div class="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
-      
-      <!-- Sección 1: Hero de Alivio Emocional (Recuadro Azul) -->
-      <div class="bg-[#061a36] rounded-[60px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border border-white/5 relative">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#155ec0]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="container mx-auto px-6 py-10 relative z-10 max-w-[1600px]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                {/* Columna Izquierda: Mensaje de Autoridad */}
+                <div class="lg:col-span-7 space-y-10">
+                    <div class="space-y-6">
+                        <span class="text-[10px] font-black text-[#155ec0] uppercase tracking-[0.4em] bg-blue-50 px-5 py-2 rounded-full border border-blue-100 inline-block">
+                            Estandar de Lujo Clínico 2026
+                        </span>
+                        <h1 class="text-4xl md:text-7xl font-black text-[#061a36] leading-[1.1] font-heading">
+                            Monitoreo de Élite, <br/> <span class="text-[#155ec0]">Seguridad 24/7.</span>
+                        </h1>
+                        <p class="text-xl text-[#061a36]/70 font-medium leading-relaxed max-w-2xl">
+                          Usted no tiene que gestionar la salud de su familiar en solitario. Nuestro servicio de Monitoreo y Acompañamiento asume el control total de la logística médica con rigor institucional.
+                        </p>
+                    </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
-          
-          <!-- Columna Izquierda: Texto -->
-          <div class="p-10 md:p-16 lg:p-20 space-y-10 flex flex-col justify-center">
-            <div class="space-y-6">
-              <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.4em] bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20 w-fit">
-                Gestión Clínica Predictiva
-              </span>
-              <h1 class="text-4xl md:text-6xl font-black text-white leading-tight font-heading">
-                Control y Paz Mental: <span class="text-blue-400 text-glow">Monitoreo Clínico 24/7.</span>
-              </h1>
-              <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed">
-                La tranquilidad de saber que su ser querido está siempre protegido es invaluable. Asumimos la gestión integral de su salud: desde el acompañamiento a citas externas hasta la supervisión clínica 24 horas. Usted recupere su tiempo, nosotros garantizamos el bienestar.
-              </p>
+                    <div class="flex flex-wrap gap-8 pt-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <ShieldCheck className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">Verificado</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Respaldo Total</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="size-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#155ec0] transition-all">
+                                <Activity className="size-6 text-[#155ec0] group-hover:text-white" />
+                            </div>
+                            <div>
+                                <p class="text-[#061a36] font-black text-lg">24/7</p>
+                                <p class="text-[#061a36]/40 text-[10px] uppercase tracking-widest font-bold">Monitoreo VitalCare®</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Columna Derecha: Isla de Autoridad Clínico Procedimental */}
+                <div class="lg:col-span-12 xl:col-span-5">
+                    <div class="bg-[#155ec0] rounded-[40px] p-8 md:p-12 shadow-[0_40px_80px_rgba(21,94,192,0.3)] border border-white/10 relative group mt-10 lg:mt-0">
+                        <div class="absolute -top-6 -right-6 size-24 bg-[#061a36] rounded-3xl flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
+                            <ClipboardCheck className="size-10 text-white" />
+                        </div>
+
+                        <h2 class="text-2xl font-black text-white font-heading mb-8 uppercase tracking-tight">Cápsula de Rigor Clínico</h2>
+                        
+                        <ul class="space-y-6 mb-12">
+                            {[
+                                { t: "Verificación de turnos", d: "Control satelital de inicio y fin de cada jornada." },
+                                { t: "Revisión de notas", d: "Auditoría clínica de las actividades del personal." },
+                                { t: "Reportes diarios", d: "Actualizaciones estructuradas para la familia." }
+                            ].map((item) => (
+                                <li class="flex gap-4">
+                                    <div class="mt-1">
+                                        <div class="size-5 rounded-full bg-white/20 flex items-center justify-center">
+                                            <div class="size-2 rounded-full bg-white"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">{item.t}</p>
+                                        <p class="text-white/70 text-xs font-medium leading-relaxed">{item.d}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a 
+                            href="#audiencia" 
+                            class="block w-full bg-white text-[#155ec0] text-center py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-[#061a36] hover:text-white transition-all duration-500 hover:-translate-y-1"
+                        >
+                            Hablar con la Coordinación
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-               <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <Eye className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Supervisión Continua</span>
+    <!-- ── SECCIÓN 2: COBERTURA LOGÍSTICA Y DE CUIDADO (BENTO GRID) ── -->
+    <section class="max-w-[1600px] mx-auto px-5 md:px-12 py-32 bg-[#f8f9fa] rounded-[80px]">
+      <div class="text-center mb-24 space-y-4 max-w-3xl mx-auto">
+        <span class="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em] bg-blue-50 px-4 py-2 rounded-full">Sistema VitalHome</span>
+        <h2 class="text-4xl md:text-6xl font-black text-[#061a36] font-outfit">Un Sistema de Vigilancia que <span class="text-blue-600">Nunca Duerme.</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1: Auditoría -->
+        <div class="bg-white rounded-[40px] p-10 md:p-12 border border-slate-100 hover:border-blue-200 transition-all hover:shadow-2xl hover:shadow-blue-500/5 group flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="size-16 rounded-3xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-500">
+              <MonitorCheck className="size-8 text-blue-600 group-hover:text-white transition-colors" />
+            </div>
+            <h3 class="text-2xl font-black text-[#061a36] font-outfit">Auditoría Clínica Continua</h3>
+            <p class="text-slate-500 font-medium text-lg leading-relaxed">
+              Nuestras enfermeras jefes monitorean las 24 horas a los profesionales en su hogar, asegurando el cumplimiento estricto del plan de manejo y los medicamentos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Acompañamiento (Más ancha en md si fuera bento real, pero aquí usamos 3 cols) -->
+        <div class="bg-white rounded-[40px] p-10 md:p-12 border border-slate-100 hover:border-blue-200 transition-all hover:shadow-2xl hover:shadow-blue-500/5 group relative overflow-hidden flex flex-col justify-between min-h-[450px]">
+           <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
+              <img src="/images/acompanamiento_medico_consulta_externa_1776136966306.png" class="w-full h-full object-cover" />
+           </div>
+           <div class="space-y-6 relative z-10">
+            <div class="size-16 rounded-3xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-500">
+              <UserCheck className="size-8 text-blue-600 group-hover:text-white transition-colors" />
+            </div>
+            <h3 class="text-2xl font-black text-[#061a36] font-outfit">Acompañamiento a Citas Médicas</h3>
+            <p class="text-slate-500 font-medium text-lg leading-relaxed">
+              Un profesional de la salud asiste con su familiar a consultas externas, exámenes o terapias, garantizando traslados seguros y comunicación médica precisa.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Reportes -->
+        <div class="bg-white rounded-[40px] p-10 md:p-12 border border-slate-100 hover:border-blue-200 transition-all hover:shadow-2xl hover:shadow-blue-500/5 group flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="size-16 rounded-3xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-500">
+              <ClipboardCheck className="size-8 text-blue-600 group-hover:text-white transition-colors" />
+            </div>
+            <h3 class="text-2xl font-black text-[#061a36] font-outfit">Reportes de Evolución</h3>
+            <p class="text-slate-500 font-medium text-lg leading-relaxed">
+              Reciba actualizaciones periódicas y estructuradas sobre el estado de salud de su familiar, manteniéndolo informado sin interrumpir su jornada laboral.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECCIÓN 3: EL PUENTE DE AUTORIDAD (GLOSARIO) ── -->
+    <section class="max-w-[1600px] mx-auto px-5 md:px-12 py-32 bg-white">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div class="space-y-8">
+           <span class="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em]">Prevención Clínica</span>
+           <h2 class="text-4xl md:text-5xl font-black text-[#061a36] font-outfit leading-tight">Anticipación Clínica ante <br /> <span class="text-blue-600">Cualquier Escenario.</span></h2>
+           <p class="text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
+             No solo reaccionamos ante eventos; nuestro sistema está diseñado para anticipar crisis y mitigar los riesgos operativos y emocionales del cuidado domiciliario.
+           </p>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Card de Glosario 1 -->
+          <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-slate-100 relative group overflow-hidden">
+            <div class="absolute -right-10 -top-10 size-40 bg-blue-100/50 blur-[50px] rounded-full group-hover:bg-blue-200/50 transition-colors duration-700" />
+            <div class="flex items-center gap-4 mb-6 relative z-10">
+              <h3 class="text-2xl font-black text-[#061a36] font-outfit uppercase tracking-tighter">Burnout del Cuidador</h3>
+            </div>
+            <p class="text-slate-600 font-medium text-lg leading-relaxed relative z-10 transition-all group-hover:text-[#061a36]">
+              "Entendemos su agotamiento. Nuestro monitoreo 24/7 está diseñado para ser su relevo clínico definitivo, devolviéndole su rol de hijo(a) y eliminando el estrés operativo."
+            </p>
+          </div>
+
+          <!-- Card de Glosario 2 -->
+          <div class="bg-[#f8f9fa] rounded-[40px] p-10 border border-slate-100 relative group overflow-hidden">
+             <div class="absolute -right-10 -top-10 size-40 bg-blue-100/50 blur-[50px] rounded-full group-hover:bg-blue-200/50 transition-colors duration-700" />
+            <div class="flex items-center gap-4 mb-6 relative z-10">
+              <h3 class="text-2xl font-black text-[#061a36] font-outfit uppercase tracking-tighter">Junta Médica Interdisciplinaria</h3>
+            </div>
+            <p class="text-slate-600 font-medium text-lg leading-relaxed relative z-10 transition-all group-hover:text-[#061a36]">
+              "Ante cualquier alteración en los reportes diarios, nuestra dirección médica y de enfermería audita el caso para ajustar el plan de cuidado antes de que ocurra una crisis."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECCIÓN 4: LA RED DE SEGURIDAD (FAQ) ── -->
+    <section class="max-w-[1200px] mx-auto px-5 md:px-12 py-32 bg-[#eceef0] rounded-[80px] my-32">
+      <div class="text-center mb-24 space-y-4">
+        <h2 class="text-4xl md:text-6xl font-black text-[#061a36] font-outfit">Sus Dudas sobre la Gestión del Cuidado, <span class="text-blue-600">Resueltas.</span></h2>
+      </div>
+
+      <div class="space-y-6 max-w-4xl mx-auto">
+        <!-- Pregunta 1 -->
+        <details class="group bg-white rounded-[32px] border border-slate-200 shadow-sm transition-all duration-500 open:shadow-2xl open:border-blue-500/30 overflow-hidden">
+          <summary class="flex items-center justify-between p-8 cursor-pointer list-none">
+            <span class="text-xl font-black text-[#061a36] font-outfit tracking-tight uppercase">¿Cómo sé que el personal realmente está cumpliendo el horario?</span>
+            <div class="size-10 rounded-full bg-blue-50 flex items-center justify-center group-open:rotate-180 transition-transform duration-500">
+               <ChevronDown className="size-5 text-blue-600" />
+            </div>
+          </summary>
+          <div class="px-8 pb-8 text-lg font-medium text-slate-500 leading-relaxed border-t border-slate-50 pt-6">
+            Nuestra Enfermera Jefe verifica satelitalmente y audita los reportes de inicio y finalización de cada turno, asegurando que su familiar nunca esté desprotegido.
+          </div>
+        </details>
+
+        <!-- Pregunta 2 -->
+        <details class="group bg-white rounded-[32px] border border-slate-200 shadow-sm transition-all duration-500 open:shadow-2xl open:border-blue-500/30 overflow-hidden">
+          <summary class="flex items-center justify-between p-8 cursor-pointer list-none">
+            <span class="text-xl font-black text-[#061a36] font-outfit tracking-tight uppercase">¿El acompañamiento médico incluye el traslado?</span>
+            <div class="size-10 rounded-full bg-blue-50 flex items-center justify-center group-open:rotate-180 transition-transform duration-500">
+               <ChevronDown className="size-5 text-blue-600" />
+            </div>
+          </summary>
+          <div class="px-8 pb-8 text-lg font-medium text-slate-500 leading-relaxed border-t border-slate-50 pt-6">
+            Sí, coordinamos la logística completa para asegurar que el paciente llegue a su cita y regrese a casa con todas las indicaciones médicas claras, sin que usted tenga que preocuparse por traslados.
+          </div>
+        </details>
+
+        <!-- Pregunta 3 -->
+        <details class="group bg-white rounded-[32px] border border-slate-200 shadow-sm transition-all duration-500 open:shadow-2xl open:border-blue-500/30 overflow-hidden">
+          <summary class="flex items-center justify-between p-8 cursor-pointer list-none">
+            <span class="text-xl font-black text-[#061a36] font-outfit tracking-tight uppercase">¿Me informarán si hay una emergencia en la madrugada?</span>
+            <div class="size-10 rounded-full bg-blue-50 flex items-center justify-center group-open:rotate-180 transition-transform duration-500">
+               <ChevronDown className="size-5 text-blue-600" />
+            </div>
+          </summary>
+          <div class="px-8 pb-8 text-lg font-medium text-slate-500 leading-relaxed border-t border-slate-50 pt-6">
+            Inmediatamente. Contamos con protocolos de escalado estricto; la Enfermera Jefe se comunica con usted mientras estabiliza la situación y coordina la respuesta clínica necesaria.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ── SECCIÓN 5: FOOTER DE CONVERSIÓN (Z-PATTERN) ── -->
+    <section class="max-w-[1600px] mx-auto px-5 md:px-12 py-32 mb-20 bg-[#061a36] rounded-[80px] overflow-hidden relative border border-white/5">
+       <div class="absolute inset-0 opacity-10 blur-3xl pointer-events-none">
+          <div class="absolute top-0 right-0 size-96 bg-blue-400 rounded-full" />
+          <div class="absolute bottom-0 left-0 size-96 bg-blue-600 rounded-full" />
+       </div>
+
+       <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+          <!-- Testimonio (Shifted Z-Pattern) -->
+          <div class="space-y-12">
+            <blockquote class="text-3xl md:text-5xl font-black text-white italic font-outfit leading-tight lg:-rotate-1">
+              "Delegar la coordinación de médicos, citas y enfermeras a VitalHome me devolvió la vida. Ahora solo me dedico a disfrutar el tiempo con mi madre."
+            </blockquote>
+            <div class="flex items-center gap-5">
+              <div class="size-16 rounded-full bg-blue-500 flex items-center justify-center border-2 border-white/20 shadow-xl">
+                 <UserCheck className="size-8 text-white" />
               </div>
-              <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <Activity className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Reportes Tiempo Real</span>
-              </div>
-              <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <ShieldCheck className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Cero Estrés Logístico</span>
-              </div>
-              <div class="flex items-center gap-4 group">
-                <div class="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                  <UserCheck className="size-6 text-blue-400" />
-                </div>
-                <span class="text-white font-bold text-sm">Respaldo Profesional</span>
+              <div>
+                <span class="text-white font-black text-lg block font-outfit">Familiar VitalCare®</span>
+                <span class="text-blue-400 text-xs font-black uppercase tracking-widest">Testimonio Real Verificado</span>
               </div>
             </div>
           </div>
 
-          <!-- Columna Derecha: Isla Clínica (Formulario) -->
-          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center">
-            <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl relative z-10 border border-slate-100">
-              <div class="mb-10 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-[#011633] font-heading mb-3">Solicitar Ayuda Experta</h3>
-                <p class="text-[#011633]/60 font-semibold text-sm italic">Hable directamente con una Enfermera Jefe.</p>
-              </div>
+          <!-- Formulario Directo -->
+          <div class="bg-white rounded-[50px] p-10 md:p-16 shadow-4xl group">
+             <div class="mb-10 text-center lg:text-left">
+                <h3 class="text-3xl font-black text-[#061a36] font-outfit mb-4">Contactar a la Coordinación Clínica</h3>
+                <p class="text-slate-500 font-medium text-lg italic">Diseñaremos la logística clínica para que usted recupere su paz mental.</p>
+             </div>
 
-              <form class="space-y-6">
+             <form class="space-y-6">
                 <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre Completo</label>
+                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
                   <input 
                     type="text" 
-                    placeholder="Su nombre" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
+                    placeholder="Escriba su nombre" 
+                    class="w-full bg-[#f8f9fa] border border-slate-200 rounded-2xl px-8 py-5 text-[#061a36] font-bold focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
                   />
                 </div>
 
                 <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp / Teléfono</label>
+                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">WhatsApp de Urgencia / Contacto</label>
                   <input 
                     type="tel" 
-                    placeholder="+57 321 000 0000" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
+                    placeholder="+57 3..." 
+                    class="w-full bg-[#f8f9fa] border border-slate-200 rounded-2xl px-8 py-5 text-[#061a36] font-bold focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
                   />
-                </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Condición del Paciente</label>
-                  <textarea 
-                    rows="3"
-                    placeholder="Cuéntenos brevemente qué necesita gestionar..." 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400 resize-none"
-                  ></textarea>
                 </div>
 
                 <button 
                   type="submit" 
-                  class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3"
+                  class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-sm uppercase tracking-[0.25em] py-6 rounded-2xl shadow-2xl transition-all duration-700 hover:-translate-y-2 active:scale-95 mt-6"
                 >
-                  Hablar con una Enfermera Jefe
+                  Hablar con la Coordinación Clínica
                 </button>
-              </form>
-            </div>
+             </form>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección 2: El Bento Grid Clínico (El Control Operativo) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 pt-32 pb-16">
-      <div class="text-center mb-24 space-y-4">
-        <span class="text-[10px] font-black text-[#104892] uppercase tracking-[0.4em]">Control Operativo</span>
-        <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">Gestión Integral en <span class="text-[#155ec0]">Manos Expertas.</span></h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Item 1 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Activity className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Supervisión Continua</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Control riguroso de constantes vitales y evolución del paciente las 24 horas, con protocolos de respuesta inmediata.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Calendar className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Acompañamiento Médico Externo</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Traslado y apoyo logístico profesional en todas las citas clínicas, asegurando que el paciente nunca esté solo.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <FileText className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Control de Notas y Turnos</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Gestión estricta del personal de enfermería en casa y registro detallado de cada actividad clínica realizada.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="bg-white rounded-[40px] p-10 border border-[#e2e8f0] group hover:border-[#155ec0] hover:shadow-2xl transition-all duration-500 flex gap-8 items-start">
-          <div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#155ec0] transition-colors">
-            <Smartphone className="size-8 text-[#155ec0] group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <h4 class="text-xl font-black text-[#011633] mb-4 font-heading group-hover:text-[#155ec0]">Reporte Inmediato</h4>
-            <p class="text-slate-500 font-medium text-base leading-relaxed">
-              Comunicación directa y transparente con la familia a través de canales digitales ante cualquier cambio en el estado de salud.
-            </p>
-          </div>
-        </div>
-      </div>
+       </div>
     </section>
 
-    <!-- Sección 3: Destructor de Objeciones (FAQ Emocional Interactiva) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40 bg-[#eceef0] rounded-[80px]">
-      <div class="max-w-4xl mx-auto space-y-16">
-        <div class="text-center space-y-4">
-          <h2 class="text-3xl md:text-5xl font-black text-[#011633] font-heading">¿Cómo gestionamos las madrugadas y las urgencias?</h2>
-          <p class="text-slate-600 font-bold text-lg">No hay intermediarios, usted habla directo con la coordinación clínica.</p>
-        </div>
-
-        <div class="space-y-4">
-          <!-- Accordion 1 (Radio hack for simplicity in Astro without heavy JS) -->
-          <details class="group bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm transition-all duration-500 open:shadow-xl open:border-[#155ec0]">
-            <summary class="flex items-center justify-between p-8 cursor-pointer list-none font-black text-[#011633] tracking-tight text-xl uppercase">
-              <span>Protocolo ante emergencias (3:00 AM)</span>
-              <ChevronDown className="group-open:rotate-180 transition-transform duration-500 text-blue-500" />
-            </summary>
-            <div class="p-8 pt-0 text-slate-500 font-medium leading-relaxed border-t border-slate-50">
-              Contamos con protocolos de emergencia estrictos. Nuestra coordinación clínica, liderada por una enfermera jefe, está disponible 24/7 vía WhatsApp y llamada directa para asistir, guiar y coordinar traslados de inmediato si la situación lo requiere.
-            </div>
-          </details>
-
-          <!-- Accordion 2 -->
-          <details class="group bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm transition-all duration-500 open:shadow-xl open:border-[#155ec0]">
-            <summary class="flex items-center justify-between p-8 cursor-pointer list-none font-black text-[#011633] tracking-tight text-xl uppercase">
-              <span>Soporte en Citas Médicas Externas</span>
-              <ChevronDown className="group-open:rotate-180 transition-transform duration-500 text-blue-500" />
-            </summary>
-            <div class="p-8 pt-0 text-slate-500 font-medium leading-relaxed border-t border-slate-50">
-              Usted no necesita pedir permisos laborales. Nuestro personal traslada al paciente, lo acompaña dentro del consultorio para recibir instrucciones profesionales y le entrega a usted un reporte técnico detallado al finalizar la jornada.
-            </div>
-          </details>
-
-          <!-- Accordion 3 -->
-          <details class="group bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm transition-all duration-500 open:shadow-xl open:border-[#155ec0]">
-            <summary class="flex items-center justify-between p-8 cursor-pointer list-none font-black text-[#011633] tracking-tight text-xl uppercase">
-              <span>Rotación y Control de Personal</span>
-              <ChevronDown className="group-open:rotate-180 transition-transform duration-500 text-blue-500" />
-            </summary>
-            <div class="p-8 pt-0 text-slate-500 font-medium leading-relaxed border-t border-slate-50">
-              Nosotros gestionamos los turnos, los reemplazos por enfermedad y la calidad del trato. Usted se enfoca en ser hijo, nieto o pareja; nosotros nos enfocamos en el rigor del cuidado profesional.
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección 4: Footer de Conversión (Z-Pattern) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 lg:py-40">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <!-- Testimonio (Z-Pattern Left) -->
-        <div class="space-y-12">
-          <blockquote class="text-3xl md:text-5xl font-black text-[#104892] font-heading leading-tight italic">
-            "Por fin pude dormir una noche completa. Saber que VitalHome tiene el control de la enfermería y las citas médicas de mi madre me devolvió la vida."
-          </blockquote>
-          <div class="flex items-center gap-4">
-             <div class="size-14 rounded-full bg-[#155ec0] border-2 border-white shadow-lg flex items-center justify-center">
-                <Heart className="size-8 text-white" />
-             </div>
-             <div>
-               <p class="text-[#011633] font-bold text-base">Dra. Claudia Velez</p>
-               <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest">Familiar de Paciente Cuidado por VitalHome</p>
-             </div>
-          </div>
-        </div>
-
-        <!-- Formulario (Z-Pattern Right) -->
-        <div class="bg-white rounded-[60px] p-10 md:p-16 border border-[#e2e8f0] shadow-3xl">
-           <div class="mb-10 text-center lg:text-left">
-             <h3 class="text-3xl font-black text-[#011633] font-heading mb-3">Coordinar Plan de Monitoreo</h3>
-             <p class="text-slate-500 font-semibold text-sm italic">Diseñaremos la logística clínica para que usted descanse.</p>
-           </div>
-
-           <form class="space-y-6">
-              <div class="space-y-2">
-                <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Familiar Responsable</label>
-                <input type="text" placeholder="Su nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
-              </div>
-
-              <div class="space-y-2">
-                <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp de Contacto</label>
-                <input type="tel" placeholder="+57 300 000 0000" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
-              </div>
-
-              <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1 mt-4">
-                Coordinar Valoración Clínica Gratuita
-              </button>
-           </form>
-        </div>
-      </div>
-    </section>
   </main>
 
   <Footer />
 
-  <!-- CTA Sticky Flotante -->
-
 </Layout>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&family=Inter:wght@500;700;900&display=swap');
+  
+  :root {
+    --font-outfit: 'Outfit', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+  }
+
+  .font-outfit { font-family: var(--font-outfit); }
+  .font-inter { font-family: var(--font-inter); }
+
   html { scroll-behavior: smooth; }
-  .text-glow { text-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+
+  /* Custom Transitions */
   details summary::-webkit-details-marker { display: none; }
+  
+  .text-glow {
+    text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+  }
+
+  /* Bento Grid Overlays */
+  .shadow-3xl {
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.15);
+  }
+  .shadow-4xl {
+    box-shadow: 0 60px 150px -30px rgba(0, 0, 0, 0.25);
+  }
 </style>

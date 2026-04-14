@@ -86,7 +86,7 @@ export function PulseFitHero({
       `}</style>
       <section
         className={cn(
-          "relative w-full min-h-screen flex flex-col overflow-hidden pt-40 lg:pt-56",
+          "relative w-full min-h-screen flex flex-col overflow-hidden pt-24 md:pt-40 lg:pt-56",
           className
         )}
         style={{
@@ -98,10 +98,10 @@ export function PulseFitHero({
       >
         {/* 🔵 Halo principal (Efecto circular flotante animado de foco) */}
         <div 
-          className="absolute left-1/2 top-[-250px] w-[900px] h-[900px] pointer-events-none hero-halo-animate"
+          className="absolute left-1/2 top-[-100px] md:top-[-250px] w-[500px] md:w-[900px] h-[500px] md:h-[900px] pointer-events-none hero-halo-animate"
           style={{
             background: "radial-gradient(circle, rgba(21, 94, 192, 0.45) 0%, rgba(16, 72, 146, 0.35) 30%, rgba(255, 255, 255, 0.4) 55%, rgba(255, 255, 255, 0) 70%)",
-            filter: "blur(60px)",
+            filter: "blur(40px) md:blur(60px)",
             zIndex: 0,
             bottom: "auto"
           }}
@@ -127,17 +127,15 @@ export function PulseFitHero({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col items-center text-center max-w-4xl"
-            style={{ gap: "32px" }}
+            className="flex flex-col items-center text-center max-w-4xl gap-6 md:gap-10"
           >
             {/* Title */}
             <h1
+              className="px-2 font-heading tracking-tight text-[#061a36]"
               style={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 700,
-                fontSize: "clamp(36px, 6vw, 72px)",
-                lineHeight: "1.1",
-                color: "#061a36",
+                fontWeight: 800,
+                fontSize: "clamp(30px, 5.5vw, 76px)",
+                lineHeight: "1.15",
                 letterSpacing: "-0.02em",
               }}
             >
@@ -146,13 +144,12 @@ export function PulseFitHero({
 
             {/* Subtitle */}
             <p
+              className="px-4 text-[#0b3164]/80 max-w-2xl"
               style={{
                 fontFamily: "Inter, sans-serif",
                 fontWeight: 400,
-                fontSize: "clamp(16px, 2vw, 20px)",
+                fontSize: "clamp(16px, 1.8vw, 20px)",
                 lineHeight: "1.6",
-                color: "#0b3164",
-                maxWidth: "600px",
               }}
             >
               {subtitle}
@@ -164,14 +161,14 @@ export function PulseFitHero({
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-center gap-4"
+                className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
               >
                 {primaryAction && (
                   <button
                     onClick={primaryAction.onClick}
                     className={cn(
-                      "btn-brand",
-                      "flex flex-row items-center gap-2 px-10 py-5"
+                      "btn-brand w-full sm:w-auto",
+                      "flex flex-row items-center justify-center gap-2 px-8 md:px-10 py-4 md:py-5"
                     )}
                   >
                     {primaryAction.label}
@@ -182,14 +179,9 @@ export function PulseFitHero({
                 {secondaryAction && (
                   <button
                     onClick={secondaryAction.onClick}
-                    className="px-8 py-4 rounded-full transition-all hover:scale-105"
+                    className="w-full sm:w-auto px-6 md:px-10 py-3.5 md:py-4 rounded-full transition-all hover:scale-105 border border-[#104892] text-[#104892] font-semibold text-lg hover:bg-white/40"
                     style={{
-                      background: "transparent",
-                      border: "1px solid #104892",
                       fontFamily: "Inter, sans-serif",
-                      fontSize: "18px",
-                      fontWeight: 500,
-                      color: "#104892",
                     }}
                   >
                     {secondaryAction.label}
@@ -204,13 +196,7 @@ export function PulseFitHero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "13px",
-                  fontWeight: 400,
-                  color: "#0b3164",
-                  fontStyle: "italic",
-                }}
+                className="text-xs md:text-sm text-[#0b3164]/60 italic font-medium"
               >
                 {disclaimer}
               </motion.p>
@@ -222,29 +208,27 @@ export function PulseFitHero({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="flex flex-row items-center gap-3"
+                className="flex flex-col sm:flex-row items-center gap-3 mt-6 md:mt-2"
               >
-                <div className="flex flex-row -space-x-2">
+                <div className="flex flex-row -space-x-3">
                   {socialProof.avatars.map((avatar, index) => (
                     <img
                       key={index}
                       src={avatar}
                       alt={`User ${index + 1}`}
-                      className="rounded-full border-2 border-white"
+                      className="rounded-full border-2 border-white w-10 h-10 md:w-12 md:h-12 shadow-sm"
                       style={{
-                        width: "40px",
-                        height: "40px",
                         objectFit: "cover",
                       }}
                     />
                   ))}
                 </div>
                 <span
+                  className="text-center sm:text-left text-[#0b3164]/70 font-medium"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    color: "#0b3164",
+                    fontSize: "clamp(13px, 1.2vw, 15px)",
+                    maxWidth: "280px md:maxWidth: none"
                   }}
                 >
                   {socialProof.text}
@@ -261,111 +245,72 @@ export function PulseFitHero({
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="relative z-10 w-full overflow-hidden"
-          style={{
-            paddingTop: "60px",
-            paddingBottom: "60px",
-          }}
+          className="relative z-10 w-full overflow-hidden py-10 md:py-20"
         >
           {/* Gradient Overlays */}
           <div
-            className="absolute left-0 top-0 bottom-0 z-10 pointer-events-none"
+            className="absolute left-0 top-0 bottom-0 z-10 pointer-events-none w-20 md:w-48"
             style={{
-              width: "150px",
-              background: "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%)",
+              background: "linear-gradient(90deg, #FFFFFF 10%, rgba(255, 255, 255, 0) 100%)",
             }}
           />
           <div
-            className="absolute right-0 top-0 bottom-0 z-10 pointer-events-none"
+            className="absolute right-0 top-0 bottom-0 z-10 pointer-events-none w-20 md:w-48"
             style={{
-              width: "150px",
-              background: "linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%)",
+              background: "linear-gradient(270deg, #FFFFFF 10%, rgba(255, 255, 255, 0) 100%)",
             }}
           />
 
           {/* Scrolling Container */}
           <motion.div
-            className="flex items-center"
+            className="flex items-center gap-4 md:gap-8 px-4 md:px-12"
             animate={{
-              // Duplicate the elements and scroll the width of one set
-              x: [0, -((programs.length * 380) / 2)],
+              x: [0, -((programs.length * 360))], // Ajuste empírico aproximado
             }}
             transition={{
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: programs.length * 3,
+                duration: programs.length * 5,
                 ease: "linear",
               },
             }}
-            style={{
-              gap: "24px",
-              paddingLeft: "24px",
-            }}
           >
             {/* Duplicate programs for seamless loop */}
-            {[...programs, ...programs].map((program, index) => (
+            {[...programs, ...programs, ...programs].map((program, index) => (
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05, y: -10 }}
                 transition={{ duration: 0.3 }}
                 onClick={program.onClick}
-                className="flex-shrink-0 cursor-pointer relative overflow-hidden"
-                style={{
-                  width: "356px",
-                  height: "480px",
-                  borderRadius: "24px",
-                  boxShadow: "0 8px 32px rgba(0, 0, 0, 0.12)",
-                }}
+                className="flex-shrink-0 cursor-pointer relative overflow-hidden rounded-[32px] shadow-2xl border border-white/20 w-[280px] md:w-[380px] h-[380px] md:h-[520px]"
               >
                 {/* Image */}
                 <img
                   src={program.image}
                   alt={program.title}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
+                  className="w-full h-full object-cover"
                 />
 
                 {/* Gradient Overlay */}
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "linear-gradient(180deg, rgba(6, 26, 54, 0) 0%, rgba(6, 26, 54, 0.8) 100%)",
+                    background: "linear-gradient(180deg, rgba(6, 26, 54, 0) 0%, rgba(6, 26, 54, 0.85) 100%)",
                   }}
                 />
 
                 {/* Text Content */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 p-6"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "8px",
-                  }}
+                  className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col gap-2 md:gap-3"
                 >
                   <span
-                    style={{
-                      fontFamily: "Inter, sans-serif",
-                      fontSize: "12px",
-                      fontWeight: 500,
-                      color: "rgba(255, 255, 255, 0.8)",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.1em",
-                    }}
+                    className="text-[10px] md:text-xs font-bold text-white/70 uppercase tracking-[.2em]"
                   >
                     {program.category}
                   </span>
                   <h3
-                    style={{
-                      fontFamily: "Inter, sans-serif",
-                      fontSize: "24px",
-                      fontWeight: 600,
-                      color: "#FFFFFF",
-                      lineHeight: "1.3",
-                    }}
+                    className="text-xl md:text-3xl font-bold text-white leading-tight font-heading"
                   >
                     {program.title}
                   </h3>
