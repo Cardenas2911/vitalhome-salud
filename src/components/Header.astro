@@ -65,7 +65,7 @@ const checkIsActive = (href: string) => {
 <div class="w-full fixed top-0 left-0 right-0 z-50 pointer-events-none">
     <header 
         id="main-header" 
-        class="relative mx-auto mt-2 max-w-full lg:max-w-7xl px-4 lg:px-6 xl:px-10 bg-transparent border border-transparent shadow-none rounded-none lg:rounded-2xl pointer-events-auto transition-all duration-500 ease-in-out z-50"
+        class="relative mx-auto mt-0 lg:mt-2 max-w-full lg:max-w-7xl px-4 lg:px-6 xl:px-10 bg-transparent border border-transparent shadow-none rounded-none lg:rounded-2xl pointer-events-auto transition-all duration-500 ease-in-out z-50"
     >
         <div class="flex justify-between items-center h-[72px] md:h-[88px]">
             <!-- Logo -->
@@ -171,28 +171,61 @@ const checkIsActive = (href: string) => {
 
         <!-- Navigation Links -->
         <nav class="flex-grow py-6 px-4 space-y-1" aria-label="Navegación Móvil">
-            {navLinks.map((link) => {
+            {navLinks.map((link, index) => {
                 const isActive = checkIsActive(link.href);
+                const hasSubItems = !!link.subItems;
+                const isDefaultOpen = link.name === 'Servicios';
+                
                 return (
                     <div class="mb-1">
-                        <a 
-                            href={link.href} 
-                            class={`flex items-center px-4 py-3.5 rounded-xl transition-all duration-200 ${isActive ? 'bg-[#155ec0]/10 text-[#155ec0] font-bold' : 'text-[#0b3164]/70 hover:bg-[#e6e6e6]/30 hover:text-[#104892] font-semibold'}`}
-                        >
-                            <span class={`mr-4 ${isActive ? 'text-[#155ec0]' : 'text-[#0b3164]/40 group-hover:text-[#155ec0]'}`} set:html={link.icon} />
-                            {link.name}
-                        </a>
+                        {hasSubItems ? (
+                            <button 
+                                class={`accordion-button w-full flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-200 outline-none ${isActive ? 'bg-[#155ec0]/10 text-[#155ec0] font-bold' : 'text-[#0b3164]/70 hover:bg-[#e6e6e6]/30 hover:text-[#104892] font-semibold'}`}
+                                aria-expanded={isDefaultOpen ? "true" : "false"}
+                                data-target={`mobile-acc-${index}`}
+                            >
+                                <div class="flex items-center">
+                                    <span class={`mr-4 ${isActive ? 'text-[#155ec0]' : 'text-[#0b3164]/40 group-hover:text-[#155ec0]'}`} set:html={link.icon} />
+                                    {link.name}
+                                </div>
+                                <svg class={`w-5 h-5 transition-transform duration-300 accordion-icon ${isDefaultOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                        ) : (
+                            <a 
+                                href={link.href} 
+                                class={`flex items-center px-4 py-3.5 rounded-xl transition-all duration-200 ${isActive ? 'bg-[#155ec0]/10 text-[#155ec0] font-bold' : 'text-[#0b3164]/70 hover:bg-[#e6e6e6]/30 hover:text-[#104892] font-semibold'}`}
+                            >
+                                <span class={`mr-4 ${isActive ? 'text-[#155ec0]' : 'text-[#0b3164]/40 group-hover:text-[#155ec0]'}`} set:html={link.icon} />
+                                {link.name}
+                            </a>
+                        )}
                         
-                        {link.subItems && (
-                            <div class="pl-14 pr-4 mt-1 space-y-1">
-                                {link.subItems.map((subItem) => (
-                                    <a 
-                                        href={subItem.href} 
-                                        class="block py-2 text-[15px] text-[#0b3164]/60 hover:text-[#155ec0] font-medium"
-                                    >
-                                        {subItem.name}
+                        {hasSubItems && (
+                            <div 
+                                id={`mobile-acc-${index}`}
+                                class={`accordion-content overflow-hidden transition-all duration-300 ease-in-out ${isDefaultOpen ? 'opacity-100' : 'max-h-0 opacity-0'}`}
+                            >
+                                <div class="pl-14 pr-4 py-2 mt-1 space-y-1">
+                                    <a href={link.href} class="group flex items-center py-2 text-[15px] text-[#0b3164] font-bold hover:text-[#155ec0] transition-colors">
+                                        <svg class="w-4 h-4 mr-2 text-[#155ec0]/60 group-hover:text-[#155ec0] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                        <span>Ver todo en {link.name}</span>
                                     </a>
-                                ))}
+                                    {link.subItems.map((subItem) => (
+                                        <a 
+                                            href={subItem.href} 
+                                            class="group flex items-start py-2 text-[15px] text-[#0b3164]/60 hover:text-[#155ec0] font-medium transition-colors"
+                                        >
+                                            <svg class="w-4 h-4 mr-2 mt-0.5 text-[#155ec0]/60 group-hover:text-[#155ec0] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                            <span>{subItem.name}</span>
+                                        </a>
+                                    ))}
+                                </div>
                             </div>
                         )}
                     </div>
@@ -288,4 +321,71 @@ const checkIsActive = (href: string) => {
         btnClose.addEventListener('click', () => toggleMenu(false));
         backdrop.addEventListener('click', () => toggleMenu(false));
     }
+
+    // ====== LÓGICA DEL ACORDEÓN (MENÚ MÓVIL) ======
+    const accButtons = document.querySelectorAll('.accordion-button');
+
+    // Timeout para calcular la altura correctamente después de renderizar
+    setTimeout(() => {
+        accButtons.forEach(btn => {
+            const targetId = btn.getAttribute('data-target');
+            if (!targetId) return;
+            const targetContent = document.getElementById(targetId) as HTMLElement | null;
+            if (targetContent && btn.getAttribute('aria-expanded') === 'true') {
+                targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+            }
+        });
+    }, 100);
+
+    accButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+            const targetId = btn.getAttribute('data-target');
+            if (!targetId) return;
+            const targetContent = document.getElementById(targetId) as HTMLElement | null;
+            const icon = btn.querySelector('.accordion-icon') as HTMLElement | null;
+
+            // Acordeón exclusivo: Cierra los demás
+            if (!isExpanded) {
+                accButtons.forEach(otherBtn => {
+                    const otherTargetId = otherBtn.getAttribute('data-target');
+                    if (!otherTargetId) return;
+                    const otherContent = document.getElementById(otherTargetId) as HTMLElement | null;
+                    const otherIcon = otherBtn.querySelector('.accordion-icon') as HTMLElement | null;
+                    
+                    if (otherBtn !== btn) {
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                        if (otherContent) {
+                            otherContent.style.maxHeight = '0px';
+                            otherContent.style.opacity = '0';
+                        }
+                        if (otherIcon) {
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            }
+
+            // Toggle del botón clickeado
+            if (isExpanded) {
+                btn.setAttribute('aria-expanded', 'false');
+                if (targetContent) {
+                    targetContent.style.maxHeight = '0px';
+                    targetContent.style.opacity = '0';
+                }
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            } else {
+                btn.setAttribute('aria-expanded', 'true');
+                if (targetContent) {
+                    targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+                    targetContent.style.opacity = '1';
+                }
+                if (icon) {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        });
+    });
 </script>
