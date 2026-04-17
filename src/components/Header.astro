@@ -174,7 +174,7 @@ const checkIsActive = (href: string) => {
             {navLinks.map((link, index) => {
                 const isActive = checkIsActive(link.href);
                 const hasSubItems = !!link.subItems;
-                const isDefaultOpen = link.name === 'Servicios';
+                const isDefaultOpen = false; // Todas las secciones inician cerradas para consistencia visual
                 
                 return (
                     <div class="mb-1">
