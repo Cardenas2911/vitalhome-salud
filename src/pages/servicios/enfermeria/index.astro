@@ -65,17 +65,17 @@ const comparison = [
 <Layout title={pageTitle} description={pageDescription}>
   <Header />
 
-  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative">
+  <main class="w-full bg-[#ffffff] min-h-screen pt-32 md:pt-48 pb-0 overflow-hidden relative">
     
     {/* BREADCRUMBS OVER HERO */}
-    <div class="absolute top-36 left-0 right-0 z-40">
+    <div class="absolute top-24 md:top-36 left-0 right-0 z-40">
         <div class="container mx-auto px-6">
             <Breadcrumbs client:load items={breadcrumbItems} />
         </div>
     </div>
 
     {/* SECCIÓN 1: HERO DE RIGOR CLÍNICO (ISLA DE AUTORIDAD) */}
-    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-10">
+    <section class="relative min-h-[70vh] flex items-center bg-transparent z-10 w-full pt-4 md:pt-10">
         
         {/* ✨ MANCHA MÍTICA AZUL CIAN ✨ */}
         <div class="absolute top-1/2 left-[20%] w-[800px] h-[800px] bg-[#155ec0]/15 blur-[120px] rounded-full -translate-y-1/2 -z-10 pointer-events-none"></div>
