@@ -424,21 +424,41 @@ const breadcrumbItems = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Padre/Madre</label>
-                    <input type="text" placeholder="Ej: Marcela Trujillo" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="text" name="parent_name" placeholder="Ej: Marcela Trujillo" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
                   </div>
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Teléfono / WhatsApp</label>
-                    <input type="tel" placeholder="313 000 0000" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="tel" name="phone" placeholder="313 000 0000" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Dirección de Residencia</label>
+                  <input type="text" name="address" placeholder="Ej: Calle 127 # 7-10" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                </div>
+                <div class="space-y-2">
+                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Tipo de Patología / Condición</label>
+                  <div class="relative">
+                    <select name="pathology" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                      <option value="" disabled selected>Seleccione Patología...</option>
+                      <option value="prematuro">Recién Nacido / Prematuro</option>
+                      <option value="respiratorio">Condición Respiratoria</option>
+                      <option value="post-operatorio">Post-Operativo Infantil</option>
+                      <option value="neurologico">Condición Neurológica</option>
+                      <option value="cronico">Paciente Crónico Complejo</option>
+                      <option value="otros">Otras / Varias</option>
+                    </select>
+                    <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Necesidad Específica</label>
                   <div class="relative">
-                    <select class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
-                      <option>Cuidados Recién Nacido / Prematuro</option>
-                      <option>Monitoreo por Enfermedad Crónica</option>
-                      <option>Turno Vigilancia Nocturna</option>
-                      <option>Post-Operativo Infantil</option>
+                    <select name="service_need" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                      <option value="" disabled selected>Seleccione necesidad...</option>
+                      <option value="cuidados-diarios">Cuidados Diarios</option>
+                      <option value="monitoreo">Monitoreo Clínico</option>
+                      <option value="vigilancia-nocturna">Turno Vigilancia Nocturna</option>
+                      <option value="terapia">Terapia Especializada</option>
                     </select>
                     <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 pointer-events-none" />
                   </div>

@@ -255,17 +255,34 @@ const breadcrumbItems = [
             <h4 class="text-2xl font-black text-[#011633] font-heading mb-8">Agendar Visita de Valoración</h4>
             <form class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <input type="text" placeholder="Su Nombre" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
-                 <input type="tel" placeholder=" WhatsApp / Teléfono" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                 <input type="text" name="name" placeholder="Su Nombre" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                 <input type="tel" name="phone" placeholder=" WhatsApp / Teléfono" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
               </div>
-              <select class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none appearance-none">
-                <option value="">Especialidad Requerida</option>
-                <option value="enfermeria">Enfermería</option>
-                <option value="medico">Médico Geriatra</option>
-                <option value="fisioterapia">Fisioterapia</option>
-                <option value="terapia-ocupacional">Terapia Ocupacional</option>
-                <option value="psicologia">Psicología</option>
-              </select>
+              <div class="space-y-2">
+                <input type="text" name="address" placeholder="Dirección de Residencia" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+              </div>
+              <div class="space-y-2">
+                <select name="pathology" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none appearance-none cursor-pointer">
+                  <option value="" disabled selected>Seleccione Patología...</option>
+                  <option value="diabetes">Diabetes / Hipertensión</option>
+                  <option value="alzheimer">Alzheimer / Demencia</option>
+                  <option value="post-operatorio">Recuperación Post-Operatoria</option>
+                  <option value="respiratorio">Enfermedad Respiratoria</option>
+                  <option value="paliativo">Cuidado Paliativo / Crónico</option>
+                  <option value="movilidad">Limitación de Movilidad</option>
+                  <option value="otros">Otras / Varias</option>
+                </select>
+              </div>
+              <div class="space-y-2">
+                <select name="specialty" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none appearance-none cursor-pointer">
+                  <option value="" disabled selected>Especialidad Requerida</option>
+                  <option value="enfermeria">Enfermería</option>
+                  <option value="medico">Médico Geriatra</option>
+                  <option value="fisioterapia">Fisioterapia</option>
+                  <option value="terapia-ocupacional">Terapia Ocupacional</option>
+                  <option value="psicologia">Psicología</option>
+                </select>
+              </div>
               <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
                 Agendar Visita de Valoración
               </button>

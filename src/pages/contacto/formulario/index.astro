@@ -43,6 +43,26 @@ import Footer from '../../../components/Footer.astro';
               placeholder="+57 313 805 0356" />
           </div>
           <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1" for="direccion">Dirección de Residencia</label>
+            <input id="direccion" type="text" name="direccion" required
+              class="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="Ej. Calle 127 # 7-10, Apto 502" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1" for="patologia">Tipo de Patología</label>
+            <select id="patologia" name="patologia" required
+              class="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent appearance-none bg-white">
+              <option value="" disabled selected>Seleccione patología...</option>
+              <option value="diabetes">Diabetes / Hipertensión</option>
+              <option value="alzheimer">Alzheimer / Demencia</option>
+              <option value="post-operatorio">Recuperación Post-Operatoria</option>
+              <option value="respiratorio">Enfermedad Respiratoria</option>
+              <option value="paliativo">Cuidado Paliativo / Crónico</option>
+              <option value="movilidad">Limitación de Movilidad</option>
+              <option value="otros">Otras / Varias</option>
+            </select>
+          </div>
+          <div>
             <label class="block text-sm font-semibold text-gray-700 mb-1" for="mensaje">¿Cuál es su necesidad principal?</label>
             <textarea id="mensaje" name="mensaje" rows="4"
               class="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"

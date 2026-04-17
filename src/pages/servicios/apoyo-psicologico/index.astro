@@ -422,20 +422,41 @@ const breadcrumbItems = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre</label>
-                    <input type="text" placeholder="Ej: Maria Perez" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="text" name="name" placeholder="Ej: Maria Perez" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
                   </div>
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Teléfono</label>
-                    <input type="tel" placeholder="313 000 0000" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="tel" name="phone" placeholder="313 000 0000" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Dirección de Residencia</label>
+                  <input type="text" name="address" placeholder="Ej: Calle 127 # 7-10" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                </div>
+                <div class="space-y-2">
+                  <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Tipo de Patología</label>
+                  <div class="relative">
+                    <select name="pathology" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                      <option value="" disabled selected>Seleccione Patología...</option>
+                      <option value="diabetes">Diabetes / Hipertensión</option>
+                      <option value="alzheimer">Alzheimer / Demencia</option>
+                      <option value="post-operatorio">Recuperación Post-Operatoria</option>
+                      <option value="respiratorio">Enfermedad Respiratoria</option>
+                      <option value="paliativo">Cuidado Paliativo / Crónico</option>
+                      <option value="movilidad">Limitación de Movilidad</option>
+                      <option value="otros">Otras / Varias</option>
+                    </select>
+                    <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">¿Para quién es la consulta?</label>
                   <div class="relative">
-                    <select class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
-                      <option>Para mí (Cuidador)</option>
-                      <option>Para el Paciente</option>
-                      <option>Sesión Familiar</option>
+                    <select name="consultation_for" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                      <option value="" disabled selected>Seleccione destinatario...</option>
+                      <option value="cuidador">Para mí (Cuidador)</option>
+                      <option value="paciente">Para el Paciente</option>
+                      <option value="familiar">Sesión Familiar</option>
                     </select>
                     <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 pointer-events-none" />
                   </div>

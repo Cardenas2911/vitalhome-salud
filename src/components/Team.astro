@@ -5,23 +5,29 @@ const specialists = [
         name: "Sindy Barragán",
         role: "Masajista Terapéutica Profesional",
         benefit: "Especialista en alivio del dolor crónico, reducción de tensión muscular y reactivación de la circulación. Su enfoque devuelve el confort diario que el adulto mayor necesita para descansar sin interrupciones.",
-        image: "/sindy_barragan_masajista_1775933583945.png",
-        accent: "bg-accent"
+        image: "/Syndy%20Barragan.webp",
+        accent: "bg-accent",
+        altSEO: "Sindy Barragán - Masajista Terapéutica Profesional para Adultos Mayores a Domicilio",
+        titleSEO: "Masajes terapéuticos y alivio del dolor domiciliario por expertos certificados"
     },
     {
         name: "John Edison Buritica",
         role: "Entrenador Personal y de Rehabilitación",
         benefit: "Experto en recuperación de movilidad, fuerza funcional y prevención de caídas en el entorno doméstico. Su misión es devolverle la independencia a su familiar de forma segura y progresiva.",
-        image: "/john_buritica_rehabilitacion_1775933605088.png",
+        image: "/John%20Buritica.webp",
         accent: "bg-[#2dd4bf]",
-        highlight: true
+        highlight: true,
+        altSEO: "John Edison Buritica - Entrenador Personal y Especialista en Rehabilitación Física Domiciliaria",
+        titleSEO: "Rehabilitación física, movilidad y acondicionamiento geriátrico a domicilio"
     },
     {
         name: "Andrea del Pilar Barragán",
         role: "Trabajadora Social Clínica",
         benefit: "Especialista en acompañamiento emocional y estructuración de redes de cuidado. Brinda soporte directo para prevenir el 'agotamiento del cuidador', asegurando una transición familiar positiva.",
-        image: "/andrea_barragan_trabajadora_social_1775933620271.png",
-        accent: "bg-primary"
+        image: "/Andrea%20Barragan.webp",
+        accent: "bg-primary",
+        altSEO: "Andrea del Pilar Barragán - Trabajadora Social Clínica y Apoyo Emocional Familiar a Domicilio",
+        titleSEO: "Apoyo psicológico social y prevención del agotamiento del cuidador en el hogar"
     }
 ];
 ---
@@ -62,7 +68,11 @@ const specialists = [
                         <div class="aspect-[4/5] overflow-hidden bg-gray-50">
                             <img 
                                 src={pro.image} 
-                                alt={pro.name} 
+                                alt={pro.altSEO} 
+                                title={pro.titleSEO}
+                                loading="lazy"
+                                width="400"
+                                height="500"
                                 class="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700"
                             />
                         </div>

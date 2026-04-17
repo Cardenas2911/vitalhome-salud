@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { Breadcrumbs } from "../../components/ui/breadcrumbs";
+import { MultiStepContactForm } from "../../components/forms/MultiStepContactForm";
 import { 
   ShieldCheck, 
   Clock, 
@@ -93,63 +94,9 @@ const breadcrumbItems = [
             </div>
           </div>
 
-          <!-- Columna Derecha: Formulario -->
-          <div class="bg-white/5 lg:bg-transparent p-6 md:p-12 lg:p-20 flex flex-col justify-center relative overflow-hidden">
-            <div class="bg-white rounded-[40px] p-8 md:p-10 shadow-2xl relative z-10 border border-slate-100">
-              <div class="mb-10 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-[#061a36] font-heading mb-3">Solicitar Valoración</h3>
-                <p class="text-[#061a36]/60 font-semibold text-sm italic">Complete estos 4 campos y una especialista le orientará.</p>
-              </div>
-
-              <form class="space-y-6">
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
-                  <input 
-                    type="text" 
-                    placeholder="Ej: Nicolás Cárdenas" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
-                  />
-                </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">WhatsApp / Teléfono</label>
-                  <input 
-                    type="tel" 
-                    placeholder="+57 321 000 0000" 
-                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all placeholder:text-slate-400"
-                  />
-                </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Especialidad Requerida</label>
-                  <select class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
-                    <option value="" disabled selected>Seleccione especialidad...</option>
-                    <option value="enfermeria">Enfermería Domiciliaria</option>
-                    <option value="medicina">Médico en Casa</option>
-                    <option value="terapia">Terapias / Rehabilitación</option>
-                    <option value="pediatria">Cuidados Pediátricos</option>
-                    <option value="psicologia">Bienestar Mental</option>
-                  </select>
-                </div>
-
-                <div class="space-y-2">
-                  <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Nivel de Urgencia</label>
-                  <select class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
-                    <option value="" disabled selected>¿Cuándo lo necesita?</option>
-                    <option value="ahora">Inmediato (Emergencia)</option>
-                    <option value="semana">Esta semana (Programado)</option>
-                    <option value="consulta">Solo consulta informativa</option>
-                  </select>
-                </div>
-
-                <button 
-                  type="submit" 
-                  class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1 active:scale-95 mt-4"
-                >
-                  Solicitar Valoración Gratuita
-                </button>
-              </form>
-            </div>
+          <!-- Columna Derecha: Formulario Paso a Paso -->
+          <div class="p-6 md:p-12 lg:p-20 flex flex-col justify-center relative z-20">
+            <MultiStepContactForm client:load />
           </div>
         </div>
       </div>

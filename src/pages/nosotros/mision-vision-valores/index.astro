@@ -229,8 +229,19 @@ const breadcrumbItems = [
           <div class="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl border border-slate-100 w-full max-w-xl lg:ml-auto">
             <h4 class="text-2xl font-black text-[#011633] font-heading mb-8 uppercase tracking-tighter">Valoración Respaldada</h4>
             <form class="space-y-6">
-              <input type="text" placeholder="Su Nombre Completo" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
-              <input type="tel" placeholder="WhatsApp de Contacto" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+              <input type="text" name="name" required placeholder="Su Nombre Completo" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+              <input type="tel" name="phone" required placeholder="WhatsApp de Contacto" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+              <input type="text" name="address" required placeholder="Dirección de Residencia" class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+              <select name="pathology" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                <option value="" disabled selected>Tipo de Patología</option>
+                <option value="diabetes">Diabetes / Hipertensión</option>
+                <option value="alzheimer">Alzheimer / Demencia</option>
+                <option value="post-operatorio">Recuperación Post-Operatoria</option>
+                <option value="respiratorio">Enfermedad Respiratoria</option>
+                <option value="paliativo">Cuidado Paliativo / Crónico</option>
+                <option value="movilidad">Limitación de Movilidad</option>
+                <option value="otros">Otras / Varias</option>
+              </select>
               <button type="submit" class="w-full bg-[#155ec0] hover:bg-[#061a36] text-white font-black text-[12px] uppercase tracking-[0.2em] py-6 rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">
                 Solicitar Valoración Respaldada
               </button>

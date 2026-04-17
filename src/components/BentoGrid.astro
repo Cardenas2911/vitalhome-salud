@@ -12,45 +12,54 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 h-auto">
             
             <!-- A. EL BLOQUE MAESTRO: Enfermería Domiciliaria (2/3 de ancho) -->
-            <div class="md:col-span-2 relative rounded-[32px] overflow-hidden bg-white shadow-[0px_20px_40px_rgba(0,40,100,0.08)] min-h-[540px] md:min-h-[600px] flex flex-col group border border-[#e6e6e6]/50">
+            <div class="md:col-span-2 relative rounded-[40px] overflow-hidden bg-white shadow-[0px_20px_50px_rgba(0,40,100,0.1)] min-h-[600px] flex flex-col md:flex-row group border border-[#e6e6e6]/50">
                 
-                <!-- Header Interno "Fusionado" (Top-Left) -->
-                <div class="absolute top-0 left-0 z-20 bg-white pr-6 md:pr-8 pb-4 md:pb-6 pl-6 md:pl-10 pt-6 md:pt-10 rounded-br-[32px] md:rounded-br-[40px] shadow-[10px_10px_30px_rgba(0,0,0,0.02)] max-w-[92%] sm:max-w-[85%] border-b border-r border-[#e6e6e6]/30">
-                    <h3 class="text-2xl md:text-4xl font-heading font-bold text-[#0b3164] leading-tight mb-2 md:mb-4">
-                        Enfermería Domiciliaria <br class="hidden md:block"/> Especializada y de Élite
+                <!-- Columna de Contenido (Texto) -->
+                <div class="w-full md:w-[42%] p-8 md:p-12 flex flex-col justify-center relative z-20 bg-white">
+                    <div class="inline-flex items-center gap-2 mb-6 text-accent">
+                        <span class="w-8 h-[2px] bg-accent"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Servicio Maestro</span>
+                    </div>
+                    
+                    <h3 class="text-3xl md:text-4xl font-heading font-black text-[#0b3164] leading-tight mb-6">
+                        Enfermería Domiciliaria <span class="text-accent text-5xl">.</span>
                     </h3>
-                    <p class="text-base md:text-lg text-[#061a36]/70 font-body max-w-md leading-relaxed">
-                        Delegue el cuidado complejo en manos expertas. Desde curaciones avanzadas hasta el monitoreo clínico las 24 horas del día.
+                    
+                    <p class="text-base md:text-lg text-[#061a36]/70 font-body leading-relaxed mb-10">
+                        Delegue el cuidado complejo en manos expertas. Desde curaciones avanzadas hasta el monitoreo clínico las 24 horas del día con talento de élite.
                     </p>
-                </div>
 
-                <!-- Elemento Visual Central (Imagen de Fondo con gradientes) -->
-                <div class="absolute inset-0 z-0 text-white">
-                    <img 
-                        src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format" 
-                        alt="Enfermera profesional de VitalHome Salud brindando atención domiciliaria" 
-                        class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-secondary/40"></div>
-                </div>
-
-                <!-- Badges Flotantes e Interacción Inferior -->
-                <div class="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 flex flex-col sm:flex-row justify-between items-center sm:items-end z-20 gap-4">
-                    <div class="flex items-center bg-white/95 backdrop-blur-md px-4 md:px-5 py-2.5 md:py-3 rounded-2xl shadow-lg border border-white/50 group-hover:-translate-y-1 transition-transform duration-300 w-full sm:w-auto justify-center sm:justify-start">
-                        <div class="w-8 h-8 md:w-10 md:h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent mr-3">
-                            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center text-[#0b3164] font-bold text-sm">
+                            <svg class="w-5 h-5 mr-3 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Atención Clínica Permanente
                         </div>
-                        <span class="font-bold text-secondary text-xs md:text-base">Atención Clínica Permanente</span>
+                        <div class="flex items-center text-[#0b3164] font-bold text-sm">
+                            <svg class="w-5 h-5 mr-3 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Protocolos Médicos Hospitalarios
+                        </div>
                     </div>
 
-                    <a 
-                        href="/servicios/enfermeria-domiciliaria/" 
-                        class="btn-brand w-full sm:w-auto px-8 py-4 flex items-center justify-center gap-2 hover:gap-4 group"
-                        aria-label="Conocer los planes de enfermería"
-                    >
-                        Ver Detalles
-                        <span class="text-lg group-hover:translate-x-1 transition-transform">➔</span>
-                    </a>
+                    <div class="mt-12">
+                        <a 
+                            href="/servicios/enfermeria-domiciliaria/" 
+                            class="inline-flex items-center gap-3 text-secondary font-black text-sm uppercase tracking-widest border-b-2 border-accent pb-1 hover:gap-5 transition-all"
+                        >
+                            Ver Detalles Internos ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Visual (Imagen) -->
+                <div class="w-full md:w-[58%] relative min-h-[400px] md:min-h-full overflow-hidden">
+                    <img 
+                        src="/Enfermería%20Domiciliaria.webp" 
+                        alt="Enfermera profesional brindando atención domiciliaria de élite" 
+                        class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000"
+                    />
+                    <!-- Overlay sutil para integrar con el blanco de la izquierda -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent hidden md:block"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden"></div>
                 </div>
             </div>
 
@@ -77,18 +86,18 @@
                     </div>
                 </div>
 
-                <!-- C. Bloque Inferior Derecho: Senior Fit -->
+                <!-- C. Bloque Inferior Derecho: Fisioterapia y Rehabilitación -->
                 <div class="relative flex-1 bg-gradient-to-br from-[#f0f7ff] to-white rounded-[32px] shadow-[0px_20px_40px_rgba(0,40,100,0.08)] p-8 md:p-10 pb-10 flex flex-col items-start group border border-[#e6e6e6]/50 min-h-[300px]">
                     <div class="relative z-10 mb-6">
                         <div class="inline-flex items-center bg-white px-3 py-1 rounded-full text-[10px] font-bold text-accent uppercase tracking-widest border border-accent/10 mb-4 shadow-sm">
                             Vivir con Vitalidad
                         </div>
-                        <h4 class="text-2xl font-heading font-bold text-[#0b3164] mb-3">Entrenamiento Senior Fit</h4>
+                        <h4 class="text-2xl font-heading font-bold text-[#0b3164] mb-3">Fisioterapia y Rehabilitación</h4>
                         <p class="text-[#061a36]/70 font-body text-sm leading-relaxed">Ejercicios de fuerza y movilidad adaptados para mantener la independencia.</p>
                     </div>
 
                     <div class="mt-auto w-full flex justify-between items-center relative z-10">
-                         <a href="/servicios/entrenamiento-senior-fit/" class="btn-brand px-6 md:px-8 py-3 group/btn w-auto">
+                         <a href="/servicios/fisioterapia-rehabilitacion/" class="btn-brand px-6 md:px-8 py-3 group/btn w-auto">
                             <span class="text-sm font-bold">Ver Programa</span>
                             <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </a>

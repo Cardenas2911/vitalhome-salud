@@ -29,3 +29,9 @@ pnpm-debug.log*
 
 # Astro
 .astro/
+
+# Logs and temp
+*.log
+temp_*
+desktop.ini
+
