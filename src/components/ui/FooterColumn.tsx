@@ -80,14 +80,14 @@ export default function FooterColumn() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-12 border-b border-white/10 pb-16">
           
           {/* COLUMNA 1: MARCA Y CONTACTO */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div className="relative inline-block shrink-0">
               <div className="absolute inset-0 bg-white rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.12)] -z-10 bg-gradient-to-br from-white to-blue-50" />
-              <div className="px-5 py-3 flex items-center justify-center">
+              <div className="px-2 py-1.5 flex items-center justify-center">
                 <img
                   src={data.company.logo}
                   alt={data.company.name}
-                  className="h-10 w-auto object-contain"
+                  className="h-28 sm:h-24 w-auto object-contain"
                 />
               </div>
             </div>
