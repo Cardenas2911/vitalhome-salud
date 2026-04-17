@@ -84,10 +84,10 @@ const breadcrumbItems = [
   
   <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
-  <main class="w-full bg-[#ffffff] min-h-screen pt-48 pb-0 overflow-hidden relative font-inter text-[#061a36]">
+  <main class="w-full bg-[#ffffff] min-h-screen pt-32 md:pt-48 pb-0 overflow-hidden relative font-inter text-[#061a36]">
     
     <!-- Miga de Pan (Breadcrumbs) SOBRE EL HERO -->
-    <div class="absolute top-36 left-0 right-0 z-40">
+    <div class="absolute top-24 md:top-36 left-0 right-0 z-40">
         <div class="container mx-auto px-6">
             <Breadcrumbs client:load items={breadcrumbItems} />
         </div>
