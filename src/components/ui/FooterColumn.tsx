@@ -32,7 +32,7 @@ const data = {
       { text: 'Equipo Profesional', href: '/nosotros/equipo/' },
       { text: 'Nuestra Historia', href: '/nosotros/historia/' },
       { text: 'Gobierno Corporativo', href: '/nosotros/gobierno-corporativo/' },
-      { text: 'Metodología VitalCare®', href: '/metodologia/' },
+      { text: 'Metodología VitalHome Salud', href: '/metodologia/' },
       { text: 'Resultados y Casos de Éxito', href: '/resultados/' },
     ],
     recursos: [
@@ -187,7 +187,7 @@ export default function FooterColumn() {
           <p>© 2024 VitalHome Salud. Todos los derechos reservados.</p>
           <div className="flex flex-wrap items-center gap-8">
             <a href="/nosotros/" className="hover:text-blue-300 transition-colors">Institucional</a>
-            <a href="/metodologia/" className="hover:text-blue-300 transition-colors">Metodología VitalCare®</a>
+            <a href="/metodologia/" className="hover:text-blue-300 transition-colors">Metodología VitalHome Salud</a>
             <a href="/contacto/" className="hover:text-blue-300 transition-colors">Contacto</a>
           </div>
         </div>

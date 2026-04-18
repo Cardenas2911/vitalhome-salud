@@ -3,7 +3,7 @@ import { PulseFitHero } from "@/components/ui/pulse-fit-hero";
 export default function PulseFitHeroDemo() {
   return (
     <PulseFitHero
-      title="Enfermería y Cuidado Médico a Domicilio Especializado 24/7."
+      title="Enfermería y Cuidado Médico a Domicilio Integral Especializado 24/7."
       subtitle="Recupere su tranquilidad. Brindamos atención de enfermería experta, rehabilitación física y cuidados post-operatorios directamente en su hogar. Personal clínico certificado para que su ser querido esté seguro y usted pueda descansar."
       primaryAction={{
         label: "Solicitar Evaluación Gratuita",

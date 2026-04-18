@@ -30,7 +30,7 @@ const faqData = [
     questions: [
       {
         q: "¿Qué ocurre si mi familiar se complica a las 3:00 AM?",
-        a: "Nuestra Metodología VitalCare® incluye monitoreo 24/7. Ante cualquier eventualidad, la enfermera de turno se comunica inmediatamente con nuestra Enfermera Jefe de guardia, quien coordina la estabilización del paciente y, si es necesario, el traslado urgente siguiendo nuestros protocolos clínicos."
+        a: "Nuestra Metodología VitalHome Salud incluye monitoreo 24/7. Ante cualquier eventualidad, la enfermera de turno se comunica inmediatamente con nuestra Enfermera Jefe de guardia, quien coordina la estabilización del paciente y, si es necesario, el traslado urgente siguiendo nuestros protocolos clínicos."
       },
       {
         q: "¿Cuentan con respaldo de ambulancias?",

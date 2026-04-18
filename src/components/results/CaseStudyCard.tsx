@@ -24,7 +24,7 @@ const caseStudies: CaseStudy[] = [
     title: 'Recuperación Acelerada de Reemplazo de Cadera',
     patient: 'Sra. Elena M. (78 años)',
     challenge: 'Riesgo inminente de neumonía y trombosis por inmovilidad prolongada tras una caída accidental.',
-    methodology: 'Despliegue de enfermería 24/7 y fisioterapia diaria bajo la Metodología VitalCare®. Control estricto de dolor y movilización temprana.',
+    methodology: 'Despliegue de enfermería 24/7 y fisioterapia diaria bajo la Metodología VitalHome Salud. Control estricto de dolor y movilización temprana.',
     result: 'Recuperación de la marcha independiente en 22 días (50% menos que el promedio clínico habitual). Reincorporación total a su entorno familiar.',
     kpi: '22 Días',
     kpiLabel: 'Deporte a Marcha',
