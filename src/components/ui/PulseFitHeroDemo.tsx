@@ -3,7 +3,7 @@ import { PulseFitHero } from "@/components/ui/pulse-fit-hero";
 export default function PulseFitHeroDemo() {
   return (
     <PulseFitHero
-      title="Enfermería y Cuidado Médico a Domicilio Integral Especializado 24/7."
+      title="Enfermería domiciliaria y hospitalaria integral especializada 24/7"
       subtitle="Recupere su tranquilidad. Brindamos atención de enfermería experta, rehabilitación física y cuidados post-operatorios directamente en su hogar. Personal clínico certificado para que su ser querido esté seguro y usted pueda descansar."
       primaryAction={{
         label: "Solicitar Evaluación Gratuita",
@@ -32,7 +32,7 @@ export default function PulseFitHeroDemo() {
         {
           image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=400&h=500&fit=crop",
           category: "MOVILIDAD",
-          title: "Fisioterapia y Rehabilitación",
+          title: "Entrenador en rehabilitación física",
           onClick: () => window.location.href = '/servicios/fisioterapia-rehabilitacion/',
         },
         {

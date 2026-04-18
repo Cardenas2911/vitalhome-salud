@@ -38,7 +38,7 @@ const termsData: Term[] = [
   {
     term: "Fragilidad Geriátrica",
     definition: "Estado de vulnerabilidad biológica caracterizado por la disminución de reservas fisiológicas, aumentando el riesgo de caídas y hospitalización.",
-    solution: "Implementamos un enfoque preventivo de 360° (programa de Fisioterapia y Rehabilitación) para revertir este estado y recuperar la autonomía de su familiar."
+    solution: "Implementamos un enfoque preventivo de 360° (programa de Entrenador en rehabilitación física) para revertir este estado y recuperar la autonomía de su familiar."
   },
   {
     term: "Gastrostomía (Sonda GTT)",
@@ -63,7 +63,7 @@ const termsData: Term[] = [
   {
     term: "Kinesioterapia",
     definition: "Tratamiento de enfermedades y lesiones a través del movimiento guiado y la terapia física.",
-    solution: "Llevamos la rehabilitación a su sala. Nuestros fisioterapeutas diseñan rutinas clínicas seguras para combatir la rigidez articular y restaurar la movilidad."
+    solution: "Llevamos la rehabilitación a su sala. Nuestros entrenadores en rehabilitación física diseñan rutinas clínicas seguras para combatir la rigidez articular y restaurar la movilidad."
   },
   {
     term: "Labilidad Emocional",
@@ -103,7 +103,7 @@ const termsData: Term[] = [
   {
     term: "Sarcopenia",
     definition: "Pérdida degenerativa de masa y potencia muscular que ocurre durante el envejecimiento o en pacientes postrados.",
-    solution: "Mediante nuestro programa de Fisioterapia y Rehabilitación, prevenimos la pérdida muscular con ejercicios de resistencia progresiva dirigidos clínicamente por fisioterapeutas."
+    solution: "Mediante nuestro programa de Entrenador en rehabilitación física, prevenimos la pérdida muscular con ejercicios de resistencia progresiva dirigidos clínicamente por entrenadores en rehabilitación física."
   },
   {
     term: "Trombosis Venosa Profunda (TVP)",

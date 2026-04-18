@@ -22,7 +22,7 @@ const data = {
       { text: 'Médico Domiciliario y Telemedicina', href: '/servicios/medicina-domiciliaria/' },
       { text: 'Monitoreo y Acompañamiento 24/7', href: '/servicios/gestion-monitoreo-salud/' },
       { text: 'Apoyo Psicológico', href: '/servicios/apoyo-psicologico/' },
-      { text: 'Fisioterapia y Rehabilitación', href: '/servicios/fisioterapia-rehabilitacion/' },
+      { text: 'Entrenador en rehabilitación física', href: '/servicios/fisioterapia-rehabilitacion/' },
       { text: 'Acondicionamiento Geriátrico', href: '/servicios/acondicionamiento-fisico-geriatrico/' },
       { text: 'Terapias y Masajes de Recuperación', href: '/servicios/terapias-recuperacion/' },
     ],

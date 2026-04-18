@@ -51,8 +51,8 @@ export const seoConfig: Record<string, SeoEntry> = {
   },
   "/nosotros/equipo/": {
     title: "Equipo Profesional - VitalHome Salud: Expertos en Cuidado Domiciliario",
-    description: "Conozca a nuestras enfermeras especializadas, fisioterapeutas y médicos geriatras dedicados al cuidado domiciliario.",
-    keywords: "Equipo Médico Domiciliario, Enfermeras Especializadas Domicilio, fisioterapeutas, médicos geriatras",
+    description: "Conozca a nuestras enfermeras especializadas, entrenadores en rehabilitación física y médicos geriatras dedicados al cuidado domiciliario.",
+    keywords: "Equipo Médico Domiciliario, Enfermeras Especializadas Domicilio, entrenadores en rehabilitación física, médicos geriatras",
     schemaType: "AboutPage",
   },
   "/nosotros/gobierno-corporativo/": {
@@ -146,7 +146,7 @@ export const seoConfig: Record<string, SeoEntry> = {
   "/contacto/trabaja-con-nosotros/": {
     title: "Trabaja con Nosotros en VitalHome Salud | Carrera con Propósito",
     description: "Únase a VitalHome Salud y construya una carrera con propósito en el cuidado domiciliario de alto rendimiento.",
-    keywords: "Empleo Enfermería Domiciliaria, Trabajo Cuidado Adultos Mayores, fisioterapeutas, cuidadores",
+    keywords: "Empleo Enfermería Domiciliaria, Trabajo Cuidado Adultos Mayores, entrenadores en rehabilitación física, cuidadores",
     schemaType: "WebPage",
   },
 
@@ -167,7 +167,7 @@ export const seoConfig: Record<string, SeoEntry> = {
   "/servicios/actividad-fisica-rehabilitacion/": {
     title: "Rehabilitación Domiciliaria: Movilidad y Autonomía en Casa | VitalHome",
     description: "Recuperación de la movilidad y autonomía con programas personalizados de actividad física y rehabilitación en casa.",
-    keywords: "Rehabilitación Domiciliaria, actividad física domicilio, autonomía funcional, fisioterapeutas, ejercicios de resistencia",
+    keywords: "Rehabilitación Domiciliaria, actividad física domicilio, autonomía funcional, entrenadores en rehabilitación física, ejercicios de resistencia",
     schemaType: "Service",
   },
   "/servicios/planes-cuidado-integral/": {
