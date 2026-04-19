@@ -420,25 +420,25 @@ const breadcrumbItems = [
                 <p class="text-slate-500 font-medium">Reciba respuesta de un especialista en menos de 15 minutos.</p>
               </div>
 
-              <form class="space-y-6">
+              <form method="POST" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Padre/Madre</label>
-                    <input type="text" name="parent_name" placeholder="Ej: Marcela Trujillo" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="text" name="nombre" placeholder="Ej: Marcela Trujillo" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
                   </div>
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Teléfono / WhatsApp</label>
-                    <input type="tel" name="phone" placeholder="313 000 0000" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="tel" name="telefono" placeholder="313 000 0000" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
                   </div>
                 </div>
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Dirección de Residencia</label>
-                  <input type="text" name="address" placeholder="Ej: Calle 127 # 7-10" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                  <input type="text" name="direccion" placeholder="Ej: Calle 127 # 7-10" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
                 </div>
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Tipo de Patología / Condición</label>
                   <div class="relative">
-                    <select name="pathology" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                    <select name="mensaje" required class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
                       <option value="" disabled selected>Seleccione Patología...</option>
                       <option value="prematuro">Recién Nacido / Prematuro</option>
                       <option value="respiratorio">Condición Respiratoria</option>

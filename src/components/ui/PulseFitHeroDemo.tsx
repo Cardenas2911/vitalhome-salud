@@ -30,7 +30,7 @@ export default function PulseFitHeroDemo() {
           onClick: () => window.location.href = '/servicios/enfermeria/',
         },
         {
-          image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=400&h=500&fit=crop",
+          image: "/rehabilitacion_fisica.png",
           category: "MOVILIDAD",
           title: "Entrenador en rehabilitación física",
           onClick: () => window.location.href = '/servicios/fisioterapia-rehabilitacion/',

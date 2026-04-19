@@ -1,21 +1,127 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Search, Home, Phone, ArrowRight, ShieldCheck, HeartPulse } from 'lucide-react';
+
+const pageTitle = "Página No Encontrada | VitalHome Salud";
 ---
 
-<Layout>
-  <main class="min-h-screen bg-primary flex items-center justify-center px-6">
-    <div class="text-center text-white max-w-xl">
-      <div class="text-8xl font-bold font-heading text-accent/30 mb-4">404</div>
-      <h1 class="text-3xl md:text-4xl font-bold font-heading mb-4">¡Ups! Página No Encontrada.</h1>
-      <p class="text-white/70 text-lg mb-10">La página que busca no existe o fue movida. Explore nuestros servicios o contáctenos directamente.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/" class="bg-accent text-white font-semibold py-3 px-8 rounded-full hover:opacity-90 transition">
-          Ir a la Home
-        </a>
-        <a href="/contacto/" class="border border-white text-white font-semibold py-3 px-8 rounded-full hover:bg-white/10 transition">
-          Contactar Soporte
-        </a>
-      </div>
+<Layout title={pageTitle}>
+  <Header />
+  
+  <main class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#f8f9fa] pt-20">
+    <!-- Glow de Autoridad (Decorativo) -->
+    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#155ec0]/5 blur-[120px] rounded-full -z-0"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#104892]/5 blur-[100px] rounded-full -z-0"></div>
+
+    <div class="container mx-auto px-6 relative z-10 py-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- 404 Indicador de Lujo -->
+            <div class="relative inline-block mb-12">
+                <span class="text-[120px] md:text-[200px] font-black leading-none text-blue-900/5 select-none font-heading">
+                    404
+                </span>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="size-20 md:size-24 rounded-3xl bg-white shadow-2xl flex items-center justify-center border border-blue-100/50">
+                        <Search className="size-10 md:size-12 text-[#155ec0]" strokeWidth={1.5} />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensaje Presuasivo -->
+            <div class="space-y-6 mb-16">
+                <h1 class="text-4xl md:text-6xl font-black text-[#011633] font-heading tracking-tight leading-[1.1]">
+                    Ruta Clínica <br class="hidden md:block" /> No Localizada.
+                </h1>
+                <p class="text-slate-500 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed italic">
+                    Incluso en los mejores procesos, puede haber un desvío. Permítanos reorientar su búsqueda hacia el cuidado que su familia merece.
+                </p>
+            </div>
+
+            <!-- Acciones Principales -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-24">
+                <a 
+                    href="/" 
+                    class="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#155ec0] text-white font-bold text-sm uppercase tracking-widest transition-all hover:bg-blue-700 hover:shadow-[0_20px_40px_rgba(21,94,192,0.3)] hover:-translate-y-1"
+                >
+                    <Home className="size-5" />
+                    Regresar al Inicio
+                </a>
+                <a 
+                    href="/contacto/" 
+                    class="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#0b3164] border border-blue-100 font-bold text-sm uppercase tracking-widest transition-all hover:bg-blue-50 hover:border-blue-200"
+                >
+                    <Phone className="size-5" />
+                    Soporte Directo
+                </a>
+            </div>
+
+            <!-- Enlaces Sugeridos (Recuperación de Navegación) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left border-t border-blue-100 pt-16">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-[#155ec0]">
+                        <HeartPulse className="size-5" />
+                        <h4 class="text-xs font-black uppercase tracking-widest">Servicios Élite</h4>
+                    </div>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="/servicios/enfermeria/" class="group flex items-center justify-between text-sm font-medium text-slate-600 hover:text-[#155ec0] transition-colors">
+                                Enfermería Domiciliaria
+                                <ArrowRight className="size-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/servicios/medicina-domiciliaria/" class="group flex items-center justify-between text-sm font-medium text-slate-600 hover:text-[#155ec0] transition-colors">
+                                Médico en Casa
+                                <ArrowRight className="size-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-[#0b3164]">
+                        <ShieldCheck className="size-5" />
+                        <h4 class="text-xs font-black uppercase tracking-widest">Conózcanos</h4>
+                    </div>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="/metodologia/" class="group flex items-center justify-between text-sm font-medium text-slate-600 hover:text-[#155ec0] transition-colors">
+                                Metodología de Éxito
+                                <ArrowRight className="size-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/nosotros/equipo/" class="group flex items-center justify-between text-sm font-medium text-slate-600 hover:text-[#155ec0] transition-colors">
+                                Junta Médica
+                                <ArrowRight className="size-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-[#061a36] rounded-[32px] p-8 text-white relative overflow-hidden group border border-white/5">
+                    <div class="relative z-10 space-y-4">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-blue-400">Atención 24/7</p>
+                        <h4 class="text-xl font-black font-heading leading-tight italic">
+                            ¿Necesita ayuda ahora mismo?
+                        </h4>
+                        <a 
+                            href="https://wa.me/573138050356" 
+                            target="_blank"
+                            class="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-blue-300 transition-colors"
+                        >
+                            CHAT DE RESPUESTA INTERNA
+                            <ArrowRight className="size-4" />
+                        </a>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 size-24 bg-blue-500/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                </div>
+            </div>
+        </div>
     </div>
   </main>
+
+  <Footer />
 </Layout>

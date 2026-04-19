@@ -379,11 +379,13 @@ const breadcrumbItems = [
                 <p class="text-slate-500 font-medium text-lg italic">Diseñaremos la logística clínica para que usted recupere su paz mental.</p>
              </div>
 
-             <form class="space-y-6">
+             <form method="POST" class="space-y-6">
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
                   <input 
                     type="text" 
+                    name="nombre"
+                    required
                     placeholder="Escriba su nombre" 
                     class="w-full bg-[#f8f9fa] border border-slate-200 rounded-2xl px-8 py-5 text-[#061a36] font-bold focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
                   />
@@ -393,6 +395,8 @@ const breadcrumbItems = [
                   <label class="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">WhatsApp de Urgencia / Contacto</label>
                   <input 
                     type="tel" 
+                    name="telefono"
+                    required
                     placeholder="+57 3..." 
                     class="w-full bg-[#f8f9fa] border border-slate-200 rounded-2xl px-8 py-5 text-[#061a36] font-bold focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
                   />

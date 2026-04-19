@@ -36,7 +36,6 @@ const data = {
       { text: 'Resultados y Casos de Éxito', href: '/resultados/' },
     ],
     recursos: [
-      { text: 'Blog de Salud Domiciliaria', href: '/recursos/' },
       { text: 'Preguntas Frecuentes (FAQ)', href: '/recursos/faq/' },
       { text: 'Glosario Médico', href: '/recursos/glosario/' },
       { text: 'Contacto', href: '/contacto/' },
