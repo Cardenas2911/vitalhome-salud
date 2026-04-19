@@ -8,8 +8,8 @@ import '../styles/global.css';
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<!-- Seguridad de Respaldo para Hosting Estático (YMYL) -->
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.lordicon.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';" />
+		<!-- Nota: CSP se gestiona via headers del servidor, no via meta tag,
+		     para evitar conflictos con servicios externos (Google Sheets API) -->
 		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 		
 		<!-- Favicons (AEO & Mobile App Optimization) -->
@@ -49,11 +49,130 @@ import '../styles/global.css';
 					<path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
 				</svg>
 
-				<!-- Animación de "Pulso" Atrás -->
+				<!-- Animacion de "Pulso" Atras -->
 				<div class="absolute inset-0 bg-[#25D366] rounded-full -z-10 animate-ping opacity-30 group-hover:opacity-60 transition-opacity"></div>
 			</a>
 		</div>
 
+		<!-- IFRAME oculto: destino del formulario para evitar CORS -->
+		<iframe name="vh-submit-iframe" id="vh-submit-iframe" style="display:none;" aria-hidden="true"></iframe>
+
+		<!-- INTERCEPTOR GLOBAL DE FORMULARIOS (metodo iframe - sin CORS) -->
+		<script is:inline>
+		(function() {
+			var API_URL = "https://script.google.com/macros/s/AKfycbzbUhnXq00cYEtOh2s079zfVW830G5aYhrIJPXVCokTdDAvO1ZYuHsEQhBBpVcRJtGE/exec";
+
+			function enviarAGoogleSheets(datos) {
+				var form = document.createElement('form');
+				form.method = 'POST';
+				form.action = API_URL;
+				form.target = 'vh-submit-iframe';
+				form.style.display = 'none';
+				Object.keys(datos).forEach(function(key) {
+					var input = document.createElement('input');
+					input.type = 'hidden';
+					input.name = key;
+					input.value = datos[key] || '';
+					form.appendChild(input);
+				});
+				document.body.appendChild(form);
+				form.submit();
+				setTimeout(function() { if (form.parentNode) form.parentNode.removeChild(form); }, 3000);
+			}
+
+			window.vhEnviar = enviarAGoogleSheets;
+
+			/* Inyectar animacion CSS una sola vez */
+			if (!document.getElementById('vh-anim-css')) {
+				var style = document.createElement('style');
+				style.id = 'vh-anim-css';
+				style.textContent = '@keyframes vhFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}';
+				document.head.appendChild(style);
+			}
+
+			/* Restaurar formulario original */
+			window.vhRestaurar = function(btn) {
+				var overlay = btn.closest('[data-vh-exito]');
+				if (!overlay) return;
+				var formOculto = overlay.parentElement.querySelector('form');
+				if (formOculto) {
+					formOculto.style.display = '';
+					var submitBtn = formOculto.querySelector('button[type="submit"]');
+					if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitBtn.dataset.vhTextoOrig || 'Enviar'; }
+				}
+				overlay.remove();
+			};
+
+			/* Overlay de exito que reemplaza visualmente el formulario */
+			function mostrarExito(contenedor, ticket) {
+				var overlay = document.createElement('div');
+				overlay.setAttribute('data-vh-exito', '1');
+				overlay.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;animation:vhFadeIn 0.5s ease;';
+				overlay.innerHTML =
+					'<div style="width:80px;height:80px;background:#EFF6FF;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;">' +
+						'<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#155ec0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+					'</div>' +
+					'<h3 style="font-size:1.75rem;font-weight:900;color:#011633;margin:0 0 1rem 0;font-family:Outfit,sans-serif;">¡Solicitud Enviada!</h3>' +
+					'<p style="font-size:1.1rem;color:#64748b;font-weight:500;margin:0 0 2rem 0;line-height:1.6;max-width:400px;">' +
+						'Gracias por confiar en <strong style="color:#011633;">VitalHome Salud</strong>.<br>' +
+						'Un coordinador clínico analizará su caso y se comunicará con usted en menos de <strong style="color:#155ec0;">15 minutos</strong>.' +
+					'</p>' +
+					'<div style="background:#f8fafc;border-radius:1.5rem;padding:1rem 2rem;margin-bottom:2rem;display:inline-block;">' +
+						'<p style="color:#061a36;font-weight:900;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;margin:0 0 0.25rem 0;">Resumen de Seguimiento</p>' +
+						'<p style="color:#155ec0;font-weight:700;font-size:1.1rem;margin:0;">Ticket #' + ticket + '</p>' +
+					'</div>' +
+					'<br>' +
+					'<button onclick="window.vhRestaurar(this)" style="background:none;border:none;color:#155ec0;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-bottom:2px solid #155ec0;padding-bottom:4px;cursor:pointer;">Enviar otra consulta</button>';
+				contenedor.appendChild(overlay);
+			}
+
+			function conectarFormularios() {
+				document.querySelectorAll('form').forEach(function(form) {
+					if (form.classList.contains('react-form-ignore')) return;
+					if (form.dataset.vhConectado) return;
+					form.dataset.vhConectado = '1';
+
+					var action = form.getAttribute('action');
+					if (action && action !== '#' && !form.classList.contains('api-form')) return;
+
+					form.addEventListener('submit', function(e) {
+						e.preventDefault();
+						var btn = form.querySelector('button[type="submit"]');
+						if (btn) { btn.dataset.vhTextoOrig = btn.innerHTML; btn.innerHTML = 'Enviando...'; btn.disabled = true; }
+
+						var fd = new FormData(form);
+						var ticket = 'VH-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(Math.random() * 9000 + 1000);
+						var telRaw = (fd.get('phone') || fd.get('telefono') || '').toString();
+						var telLimpio = telRaw.replace(/[^0-9]/g, '');
+						var payload = {
+							formularioOrigen: document.title || 'Formulario',
+							nombre: fd.get('name') || fd.get('nombre') || '',
+							telefono: telLimpio,
+							email: fd.get('email') || '',
+							servicio: fd.get('pathology') || fd.get('patologia') || fd.get('servicio') || 'Consulta',
+							mensaje: fd.get('message') || fd.get('mensaje') || ('Dir: ' + (fd.get('address') || '')),
+							ticket: ticket,
+							paginaOrigen: window.location.href
+						};
+
+						enviarAGoogleSheets(payload);
+
+						/* Reemplazar formulario con overlay de exito */
+						var contenedor = form.parentElement;
+						form.style.display = 'none';
+						form.reset();
+						mostrarExito(contenedor, ticket);
+					});
+				});
+			}
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', conectarFormularios);
+			} else {
+				conectarFormularios();
+			}
+		})();
+		</script>
 	</body>
 </html>
 

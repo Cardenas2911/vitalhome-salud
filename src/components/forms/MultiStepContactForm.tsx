@@ -35,37 +35,124 @@ export const MultiStepContactForm = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [ticketId, setTicketId] = useState('');
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Validar formato de email real (no acepta textos al azar)
+  const validarEmail = (email: string): boolean => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex.test(email)) return false;
+    // Rechazar emails "de prueba" comunes
+    const dominiosInvalidos = ['test.com', 'ejemplo.com', 'fake.com', 'asdf.com', 'aaa.com'];
+    const dominio = email.split('@')[1]?.toLowerCase();
+    if (dominiosInvalidos.includes(dominio)) return false;
+    // Rechazar si la parte local es solo letras repetidas (ej: aaa@, xxx@)
+    const local = email.split('@')[0];
+    if (/^(.)?\1{2,}$/.test(local)) return false;
+    return true;
+  };
+
+  // Limpiar telefono: solo digitos, sin '+'
+  const limpiarTelefono = (tel: string): string => {
+    return tel.replace(/[^0-9]/g, '');
+  };
 
   const handleNext = () => {
-    // Basic validation for step 1
+    const newErrors: Record<string, string> = {};
+    // Validacion paso 1
     if (currentStep === 1) {
-      if (!formData.name || !formData.phone) {
-        alert("Por favor complete los campos obligatorios.");
-        return;
+      if (!formData.name.trim()) newErrors.name = 'El nombre es obligatorio';
+      if (!formData.phone.trim()) {
+        newErrors.phone = 'El WhatsApp es obligatorio';
+      } else if (!/^[+]?[0-9]{7,15}$/.test(formData.phone.trim())) {
+        newErrors.phone = 'Ingrese un numero valido (solo digitos)';
+      }
+      if (!formData.email.trim()) {
+        newErrors.email = 'El correo es obligatorio';
+      } else if (!validarEmail(formData.email.trim())) {
+        newErrors.email = 'Ingrese un correo electronico valido';
       }
     }
-    // Basic validation for step 2
+    // Validacion paso 2
     if (currentStep === 2) {
-      if (!formData.address || !formData.pathology) {
-        alert("Por favor complete los campos obligatorios.");
-        return;
-      }
+      if (!formData.address.trim()) newErrors.address = 'La direccion es obligatoria';
+      if (!formData.pathology) newErrors.pathology = 'Seleccione una patologia';
     }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setErrors({});
     setCurrentStep(prev => Math.min(prev + 1, steps.length));
   };
   
   const handlePrev = () => setCurrentStep(prev => Math.max(prev - 1, 1));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    let value = e.target.value;
+    // Para el campo telefono: solo permitir digitos y el simbolo +
+    if (e.target.name === 'phone') {
+      value = value.replace(/[^0-9+]/g, '');
+    }
+    setFormData({ ...formData, [e.target.name]: value });
+    // Limpiar error del campo al escribir
+    if (errors[e.target.name]) {
+      setErrors({ ...errors, [e.target.name]: '' });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitted(true);
-    }, 1000);
+    
+    // Validacion final paso 3
+    const newErrors: Record<string, string> = {};
+    if (!formData.specialty) newErrors.specialty = 'Seleccione una especialidad';
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Generar ticket unico (fecha + random)
+    const ticket = 'VH-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(Math.random() * 9000 + 1000);
+    setTicketId(ticket);
+
+    // Limpiar telefono: quitar + y caracteres no numericos
+    const telefonoLimpio = limpiarTelefono(formData.phone);
+
+    const campos = {
+      formularioOrigen: "MultiStepContactForm - /contacto",
+      nombre: formData.name.trim(),
+      telefono: telefonoLimpio,
+      email: formData.email.trim().toLowerCase(),
+      servicio: `${formData.specialty} | ${formData.pathology} | Urgencia: ${formData.urgency || 'No especificada'}`,
+      mensaje: `${formData.message || 'Sin mensaje'} | Direccion: ${formData.address}`,
+      ticket: ticket,
+      paginaOrigen: window.location.href
+    };
+
+    // Usar la funcion global del interceptor Layout.astro
+    if (typeof (window as any).vhEnviar === 'function') {
+      (window as any).vhEnviar(campos);
+    } else {
+      const API_URL = "https://script.google.com/macros/s/AKfycbzbUhnXq00cYEtOh2s079zfVW830G5aYhrIJPXVCokTdDAvO1ZYuHsEQhBBpVcRJtGE/exec";
+      const hiddenForm = document.createElement('form');
+      hiddenForm.method = 'POST';
+      hiddenForm.action = API_URL;
+      hiddenForm.target = 'vh-submit-iframe';
+      hiddenForm.style.display = 'none';
+      Object.entries(campos).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        hiddenForm.appendChild(input);
+      });
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+      setTimeout(() => { if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm); }, 3000);
+    }
+
+    setIsSubmitted(true);
   };
 
   if (isSubmitted) {
@@ -85,7 +172,7 @@ export const MultiStepContactForm = () => {
         </p>
         <div className="bg-[#f8fafc] rounded-3xl p-6 mb-10 inline-block">
           <p className="text-[#061a36] font-black text-[10px] uppercase tracking-widest mb-2">Resumen de Seguimiento</p>
-          <p className="text-[#155ec0] font-bold text-lg">Ticket #{Math.floor(Math.random() * 90000) + 10000}</p>
+          <p className="text-[#155ec0] font-bold text-lg">Ticket #{ticketId}</p>
         </div>
         <br />
         <button 
@@ -154,7 +241,7 @@ export const MultiStepContactForm = () => {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="relative z-10">
+      <form onSubmit={handleSubmit} className="relative z-10 react-form-ignore">
         <AnimatePresence mode="wait">
           {currentStep === 1 && (
             <motion.div 
@@ -177,8 +264,9 @@ export const MultiStepContactForm = () => {
                     onChange={handleChange}
                     type="text" 
                     placeholder="Ej: Roberto Gomez" 
-                    className="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl pl-14 pr-6 py-5 text-[#061a36] font-semibold focus:ring-4 focus:ring-[#155ec0]/5 focus:border-[#155ec0] outline-none transition-all placeholder:text-slate-400"
+                    className={`w-full bg-[#f8fafc] border ${errors.name ? 'border-red-400 ring-2 ring-red-100' : 'border-[#e2e8f0]'} rounded-2xl pl-14 pr-6 py-5 text-[#061a36] font-semibold focus:ring-4 focus:ring-[#155ec0]/5 focus:border-[#155ec0] outline-none transition-all placeholder:text-slate-400`}
                   />
+                  {errors.name && <p className="text-red-500 text-xs mt-1 ml-2 font-medium">{errors.name}</p>}
                 </div>
               </div>
               
@@ -196,22 +284,26 @@ export const MultiStepContactForm = () => {
                       onChange={handleChange}
                       type="tel" 
                       placeholder="313 000 0000" 
-                      className="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl pl-14 pr-6 py-5 text-[#061a36] font-semibold focus:ring-4 focus:ring-[#155ec0]/5 focus:border-[#155ec0] outline-none transition-all placeholder:text-slate-400"
+                      inputMode="numeric"
+                      className={`w-full bg-[#f8fafc] border ${errors.phone ? 'border-red-400 ring-2 ring-red-100' : 'border-[#e2e8f0]'} rounded-2xl pl-14 pr-6 py-5 text-[#061a36] font-semibold focus:ring-4 focus:ring-[#155ec0]/5 focus:border-[#155ec0] outline-none transition-all placeholder:text-slate-400`}
                     />
+                    {errors.phone && <p className="text-red-500 text-xs mt-1 ml-2 font-medium">{errors.phone}</p>}
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Email</label>
+                  <label className="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2 flex items-center gap-2">Email <span className="text-red-500">*</span></label>
                   <div className="relative group">
                     <Mail className="absolute left-6 top-1/2 -translate-y-1/2 size-5 text-slate-400 group-focus-within:text-[#155ec0] transition-colors" />
                     <input 
                       name="email"
+                      required
                       value={formData.email}
                       onChange={handleChange}
                       type="email" 
                       placeholder="ejemplo@correo.com" 
-                      className="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl pl-14 pr-6 py-5 text-[#061a36] font-semibold focus:ring-4 focus:ring-[#155ec0]/5 focus:border-[#155ec0] outline-none transition-all placeholder:text-slate-400"
+                      className={`w-full bg-[#f8fafc] border ${errors.email ? 'border-red-400 ring-2 ring-red-100' : 'border-[#e2e8f0]'} rounded-2xl pl-14 pr-6 py-5 text-[#061a36] font-semibold focus:ring-4 focus:ring-[#155ec0]/5 focus:border-[#155ec0] outline-none transition-all placeholder:text-slate-400`}
                     />
+                    {errors.email && <p className="text-red-500 text-xs mt-1 ml-2 font-medium">{errors.email}</p>}
                   </div>
                 </div>
               </div>
@@ -305,11 +397,12 @@ export const MultiStepContactForm = () => {
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2">Mensaje o Requerimientos Especiales</label>
+                <label className="text-[10px] font-black text-[#061a36] uppercase tracking-[0.2em] ml-2 flex items-center gap-2">Mensaje o Requerimientos Especiales <span className="text-red-500">*</span></label>
                 <div className="relative group">
                   <MessageSquare className="absolute left-6 top-6 size-5 text-slate-400 group-focus-within:text-[#155ec0] transition-colors" />
                   <textarea 
                     name="message"
+                    required
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}

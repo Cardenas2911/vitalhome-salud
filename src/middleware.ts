@@ -26,10 +26,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
       'Permissions-Policy', 
       'camera=(), microphone=(), geolocation=(), browsing-topics=()'
     );
-    // Content Security Policy Base (Permite scripts de LordIcon y fuentes de Google, bloquea eval)
+    // Content Security Policy Base (Permite scripts de LordIcon, fuentes de Google, y Google Apps Script para formularios)
     response.headers.set(
       'Content-Security-Policy',
-      "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.lordicon.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+      "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.lordicon.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self' https://script.google.com; frame-src 'self' https://script.google.com https://script.googleusercontent.com;"
     );
     
     // Server Timing API (AEO Performance Tracking)

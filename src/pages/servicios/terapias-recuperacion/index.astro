@@ -424,11 +424,11 @@ const breadcrumbItems = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Nombre del Familiar</label>
-                    <input type="text" placeholder="Ej: Diana Martinez" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="text" placeholder="Ej: Diana Martinez" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" / name="nombre">
                   </div>
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">WhatsApp de Contacto</label>
-                    <input type="tel" placeholder="313 000 0000" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" />
+                    <input type="tel" placeholder="313 000 0000" class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all" / name="telefono">
                   </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -456,7 +456,7 @@ const breadcrumbItems = [
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-[#011633] uppercase tracking-[0.2em] ml-2">Estado del Paciente</label>
                   <div class="relative">
-                    <select class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer">
+                    <select class="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none transition-all appearance-none cursor-pointer" name="estado">
                       <option>En Hospital (Próximo al Alta)</option>
                       <option>Ya en Casa (Inicia Recuperación)</option>
                       <option>Necesita Terapia Urgente</option>
