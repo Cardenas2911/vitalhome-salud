@@ -29,7 +29,7 @@ const caseStudies: CaseStudy[] = [
     kpi: '22 Días',
     kpiLabel: 'Deporte a Marcha',
     image: '/images/results/hip-recovery.jpg',
-    testimonial: "Pasamos del miedo de ver a mi madre postrada, a la alegría de verla caminar de nuevo en su jardín. El equipo de VitalHome fue su red de seguridad.",
+    testimonial: "Pasamos del miedo de ver a mi madre postrada, a la alegría de verla caminar de nuevo en su jardín. El equipo de VitalHome Salud fue su red de seguridad.",
     author: "Hijo de la paciente"
   },
   {
@@ -38,7 +38,7 @@ const caseStudies: CaseStudy[] = [
     title: 'Estabilización Cognitiva y Alivio Familiar',
     patient: 'Sr. Roberto G. (84 años)',
     challenge: 'Episodios de agresividad y desorientación que llevaron al agotamiento extremo (Burnout) de su esposa e hijos.',
-    methodology: 'Implementación de Rutina Predictiva VitalHome®. Estimulación cognitiva diaria y manejo no farmacológico de conductas disruptivas.',
+    methodology: 'Implementación de Rutina Predictiva VitalHome Salud®. Estimulación cognitiva diaria y manejo no farmacológico de conductas disruptivas.',
     result: 'Reducción del 80% en episodios de agitación. La familia recuperó el descanso nocturno y la conexión emocional positiva con su padre.',
     kpi: '-80%',
     kpiLabel: 'Episodios de Agitación',
@@ -57,7 +57,7 @@ const caseStudies: CaseStudy[] = [
     kpi: '100%',
     kpiLabel: 'Control del Dolor',
     image: '/images/results/palliative-care.jpg',
-    testimonial: "VitalHome no solo cuidó su cuerpo, cuidó su dignidad. Pudimos despedirnos con amor y sin sufrimiento, tal como ella quería.",
+    testimonial: "VitalHome Salud no solo cuidó su cuerpo, cuidó su dignidad. Pudimos despedirnos con amor y sin sufrimiento, tal como ella quería.",
     author: "Hija de la paciente"
   }
 ];

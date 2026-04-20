@@ -40,7 +40,7 @@ export const seoConfig: Record<string, SeoEntry> = {
   "/nosotros/mision-vision-valores/": {
     title: "Misión, Visión y Valores de VitalHome Salud | Cuidado con Propósito",
     description: "Descubra los principios que guían a VitalHome Salud en la atención integral y digna del adulto mayor en su hogar.",
-    keywords: "Misión Visión Valores VitalHome, valores cuidado domiciliario, excelencia clínica, empatía, integridad",
+    keywords: "Misión Visión Valores VitalHome Salud, valores cuidado domiciliario, excelencia clínica, empatía, integridad",
     schemaType: "AboutPage",
   },
   "/nosotros/historia/": {
@@ -64,19 +64,19 @@ export const seoConfig: Record<string, SeoEntry> = {
 
   // Metodología
   "/metodologia/": {
-    title: "Metodología VitalHome® - VitalHome Salud: Ingeniería del Cuidado",
-    description: "Descubra nuestra metodología propietaria VitalHome®, un enfoque sistemático para el bienestar sostenible en el hogar.",
-    keywords: "Metodología Cuidado Domiciliario, VitalHome, evaluación holística, intervención multidisciplinaria",
+    title: "Metodología VitalHome Salud® - VitalHome Salud: Ingeniería del Cuidado",
+    description: "Descubra nuestra metodología propietaria VitalHome Salud®, un enfoque sistemático para el bienestar sostenible en el hogar.",
+    keywords: "Metodología Cuidado Domiciliario, VitalHome Salud, evaluación holística, intervención multidisciplinaria",
     schemaType: "HowTo",
   },
   "/metodologia/VitalHome/": {
-    title: "Detalle Metodología VitalHome® | Cuidado Domiciliario Excepcional",
-    description: "Profundice en los pasos de nuestra Metodología VitalHome® para un cuidado domiciliario excepcional y resultados medibles.",
-    keywords: "Metodología VitalHome, planificación personalizada, monitoreo continuo, atención predictiva",
+    title: "Detalle Metodología VitalHome Salud® | Cuidado Domiciliario Excepcional",
+    description: "Profundice en los pasos de nuestra Metodología VitalHome Salud® para un cuidado domiciliario excepcional y resultados medibles.",
+    keywords: "Metodología VitalHome Salud, planificación personalizada, monitoreo continuo, atención predictiva",
     schemaType: "HowTo",
   },
   "/metodologia/enfoque-multidisciplinario/": {
-    title: "Enfoque Multidisciplinario en Cuidado Domiciliario | VitalHome",
+    title: "Enfoque Multidisciplinario en Cuidado Domiciliario | VitalHome Salud",
     description: "Descubra cómo nuestro equipo multidisciplinario garantiza una atención holística y coordinada para el bienestar de su ser querido.",
     keywords: "Enfoque Multidisciplinario Salud, equipo multidisciplinario, atención holística, evaluación holística",
     schemaType: "AboutPage",
@@ -104,7 +104,7 @@ export const seoConfig: Record<string, SeoEntry> = {
 
   // Tecnología
   "/tecnologia/": {
-    title: "Tecnología de Vanguardia para el Cuidado Domiciliario | VitalHome",
+    title: "Tecnología de Vanguardia para el Cuidado Domiciliario | VitalHome Salud",
     description: "Descubra la infraestructura tecnológica de VitalHome Salud: monitoreo inteligente, seguridad de datos y eficiencia operativa.",
     keywords: "Tecnología Cuidado Domiciliario, stack headless-ready, sistemas de monitoreo remoto, ingeniería digital",
     schemaType: "AboutPage",
@@ -138,7 +138,7 @@ export const seoConfig: Record<string, SeoEntry> = {
     schemaType: "ContactPage",
   },
   "/contacto/zonas-de-cobertura/": {
-    title: "Zonas de Cobertura VitalHome | El Hospital de Élite en su Hogar",
+    title: "Zonas de Cobertura VitalHome Salud | El Hospital de Élite en su Hogar",
     description: "Cobertura geográfica inmediata en Bogotá y Sabana Norte. No se desplace, nuestra red de cuidado llega a su barrio con rigor clínico y exclusividad.",
     keywords: "Cobertura VitalHome Salud, enfermeras a domicilio Bogotá, médico en casa Chía, zonas de servicio salud, Sabana Norte",
     schemaType: "LocalBusiness",
@@ -159,19 +159,19 @@ export const seoConfig: Record<string, SeoEntry> = {
     schemaType: "Service",
   },
   "/servicios/masajes-terapeuticos/": {
-    title: "Masajes Terapéuticos a Domicilio para Adultos Mayores | VitalHome",
+    title: "Masajes Terapéuticos a Domicilio para Adultos Mayores | VitalHome Salud",
     description: "Alivio del dolor, reducción del estrés y mejora del bienestar físico y emocional para adultos mayores en casa.",
     keywords: "Masajes Terapéuticos Domicilio, dolor crónico adultos mayores, bienestar físico, relajación profunda",
     schemaType: "Service",
   },
   "/servicios/actividad-fisica-rehabilitacion/": {
-    title: "Rehabilitación Domiciliaria: Movilidad y Autonomía en Casa | VitalHome",
+    title: "Rehabilitación Domiciliaria: Movilidad y Autonomía en Casa | VitalHome Salud",
     description: "Recuperación de la movilidad y autonomía con programas personalizados de actividad física y rehabilitación en casa.",
     keywords: "Rehabilitación Domiciliaria, actividad física domicilio, autonomía funcional, entrenadores en rehabilitación física, ejercicios de resistencia",
     schemaType: "Service",
   },
   "/servicios/planes-cuidado-integral/": {
-    title: "Planes de Cuidado Integral Personalizados para Adultos Mayores | VitalHome",
+    title: "Planes de Cuidado Integral Personalizados para Adultos Mayores | VitalHome Salud",
     description: "Soluciones personalizadas y flexibles para el cuidado holístico del adulto mayor, con monitoreo y soporte paliativo.",
     keywords: "Planes Cuidado Integral Adultos Mayores, atención holística, monitoreo preventivo, soporte paliativo",
     schemaType: "Service",
@@ -192,7 +192,7 @@ export const seoConfig: Record<string, SeoEntry> = {
     schemaType: "FAQPage",
   },
   "/recursos/glosario/": {
-    title: "Glosario Médico: Términos Clave de Salud Domiciliaria | VitalHome",
+    title: "Glosario Médico: Términos Clave de Salud Domiciliaria | VitalHome Salud",
     description: "Comprenda la terminología médica clave sobre enfermedades crónicas, terapias y condiciones geriátricas.",
     keywords: "Glosario Médico Cuidado, términos clave salud domiciliaria, condiciones geriátricas, enfermedades crónicas",
     schemaType: "MedicalWebPage",
@@ -203,19 +203,19 @@ export const seoConfig: Record<string, SeoEntry> = {
   "/gracias/": {
     title: "¡Gracias por Contactarnos! | VitalHome Salud",
     description: "Su solicitud ha sido recibida con éxito. Nos pondremos en contacto con usted a la brevedad.",
-    keywords: "confirmación solicitud VitalHome, gracias contacto",
+    keywords: "confirmación solicitud VitalHome Salud, gracias contacto",
     schemaType: "WebPage",
   },
   "/404/": {
     title: "Página No Encontrada | VitalHome Salud",
     description: "La página que busca no existe. Explore nuestros servicios o contacte con VitalHome Salud.",
-    keywords: "página no encontrada, 404 VitalHome",
+    keywords: "página no encontrada, 404 VitalHome Salud",
     schemaType: "WebPage",
   },
   "/onboarding/": {
     title: "Bienvenida a VitalHome Salud: Su Proceso de Onboarding",
     description: "Guía paso a paso para nuevos clientes de VitalHome Salud. Conozca cómo empezar a disfrutar de nuestros servicios.",
-    keywords: "onboarding cliente VitalHome, bienvenida, proceso de cuidado",
+    keywords: "onboarding cliente VitalHome Salud, bienvenida, proceso de cuidado",
     schemaType: "WebPage",
   },
 };

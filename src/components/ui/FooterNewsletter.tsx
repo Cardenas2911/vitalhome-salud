@@ -50,7 +50,7 @@ export default function FooterNewsletter() {
               <div className="relative overflow-hidden rounded-[40px] border border-white/20 shadow-2xl">
                   <img
                     src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=600&h=450&q=80"
-                    alt="VitalHome Team"
+                    alt="VitalHome Salud Team"
                     className="w-[450px] h-[320px] object-cover group-hover/card:scale-110 transition-transform duration-1000 grayscale-[0.2] group-hover/card:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b3164] via-transparent to-transparent opacity-80"></div>
