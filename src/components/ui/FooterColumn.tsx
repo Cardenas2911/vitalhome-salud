@@ -30,6 +30,7 @@ const data = {
       { text: 'Quiénes Somos', href: '/nosotros/' },
       { text: 'Misión, Visión y Valores', href: '/nosotros/mision-vision-valores/' },
       { text: 'Equipo Profesional', href: '/nosotros/equipo/' },
+      { text: 'Trabaje Con Nosotros', href: '/nosotros/trabaja-con-nosotros/' },
       { text: 'Nuestra Historia', href: '/nosotros/historia/' },
       { text: 'Gobierno Corporativo', href: '/nosotros/gobierno-corporativo/' },
       { text: 'Metodología VitalHome Salud', href: '/metodologia/' },
