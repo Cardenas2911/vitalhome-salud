@@ -159,17 +159,25 @@ const breadcrumbItems = [
             <form method="POST" class="space-y-6">
               
               <div class="space-y-2">
-                 <input type="text" name="nombres_apellidos" placeholder="Nombres y Apellidos Completos" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                 <input type="text" name="nombre" placeholder="Nombres y Apellidos Completos" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <input type="email" name="correo" placeholder="Correo Electrónico" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
-                 <input type="tel" name="celular" placeholder="Número Celular" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                 <input type="email" name="email" placeholder="Correo Electrónico" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" />
+                 <input 
+                    type="tel" 
+                    name="telefono" 
+                    placeholder="Número Celular" 
+                    required 
+                    inputmode="numeric"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none" 
+                 />
               </div>
 
               <div class="space-y-2">
-                <select name="profesion" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none appearance-none cursor-pointer">
-                  <option value="" disabled selected>Profesión / Especialidad</option>
+                <select name="servicio" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none appearance-none cursor-pointer">
+                  <option value="" disabled selected>Profesión / Especialidad (Obligatorio)</option>
                   <option value="enfermeria_profesional">Enfermería Profesional (Jefe)</option>
                   <option value="auxiliar_enfermeria">Auxiliar de Enfermería</option>
                   <option value="medicina_general">Medicina General</option>
@@ -186,7 +194,7 @@ const breadcrumbItems = [
               </div>
               
               <div class="space-y-2">
-                <textarea name="perfil" rows="3" placeholder="Breve perfil profesional y motivo de interés en VitalHome Salud" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none resize-none"></textarea>
+                <textarea name="mensaje" rows="3" placeholder="Breve perfil profesional y motivo de interés en VitalHome Salud" required class="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl px-6 py-4 text-[#061a36] font-semibold focus:ring-2 focus:ring-[#155ec0] outline-none resize-none"></textarea>
               </div>
 
               <button type="submit" class="w-full h-[60px] bg-[#155ec0] hover:bg-[#061a36] text-white flex items-center justify-center gap-3 font-black text-[12px] uppercase tracking-[0.2em] rounded-2xl shadow-[0_20px_40px_rgba(21,94,192,0.4)] transition-all duration-500 hover:-translate-y-1">

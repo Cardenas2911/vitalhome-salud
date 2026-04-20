@@ -142,15 +142,29 @@ import '../styles/global.css';
 
 						var fd = new FormData(form);
 						var ticket = 'VH-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(Math.random() * 9000 + 1000);
-						var telRaw = (fd.get('phone') || fd.get('telefono') || '').toString();
+						var telRaw = (fd.get('phone') || fd.get('telefono') || fd.get('celular') || '').toString();
 						var telLimpio = telRaw.replace(/[^0-9]/g, '');
+						
+						// Recolectar TODOS los datos dinámicamente
+						var datosExtras = [];
+						fd.forEach(function(value, key) {
+							if (['name', 'nombre', 'phone', 'telefono', 'celular', 'email', 'correo', 'pathology', 'patologia', 'servicio', 'message', 'mensaje'].indexOf(key) === -1) {
+								datosExtras.push(key.toUpperCase() + ': ' + value);
+							}
+						});
+
+						var mensajeBase = fd.get('message') || fd.get('mensaje') || (fd.get('perfil') || '');
+						if (datosExtras.length > 0) {
+							mensajeBase += "\n\n--- DETALLES ADICIONALES ---\n" + datosExtras.join("\n");
+						}
+
 						var payload = {
 							formularioOrigen: document.title || 'Formulario',
-							nombre: fd.get('name') || fd.get('nombre') || '',
+							nombre: fd.get('name') || fd.get('nombre') || fd.get('nombres_apellidos') || '',
 							telefono: telLimpio,
-							email: fd.get('email') || '',
-							servicio: fd.get('pathology') || fd.get('patologia') || fd.get('servicio') || 'Consulta',
-							mensaje: fd.get('message') || fd.get('mensaje') || ('Dir: ' + (fd.get('address') || '')),
+							email: fd.get('email') || fd.get('correo') || '',
+							servicio: fd.get('pathology') || fd.get('patologia') || fd.get('servicio') || fd.get('profesion') || 'Consulta',
+							mensaje: mensajeBase,
 							ticket: ticket,
 							paginaOrigen: window.location.href
 						};
