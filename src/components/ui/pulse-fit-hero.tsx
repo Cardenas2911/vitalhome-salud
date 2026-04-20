@@ -14,6 +14,7 @@ interface ProgramCard {
   category: string;
   title: string;
   onClick?: () => void;
+  objectPosition?: string;
 }
 
 interface PulseFitHeroProps {
@@ -290,6 +291,9 @@ export function PulseFitHero({
                   src={program.image}
                   alt={program.title}
                   className="w-full h-full object-cover"
+                  style={{
+                    objectPosition: program.objectPosition || "center",
+                  }}
                 />
 
                 {/* Gradient Overlay */}

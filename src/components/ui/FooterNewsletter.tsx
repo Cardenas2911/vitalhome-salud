@@ -3,7 +3,7 @@ import { Mail, Bell } from 'lucide-react';
 export default function FooterNewsletter() {
   return (
     <div className="relative w-full max-w-7xl mx-auto px-4 mb-20">
-      <div className="relative overflow-hidden rounded-[40px] bg-gradient-to-br from-[#0b3164] via-[#0b3164] to-[#041a36] p-8 md:p-14 shadow-2xl border border-white/10 group">
+      <div className="relative overflow-hidden rounded-[40px] bg-gradient-to-br from-[#0b3164] via-[#0b3164] to-[#041a36] px-6 py-10 md:p-14 shadow-2xl border border-white/10 group">
         
         {/* Decoraciones de fondo Dinámicas */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full -z-0 group-hover:bg-primary/30 transition-colors duration-1000"></div>
@@ -16,7 +16,7 @@ export default function FooterNewsletter() {
                 CÍRCULO DE BIENESTAR
             </div>
             
-            <h3 className="mb-4 text-4xl font-black md:text-5xl text-white leading-[1.1] tracking-tight">
+            <h3 className="mb-4 text-3xl font-black md:text-5xl text-white leading-[1.1] tracking-tight">
               Acompáñenos en el camino <br/>
               <span className="text-blue-300 italic bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent">
                 hacia el bienestar.

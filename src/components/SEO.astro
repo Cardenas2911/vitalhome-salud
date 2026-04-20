@@ -16,7 +16,10 @@ const metadata = seoConfig[normalizedPath as keyof typeof seoConfig] || {
 const domain = "https://vitalhomesalud.com";
 const fullUrl = `${domain}${pathname}`;
 
-// Graph Schema Dinámico enfocado al Nodo Cero usando Golden Embeddings (como se solicitó).
+// Imagen OG por defecto (imagen de marca)
+const ogImage = `${domain}/images/og-vitalhomesalud.png`;
+
+// Graph Schema Dinámico enfocado al Nodo Cero usando Golden Embeddings.
 // Las demás páginas heredarán el WebPage/Procedure ligado al mismo MedicalOrganization root.
 const jsonLdGraph = {
   "@context": "https://schema.org",
@@ -26,22 +29,30 @@ const jsonLdGraph = {
       "@id": `${domain}/#organization`,
       "name": "VitalHome Salud",
       "url": `${domain}/`,
+      "telephone": "+573138050356",
       "logo": {
         "@type": "ImageObject",
         "@id": `${domain}/#logo`,
-        "url": `${domain}/images/logo-vitalhome.png`,
+        "url": `${domain}/images/logo-vitalhomesalud.png`,
         "caption": "Logotipo oficial de VitalHome Salud"
       },
-      "description": "Institución líder en atención integral en salud y bienestar domiciliario para adultos mayores.",
+      "description": "Institución líder en atención integral en salud y bienestar domiciliario para adultos mayores en Bogotá, Colombia.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bogotá",
+        "addressCountry": "CO"
+      },
+      "areaServed": ["Bogotá", "Chía", "Cajicá", "Cota", "Sopó"],
       "sameAs": [
         "https://www.linkedin.com/company/vitalhomesalud",
         "https://www.instagram.com/vitalhomesalud"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+[TU_NUMERO]",
+        "telephone": "+57-313-805-0356",
         "contactType": "customer service",
-        "availableLanguage": "es"
+        "availableLanguage": "es",
+        "hoursAvailable": "Mo-Su 00:00-23:59"
       }
     },
     {
@@ -63,6 +74,7 @@ const jsonLdGraph = {
       "@id": `${domain}${pathname}#webpage`,
       "url": fullUrl,
       "name": metadata.title,
+      "description": metadata.description,
       "isPartOf": {
         "@id": `${domain}/#website`
       },
@@ -79,6 +91,26 @@ const jsonLdGraph = {
 <meta name="description" content={metadata.description}>
 <meta name="keywords" content={metadata.keywords}>
 <link rel="canonical" href={fullUrl} />
+
+<!-- OPEN GRAPH (Facebook, WhatsApp, LinkedIn, Slack) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VitalHome Salud" />
+<meta property="og:url" content={fullUrl} />
+<meta property="og:title" content={metadata.title} />
+<meta property="og:description" content={metadata.description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="VitalHome Salud — Cuidado Domiciliario de Élite en Bogotá" />
+<meta property="og:locale" content="es_CO" />
+
+<!-- TWITTER CARDS (X, Telegram preview) -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@vitalhomesalud" />
+<meta name="twitter:title" content={metadata.title} />
+<meta name="twitter:description" content={metadata.description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content="VitalHome Salud — Ingeniería de Bienestar Domiciliario" />
 
 <!-- MARCADO JSON-LD AVANZADO PARA GRAPH RAG E IA -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLdGraph)} is:inline></script>

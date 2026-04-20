@@ -1,0 +1,78 @@
+# ============================================================
+# ROBOTS.TXT — VitalHome Salud
+# Estrategia: Indexación Masiva + Visibilidad para LLMs
+# Última actualización: Abril 2026
+# ============================================================
+
+# ── MOTORES PRINCIPALES ──────────────────────────────────────
+
+# Google (Search, Images, News)
+User-agent: Googlebot
+Allow: /
+Disallow: /_astro/
+Disallow: /_blog/
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Googlebot-News
+Allow: /recursos/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /_astro/
+Disallow: /_blog/
+
+# ── MOTORES DE IA / LLMs ─────────────────────────────────────
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+Disallow: /_astro/
+Disallow: /_blog/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /_astro/
+
+# Anthropic / Claude
+User-agent: anthropic-ai
+Allow: /
+Disallow: /_astro/
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Disallow: /_astro/
+Disallow: /_blog/
+
+# Common Crawl (fuente principal de datos para LLMs)
+User-agent: CCBot
+Allow: /
+Disallow: /_astro/
+Disallow: /_blog/
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+Disallow: /_astro/
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+Disallow: /_astro/
+
+# ── AGENTES WEB GENERALES ────────────────────────────────────
+
+User-agent: *
+Allow: /
+
+# Bloques de rutas técnicas (no gastar crawl budget aquí)
+Disallow: /_astro/
+Disallow: /_blog/
+Disallow: /node_modules/
+
+# ── SITEMAP ─────────────────────────────────────────────────
+
+Sitemap: https://vitalhomesalud.com/sitemap-index.xml

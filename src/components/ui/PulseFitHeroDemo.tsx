@@ -28,6 +28,7 @@ export default function PulseFitHeroDemo() {
           category: "24/7",
           title: "Enfermería Especializada",
           onClick: () => window.location.href = '/servicios/enfermeria/',
+          objectPosition: "center 10%",
         },
         {
           image: "/rehabilitacion_fisica.png",
